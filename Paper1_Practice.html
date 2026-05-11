@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IB World Religions — Paper 1 Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --dark: #0f0f0f;
+    --surface: #161616;
+    --card: #1c1c1c;
+    --card2: #222;
+    --border: rgba(201,168,76,0.15);
+    --text: #e0d8c8;
+    --muted: #7a7060;
+    --green: #4caf7d;
+    --amber: #e8a030;
+    --red: #e05050;
+    --accent: #c9a84c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Crimson Text', Georgia, serif;
+    background: var(--dark);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* SITE NAV */
+  .site-nav {
+    background: #0a0a0a;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .site-nav a {
+    color: rgba(201,168,76,0.7);
+    text-decoration: none;
+    font-size: 0.82rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+    font-family: 'Crimson Text', serif;
+  }
+  .site-nav a:hover { background: rgba(255,255,255,0.08); }
+  .site-nav a.current { background: var(--gold); color: #111; font-weight: 600; }
+  .site-nav .nav-label { color: rgba(201,168,76,0.4); font-size: 0.76rem; margin-right: 0.2rem; }
+
+  /* HEADER */
+  .page-header {
+    background: linear-gradient(135deg, #0a0a0a 0%, #141414 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 900;
+    color: #fff;
+  }
+  .page-header h1 span { color: var(--gold); }
+  .page-header p { color: var(--muted); font-style: italic; margin-top: 0.4rem; font-size: 0.95rem; }
+
+  /* LAYOUT */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: calc(100vh - 120px);
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .sidebar-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 1.2rem 0.8rem;
+  }
+  .rel-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Crimson Text', serif;
+    font-size: 1rem;
+    color: var(--muted);
+    transition: background 0.2s, color 0.2s;
+    border-left: 3px solid transparent;
+  }
+  .rel-btn:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+  .rel-btn.active { background: rgba(201,168,76,0.08); color: var(--gold); border-left-color: var(--gold); }
+  .rel-btn .sym { font-size: 1.2rem; width: 1.5rem; text-align: center; }
+  .rel-btn .progress-dots { margin-left: auto; display: flex; gap: 2px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); opacity: 0.3; }
+  .dot.done { background: var(--green); opacity: 1; }
+  .dot.scored { background: var(--gold); opacity: 1; }
+
+  /* MAIN */
+  .main { padding: 2rem 2.5rem 4rem; }
+
+  /* SCORE SUMMARY BAR */
+  .score-bar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.4rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .score-bar-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .score-total { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); font-weight: 700; }
+  .score-total span { font-size: 1rem; color: var(--muted); font-family: 'Crimson Text', serif; }
+  .score-grade {
+    padding: 0.25rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-left: auto;
+  }
+  .grade-7 { background: rgba(76,175,125,0.2); color: #4caf7d; border: 1px solid rgba(76,175,125,0.3); }
+  .grade-6 { background: rgba(76,175,125,0.12); color: #7dd4a8; border: 1px solid rgba(76,175,125,0.2); }
+  .grade-5 { background: rgba(232,160,48,0.15); color: #e8c030; border: 1px solid rgba(232,160,48,0.25); }
+  .grade-4 { background: rgba(232,160,48,0.1); color: #e8a030; border: 1px solid rgba(232,160,48,0.2); }
+  .grade-3 { background: rgba(224,80,80,0.12); color: #e08060; border: 1px solid rgba(224,80,80,0.2); }
+  .grade-low { background: rgba(224,80,80,0.1); color: var(--red); border: 1px solid rgba(224,80,80,0.2); }
+
+  /* SOURCE */
+  .source-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 2rem;
+  }
+  .source-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .source-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.8rem;
+  }
+  .source-text {
+    font-style: italic;
+    color: rgba(224,216,200,0.9);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+  .source-note {
+    margin-top: 0.8rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  /* QUESTION */
+  .question-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .q-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.4rem;
+    background: var(--card2);
+    border-bottom: 1px solid var(--border);
+  }
+  .q-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 1.5rem;
+  }
+  .q-text { flex: 1; font-size: 1rem; color: #fff; line-height: 1.5; }
+  .q-marks {
+    background: rgba(201,168,76,0.12);
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 20px;
+    padding: 0.15rem 0.7rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  .q-body { padding: 1.2rem 1.4rem; }
+  .q-guidance {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 0.8rem;
+    padding: 0.5rem 0.8rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 6px;
+  }
+  textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    color: var(--text);
+    font-family: 'Crimson Text', serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s;
+  }
+  textarea:focus { outline: none; border-color: rgba(201,168,76,0.4); }
+  .q-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .word-count { font-size: 0.8rem; color: var(--muted); }
+  .word-count.ok { color: var(--green); }
+  .word-count.low { color: var(--amber); }
+  .btn-score {
+    background: var(--gold);
+    color: #111;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1.2rem;
+    font-family: 'Crimson Text', serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+  .btn-score:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-model {
+    background: none;
+    color: var(--muted);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-family: 'Crimson Text', serif;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-model:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
+
+  /* RESULT PANEL */
+  .result-panel {
+    margin-top: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: none;
+  }
+  .result-panel.show { display: block; }
+  .result-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.2rem;
+    background: var(--card2);
+  }
+  .result-score-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    padding: 0.1rem 0.5rem;
+  }
+  .score-hi { color: var(--green); }
+  .score-mid { color: var(--amber); }
+  .score-lo { color: var(--red); }
+  .result-label { font-size: 0.85rem; color: var(--muted); }
+  .result-bar-wrap { flex: 1; background: rgba(255,255,255,0.06); border-radius: 4px; height: 8px; overflow: hidden; }
+  .result-bar { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+  .bar-hi { background: var(--green); }
+  .bar-mid { background: var(--amber); }
+  .bar-lo { background: var(--red); }
+  .result-body { padding: 1rem 1.2rem; }
+  .feedback-section { margin-bottom: 0.8rem; }
+  .feedback-title {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .feedback-item {
+    font-size: 0.92rem;
+    padding: 0.3rem 0;
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .fi-hit { color: var(--green); }
+  .fi-miss { color: var(--red); }
+  .fi-tip { color: var(--amber); }
+  .model-answer {
+    margin-top: 1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    display: none;
+  }
+  .model-answer.show { display: block; }
+  .model-answer-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .model-point {
+    font-size: 0.92rem;
+    color: var(--text);
+    padding: 0.2rem 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .model-point::before { content: '•'; position: absolute; left: 0; color: var(--gold); }
+
+  /* SCORE ALL */
+  .score-all-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.08));
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    border-radius: 10px;
+    padding: 1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 1rem;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .score-all-btn:hover { background: linear-gradient(135deg, rgba(201,168,76,0.22), rgba(201,168,76,0.12)); transform: translateY(-1px); }
+
+  /* PLACEHOLDER */
+  .placeholder {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--muted);
+  }
+  .placeholder-sym { font-size: 3rem; margin-bottom: 1rem; opacity: 0.4; }
+  .placeholder h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: rgba(224,216,200,0.4); margin-bottom: 0.5rem; }
+
+  @media (max-width: 768px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; height: auto; display: flex; flex-wrap: wrap; gap: 0.3rem; padding: 0.8rem; }
+    .sidebar-title { display: none; }
+    .rel-btn { width: auto; padding: 0.4rem 0.8rem; border-left: none; border-bottom: 2px solid transparent; font-size: 0.9rem; }
+    .rel-btn.active { border-bottom-color: var(--gold); border-left: none; }
+    .rel-btn .progress-dots { display: none; }
+    .main { padding: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <span class="nav-label">IB World Religions:</span>
+  <a href="index.html">Home</a>
+  <a href="Sanatana_Dharma_Study_Guide.html">Sanatana Dharma</a>
+  <a href="Jainism_Study_Guide.html">Jainism</a>
+  <a href="Buddhism_Study_Guide.html">Buddhism</a>
+  <a href="Sikhism_Study_Guide.html">Sikhism</a>
+  <a href="Taoism_Study_Guide.html">Taoism</a>
+  <a href="Judaism_Study_Guide.html">Judaism</a>
+  <a href="Christianity_Study_Guide.html">Christianity</a>
+  <a href="Islam_Study_Guide.html">Islam</a>
+  <a href="Paper1_Practice.html" class="current">Paper 1 Practice</a>
+</nav>
+
+<div class="page-header">
+  <h1>Paper 1 <span>Practice</span></h1>
+  <p>Source-based questions with estimated IB rubric scoring · [3] [5] [5] [10] marks</p>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">Choose a religion</div>
+    <button class="rel-btn" onclick="loadReligion('sanatana')" id="btn-sanatana">
+      <span class="sym">ॐ</span> Sanatana Dharma
+      <span class="progress-dots" id="dots-sanatana">
+        <span class="dot" id="dot-sanatana-0"></span>
+        <span class="dot" id="dot-sanatana-1"></span>
+        <span class="dot" id="dot-sanatana-2"></span>
+        <span class="dot" id="dot-sanatana-3"></span>
+      </span>
+    </button>
+    <button class="rel-btn" onclick="loadReligion('jainism')" id="btn-jainism">
+      <span class="sym">🕊</span> Jainism
+      <span class="progress-dots" id="dots-jainism">
+        <span class="dot" id="dot-jainism-0"></span>
+        <span class="dot" id="dot-jainism-1"></span>
+        <span class="dot" id="dot-jainism-2"></span>
+        <span class="dot" id="dot-jainism-3"></span>
+      </span>
+    </button>
+    <button class="rel-btn" onclick="loadReligion('buddhism')" id="btn-buddhism">
+      <span class="sym">☸</span> Buddhism
+      <span class="progress-dots" id="dots-buddhism">
+        <span class="dot" id="dot-buddhism-0"></span>
+        <span class="dot" id="dot-buddhism-1"></span>
+        <span class="dot" id="dot-buddhism-2"></span>
+        <span class="dot" id="dot-buddhism-3"></span>
+      </span>
+    </button>
+    <button class="rel-btn" onclick="loadReligion('sikhism')" id="btn-sikhism">
+      <span class="sym">🪬</span> Sikhism
+      <span class="progress-dots" id="dots-sikhism">
+        <span class="dot" id="dot-sikhism-0"></span>
+        <span class="dot" id="dot-sikhism-1"></span>
+        <span class="dot" id="dot-sikhism-2"></span>
+        <span class="dot" id="dot-sikhism-3"></span>
+      </span>
+    </button>
+    <button class="rel-btn" onclick="loadReligion('taoism')" id="btn-taoism">
+      <span class="sym">☯</span> Taoism
+      <span class="progress-dots" id="dots-taoism">
+        <span class="dot" id="dot-taoism-0"></span>
+        <span class="dot" id="dot-taoism-1"></span>
+        <span class="dot" id="dot-taoism-2"></span>
+        <span class="dot" id="dot-taoism-3"></span>
+      </span>
+    </button>
+    <button class="rel-btn" onclick="loadReligion('judaism')" id="btn-judaism">
+      <span class="sym">✡</span> Judaism
+      <span class="progress-dots" id="dots-judaism">
+        <span class="dot" id="dot-judaism-0"></span>
+        <span class="dot" id="dot-judaism-1"></span>
+        <span class="dot" id="dot-judaism-2"></span>
+        <span class="dot" id="dot-judaism-3"></span>
+      </span>
+    </button>
+    <button class="rel-btn" onclick="loadReligion('christianity')" id="btn-christianity">
+      <span class="sym">✝</span> Christianity
+      <span class="progress-dots" id="dots-christianity">
+        <span class="dot" id="dot-christianity-0"></span>
+        <span class="dot" id="dot-christianity-1"></span>
+        <span class="dot" id="dot-christianity-2"></span>
+        <span class="dot" id="dot-christianity-3"></span>
+      </span>
+    </button>
+    <button class="rel-btn" onclick="loadReligion('islam')" id="btn-islam">
+      <span class="sym">☪</span> Islam
+      <span class="progress-dots" id="dots-islam">
+        <span class="dot" id="dot-islam-0"></span>
+        <span class="dot" id="dot-islam-1"></span>
+        <span class="dot" id="dot-islam-2"></span>
+        <span class="dot" id="dot-islam-3"></span>
+      </span>
+    </button>
+  </aside>
+
+  <main class="main" id="main">
+    <div class="placeholder">
+      <div class="placeholder-sym">📜</div>
+      <h2>Select a religion to begin</h2>
+      <p>Choose from the panel on the left to load a Paper 1 source and question set.</p>
+    </div>
+  </main>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+//  RELIGION DATA
+// ═══════════════════════════════════════════════════════════
+
+const data = {
+
+  sanatana: {
+    name: "Sanatana Dharma", symbol: "ॐ", color: "#7B1A1A",
+    source: {
+      title: "Bhagavad Gita, Chapter 2, Verse 47 (attributed to Krishna speaking to Arjuna, c. 400 BCE–200 CE)",
+      text: '"You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions. Never consider yourself the cause of the results of your activities, and never be attached to not doing your duty."',
+      note: "The Bhagavad Gita is part of the Mahabharata epic and is one of the most sacred texts in Sanatana Dharma. This verse articulates the concept of nishkama karma — selfless, detached action."
+    },
+    questions: [
+      {
+        marks: 3,
+        text: "Identify and explain THREE beliefs about duty and action found in this passage.",
+        guidance: "Name each belief clearly. For full marks, give a brief explanation of each — one sentence per point is sufficient.",
+        wordTarget: 80,
+        keywords: ["duty","dharma","action","fruits","detach","cause","prescribed","attach","result","karma"],
+        bonusKeywords: ["nishkama","selfless","ego","Brahman","yoga","liberation","moksha"],
+        modelPoints: [
+          "One has a right and obligation to perform one's prescribed duties (dharma) — inaction is not an option.",
+          "One should not be attached to the fruits or results of one's actions (nishkama karma — selfless action).",
+          "The individual is not the ultimate cause of outcomes; the ego must not claim results as its own."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain the concept of karma in Sanatana Dharma.",
+        guidance: "Explain the concept fully, using specific examples or related concepts. Reference the passage where relevant.",
+        wordTarget: 140,
+        keywords: ["karma","action","consequence","rebirth","samsara","dharma","ahimsa","liberation","moksha","detach","fruits","nishkama","yoga"],
+        bonusKeywords: ["prarabdha","agami","sanchita","jnana","bhakti","raja yoga","atman","Brahman","gunas","impressions"],
+        modelPoints: [
+          "Karma literally means 'action' — every intentional act produces consequences that shape future lives.",
+          "There are three types: Sanchita (accumulated past karma), Prarabdha (karma being experienced now), Agami (karma created now).",
+          "The goal is to act without attachment to results (nishkama karma), which purifies karma and aids liberation.",
+          "Ultimately, karma is the mechanism driving samsara (rebirth cycle); liberation (moksha) means escaping the karmic cycle.",
+          "Good karma leads to favourable rebirths; harmful action (especially adharma) accumulates negative karma."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain what this passage suggests about the relationship between action, ego, and spiritual liberation.",
+        guidance: "Focus specifically on what the passage implies — do not just define karma generally. Connect action, ego (sense of 'I'), and moksha.",
+        wordTarget: 140,
+        keywords: ["ego","liberation","moksha","detach","cause","attach","action","duty","self","atman","fruits"],
+        bonusKeywords: ["Brahman","maya","yoga","consciousness","nishkama","advaita","illusion","identification"],
+        modelPoints: [
+          "The passage teaches that claiming results as 'mine' is rooted in ego (ahamkara), which binds the soul to samsara.",
+          "True liberation requires acting purely out of duty, not desire — detachment from outcomes dissolves karma.",
+          "The instruction 'never consider yourself the cause' points to non-doership: the atman does not act; only the body and gunas do.",
+          "This connects to Jnana Yoga (the path of knowledge): recognising the self as Brahman, not the doer.",
+          "Attachment to results (whether success or failure) creates further karmic impressions that delay liberation."
+        ]
+      },
+      {
+        marks: 10,
+        text: 'Examine the view that karma is the most important concept in Sanatana Dharma.',
+        guidance: "Present arguments for AND against. Use specific examples, technical vocabulary, and reference multiple traditions/schools within Sanatana Dharma. A balanced, nuanced answer scores highest.",
+        wordTarget: 320,
+        keywords: ["karma","dharma","moksha","samsara","atman","Brahman","bhakti","jnana","yoga","ahimsa","rebirth","liberation","detach","vedanta","advaita","action","consequence","duty","ritual","grace"],
+        bonusKeywords: ["nishkama","ahamkara","gunas","maya","Upanishads","Vedas","varna","ashrama","prarabdha","Vishnu","Shiva","avatar","puja","sankhya","prakriti","purusha"],
+        modelPoints: [
+          "FOR: Karma is central to Sanatana Dharma's understanding of cosmic justice — it explains inequalities and drives the rebirth cycle.",
+          "FOR: Every major path (karma yoga, jnana yoga, bhakti yoga) addresses karma — even bhakti requires the grace of God to burn past karma.",
+          "FOR: Dharma (one's prescribed duty) is ultimately defined in relation to karma — living one's dharma generates good karma.",
+          "FOR: The Bhagavad Gita's central teaching (Karma Yoga) makes action/karma the primary spiritual discipline for most householders.",
+          "AGAINST: Brahman (ultimate reality) could be argued as more fundamental — karma operates within maya (illusion); Brahman transcends it.",
+          "AGAINST: In Advaita Vedanta (Shankara), karma is ultimately illusory; only the recognition of Atman = Brahman liberates.",
+          "AGAINST: In devotional traditions (Vaishnavism, Shaivism), divine grace (prasad) can override karma entirely.",
+          "AGAINST: Dharma may be more foundational — karma is the mechanism, but dharma is the moral order that gives it meaning.",
+          "CONCLUSION: Karma is essential but not the only foundational concept; its importance varies across the diverse schools and paths of Sanatana Dharma."
+        ]
+      }
+    ]
+  },
+
+  jainism: {
+    name: "Jainism", symbol: "🕊", color: "#1A5C5C",
+    source: {
+      title: "Acharanga Sutra, Book 1, Lecture 2 (attributed to Mahavira's teachings, compiled c. 5th–3rd century BCE)",
+      text: '"All breathing, existing, living, sentient creatures should not be slain, nor treated with violence, nor abused, nor tormented, nor driven away. This is the pure, unchangeable, eternal law which the clever ones, who understand the world, have proclaimed."',
+      note: "The Acharanga Sutra is one of the oldest Jain texts, recording the teachings of Mahavira (599–527 BCE), the 24th Tirthankara. It contains the core ethical principles of the Jain monastic code."
+    },
+    questions: [
+      {
+        marks: 3,
+        text: "Identify and explain THREE Jain beliefs about living beings found in this passage.",
+        guidance: "Name each belief clearly with a brief explanation.",
+        wordTarget: 80,
+        keywords: ["ahimsa","non-violence","living","soul","jiva","sentient","slain","torment","eternal","law","equality"],
+        bonusKeywords: ["karma","liberation","compassion","Mahavira","consciousness","violence"],
+        modelPoints: [
+          "All living, sentient creatures have souls (jiva) and deserve protection — no creature should be harmed.",
+          "Non-violence (ahimsa) is presented as an 'eternal law' — it is absolute, not situational.",
+          "The passage implies all life is equal in its desire to exist — no hierarchy justifies harming another being."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain the importance of ahimsa in Jain practice.",
+        guidance: "Discuss how ahimsa shapes daily life, monasticism, and ethics in Jainism. Use specific examples.",
+        wordTarget: 140,
+        keywords: ["ahimsa","non-violence","karma","jiva","vegetarian","monk","nun","vow","mahavrata","anuvrata","Mahavira","liberation","moksha","harm","life"],
+        bonusKeywords: ["Digambara","Shvetambara","sweeping","mask","mask","mouth","micro","karma","samsara","compassion","water"],
+        modelPoints: [
+          "Ahimsa is the first and most important of the five Mahavratas (great vows) taken by Jain monks and nuns.",
+          "Strict vegetarianism — and often veganism — follows directly from ahimsa; even root vegetables may be avoided as they kill the whole plant.",
+          "Jain monks may sweep the ground before walking, wear mouth-masks, and strain water to avoid killing micro-organisms.",
+          "Laypeople (Shravakas) follow the Anuvratas — lesser vows of non-violence adapted for householder life.",
+          "Ahimsa also shapes Jain economics: professions involving harm to life (farming, military) are often avoided."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain what this passage suggests about the Jain understanding of karma and the soul.",
+        guidance: "Connect the command not to harm to Jain beliefs about karma accumulation and the jiva.",
+        wordTarget: 140,
+        keywords: ["karma","jiva","soul","harm","liberation","moksha","samsara","rebirth","consciousness","pure","eternal","violence","accumulate"],
+        bonusKeywords: ["ajiva","matter","karmic matter","influx","asrava","bandha","nirjara","moksha","siddha","Mahavira"],
+        modelPoints: [
+          "In Jain thought, the soul (jiva) is inherently pure but is encrusted with karmic matter through harmful actions.",
+          "Harming any living being — even an insect — generates karma that weighs down the soul and prolongs samsara.",
+          "The 'eternal law' implies the soul's liberation is universal: every jiva has the potential to achieve moksha.",
+          "Violence in thought, word, or deed (manas, vachana, kaya) all accumulate karma, not just physical harm.",
+          "By refraining from all violence, the jiva gradually sheds karma (nirjara) and rises toward liberation as a Siddha (liberated soul)."
+        ]
+      },
+      {
+        marks: 10,
+        text: 'Examine the view that ahimsa is the defining characteristic of Jainism.',
+        guidance: "Argue for and against. Consider how ahimsa relates to other core concepts (anekantavada, aparigraha, karma, liberation). Is it uniquely Jain?",
+        wordTarget: 320,
+        keywords: ["ahimsa","anekantavada","aparigraha","karma","jiva","liberation","moksha","Mahavira","non-violence","Tirthankara","vow","mahavrata","samsara","soul","consciousness","detachment","ethics","practice","doctrine"],
+        bonusKeywords: ["syadvada","nayavada","Digambara","Shvetambara","five vows","satya","asteya","brahmacharya","nirjara","asrava","ajiva","siddha","ahinsa","Parshvanatha"],
+        modelPoints: [
+          "FOR: Ahimsa is explicitly described as the 'eternal law' in the Acharanga Sutra — it is the first and greatest vow.",
+          "FOR: Ahimsa shapes every dimension of Jain life: diet, occupation, speech, thought — making it truly defining.",
+          "FOR: Jain ethics are derived from ahimsa: truthfulness (satya), non-stealing, celibacy, and non-possessiveness all serve to minimise harm.",
+          "FOR: Jainism's influence on Gandhi (satyagraha), animal rights, and environmentalism stems directly from its radical ahimsa stance.",
+          "AGAINST: Anekantavada (non-one-sidedness, many perspectives) is equally central — it shapes Jain epistemology and prevents dogmatism.",
+          "AGAINST: The belief in the independent, eternal jiva (soul) is arguably the metaphysical foundation from which ahimsa follows.",
+          "AGAINST: Aparigraha (non-possessiveness) is also a core vow and shapes the Jain attitude toward wealth, attachment, and liberation.",
+          "AGAINST: Ahimsa is also found in Buddhism and Hinduism — what makes Jainism unique is the extreme, uncompromising application, not ahimsa itself.",
+          "CONCLUSION: Ahimsa is the most visible and pervasive characteristic, but its uniqueness lies in its radical scope — combined with anekantavada and the jiva doctrine, it forms a distinctively Jain worldview."
+        ]
+      }
+    ]
+  },
+
+  buddhism: {
+    name: "Buddhism", symbol: "☸", color: "#1e2d5e",
+    source: {
+      title: "Dhammapada, Verses 1–2 (attributed to the Buddha, compiled c. 3rd century BCE)",
+      text: '"Mind is the forerunner of all actions. All deeds are led by mind, created by mind. If one speaks or acts with a corrupt mind, suffering follows, as the wheel follows the hoof of an ox. If one speaks or acts with a serene mind, happiness follows, as a shadow that never departs."',
+      note: "The Dhammapada is one of the most widely read Buddhist scriptures, containing 423 verses attributed to the Buddha. These opening verses establish the central role of the mind in the path to liberation."
+    },
+    questions: [
+      {
+        marks: 3,
+        text: "Identify and explain THREE Buddhist beliefs about the mind found in this passage.",
+        guidance: "Name each belief and briefly explain what the passage says about it.",
+        wordTarget: 80,
+        keywords: ["mind","forerunner","suffering","happiness","action","corrupt","serene","deed","karma","thought","lead"],
+        bonusKeywords: ["intention","volition","kamma","citta","consciousness","dukkha","shadow","wheel"],
+        modelPoints: [
+          "The mind is the source of all action — every deed is 'led by mind,' giving mental intention primary importance.",
+          "A corrupt (unwholesome) mind leads to suffering — actions rooted in greed, hatred, or delusion produce dukkha.",
+          "A serene (wholesome) mind leads to happiness — mental purity results in wellbeing and progress toward liberation."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain the concept of dukkha (suffering) in Buddhism.",
+        guidance: "Discuss the Three Marks of Existence, the First Noble Truth, and how suffering arises. Reference the passage where appropriate.",
+        wordTarget: 140,
+        keywords: ["dukkha","suffering","impermanence","anicca","anatta","First Noble Truth","craving","tanha","attachment","Four Noble Truths","mind","arise","birth","death","samsara"],
+        bonusKeywords: ["three marks","unsatisfactoriness","existential","ordinary","rebirth","clinging","upadana","vedana","sankhara","nirvana","Pali","cessation"],
+        modelPoints: [
+          "Dukkha is the First Noble Truth — the Buddha taught that existence is characterised by suffering and unsatisfactoriness.",
+          "There are three types: ordinary suffering (pain), suffering of change (impermanence of pleasant things), and existential suffering (the unsatisfactory nature of conditioned existence).",
+          "Dukkha arises because of tanha (craving) and upadana (attachment) — this is the Second Noble Truth.",
+          "The Three Marks of Existence explain dukkha: anicca (impermanence), dukkha (suffering), and anatta (non-self) — all conditioned phenomena are unsatisfactory.",
+          "The passage illustrates this: a corrupt mind acts, suffering follows automatically — like a wheel following an ox."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain what this passage suggests about Buddhist ethics and the role of intention.",
+        guidance: "Focus on how the passage reveals that intention (cetana) is central to Buddhist morality — connect to the Eightfold Path.",
+        wordTarget: 140,
+        keywords: ["intention","mind","ethics","action","corrupt","serene","karma","Eightfold Path","Right Intention","Right Action","moral","deed","precept","consequence"],
+        bonusKeywords: ["cetana","volition","five precepts","sila","virtue","samadhi","panna","wisdom","Vinaya","speech","livelihood"],
+        modelPoints: [
+          "The passage places intention at the heart of ethics — actions are morally significant because of the mental state behind them.",
+          "This reflects the Buddhist teaching that karma is defined by cetana (intention) — not just the physical act.",
+          "Right Intention (the second step of the Eightfold Path) — intentions of non-attachment, goodwill, and compassion — leads to wholesome karma.",
+          "The five precepts (not killing, not stealing, not lying, no sexual misconduct, no intoxicants) are grounded in the cultivation of a 'serene mind.'",
+          "Buddhist ethics are therefore primarily inner disciplines: external action matters, but the mental cultivation behind it is primary."
+        ]
+      },
+      {
+        marks: 10,
+        text: 'Examine the view that the mind is the most important concept in Buddhist teaching and practice.',
+        guidance: "Argue for and against. Consider how mind relates to other key teachings: karma, the Eightfold Path, Nirvana, the three jewels, and different Buddhist traditions.",
+        wordTarget: 320,
+        keywords: ["mind","meditation","dhamma","karma","nirvana","Eightfold Path","Four Noble Truths","samsara","liberation","Buddha","Sangha","Theravada","Mahayana","anatta","anicca","dukkha","consciousness","awareness","wisdom","compassion"],
+        bonusKeywords: ["bodhisattva","sunyata","skandhas","citta","Zen","mindfulness","vipassana","samatha","samadhi","panna","sila","cetana","Buddha-nature","tathagatagarbha","Madhyamaka","Yogacara","Mind-Only"],
+        modelPoints: [
+          "FOR: The Dhammapada opens by declaring mind the 'forerunner of all actions' — all Buddhist practice aims at training the mind.",
+          "FOR: Meditation (samadhi) is the heart of the Eightfold Path — the entire Noble Path is oriented toward mental purification.",
+          "FOR: In Mahayana Buddhism (Yogacara/Mind-Only school), all phenomena are manifestations of consciousness — mind is literally everything.",
+          "FOR: Nirvana itself is described as the 'blowing out' of mental fires (greed, hatred, delusion) — liberation is a mental event.",
+          "AGAINST: The Three Jewels (Buddha, Dharma, Sangha) suggest that teaching and community are equally essential — mind alone is not sufficient.",
+          "AGAINST: Ethics (sila) and wisdom (panna) are co-equal with meditation (samadhi) in the Eightfold Path — mind cannot be trained without ethical conduct.",
+          "AGAINST: In Theravada, the doctrine of anatta (no-self) complicates the notion of 'mind' — there is no permanent mind, only mental processes (skandhas).",
+          "AGAINST: Bodhicitta (compassion for all beings) in Mahayana Buddhism goes beyond mere mental cultivation — it is relational and universal.",
+          "CONCLUSION: Mind is central but not isolated — Buddhist teaching treats mind, ethics, and wisdom as interdependent. The tradition's diversity (Theravada, Mahayana, Vajrayana) further complicates any single foundational claim."
+        ]
+      }
+    ]
+  },
+
+  sikhism: {
+    name: "Sikhism", symbol: "🪬", color: "#c96a00",
+    source: {
+      title: "Guru Granth Sahib, Japji Sahib, Pauri 1 (composed by Guru Nanak Dev Ji, c. 1500 CE)",
+      text: '"There is One God. Truth is His Name. He is the Creator. He is without fear. He is without hate. He is beyond time, self-existent. He is realised by the grace of the Guru."',
+      note: "The Japji Sahib is the opening prayer of the Guru Granth Sahib, the eternal living Guru of the Sikhs. These opening verses (the Mool Mantar) are the foundational statement of Sikh belief and are recited daily by Sikhs worldwide."
+    },
+    questions: [
+      {
+        marks: 3,
+        text: "Identify and explain THREE beliefs about Waheguru (God) found in this passage.",
+        guidance: "Each point should name the attribute and briefly explain its significance in Sikh belief.",
+        wordTarget: 80,
+        keywords: ["one","truth","creator","fear","hate","time","grace","guru","eternal","self-existent","Waheguru","nirankar","akal"],
+        bonusKeywords: ["Sat Nam","Ik Onkar","monotheism","transcendent","immanent","nirbhau","nirvair"],
+        modelPoints: [
+          "Waheguru is One (Ik Onkar) — Sikhism teaches strict monotheism; God has no partners, rivals, or equals.",
+          "God is without fear or hate (Nirbhau, Nirvair) — God's nature is pure love and justice, not one of wrath or partiality.",
+          "God is beyond time (Akal Moorat) — unlike created beings, Waheguru is eternal, self-existent, and not subject to birth or death."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain the importance of the Guru in Sikh belief and practice.",
+        guidance: "Discuss the concept of Guru, the Ten Human Gurus, and the role of the Guru Granth Sahib as the eternal living Guru.",
+        wordTarget: 140,
+        keywords: ["Guru","Guru Granth Sahib","Nanak","grace","scripture","living","eternal","Gobind Singh","Word","Shabad","teaching","community","Gurdwara","Waheguru","realised"],
+        bonusKeywords: ["Ten Gurus","Granth","Panth","Adi Granth","Damdami Taksal","Simran","Nam","Sangat","langar","Kaur","Singh"],
+        modelPoints: [
+          "The Guru is the divinely-appointed teacher who leads the soul from spiritual darkness to light — the passage states God is 'realised by the grace of the Guru.'",
+          "Sikhism had Ten Human Gurus, beginning with Guru Nanak (1469–1539) and ending with Guru Gobind Singh (1666–1708).",
+          "Guru Gobind Singh declared the Guru Granth Sahib the eternal, living Guru — Sikhs bow to the scripture as they would to a living Guru.",
+          "The Guru Granth Sahib contains hymns by six Sikh Gurus and also by Hindu and Muslim saints — emphasising the universality of spiritual truth.",
+          "In practice, the Guru is central to the Gurdwara (Guru's door) — all worship, langar, and community service revolves around the Guru's presence."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain what this passage suggests about the Sikh understanding of God and how this differs from other Abrahamic traditions.",
+        guidance: "Compare with Christianity and Islam on key attributes. Focus on what is distinctive about the Sikh concept of God.",
+        wordTarget: 140,
+        keywords: ["one","truth","creator","fear","hate","compare","Islam","Christianity","monotheism","trinity","incarnation","prophet","grace","eternal","Waheguru","Ik Onkar"],
+        bonusKeywords: ["nirguna","saguna","immanent","transcendent","avatar","Jesus","Allah","Tawhid","Trinity","Oneness","formless","Naam","Shabad"],
+        modelPoints: [
+          "Like Islam, Sikhism is strictly monotheistic — 'One God' with no partners, and unlike Christianity, there is no Trinity or Incarnation.",
+          "Unlike both Islam and Christianity, Sikh theology emphasises Nirguna (God without attributes, beyond form) as primary — God is not a personal judge figure.",
+          "The absence of 'fear' and 'hate' in God's nature distinguishes Waheguru from some traditional Christian/Islamic concepts of divine wrath and judgment.",
+          "The Sikh concept of Naam (Name/Word of God) shares resonance with the Christian Logos and Islamic concepts of divine speech, but functions differently.",
+          "Grace (Nadar) in Sikhism is given freely, not earned through ritual — this parallels Protestant Christianity but differs from Catholic sacramental theology."
+        ]
+      },
+      {
+        marks: 10,
+        text: 'Examine the view that equality is the most important value in Sikhism.',
+        guidance: "Consider equality in relation to gender, caste, religion, and service. Argue for and against — are there other values (seva, simran, Guru) that are equally or more central?",
+        wordTarget: 320,
+        keywords: ["equality","seva","simran","langar","caste","gender","Waheguru","Guru","Khalsa","5 Ks","Guru Granth Sahib","Gobind Singh","Nanak","community","service","Gurdwara","prayer","Nam","discrimination","varna"],
+        bonusKeywords: ["Kaur","Singh","amrit","panj pyare","degh tegh fateh","sangat","pangat","dasvandh","sewa","Nishan Sahib","Akhand Path","nitnem","Ardas","Gurmukhi"],
+        modelPoints: [
+          "FOR: Guru Nanak explicitly rejected the Hindu caste system and Muslim religious hierarchy — all humans are equal before Waheguru.",
+          "FOR: Langar (the free community kitchen) embodies equality in practice — all people, regardless of religion or status, eat together.",
+          "FOR: The Khalsa (established 1699) gave women and men the same last names (Kaur/Singh) — radical equality in a patriarchal society.",
+          "FOR: The Guru Granth Sahib includes compositions by low-caste Hindu saints and a Muslim saint (Sheikh Farid) — equality across tradition.",
+          "AGAINST: Seva (selfless service) could be argued as more central — it is the primary spiritual discipline and the expression of love for Waheguru.",
+          "AGAINST: Simran (remembrance of God through Nam) is the core spiritual practice — without it, all other virtues are incomplete.",
+          "AGAINST: Equality in practice has been challenged — gender inequality persists in some Sikh institutions; women are often excluded from certain roles.",
+          "AGAINST: The concept of Waheguru (One God) and devotion to the Guru might be considered more foundational than equality.",
+          "CONCLUSION: Equality is a defining and revolutionary value in Sikhism, but it flows from the prior belief in One God who loves all equally — seva and simran are the practices through which equality is lived."
+        ]
+      }
+    ]
+  },
+
+  taoism: {
+    name: "Taoism", symbol: "☯", color: "#1a3d2e",
+    source: {
+      title: "Tao Te Ching, Chapter 8 (attributed to Laozi, c. 6th–4th century BCE)",
+      text: '"The highest good is like water. Water benefits ten thousand things and does not compete. It pools in places people disdain. Thus it is like the Tao. In dwelling, be close to the land. In meditation, go deep in the heart. In dealing with others, be gentle and kind. In speech, be true. In ruling, be just. In business, be competent. In action, watch the timing. No fight, no blame."',
+      note: "The Tao Te Ching (The Classic of the Way and Its Virtue) is attributed to Laozi and is one of the foundational texts of philosophical Taoism. It consists of 81 short chapters exploring the nature of the Tao and how to live in harmony with it."
+    },
+    questions: [
+      {
+        marks: 3,
+        text: "Identify and explain THREE Taoist principles found in this passage.",
+        guidance: "Name each principle and briefly explain what the passage says about it. Use Taoist terminology where possible.",
+        wordTarget: 80,
+        keywords: ["water","Tao","compete","wu wei","humble","gentle","good","benefit","timing","natural","harmony","disdain","yield"],
+        bonusKeywords: ["te","virtue","non-contention","softness","flexibility","spontaneous","flow","effortless"],
+        modelPoints: [
+          "Non-competition (wu zheng) — water 'does not compete,' illustrating the Taoist ideal of acting without struggle or contention.",
+          "Humility — water 'pools in places people disdain,' showing that the Tao favours what is lowly, soft, and overlooked rather than the prestigious.",
+          "Right timing (shi) — 'watch the timing' teaches that action must be in harmony with the natural flow of the Tao, not forced or premature."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain the concept of wu wei (non-action) in Taoism.",
+        guidance: "Define wu wei carefully — it does not mean doing nothing. Explain how it relates to the Tao and give examples from Taoist thought or practice.",
+        wordTarget: 140,
+        keywords: ["wu wei","non-action","effortless","natural","Tao","harmony","force","flow","compete","water","spontaneous","Laozi","Zhuangzi","action","inaction"],
+        bonusKeywords: ["ziran","te","sage","Chuang Tzu","government","ruler","uncarved block","pu","effortless action","going with","nature"],
+        modelPoints: [
+          "Wu wei literally means 'non-action' but refers to effortless, natural action that flows with the Tao rather than against it.",
+          "It does not mean passivity — rather, acting in the right way at the right time without forcing outcomes.",
+          "The water metaphor illustrates wu wei: water doesn't struggle, yet it carves the Grand Canyon — soft and yielding overcomes hard and rigid.",
+          "In governance, the ideal Taoist ruler leads so naturally that people feel they achieved things themselves — wu wei in administration.",
+          "Zhuangzi's stories (e.g., Cook Ding cutting the ox) illustrate wu wei as skilled mastery so perfected it becomes effortless."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain what this passage suggests about the Taoist understanding of virtue (te) and how it should be expressed in human relationships.",
+        guidance: "Draw on the specific instructions in the passage (dwelling, meditation, speech, dealing with others, ruling) and connect to the concept of te (virtue aligned with the Tao).",
+        wordTarget: 140,
+        keywords: ["virtue","te","relationship","gentle","kind","true","speech","just","ruling","timing","Tao","harmony","compete","blame","benefit","natural"],
+        bonusKeywords: ["sage","ren","de","ethics","politics","community","social","honest","leader","ruler","wu wei","natural order","flow"],
+        modelPoints: [
+          "Te (virtue) in Taoism is not a set of rules but an inner quality that arises naturally when one is aligned with the Tao.",
+          "The passage lists virtues as contextual: 'gentle and kind' with people, 'true' in speech, 'just' in ruling — virtue is adaptive, not fixed.",
+          "The instruction 'no fight, no blame' reflects the Taoist ideal of non-contention in relationships — harmony through yielding rather than conflict.",
+          "Unlike Confucian virtue, Taoist te is not about ritual propriety but natural, spontaneous goodness that does not draw attention to itself.",
+          "The passage implies that each area of life (home, mind, community, speech, governance) should reflect the water-like quality of the Tao."
+        ]
+      },
+      {
+        marks: 10,
+        text: 'Examine the view that the Tao (the Way) is the central concept in Taoist religion and philosophy.',
+        guidance: "Argue for and against. Consider how the Tao relates to wu wei, te, yin-yang, immortality practices, and the relationship between philosophical and religious Taoism.",
+        wordTarget: 320,
+        keywords: ["Tao","wu wei","te","yin-yang","Laozi","Zhuangzi","Tao Te Ching","harmony","nature","philosophical","religious","immortality","ritual","qi","water","natural","effortless","spontaneous","cosmos","flow","balance"],
+        bonusKeywords: ["ziran","pu","li","shen","Celestial Masters","Yellow Emperor","neidan","waidan","fangshi","Zhuangzi","xuan","mysterious","nameless","emptiness","chaos","wuji","taiji","Five Phases"],
+        modelPoints: [
+          "FOR: The Tao Te Ching opens 'The Tao that can be spoken is not the eternal Tao' — the Tao is so foundational it defies definition.",
+          "FOR: All other Taoist concepts flow from the Tao: wu wei is acting in harmony with the Tao; te is the virtue aligned with the Tao; yin-yang represents the dynamic balance within the Tao.",
+          "FOR: The Tao as the primordial source of all things gives Taoism its cosmological foundation — it preceded and generates all existence.",
+          "FOR: Even in religious Taoism, cultivation practices (qi gong, meditation, alchemy) aim to align with or return to the Tao.",
+          "AGAINST: In religious Taoism, ritual practice, temple worship, and the veneration of deities (e.g., the Jade Emperor, Guan Yu) may be more central to lived practice.",
+          "AGAINST: The yin-yang symbol and the concept of balance may resonate more in popular Taoist practice than abstract Tao theology.",
+          "AGAINST: Zhuangzi's Taoism emphasises ziran (naturalness/spontaneity) and relativism of perspective — the Tao becomes less a metaphysical entity and more an orientation toward life.",
+          "AGAINST: Qi (vital energy) is a practical concept that drives Chinese medicine, martial arts, and body cultivation — arguably more 'central' to daily Taoist practice.",
+          "CONCLUSION: The Tao is the foundational concept of philosophical Taoism, but in the diversity of Taoist tradition, lived practice often prioritises ritual, qi, and community — showing that 'central' varies by context."
+        ]
+      }
+    ]
+  },
+
+  judaism: {
+    name: "Judaism", symbol: "✡", color: "#1a3a6e",
+    source: {
+      title: "Deuteronomy 6:4–9 (The Shema, c. 7th century BCE compilation, attributed to Moses)",
+      text: '"Hear, O Israel: the Lord is our God, the Lord alone. You shall love the Lord your God with all your heart and with all your soul and with all your might. Keep these words that I am commanding you today in your heart. Recite them to your children and talk about them when you are at home and when you are away, when you lie down and when you rise. Bind them as a sign on your hand, fix them as an emblem on your forehead, and write them on the doorposts of your house and on your gates."',
+      note: "The Shema is the central declaration of Jewish faith and is recited twice daily. Its name comes from the first word, meaning 'Hear.' The passage mandates total love of God and the transmission of Torah to future generations."
+    },
+    questions: [
+      {
+        marks: 3,
+        text: "Identify and explain THREE beliefs about God found in this passage.",
+        guidance: "Name each belief clearly. A short explanation per point is enough for full marks.",
+        wordTarget: 80,
+        keywords: ["one","monotheism","love","heart","soul","might","command","God","Lord","alone","unique","undivided"],
+        bonusKeywords: ["Shema","Adonai","Elohim","covenant","declaration","unity","Jewish","faith"],
+        modelPoints: [
+          "God is absolutely one (strict monotheism) — 'the Lord alone' asserts there is no other divine being alongside God.",
+          "God demands total, wholehearted love — 'with all your heart and soul and might' means no divided loyalty.",
+          "God issues commandments that must be obeyed and transmitted — God's will is expressed through mitzvot that govern all of life."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain the significance of the Shema in Jewish belief and practice.",
+        guidance: "Discuss what the Shema means theologically and how it functions in daily Jewish life. Refer to the passage.",
+        wordTarget: 140,
+        keywords: ["Shema","prayer","monotheism","declaration","faith","daily","mezuzah","tefillin","children","heart","recite","morning","evening","covenant","mitzvot"],
+        bonusKeywords: ["Adonai","V'ahavta","deathbed","Torah","Ashkenazi","Sephardic","synagogue","service","martyrdom","affirmation","identity"],
+        modelPoints: [
+          "The Shema is the central declaration of Jewish faith — it affirms strict monotheism and defines Jewish identity.",
+          "It is recited twice daily (morning and evening) as commanded: 'when you lie down and when you rise.'",
+          "The Shema is written on mezuzot (doorpost scrolls) and placed on doorposts — physically fulfilling the command to 'write them on the doorposts.'",
+          "Tefillin (phylacteries) are worn during morning prayer — small boxes containing Shema texts, fulfilling 'bind them as a sign on your hand.'",
+          "The Shema is traditionally the last words spoken by a dying Jew — the ultimate declaration of faith at life's end."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain what this passage suggests about the relationship between God and the Jewish people.",
+        guidance: "Focus on what the passage implies about covenant, obligation, and reciprocal love. Avoid just listing the contents — analyse the relationship it describes.",
+        wordTarget: 140,
+        keywords: ["covenant","relationship","love","obligation","command","children","teach","heart","God","people","chosen","law","mitzvot","reciprocal","brit"],
+        bonusKeywords: ["Sinai","Torah","chosen people","Tikkun Olam","partner","obedience","blessing","Halakhah","generation","memory","identity"],
+        modelPoints: [
+          "The passage implies a covenantal (brit) relationship — God commands and the people are obligated to respond with love and obedience.",
+          "The relationship is characterised by love, not just law — 'love the Lord with all your heart' suggests emotional and spiritual intimacy, not mere duty.",
+          "God's commands are to be internalised ('in your heart') and then transmitted — suggesting the relationship is generational and communal, not purely individual.",
+          "The repetition of contexts ('at home,' 'away,' 'lying down,' 'rising') implies God's presence and authority over every dimension of daily life.",
+          "Unlike other ancient Near Eastern deities, this God demands exclusive loyalty — the covenant is not merely ceremonial but shapes all of Jewish existence."
+        ]
+      },
+      {
+        marks: 10,
+        text: 'Examine the view that Jewish identity is primarily determined by practice (halakhah) rather than belief.',
+        guidance: "Argue for and against. Consider Orthodox, Reform, and Conservative views, and whether belief or practice is more central to what it means to be Jewish. Use the passage as a springboard.",
+        wordTarget: 320,
+        keywords: ["halakhah","practice","belief","Orthodox","Reform","Conservative","mitzvot","Torah","Shabbat","kashrut","Shema","synagogue","covenant","identity","law","commandments","rabbi","community","tradition"],
+        bonusKeywords: ["Talmud","613","Maimonides","13 principles","atheist","secular","cultural","ethnicity","Bar Mitzvah","circumcision","conversion","matrilineal","Reconstructionist","Tikkun Olam","Progressive","denominations"],
+        modelPoints: [
+          "FOR: The passage itself commands action — recite, bind, write, teach — practice is primary, not assent to propositions.",
+          "FOR: The 613 mitzvot govern every area of life; Halakhah (Jewish law) defines Jewish life in Orthodoxy far more than any creed.",
+          "FOR: Judaism has no single binding creed like the Nicene Creed — Maimonides' 13 Principles are influential but not universally binding.",
+          "FOR: One can identify as a secular or atheist Jew and still practise Shabbat, kashrut, and lifecycle rituals — practice defines belonging.",
+          "AGAINST: The Shema itself is a declaration of belief — 'the Lord is one' is a theological statement that identity demands.",
+          "AGAINST: Reform Judaism prioritises ethical monotheism and belief over strict ritual observance — practice without belief is seen as hollow.",
+          "AGAINST: Conversion to Judaism requires both study (acquiring beliefs) and practice — suggesting both are necessary.",
+          "AGAINST: The covenant at Sinai was based on Israel's acceptance of God's sovereignty — a form of corporate belief preceded practice.",
+          "CONCLUSION: The tension is real and unresolved across Jewish denominations. Orthodoxy emphasises halakhah; Reform emphasises ethics and belief; Conservative seeks balance. Jewish identity is arguably defined by the ongoing negotiation between the two."
+        ]
+      }
+    ]
+  },
+
+  christianity: {
+    name: "Christianity", symbol: "✝", color: "#3a1a5c",
+    source: {
+      title: "John 3:16–17 (New Testament, Gospel of John, c. 90–110 CE)",
+      text: '"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. For God did not send his Son into the world to condemn the world, but to save the world through him."',
+      note: "The Gospel of John is the fourth canonical gospel and is distinctive for its high Christology. John 3:16 is often called 'the gospel in miniature' for its concise statement of core Christian belief about salvation."
+    },
+    questions: [
+      {
+        marks: 3,
+        text: "Identify and explain THREE Christian beliefs found in this passage.",
+        guidance: "Name each belief and briefly explain what the passage says about it.",
+        wordTarget: 80,
+        keywords: ["love","God","Son","salvation","belief","eternal life","world","condemn","save","gave","perish","faith"],
+        bonusKeywords: ["agape","incarnation","grace","Trinity","atonement","gospel","Christology","only begotten"],
+        modelPoints: [
+          "God's love for humanity is universal — 'God so loved the world' asserts that divine love extends to all people, not a chosen few.",
+          "Salvation is through belief in Jesus — 'whoever believes in him shall not perish' — faith in Christ is the means of eternal life.",
+          "God's purpose is salvation, not condemnation — 'not to condemn the world but to save' presents God as merciful and redemptive."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain the concept of salvation in Christian belief.",
+        guidance: "Discuss what salvation is, why it is needed, and how it is achieved in Christian understanding. Refer to the passage where relevant.",
+        wordTarget: 140,
+        keywords: ["salvation","sin","grace","faith","atonement","resurrection","eternal life","Jesus","cross","redemption","Original Sin","belief","heaven","death","Paul"],
+        bonusKeywords: ["justification","sanctification","soteriology","substitutionary","ransom","satisfaction","Anselm","Penal","Catholic","Protestant","sacraments","baptism","works","faith alone","sola fide"],
+        modelPoints: [
+          "Salvation (soteriology) refers to being rescued from sin, death, and separation from God — eternal life rather than perishing.",
+          "The need for salvation arises from Original Sin (the Fall of Adam and Eve) — humanity is fallen and unable to save itself.",
+          "In Catholic theology, salvation is mediated through faith AND the sacraments — baptism, Eucharist, and penance are essential.",
+          "In Protestant theology, salvation is by grace through faith alone (sola fide) — Luther's key Reformation insight.",
+          "The atonement — Jesus' death on the cross — is the means of salvation: God gave 'his only Son,' absorbing the consequences of sin."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain what this passage suggests about the nature of God in Christian belief.",
+        guidance: "Focus on what God's character and motivations reveal in this passage. Connect to the doctrine of the Trinity where relevant.",
+        wordTarget: 140,
+        keywords: ["love","God","Father","Son","Trinity","incarnation","gave","world","mercy","compassion","agape","save","condemn","grace","eternal"],
+        bonusKeywords: ["agape","Logos","Christology","kenosis","Three Persons","homoousios","Nicene","Council","theology","impassibility","apophatic"],
+        modelPoints: [
+          "God is characterised primarily by love (agape) — the motivation for the Incarnation is love, not duty or power.",
+          "The passage implies a relational God: God gave 'his Son,' suggesting personal relationship and sacrifice within the Godhead (implying the Trinity).",
+          "God is not punitive in orientation — 'not to condemn but to save' presents God as merciful, which contrasts with some Old Testament portrayals.",
+          "The Trinitarian dimension: 'God gave his Son' implies the Father-Son relationship central to the doctrine of the Trinity.",
+          "God is universally concerned — 'the world' is the object of God's love, not just a particular nation or group."
+        ]
+      },
+      {
+        marks: 10,
+        text: 'Examine the view that the death and resurrection of Jesus is the central belief of Christianity.',
+        guidance: "Argue for and against. Consider how different Christian traditions (Catholic, Orthodox, Protestant) might assess this claim. Are other doctrines (Trinity, Incarnation, Creation) equally or more central?",
+        wordTarget: 320,
+        keywords: ["resurrection","death","Jesus","cross","atonement","salvation","Trinity","Incarnation","Easter","creed","Catholic","Orthodox","Protestant","faith","central","doctrine","sin","grace","Nicene","history","body","eternal"],
+        bonusKeywords: ["kenosis","homoousios","Council of Nicaea","Anselm","substitutionary","Christus Victor","moral influence","soteriology","Chalcedon","parousia","sola fide","Reformation","Eucharist","transubstantiation","liturgical year","Good Friday","Pentecost"],
+        modelPoints: [
+          "FOR: Paul writes 'if Christ has not been raised, your faith is futile' (1 Cor 15:17) — resurrection is explicitly central to Pauline theology.",
+          "FOR: The liturgical year centres on Holy Week and Easter — the entire Christian calendar builds toward the death and resurrection.",
+          "FOR: The Nicene Creed (325 CE) gives the most space to the events of Christ's death and resurrection — the creeds support its centrality.",
+          "FOR: Salvation itself depends on the atonement — 'God gave his Son' is meaningless without the cross and resurrection being salvific events.",
+          "AGAINST: The doctrine of the Trinity (Father, Son, Holy Spirit) is argued by many theologians as the most foundational Christian claim — it distinguishes Christianity from all other monotheisms.",
+          "AGAINST: The Incarnation (God becoming human) is equally central — without it, the death and resurrection are merely human events.",
+          "AGAINST: Eastern Orthodox Christianity emphasises theosis (union with God through divine nature) over juridical atonement — resurrection matters more than the cross in this view.",
+          "AGAINST: Liberation theologians emphasise Jesus' life and teaching (the Kingdom of God, justice for the poor) as equally central to his death.",
+          "CONCLUSION: The death and resurrection form the narrative and theological core, but they cannot be separated from the Trinity, Incarnation, and the ongoing life of the church — Christianity is a complex whole, not reducible to one event."
+        ]
+      }
+    ]
+  },
+
+  islam: {
+    name: "Islam", symbol: "☪", color: "#0d4a28",
+    source: {
+      title: "Quran, Surah 112 (Al-Ikhlas / The Sincerity), Verses 1–4 (revealed to Prophet Muhammad, c. 610–632 CE)",
+      text: '"Say: He is Allah, the One and Only. Allah, the Eternal, Absolute. He begetteth not, nor is He begotten. And there is none like unto Him."',
+      note: "Surah Al-Ikhlas is the 112th chapter of the Quran and is considered equivalent to one-third of the Quran in spiritual worth. It is a concise statement of Islamic monotheism (Tawhid) and was revealed in response to those who asked the Prophet to describe God."
+    },
+    questions: [
+      {
+        marks: 3,
+        text: "Identify and explain THREE beliefs about Allah found in this passage.",
+        guidance: "Name each attribute clearly and explain its significance in Islamic belief.",
+        wordTarget: 80,
+        keywords: ["one","Tawhid","eternal","absolute","begotten","born","equal","comparable","unique","Ahad","Samad","Shirk"],
+        bonusKeywords: ["monotheism","unity","self-sufficient","independent","attributes","asma","husna","names"],
+        modelPoints: [
+          "Allah is absolutely One (Ahad) — Tawhid (divine unity) is the foundational principle; nothing shares in God's nature.",
+          "Allah is Eternal/Absolute (Samad) — God is self-sufficient, depending on nothing, while all things depend on God.",
+          "Allah is unborn and has no offspring — this explicitly negates the Christian claim that Jesus is the Son of God, and refutes polytheism."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain the importance of Tawhid (the oneness of God) in Islam.",
+        guidance: "Discuss Tawhid as the foundational belief — how does it shape Islamic worship, ethics, and contrast with Shirk? Reference the passage.",
+        wordTarget: 140,
+        keywords: ["Tawhid","oneness","monotheism","Shirk","Five Pillars","Shahadah","worship","Allah","Quran","sin","fundamental","prayer","Salat","idolatry","attributes"],
+        bonusKeywords: ["greatest sin","Asma al-husna","99 names","Uluhiyyah","Rububiyyah","Asmaa","polytheism","Trinity","Shirk","Kafir","testimony","la ilaha illallah"],
+        modelPoints: [
+          "Tawhid is the absolute oneness of Allah — the most fundamental doctrine in Islam from which everything else flows.",
+          "Shirk (associating partners with Allah) is the one sin that cannot be forgiven — making Tawhid the non-negotiable foundation.",
+          "The Shahadah ('There is no god but Allah') is the first Pillar of Islam — Tawhid is literally the entry point to the faith.",
+          "Tawhid shapes worship: prayer (Salat) is directed solely to Allah, not saints or intermediaries — all intercession is ultimately through God alone.",
+          "The Surah Al-Ikhlas negates Trinity (no Son), polytheism (no equals), and idolatry — Tawhid defines Islam in opposition to all perceived compromise of God's oneness."
+        ]
+      },
+      {
+        marks: 5,
+        text: "Explain how this passage distinguishes Islamic belief about God from Christian and Jewish understandings.",
+        guidance: "Use the specific content of the passage to compare — focus on what is distinct, not just similar. Do not simply list similarities.",
+        wordTarget: 140,
+        keywords: ["one","Trinity","Son","begotten","eternal","compare","Christianity","Judaism","Jesus","prophet","Tawhid","unique","equal","similar","different","Abrahamic"],
+        bonusKeywords: ["homoousios","Nicene","Logos","Incarnation","shirk","Isa","Torah","covenant","chosen people","Father","Holy Spirit","three persons"],
+        modelPoints: [
+          "'He begetteth not' directly refutes the Christian doctrine that Jesus is the Son of God — the Incarnation would constitute Shirk in Islamic theology.",
+          "'None like unto Him' contrasts with Judaism's anthropomorphic language (God 'speaking,' 'walking') — Islam emphasises God's absolute transcendence.",
+          "Islam, like Judaism, is strictly monotheistic — but Islam considers the Jewish concept of God as a 'tribal' deity (God of Israel) too limited.",
+          "The Christian Trinity is seen as compromising Tawhid — three persons in one God implies division or partners, which Al-Ikhlas explicitly denies.",
+          "All three are Abrahamic, but Islam presents itself as the final, uncorrupted restoration of pure monotheism that both Judaism and Christianity drifted from."
+        ]
+      },
+      {
+        marks: 10,
+        text: 'Examine the view that Islam is primarily a way of life rather than a set of beliefs.',
+        guidance: "Argue for and against. Consider the Five Pillars, Shariah, Ummah, and the role of Tawhid as belief. Is practice or doctrine more central? Consider different Muslim perspectives.",
+        wordTarget: 320,
+        keywords: ["Five Pillars","Shariah","Ummah","Quran","Hadith","practice","belief","Tawhid","Salat","Zakat","Sawm","Hajj","Shahadah","halal","haram","community","Sunni","Shia","law","submission","deen","worship"],
+        bonusKeywords: ["Deen","Dunya","Akhira","fiqh","ijtihad","ijma","qiyas","Sunnah","Sufism","tariqah","jihad","ibadah","akhlaq","niyyah","taqwa","iman","ihsan","Ramadan","Eid","Hijab","Nikah","Zakat","waqf"],
+        modelPoints: [
+          "FOR: 'Islam' means submission — it is inherently about a way of living in submission to Allah's will, not just intellectual assent.",
+          "FOR: The Five Pillars are all practices (Shahadah is declaration, Salat is prayer, Zakat is giving, Sawm is fasting, Hajj is pilgrimage) — practice defines Muslim identity.",
+          "FOR: Shariah (Islamic law) governs every domain: family, finance, diet, dress, business — Islam is explicitly a comprehensive system of life.",
+          "FOR: The concept of Deen encompasses the whole of life's religion — not a Sunday practice but a 24/7 orientation of action and intention.",
+          "AGAINST: Tawhid (oneness of Allah) is the theological bedrock — without this belief, no practice has validity. Iman (faith) precedes amal (works).",
+          "AGAINST: The Six Articles of Faith (Allah, angels, scriptures, prophets, Day of Judgment, divine decree) are doctrinal commitments that define Islamic belief.",
+          "AGAINST: Sufism (Islamic mysticism) prioritises the inner spiritual experience of God (ma'rifa) over external practice — suggesting belief and inner state are primary.",
+          "AGAINST: The Shahadah (testimony of faith) is both practice and belief — it cannot be merely external; it requires inner conviction (iman).",
+          "CONCLUSION: Islam is distinctive in refusing the separation of belief and practice — Tawhid is the belief that generates all practice; Shariah is the practice that expresses Tawhid. The dichotomy itself is arguably un-Islamic."
+        ]
+      }
+    ]
+  }
+
+}; // end data
+
+// ═══════════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════════
+let activeReligion = null;
+const scored = {}; // scored[religion][qIndex] = score
+
+// ═══════════════════════════════════════════════════════════
+//  SCORING ENGINE
+// ═══════════════════════════════════════════════════════════
+function scoreAnswer(answer, question) {
+  const lower = answer.toLowerCase();
+  const words = answer.trim().split(/\s+/).filter(w => w.length > 1);
+  const wordCount = words.length;
+  const maxScore = question.marks;
+
+  if (wordCount < 10) return { score: 0, wordCount, hits: [], misses: question.keywords.slice(0, 4), bonusHits: [] };
+
+  // Keyword hits
+  const hits = [];
+  const misses = [];
+  for (const kw of question.keywords) {
+    // Allow partial/root matching for keywords over 4 chars
+    const root = kw.toLowerCase().replace(/[aeiou]$/,'');
+    if (lower.includes(kw.toLowerCase()) || (root.length > 3 && lower.includes(root))) {
+      hits.push(kw);
+    } else {
+      misses.push(kw);
+    }
+  }
+
+  const bonusHits = question.bonusKeywords.filter(kw => lower.includes(kw.toLowerCase()));
+
+  // Score calculation
+  const kwRatio = hits.length / question.keywords.length;
+  const wordRatio = Math.min(wordCount / question.wordTarget, 1.0);
+
+  // Base: 60% from keywords, 40% from word count
+  let rawScore = (kwRatio * 0.65 + wordRatio * 0.35) * maxScore;
+
+  // Bonus for bonus keywords (up to +0.5 of a mark)
+  rawScore += Math.min(bonusHits.length * 0.15, 0.5);
+
+  // Round to nearest integer, clamp
+  let score = Math.min(Math.round(rawScore), maxScore);
+
+  return { score, wordCount, hits, misses: misses.slice(0, 5), bonusHits };
+}
+
+function getScoreClass(score, max) {
+  const pct = score / max;
+  if (pct >= 0.85) return 'score-hi';
+  if (pct >= 0.55) return 'score-mid';
+  return 'score-lo';
+}
+function getBarClass(score, max) {
+  const pct = score / max;
+  if (pct >= 0.85) return 'bar-hi';
+  if (pct >= 0.55) return 'bar-mid';
+  return 'bar-lo';
+}
+function getVerdict(score, max) {
+  const pct = score / max;
+  if (pct >= 0.9) return 'Excellent — full or near-full marks';
+  if (pct >= 0.75) return 'Strong — solid knowledge with minor gaps';
+  if (pct >= 0.55) return 'Adequate — some relevant content, needs development';
+  if (pct >= 0.3) return 'Limited — relevant points but underdeveloped';
+  return 'Insufficient — key concepts missing';
+}
+
+// ═══════════════════════════════════════════════════════════
+//  GRADE CALCULATOR (out of 23)
+// ═══════════════════════════════════════════════════════════
+function ibGrade(total) {
+  if (total >= 20) return { grade: 7, label: 'Grade 7', cls: 'grade-7' };
+  if (total >= 17) return { grade: 6, label: 'Grade 6', cls: 'grade-6' };
+  if (total >= 13) return { grade: 5, label: 'Grade 5', cls: 'grade-5' };
+  if (total >= 9)  return { grade: 4, label: 'Grade 4', cls: 'grade-4' };
+  if (total >= 5)  return { grade: 3, label: 'Grade 3', cls: 'grade-3' };
+  return { grade: 2, label: 'Grade 2', cls: 'grade-low' };
+}
+
+// ═══════════════════════════════════════════════════════════
+//  RENDER
+// ═══════════════════════════════════════════════════════════
+function loadReligion(key) {
+  activeReligion = key;
+
+  // Update sidebar
+  document.querySelectorAll('.rel-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('btn-' + key).classList.add('active');
+
+  if (!scored[key]) scored[key] = {};
+
+  const rel = data[key];
+  const main = document.getElementById('main');
+
+  let scoreBarHTML = renderScoreBar(key);
+
+  let questionsHTML = rel.questions.map((q, i) => renderQuestion(key, i, q)).join('');
+
+  main.innerHTML = `
+    <div id="score-bar-${key}">${scoreBarHTML}</div>
+    <div class="source-box">
+      <div class="source-label">Source Material</div>
+      <div class="source-title">${rel.source.title}</div>
+      <div class="source-text">${rel.source.text}</div>
+      <div class="source-note">${rel.source.note}</div>
+    </div>
+    ${questionsHTML}
+    <button class="score-all-btn" onclick="scoreAll('${key}')">Score All Answers</button>
+  `;
+
+  // Restore any saved answers and results
+  rel.questions.forEach((q, i) => {
+    const ta = document.getElementById(`ta-${key}-${i}`);
+    const saved = sessionStorage.getItem(`ans-${key}-${i}`);
+    if (saved) { ta.value = saved; updateWordCount(key, i); }
+    if (scored[key][i] !== undefined) {
+      showResult(key, i, scored[key][i]);
+    }
+  });
+}
+
+function renderScoreBar(key) {
+  const rel = data[key];
+  const sc = scored[key] || {};
+  let total = 0, maxTotal = 23;
+  rel.questions.forEach((q, i) => { if (sc[i] !== undefined) total += sc[i]; });
+  const done = Object.keys(sc).length;
+  if (done === 0) {
+    return `<div class="score-bar">
+      <div>
+        <div class="score-bar-label">Total Score</div>
+        <div class="score-total">—<span> / 23</span></div>
+      </div>
+      <div style="color:var(--muted);font-size:0.88rem;font-style:italic;">Answer questions to see your estimated score</div>
+    </div>`;
+  }
+  const g = ibGrade(total);
+  return `<div class="score-bar">
+    <div>
+      <div class="score-bar-label">Estimated Score</div>
+      <div class="score-total">${total}<span> / 23</span></div>
+    </div>
+    <div>
+      <div class="score-bar-label">Questions scored</div>
+      <div style="font-size:1.1rem;color:var(--text);">${done} / 4</div>
+    </div>
+    <span class="score-grade ${g.cls}">${g.label} (estimated)</span>
+  </div>`;
+}
+
+function renderQuestion(key, i, q) {
+  const labels = ['a','b','c','d'];
+  const qTargets = [60,120,120,280];
+  return `
+  <div class="question-block" id="qblock-${key}-${i}">
+    <div class="q-header">
+      <span class="q-num">(${labels[i]})</span>
+      <span class="q-text">${q.text}</span>
+      <span class="q-marks">[${q.marks}]</span>
+    </div>
+    <div class="q-body">
+      <div class="q-guidance">IB Guidance: ${q.guidance}</div>
+      <textarea id="ta-${key}-${i}" placeholder="Write your answer here..." rows="${i===3?10:5}"
+        oninput="updateWordCount('${key}',${i}); saveAnswer('${key}',${i})"></textarea>
+      <div class="q-footer">
+        <span class="word-count" id="wc-${key}-${i}">0 words</span>
+        <button class="btn-score" onclick="scoreOne('${key}',${i})">Score this answer</button>
+        <button class="btn-model" onclick="toggleModel('${key}',${i})">Show model points</button>
+      </div>
+      <div class="result-panel" id="result-${key}-${i}"></div>
+      <div class="model-answer" id="model-${key}-${i}">
+        <div class="model-answer-title">IB Model Points</div>
+        ${q.modelPoints.map(p => `<div class="model-point">${p}</div>`).join('')}
+      </div>
+    </div>
+  </div>`;
+}
+
+function updateWordCount(key, i) {
+  const ta = document.getElementById(`ta-${key}-${i}`);
+  const wc = document.getElementById(`wc-${key}-${i}`);
+  const q = data[key].questions[i];
+  const count = ta.value.trim().split(/\s+/).filter(w=>w.length>0).length;
+  wc.textContent = count + ' words';
+  wc.className = 'word-count' + (count >= q.wordTarget ? ' ok' : count >= q.wordTarget*0.5 ? '' : ' low');
+}
+
+function saveAnswer(key, i) {
+  const ta = document.getElementById(`ta-${key}-${i}`);
+  sessionStorage.setItem(`ans-${key}-${i}`, ta.value);
+}
+
+function scoreOne(key, i) {
+  const ta = document.getElementById(`ta-${key}-${i}`);
+  const answer = ta.value;
+  const q = data[key].questions[i];
+  const result = scoreAnswer(answer, q);
+  scored[key][i] = result.score;
+  showResult(key, i, result);
+  updateDots(key);
+  document.getElementById(`score-bar-${key}`).innerHTML = renderScoreBar(key);
+}
+
+function showResult(key, i, resultOrScore) {
+  const panel = document.getElementById(`result-${key}-${i}`);
+  const q = data[key].questions[i];
+
+  // resultOrScore might be just a score number (when restoring) or a full result object
+  let result;
+  if (typeof resultOrScore === 'number') {
+    // Reconstruct minimal result for display
+    const ta = document.getElementById(`ta-${key}-${i}`);
+    result = ta ? scoreAnswer(ta.value, q) : { score: resultOrScore, hits: [], misses: [], bonusHits: [], wordCount: 0 };
+    result.score = resultOrScore; // use stored score
+  } else {
+    result = resultOrScore;
+  }
+
+  const sc = result.score;
+  const max = q.marks;
+  const pct = sc / max;
+  const barW = Math.round(pct * 100);
+  const scoreClass = getScoreClass(sc, max);
+  const barClass = getBarClass(sc, max);
+  const verdict = getVerdict(sc, max);
+
+  const hitsHTML = result.hits.length
+    ? result.hits.slice(0,6).map(h => `<div class="feedback-item"><span class="fi-hit">✓</span> <span>${h}</span></div>`).join('')
+    : '<div class="feedback-item"><span class="fi-miss">✗</span> No key concepts detected</div>';
+
+  const missHTML = result.misses.length
+    ? result.misses.slice(0,5).map(m => `<div class="feedback-item"><span class="fi-miss">✗</span> <span>Missing: <em>${m}</em></span></div>`).join('')
+    : '';
+
+  const bonusHTML = result.bonusHits && result.bonusHits.length
+    ? `<div class="feedback-section"><div class="feedback-title">Bonus terms used</div>
+       ${result.bonusHits.map(b => `<div class="feedback-item"><span class="fi-tip">★</span> ${b}</div>`).join('')}</div>`
+    : '';
+
+  const tipHTML = result.wordCount < q.wordTarget * 0.6
+    ? `<div class="feedback-item"><span class="fi-tip">↑</span> Your answer is short (${result.wordCount} words). Aim for ~${q.wordTarget} words for full marks.</div>`
+    : '';
+
+  panel.innerHTML = `
+    <div class="result-header">
+      <span class="result-score-badge ${scoreClass}">${sc}/${max}</span>
+      <div style="flex:1">
+        <div class="result-label">${verdict}</div>
+        <div class="result-bar-wrap">
+          <div class="result-bar ${barClass}" style="width:${barW}%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="result-body">
+      <div class="feedback-section">
+        <div class="feedback-title">Key concepts found</div>
+        ${hitsHTML}
+      </div>
+      ${missHTML ? `<div class="feedback-section"><div class="feedback-title">Concepts to add</div>${missHTML}</div>` : ''}
+      ${tipHTML ? `<div class="feedback-section">${tipHTML}</div>` : ''}
+      ${bonusHTML}
+    </div>
+  `;
+  panel.classList.add('show');
+}
+
+function toggleModel(key, i) {
+  const el = document.getElementById(`model-${key}-${i}`);
+  el.classList.toggle('show');
+}
+
+function scoreAll(key) {
+  data[key].questions.forEach((q, i) => scoreOne(key, i));
+}
+
+function updateDots(key) {
+  const sc = scored[key] || {};
+  data[key].questions.forEach((q, i) => {
+    const dot = document.getElementById(`dot-${key}-${i}`);
+    if (dot) {
+      const score = sc[i];
+      if (score === undefined) { dot.className = 'dot'; return; }
+      const pct = score / q.marks;
+      dot.className = 'dot ' + (pct >= 0.7 ? 'done' : 'scored');
+    }
+  });
+}
+</script>
+</body>
+</html>

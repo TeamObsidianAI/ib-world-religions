@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taoism — IB World Religions Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1a3d2e;
+    --primary-light: #2d6a4f;
+    --accent: #b8860b;
+    --accent-light: #d4a017;
+    --accent-pale: #fdf6e3;
+    --bg: #f2f0e8;
+    --bg-card: #ffffff;
+    --bg-section: #e8e4d8;
+    --text: #1a1a0e;
+    --text-light: #4a4a2a;
+    --border: #b8b090;
+    --shadow: rgba(26,61,46,0.13);
+    --yin: #2c2c2c;
+    --yang: #f5f0e0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Crimson Text', Georgia, serif; background: var(--bg); color: var(--text); font-size: 17px; line-height: 1.7; }
+
+  /* NAV */
+  .site-nav { background: var(--primary); padding: 10px 24px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; border-bottom: 3px solid var(--accent); }
+  .site-nav span { color: rgba(255,255,255,0.45); font-size: 12px; letter-spacing: 0.1em; }
+  .site-nav a { color: var(--accent-light); text-decoration: none; font-size: 13px; padding: 4px 10px; border: 1px solid var(--accent); border-radius: 4px; transition: all 0.2s; }
+  .site-nav a:hover { background: var(--accent); color: white; }
+  .site-nav a.current { background: var(--accent); color: white; font-weight: 600; }
+
+  /* HEADER */
+  header { background: linear-gradient(135deg, #0d1f17 0%, #1a3d2e 55%, #2d6a4f 100%); color: white; text-align: center; padding: 50px 20px 40px; position: relative; overflow: hidden; }
+  header::before { content: '☯'; position: absolute; font-size: 220px; opacity: 0.07; top: -20px; left: 50%; transform: translateX(-50%); line-height: 1; pointer-events: none; }
+  header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.2rem); font-weight: 700; position: relative; z-index: 1; }
+  header p { color: var(--accent-light); font-size: 1.1rem; margin-top: 8px; letter-spacing: 0.06em; position: relative; z-index: 1; }
+  .ib-badge { display: inline-block; background: var(--accent); color: white; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-top: 12px; position: relative; z-index: 1; }
+
+  /* TABS */
+  .tab-bar { display: flex; background: var(--primary); overflow-x: auto; border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 100; scrollbar-width: none; }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn { flex: 1 0 auto; background: none; border: none; color: rgba(255,255,255,0.6); padding: 14px 18px; cursor: pointer; font-family: 'Crimson Text', serif; font-size: 14px; letter-spacing: 0.07em; text-transform: uppercase; transition: all 0.2s; border-bottom: 3px solid transparent; margin-bottom: -3px; white-space: nowrap; }
+  .tab-btn:hover { color: var(--accent-light); }
+  .tab-btn.active { color: var(--accent-light); border-bottom-color: var(--accent-light); background: rgba(212,160,23,0.08); }
+
+  /* CONTENT */
+  .tab-content { display: none; padding: 28px 20px 60px; max-width: 1000px; margin: 0 auto; }
+  .tab-content.active { display: block; }
+
+  /* IB TIP */
+  .ib-tip { background: #fdf8e1; border-left: 5px solid var(--accent); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 18px 0; font-size: 15px; color: #5a3a00; }
+  .ib-tip strong { color: #3a2000; }
+
+  /* QUOTE BOX */
+  .quote-box { background: var(--primary); color: white; border-radius: 10px; padding: 20px 24px; margin: 18px 0; font-style: italic; font-size: 1.1rem; line-height: 1.6; position: relative; }
+  .quote-box::before { content: '"'; position: absolute; top: -10px; left: 16px; font-size: 60px; color: var(--accent-light); opacity: 0.5; font-family: 'Playfair Display', serif; line-height: 1; }
+  .quote-box cite { display: block; margin-top: 10px; font-style: normal; font-size: 13px; color: var(--accent-light); letter-spacing: 0.06em; }
+
+  /* FLASHCARD */
+  .flashcard-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+  .fc-btn { background: var(--primary); color: white; border: none; padding: 9px 18px; border-radius: 6px; cursor: pointer; font-family: 'Crimson Text', serif; font-size: 15px; transition: background 0.2s; }
+  .fc-btn:hover { background: var(--primary-light); }
+  .fc-btn.accent { background: var(--accent); color: white; font-weight: 600; }
+  .fc-btn.accent:hover { background: var(--accent-light); }
+  .fc-counter { margin-left: auto; color: var(--text-light); font-size: 15px; }
+  .progress-bar-wrap { background: var(--border); border-radius: 20px; height: 6px; max-width: 680px; margin: 0 auto 10px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 20px; transition: width 0.35s ease; }
+  .card-scene { width: 100%; max-width: 680px; height: 290px; margin: 0 auto 24px; perspective: 1000px; cursor: pointer; }
+  .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+  .card-inner.flipped { transform: rotateY(180deg); }
+  .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px 32px; text-align: center; box-shadow: 0 8px 32px var(--shadow); }
+  .card-front { background: linear-gradient(135deg, #1a3d2e, #2d6a4f); color: white; }
+  .card-back { background: linear-gradient(135deg, #fdf6e3, #e8e4d8); color: var(--text); transform: rotateY(180deg); }
+  .card-term { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem,4vw,2.1rem); font-weight: 700; margin-bottom: 8px; }
+  .card-hint { font-style: italic; color: var(--accent-light); font-size: 1rem; }
+  .card-def { font-size: 1.05rem; line-height: 1.6; margin-bottom: 10px; }
+  .card-note { font-size: 0.88rem; color: var(--text-light); font-style: italic; border-top: 1px solid var(--border); padding-top: 8px; width: 100%; }
+  .flip-hint { text-align: center; color: var(--text-light); font-size: 13px; font-style: italic; margin-bottom: 28px; }
+
+  /* NOTES */
+  .section-header { display: flex; align-items: center; gap: 10px; background: var(--primary); color: white; padding: 13px 18px; border-radius: 8px 8px 0 0; cursor: pointer; user-select: none; margin-top: 14px; transition: background 0.2s; }
+  .section-header:hover { background: var(--primary-light); }
+  .section-header h3 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.05rem; flex: 1; }
+  .section-header .chevron { font-size: 12px; transition: transform 0.3s; color: var(--accent-light); }
+  .section-header.open .chevron { transform: rotate(180deg); }
+  .section-body { display: none; background: var(--bg-card); border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; padding: 20px 22px; margin-bottom: 4px; }
+  .section-body.open { display: block; }
+  .fact-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 12px; margin: 12px 0; }
+  .fact-card { background: var(--bg-section); border-radius: 8px; padding: 12px 14px; border-left: 4px solid var(--accent); }
+  .fact-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); margin-bottom: 4px; }
+  .fact-card .value { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 0.97rem; }
+  .term-def { margin: 8px 0; padding: 10px 14px; border-left: 3px solid var(--accent); background: var(--bg-section); border-radius: 0 6px 6px 0; }
+  .term-def strong { color: var(--primary); font-weight: 600; }
+  .note-list { list-style: none; padding: 0; margin: 10px 0; }
+  .note-list li { padding: 6px 0 6px 24px; position: relative; border-bottom: 1px solid rgba(184,176,144,0.3); }
+  .note-list li:last-child { border-bottom: none; }
+  .note-list li::before { content: '☯'; position: absolute; left: 2px; color: var(--accent); font-size: 11px; top: 9px; }
+  .sub-heading { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--primary); font-size: 1.05rem; margin: 16px 0 8px; padding-bottom: 4px; border-bottom: 2px solid var(--accent); display: inline-block; }
+  .highlight-box { background: #fdf8e1; border: 1px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: 15px; }
+  .highlight-box strong { color: #5a3000; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+  @media(max-width:600px){.two-col{grid-template-columns:1fr}}
+  .col-box { background: var(--bg-section); border-radius: 8px; padding: 14px 16px; }
+  .col-box.yin { border-top: 4px solid #2c2c2c; }
+  .col-box.yang { border-top: 4px solid #b8860b; }
+  .col-box h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 8px; }
+  .col-box.yin h4 { color: #2c2c2c; }
+  .col-box.yang h4 { color: #7a5c00; }
+  .practices-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 12px; margin: 14px 0; }
+  .practice-card { background: var(--primary); color: white; border-radius: 8px; padding: 14px 16px; }
+  .practice-card h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--accent-light); margin-bottom: 6px; }
+  .practice-card p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+
+  /* CHARTS */
+  .chart-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+  .chart-tab-btn { background: var(--bg-section); border: 2px solid var(--border); border-radius: 24px; padding: 7px 16px; cursor: pointer; font-family: 'Crimson Text', serif; font-size: 14px; color: var(--text-light); transition: all 0.2s; }
+  .chart-tab-btn:hover { border-color: var(--accent); color: var(--primary); }
+  .chart-tab-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
+  .chart-panel { display: none; }
+  .chart-panel.active { display: block; }
+  .chart-panel h3 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.3rem; margin-bottom: 18px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 15px; box-shadow: 0 2px 12px var(--shadow); border-radius: 10px; overflow: hidden; }
+  .compare-table th { background: var(--primary); color: white; padding: 12px 16px; text-align: left; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 0.92rem; }
+  .compare-table th:first-child { background: #0d1f17; }
+  .compare-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--bg-section); }
+  .compare-table tr:nth-child(odd) td { background: var(--bg-card); }
+  .compare-table td:first-child { font-weight: 600; color: var(--primary); background: #e8e4d8 !important; font-family: 'Playfair Display', serif; font-size: 0.9rem; }
+
+  /* ESSAYS */
+  .essay-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 2px 8px var(--shadow); }
+  .essay-header { display: flex; align-items: center; gap: 12px; background: linear-gradient(90deg, #1a3d2e, #2d6a4f); color: white; padding: 14px 18px; cursor: pointer; user-select: none; }
+  .essay-header:hover { filter: brightness(1.1); }
+  .essay-num { background: var(--accent); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  .essay-header h3 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 0.98rem; flex: 1; line-height: 1.35; }
+  .essay-header .chevron { font-size: 12px; transition: transform 0.3s; color: var(--accent-light); }
+  .essay-header.open .chevron { transform: rotate(180deg); }
+  .essay-body { display: none; padding: 20px 22px; }
+  .essay-body.open { display: block; }
+  .essay-q { background: var(--bg-section); border-left: 4px solid var(--accent); padding: 10px 14px; margin-bottom: 16px; border-radius: 0 6px 6px 0; font-style: italic; color: var(--text-light); font-size: 15px; }
+  .outline-section { margin-bottom: 14px; }
+  .outline-section h4 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 0.95rem; margin-bottom: 6px; }
+  .outline-section ul { list-style: disc; padding-left: 22px; font-size: 15px; }
+  .outline-section ul li { margin-bottom: 4px; }
+  .essay-tip { background: #e8f4e8; border: 1px solid #8bc48b; border-radius: 6px; padding: 10px 14px; font-size: 14px; color: #2a5a2a; margin-top: 12px; }
+
+  /* PAPERS */
+  .paper-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; box-shadow: 0 2px 10px var(--shadow); overflow: hidden; }
+  .paper-section-header { background: linear-gradient(90deg, #0d1f17, #1a3d2e); color: white; padding: 16px 22px; }
+  .paper-section-header h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; }
+  .paper-section-header p { color: var(--accent-light); font-size: 13px; margin-top: 4px; }
+  .paper-body { padding: 22px; }
+  .source-box { background: #f8f5ed; border: 2px solid var(--border); border-radius: 8px; padding: 18px 20px; margin-bottom: 20px; }
+  .source-box .source-label { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--primary); font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+  .source-box p { font-size: 15px; line-height: 1.7; font-style: italic; }
+  .question-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px dashed var(--border); }
+  .question-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .q-label { display: inline-block; background: var(--primary); color: white; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 4px; margin-bottom: 8px; }
+  .q-marks { display: inline-block; background: var(--accent); color: white; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 4px; margin-left: 8px; }
+  .q-text { font-size: 16px; margin: 8px 0 12px; line-height: 1.5; }
+  .reveal-btn { background: none; border: 2px solid var(--primary); color: var(--primary); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-family: 'Crimson Text', serif; font-size: 14px; transition: all 0.2s; }
+  .reveal-btn:hover { background: var(--primary); color: white; }
+  .model-answer { display: none; background: var(--bg-section); border-left: 4px solid var(--primary-light); border-radius: 0 8px 8px 0; padding: 14px 18px; margin-top: 12px; font-size: 15px; line-height: 1.7; }
+  .model-answer.open { display: block; }
+  .model-answer strong { color: var(--primary); }
+  .p2-question { background: var(--bg-section); border: 1px solid var(--border); border-left: 5px solid var(--accent); border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 16px; font-size: 16px; line-height: 1.55; }
+  .p2-question .marks { display: inline-block; background: var(--accent); color: white; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 8px; }
+  .essay-prompt { color: var(--text-light); font-size: 14px; margin-top: 8px; font-style: italic; }
+
+  @media(max-width:600px){.compare-table{font-size:13px}.compare-table th,.compare-table td{padding:8px 10px}}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <span>IB WORLD RELIGIONS</span>
+  <a href="Sanatana_Dharma_Study_Guide.html">Sanatana Dharma</a>
+  <a href="Jainism_Study_Guide.html">Jainism</a>
+  <a href="Buddhism_Study_Guide.html">Buddhism</a>
+  <a href="Sikhism_Study_Guide.html">Sikhism</a>
+  <a href="Taoism_Study_Guide.html" class="current">Taoism</a>
+  <a href="Judaism_Study_Guide.html">Judaism</a>
+  <a href="Christianity_Study_Guide.html">Christianity</a>
+  <a href="Islam_Study_Guide.html">Islam</a>
+</nav>
+
+<header>
+  <h1>Taoism</h1>
+  <p>IB World Religions — Comprehensive Study Guide</p>
+  <div class="ib-badge">Paper 1 &amp; Paper 2 Preparation</div>
+</header>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('flashcards',this)">☯ Flashcards</button>
+  <button class="tab-btn" onclick="showTab('notes',this)">📖 Summary Notes</button>
+  <button class="tab-btn" onclick="showTab('charts',this)">📊 Comparison Charts</button>
+  <button class="tab-btn" onclick="showTab('essays',this)">✍ Essay Outlines</button>
+  <button class="tab-btn" onclick="showTab('papers',this)">📝 Practice Papers</button>
+</div>
+
+<!-- ══ TAB 1: FLASHCARDS ══ -->
+<div id="flashcards" class="tab-content active">
+  <div class="ib-tip">
+    <strong>⚠ Critical IB Points:</strong> The Tao is NOT God — it is the ultimate creative principle/Way of the universe. God(s) exist <em>within</em> the realm of Tao like everything else. Taoism can be practiced as a philosophy OR a religion — or both simultaneously. Wu-wei does NOT mean "do nothing" — it means acting in harmony with the natural flow, without forced interference.
+  </div>
+  <div class="flashcard-controls">
+    <button class="fc-btn" onclick="prevCard()">← Prev</button>
+    <button class="fc-btn" onclick="flipCard()">Flip</button>
+    <button class="fc-btn" onclick="nextCard()">Next →</button>
+    <button class="fc-btn accent" onclick="shuffleCards()">⇄ Shuffle</button>
+    <span class="fc-counter" id="counter">1 / 17</span>
+  </div>
+  <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar" style="width:5.9%"></div></div>
+  <div class="card-scene" onclick="flipCard()">
+    <div class="card-inner" id="mainCard">
+      <div class="card-face card-front">
+        <div class="card-term" id="cardTerm">Tao</div>
+        <div class="card-hint" id="cardHint">The central concept — but hard to define</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="card-def" id="cardDef">"The Way." The ultimate creative principle of the universe — everything that is greater than us, yet also our original nature. All things are unified and connected through Tao. It cannot be fully named or described.</div>
+        <div class="card-note" id="cardNote">The Tao is NOT God. God(s) exist within the realm of Tao. "The Tao that can be named is not the eternal Tao." (Tao Te Ching, Ch.1)</div>
+      </div>
+    </div>
+  </div>
+  <p class="flip-hint">Click card or press Space to flip · Arrow keys to navigate</p>
+</div>
+
+<!-- ══ TAB 2: SUMMARY NOTES ══ -->
+<div id="notes" class="tab-content">
+  <div class="quote-box">
+    Watch your thoughts; they become words. Watch your words; they become actions. Watch your actions; they become habits. Watch your habits; they become character. Watch your character; it becomes your destiny.
+    <cite>— Lao-Tzu</cite>
+  </div>
+
+  <!-- ESSENTIAL FACTS -->
+  <div class="section-header open" onclick="toggleNote(this)">
+    <span>📌</span><h3>Essential Facts at a Glance</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body open">
+    <div class="fact-grid">
+      <div class="fact-card"><div class="label">Traditional Founder</div><div class="value">Lao-Tzu (uncertain)</div></div>
+      <div class="fact-card"><div class="label">Key Philosopher</div><div class="value">Zhuangzi / Chuang Tzu (369–286 BCE)</div></div>
+      <div class="fact-card"><div class="label">Sacred Text</div><div class="value">Tao Te Ching (sacred writings)</div></div>
+      <div class="fact-card"><div class="label">Origin Period</div><div class="value">Warring States Period / Axial Age (~400 BCE)</div></div>
+      <div class="fact-card"><div class="label">Origin Place</div><div class="value">Ancient China (Zhou Dynasty collapse)</div></div>
+      <div class="fact-card"><div class="label">Central Concept</div><div class="value">Tao — "The Way"</div></div>
+      <div class="fact-card"><div class="label">Key Practice</div><div class="value">Wu-wei — non-interfering action</div></div>
+      <div class="fact-card"><div class="label">Goal</div><div class="value">Harmony with Tao; releasing Chi</div></div>
+      <div class="fact-card"><div class="label">Philosophy OR Religion</div><div class="value">Both — can focus on one or both</div></div>
+    </div>
+    <div class="highlight-box">
+      <strong>Key Distinction:</strong> Taoism is both a <em>philosophy</em> (the Way as a way of living, exemplified by Lao-Tzu and Zhuangzi) and a <em>religion</em> (with deities, rituals, priests, and temples). Buddhism arrived in China and blended with Taoism, producing <strong>Chan Buddhism</strong> (~220 CE). You can focus on Taoism as philosophy, religion, or both.
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>🏛</span><h3>History &amp; Origins</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <ul class="note-list">
+      <li><strong>Lao-Tzu</strong> is considered the founder of Taoism, but this is uncertain — he may be legendary. Traditionally credited with writing the <em>Tao Te Ching</em>.</li>
+      <li><strong>Zhuangzi / Chuang Tzu (c. 369–286 BCE)</strong> expanded the teachings of Tao in his own writings. A key philosopher of the tradition.</li>
+      <li>Taoism developed in and around the <strong>Warring States Period (Axial Age)</strong> of ancient China, around the collapse of the Zhou Dynasty (~400 BCE). This was a period of massive political upheaval — Taoism offered an alternative to the chaos of civilization.</li>
+      <li>Taoism became popular as a religion around the early days of the <strong>Han Dynasty (~220 CE)</strong> — about the same time Buddhism arrived in China and blended with Tao to produce <strong>Chan Buddhism</strong>.</li>
+      <li>The sacred text is the <strong>Tao Te Ching</strong> (also called "sacred writings"). This is THE central scripture of Taoist philosophy/religion.</li>
+    </ul>
+    <div class="highlight-box">
+      <strong>Axial Age Context:</strong> Taoism, Buddhism, Jainism, early Greek philosophy, and the Hebrew prophets all emerged during the Axial Age (~800–200 BCE). This was a period of global spiritual awakening and philosophical innovation — civilizational crisis prompted new answers about how to live. Taoism's answer: return to nature and the Way.
+    </div>
+  </div>
+
+  <!-- HUMAN CONDITION -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>🌀</span><h3>The Human Condition</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub-heading">What Is the Human Condition?</div>
+    <p>The <strong>Tao is our original nature</strong>. Nothing is inherently evil — but things are out of balance because humans have <strong>departed from the Way</strong>. Civilization has tried to improve on nature; as a result, we have created conflict and chaos.</p>
+    <ul class="note-list">
+      <li>The problem is <strong>disharmony with the universe</strong>. When humans depart from the simple, natural way of the universe, they become alienated from Tao and from one another.</li>
+      <li><strong>Suffering comes from trying to conquer nature</strong> and altering the way of the universe. Civilization is the enemy of the centered human.</li>
+      <li>The centered (Taoist) person understands that you cannot change the nature of others — even yourself. What you can do is go with the flow.</li>
+    </ul>
+
+    <div class="sub-heading">Where Are We Going?</div>
+    <ul class="note-list">
+      <li>We are <strong>already there</strong> — we just have to realize it by becoming fully in accord with the Tao.</li>
+      <li>Everything flows out of Tao; this is the <strong>Fu</strong> — the invariable law of nature that ensures everything returns to a balanced state.</li>
+      <li>Life and death are basically the same thing (Fu). We "return" to Tao at death.</li>
+    </ul>
+
+    <div class="sub-heading">How Do We Get There?</div>
+    <ul class="note-list">
+      <li>Living a contemplative life in nature</li>
+      <li>Taking no forced action — <strong>Wu-wei</strong> (non-interference with the natural flow)</li>
+      <li>Balancing yin and yang</li>
+      <li>Reconciling many opposites on a higher level</li>
+      <li>Releasing <strong>Chi</strong> (the life force)</li>
+    </ul>
+  </div>
+
+  <!-- PRINCIPLES -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>☯</span><h3>Core Principles: Tao, Wu-wei, Fu, Chi, Yin &amp; Yang</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub-heading">What Is the Tao?</div>
+    <p>Taoism is about "Tao" which means "The Way." This is <strong>difficult to define</strong> — Tao is everything that is greater than us, but it is also the ultimate creative principle of the universe. All things are unified and connected with Tao.</p>
+    <div class="term-def"><strong>Tao</strong> — "The Way." The ultimate creative principle of the universe. Our original nature. Cannot be fully named: "The Tao that can be named is not the eternal Tao." Greater than us — but also within us. Everything flows from it and returns to it.</div>
+    <div class="term-def"><strong>Wu-wei</strong> — Non-action / non-interference. Accomplishing tasks without forced assertion. Those in harmony with the flow of Tao can accomplish more than those who assert themselves. "Less is more." Go with the flow — sometimes the best action is to do nothing and wait. It is NOT passivity; it is acting in alignment with the natural Way.</div>
+    <div class="term-def"><strong>Fu</strong> — Return. The invariable law of nature that ensures everything returns to its balanced state. What goes out of balance will return to balance. Life and death are basically the same thing (Fu) — we "return" to Tao. It means returning to the beginning, to the roots.</div>
+    <div class="term-def"><strong>Chi / Qi</strong> — The life force. The vital energy that flows through all living things and through the universe. Don't "block" Chi. Taoist practices (Tai Chi, Qigong, acupuncture, feng shui) all aim to stimulate, unblock, and harmonize the flow of Chi.</div>
+
+    <div class="sub-heading">Yin and Yang</div>
+    <p>The principle of yin and yang sees the world as filled with <strong>complementary forces</strong> — action and non-action, light and dark, hot and cold, male and female. These are not opposites in conflict but complementary aspects of a unified whole.</p>
+    <div class="two-col">
+      <div class="col-box yin">
+        <h4>☽ Yin</h4>
+        <ul class="note-list">
+          <li>Female / receptive</li>
+          <li>Dark / night</li>
+          <li>Cold / water</li>
+          <li>Passive / resting</li>
+          <li>Earth / moon</li>
+        </ul>
+      </div>
+      <div class="col-box yang">
+        <h4>☀ Yang</h4>
+        <ul class="note-list">
+          <li>Male / assertive</li>
+          <li>Bright / day</li>
+          <li>Hot / fire</li>
+          <li>Active / moving</li>
+          <li>Heaven / sun</li>
+        </ul>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <strong>Key Insight:</strong> Each contains a seed of the other (the dots in the yin-yang symbol). Neither is purely good or bad — both are necessary. The goal is not to eliminate one but to achieve <em>balance</em>. Taoism reconciles many opposites on a higher level — this is the Way.
+    </div>
+
+    <div class="sub-heading">The Tao Is NOT God</div>
+    <ul class="note-list">
+      <li>The Tao is <strong>not worshipped</strong> — it is not God.</li>
+      <li>God(s) exist within the realm of Tao like <em>everything else</em> in the universe — deities are subject to Tao.</li>
+      <li>Taoism does have deities, usually borrowed from other cultures. All gods are part of and subject to Tao.</li>
+      <li>This makes Taoism unique: it is non-theistic at its philosophical core, yet polytheistic in its religious practice.</li>
+    </ul>
+  </div>
+
+  <!-- WHAT TAOISM PROMOTES -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>🌿</span><h3>What Taoism Promotes &amp; How to Apply It</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub-heading">Taoism Promotes</div>
+    <ul class="note-list">
+      <li><strong>Achieving harmony and unity with nature</strong> — in particular, the nature of yourself</li>
+      <li><strong>Living a virtuous life but in a humble way</strong> — not asserting virtue, just living it</li>
+      <li><strong>Self-development</strong> — learning your own nature (not changing it, but understanding and accepting it)</li>
+      <li><strong>Learning when to fight, to flee, or to flow</strong> in a given situation — wisdom is knowing which is appropriate</li>
+    </ul>
+
+    <div class="sub-heading">How to Apply Taoist Principles</div>
+    <ul class="note-list">
+      <li><strong>Be true to yourself</strong> — know your true nature and live from it</li>
+      <li>Connect to the world as you want to be treated</li>
+      <li>Connect or disconnect to those outside of your nature with a decisive action</li>
+      <li>Understand that you cannot change the nature of others — even yourself</li>
+      <li>To those unwilling to accept you for your true nature: wu-wei is required. Silently let them be themselves as you remain true to yourself.</li>
+      <li><strong>We own nothing</strong> — we are merely passing custodians of items and things. Do not become attached.</li>
+      <li>Men and women seem to have true equal roles — no hierarchy of gender</li>
+      <li>No set rules of "do's and don'ts"</li>
+      <li>No organizational hierarchy</li>
+    </ul>
+  </div>
+
+  <!-- PRACTICES -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>🧘</span><h3>Taoist Practices</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="practices-grid">
+      <div class="practice-card"><h4>Embryonic Breathing</h4><p>Holding the breath for extended periods while having inward visions. A meditative/mystical practice to connect with the Tao from within.</p></div>
+      <div class="practice-card"><h4>Meditation</h4><p>Quieting the mind and becoming receptive to the natural flow of Tao. Aligns the practitioner with Wu-wei.</p></div>
+      <div class="practice-card"><h4>Feng Shui</h4><p>Arranging homes, furniture, gardens, and household items to help the flow of Chi. The environment mirrors the Tao.</p></div>
+      <div class="practice-card"><h4>TCM / Acupuncture</h4><p>Traditional Chinese Medicine. Acupuncture stimulates Chi flow through meridians in the body. Tao and Chan Buddhism influence.</p></div>
+      <div class="practice-card"><h4>Kung Fu / Shaolin Martial Arts</h4><p>Martial arts combining Tao and Chan Buddhism — discipline, flow, and non-resistance.</p></div>
+      <div class="practice-card"><h4>Reading &amp; Chanting</h4><p>Reading and chanting scriptures — especially the Tao Te Ching. Sacred texts as a path to understanding the Way.</p></div>
+      <div class="practice-card"><h4>Tai Chi / Qigong</h4><p>Physical exercise to stimulate the flow of Chi. Slow, flowing movements mirror the natural rhythm of Tao. Qigong = "life energy cultivation."</p></div>
+      <div class="practice-card"><h4>Multi-faith Practice</h4><p>Taoism can be practiced in conjunction with other faiths — it is not exclusive. Many Chinese people practice Taoism alongside Buddhism and Confucianism simultaneously.</p></div>
+    </div>
+  </div>
+
+  <!-- ESCHATOLOGY -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>∞</span><h3>Eschatology — Where Do We Go After Death?</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <ul class="note-list">
+      <li>We <strong>"return" to Tao</strong>. Life and death are basically the same thing — Fu ensures the return. A drop returns to the ocean.</li>
+      <li><strong>There is no set eschatological belief</strong> — an adherent is free to believe what they want. This openness is characteristic of Taoism's non-dogmatic approach.</li>
+      <li>There is an aspect of <strong>spirits and demons</strong>, of <strong>heavenly or hellish realms</strong> — but this depends on what you want to believe. The religious dimension of Taoism (as opposed to the philosophical dimension) includes these cosmological layers.</li>
+      <li><strong>Ancestor worship</strong> — a significant element of Taoist religious practice. Ancestors are honored and may be consulted; their presence continues in the cosmic flow of Tao.</li>
+    </ul>
+    <div class="highlight-box">
+      <strong>Philosophy vs. Religion Distinction:</strong> Taoist <em>philosophy</em> sees death as simply returning to Tao — neither good nor bad, just transformation (Fu). Taoist <em>religion</em> includes heavens, hells, spirits, ancestor veneration, and deities. The IB may present sources from either dimension — identify which you are dealing with.
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAB 3: COMPARISON CHARTS ══ -->
+<div id="charts" class="tab-content">
+  <div class="chart-tabs">
+    <button class="chart-tab-btn active" onclick="showChart('key-concepts',this)">Key Concepts</button>
+    <button class="chart-tab-btn" onclick="showChart('yin-yang',this)">Yin &amp; Yang</button>
+    <button class="chart-tab-btn" onclick="showChart('philo-vs-religion',this)">Philosophy vs. Religion</button>
+    <button class="chart-tab-btn" onclick="showChart('crossreligion',this)">Taoism vs. Other Traditions</button>
+  </div>
+
+  <div class="chart-panel active" id="key-concepts">
+    <h3>Taoist Key Concepts — Quick Reference</h3>
+    <table class="compare-table">
+      <thead><tr><th>Concept</th><th>Meaning</th><th>Practice / Expression</th><th>IB Exam Note</th></tr></thead>
+      <tbody>
+        <tr><td>Tao</td><td>"The Way" — ultimate creative principle; original nature; cannot be fully named</td><td>Living in accord with nature; wu-wei; contemplation</td><td>NOT God. God(s) exist within Tao. The Tao is indefinable by design.</td></tr>
+        <tr><td>Wu-wei</td><td>Non-action / non-interference. Acting in harmony with nature's flow.</td><td>Meditation; waiting; flowing responses; Tai Chi</td><td>NOT "do nothing" — it means acting without forced assertion. Less is more.</td></tr>
+        <tr><td>Fu</td><td>Return to the roots; the law that all imbalance returns to balance</td><td>Acceptance of death; cycles of nature; non-attachment</td><td>Life and death are the same thing (Fu). We return to Tao.</td></tr>
+        <tr><td>Chi / Qi</td><td>The life force flowing through all things</td><td>Tai Chi, Qigong, acupuncture, feng shui, embryonic breathing</td><td>Blocking Chi causes disharmony, illness, and suffering.</td></tr>
+        <tr><td>Yin</td><td>Female, dark, receptive, cold, passive — one half of the cosmic unity</td><td>Receptive practices; the yin-yang symbol</td><td>Not "bad" — necessary and complementary to yang.</td></tr>
+        <tr><td>Yang</td><td>Male, bright, assertive, hot, active — one half of the cosmic unity</td><td>Active practices; martial arts</td><td>Not "good" by itself — only in balance with yin is harmony achieved.</td></tr>
+        <tr><td>Feng Shui</td><td>Arranging space to harmonize Chi flow</td><td>Home, garden, workplace arrangement</td><td>An applied expression of the Taoist principle that environment affects Chi.</td></tr>
+        <tr><td>Tao Te Ching</td><td>The sacred text of Taoism — "The Book of the Way and Its Power"</td><td>Reading, chanting, study</td><td>Attributed to Lao-Tzu; ~81 short chapters; Zhuangzi expanded its teachings.</td></tr>
+        <tr><td>Chan Buddhism</td><td>The blend of Taoism and Buddhism that emerged in China (~220 CE)</td><td>Meditation-focused Buddhism; Kung Fu / Shaolin</td><td>Chan = Chinese; Zen = Japanese form. Key cross-tradition concept.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-panel" id="yin-yang">
+    <h3>Yin &amp; Yang — The Complementary Forces</h3>
+    <table class="compare-table">
+      <thead><tr><th>Dimension</th><th>☽ Yin</th><th>☀ Yang</th></tr></thead>
+      <tbody>
+        <tr><td>Gender</td><td>Female</td><td>Male</td></tr>
+        <tr><td>Light</td><td>Dark / shadow</td><td>Bright / light</td></tr>
+        <tr><td>Temperature</td><td>Cold</td><td>Hot</td></tr>
+        <tr><td>Energy type</td><td>Receptive / passive</td><td>Assertive / active</td></tr>
+        <tr><td>Time</td><td>Night / winter</td><td>Day / summer</td></tr>
+        <tr><td>Elements</td><td>Water / earth</td><td>Fire / heaven</td></tr>
+        <tr><td>Direction</td><td>Inward / downward</td><td>Outward / upward</td></tr>
+        <tr><td>Nature</td><td>Yielding / soft</td><td>Firm / hard</td></tr>
+        <tr><td>Symbolic body</td><td>Moon / earth</td><td>Sun / sky</td></tr>
+        <tr><td>In the symbol</td><td>Dark half — contains white dot (seed of yang)</td><td>White half — contains black dot (seed of yin)</td></tr>
+        <tr><td>Taoist teaching</td><td colspan="2">Neither is superior. Both are necessary. Balance between them is harmony with Tao. Each contains the seed of the other — opposites are not truly opposed but complementary.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-panel" id="philo-vs-religion">
+    <h3>Taoism as Philosophy vs. Taoism as Religion</h3>
+    <table class="compare-table">
+      <thead><tr><th>Dimension</th><th>Taoist Philosophy</th><th>Taoist Religion</th></tr></thead>
+      <tbody>
+        <tr><td>Focus</td><td>The Way as a way of living; wisdom; nature; self-cultivation</td><td>Deities, rituals, temples, priests, sacred texts as liturgy</td></tr>
+        <tr><td>Key Texts</td><td>Tao Te Ching; Zhuangzi's writings — read as wisdom literature</td><td>Tao Te Ching + extensive religious canon; liturgical texts</td></tr>
+        <tr><td>Deities</td><td>Not worshipped; Tao is not God; gods exist within Tao</td><td>Many deities, often borrowed from other cultures; jade Emperor; local gods; ancestors</td></tr>
+        <tr><td>Eschatology</td><td>Return to Tao; life and death are the same (Fu); non-attachment</td><td>Heavens, hells, spirits, demons; ancestor worship; rebirth possible</td></tr>
+        <tr><td>Practice</td><td>Meditation, wu-wei, contemplation, Tai Chi, living simply</td><td>Temple rituals, priest ceremonies, exorcisms, festivals, ancestor veneration</td></tr>
+        <tr><td>Organization</td><td>No hierarchy; no set rules; self-directed</td><td>Taoist priests (Daoshi); temples; organized religious communities</td></tr>
+        <tr><td>Relationship to other faiths</td><td>Open — can be practiced alongside Buddhism, Confucianism</td><td>Can overlap with popular Chinese religion, Buddhism, and folk traditions</td></tr>
+        <tr><td>Key figures</td><td>Lao-Tzu (founder, uncertain); Zhuangzi (key philosopher)</td><td>Celestial Masters lineage; various religious Taoist patriarchs</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-panel" id="crossreligion">
+    <h3>Taoism vs. Buddhism vs. Sanatana Dharma — Key Comparisons</h3>
+    <table class="compare-table">
+      <thead><tr><th>Dimension</th><th>Taoism</th><th>Buddhism</th><th>Sanatana Dharma</th></tr></thead>
+      <tbody>
+        <tr><td>Ultimate Reality</td><td>Tao — indefinable Way; not God; creative principle</td><td>Dhamma — the Truth/teachings; ultimate = nirvana (cessation)</td><td>Brahman — ultimate reality; formless AND with form</td></tr>
+        <tr><td>The Self</td><td>True nature is the Tao — no permanent fixed self, but a flowing nature</td><td>Anatta — no permanent self; five aggregates</td><td>Atman — eternal, permanent soul identical with Brahman</td></tr>
+        <tr><td>Root of Suffering</td><td>Departing from the Way; civilization; forced action; blocked Chi</td><td>Tanha (craving) rooted in ignorance (maya)</td><td>Ignorance (avidya) of Atman = Brahman; attachment; karma</td></tr>
+        <tr><td>Path to Liberation</td><td>Wu-wei; living in harmony with Tao; releasing Chi; yin-yang balance</td><td>Four Noble Truths; Noble Eightfold Path; Three Jewels</td><td>Three Paths: Jnana, Bhakti, Karma Yoga; dharma; moksha</td></tr>
+        <tr><td>After Death</td><td>Return to Tao (Fu); no fixed eschatology; ancestor worship optional</td><td>Rebirth (samsara) until nirvana; no permanent soul continues</td><td>Rebirth (samsara) guided by karma; moksha = end of cycle</td></tr>
+        <tr><td>God / Deities</td><td>No God; deities exist within Tao and are subject to it</td><td>No creator God (Theravada); Mahayana has bodhisattvas and Buddhas</td><td>Brahman (formless) + many deities (Vishnu, Shiva, etc.)</td></tr>
+        <tr><td>Ethics</td><td>No fixed code; wu-wei; be true to self; non-attachment; equal gender roles</td><td>Five Precepts; Noble Eightfold Path (Right Action, Speech, etc.)</td><td>Dharma — caste-specific duty; the four Purusharthas</td></tr>
+        <tr><td>Attitude to Nature</td><td>Nature is sacred; civilization is the problem; return to simplicity</td><td>Nature is impermanent (anicca); not inherently evil but not ultimate</td><td>Nature is real (not illusion); cosmos follows dharmic order</td></tr>
+        <tr><td>Sacred Text</td><td>Tao Te Ching (attributed to Lao-Tzu)</td><td>Pali Canon / Tripitaka; Mahayana Sutras</td><td>Vedas (Shruti); Upanishads; Bhagavad Gita (Smriti)</td></tr>
+        <tr><td>Chan/Zen Buddhism</td><td>Taoism blended with Buddhism (~220 CE) → Chan Buddhism in China; Zen in Japan</td><td>Chan/Zen is a Mahayana Buddhist school deeply influenced by Taoism</td><td>Little direct overlap; both emerged in Asian context</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ TAB 4: ESSAY OUTLINES ══ -->
+<div id="essays" class="tab-content">
+  <div class="ib-tip">
+    <strong>IB Paper 2 Tips:</strong> Taoism essays often turn on the philosophy/religion distinction and the meaning of wu-wei. Always define your terms precisely — especially Tao (not God!) and wu-wei (not passivity!). Compare with Buddhism and Sanatana Dharma on nature, suffering, and liberation for cross-tradition questions.
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">1</div>
+      <h3>"Examine the concept of Wu-wei and its significance for Taoist ethics and practice."</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">Examine the concept of Wu-wei and its significance for Taoist ethics and practice. [30]</div>
+      <div class="outline-section"><h4>Introduction</h4><ul>
+        <li>Define Wu-wei — non-action, non-interference; accomplishing without forcing assertion</li>
+        <li>Context: Tao is the Way; humans depart from it through civilization and forced effort</li>
+        <li>Thesis: Wu-wei is the central ethical and practical principle of Taoism — it is not passivity but the art of aligned action</li>
+      </ul></div>
+      <div class="outline-section"><h4>The Problem Wu-wei Addresses</h4><ul>
+        <li>Human civilization tries to "improve" on nature → conflict and chaos</li>
+        <li>Forcing outcomes blocks Chi and creates imbalance</li>
+        <li>The centered person departs from forced assertion: "Less is more"</li>
+      </ul></div>
+      <div class="outline-section"><h4>What Wu-wei Is</h4><ul>
+        <li>Acting in alignment with the natural flow of Tao — like water flowing around stones</li>
+        <li>Knowing when to fight, flee, or flow — contextual wisdom, not a rule</li>
+        <li>Allowing others to be themselves without trying to change them</li>
+        <li>Non-attachment: "we own nothing; we are merely passing custodians"</li>
+      </ul></div>
+      <div class="outline-section"><h4>Wu-wei in Practice</h4><ul>
+        <li>Tai Chi and Qigong: physical embodiment of wu-wei — flowing movements, no forcing</li>
+        <li>Feng Shui: arranging the environment to allow Chi to flow naturally</li>
+        <li>Meditation: quieting the assertive mind to hear the Way</li>
+        <li>Embryonic breathing: inward vision through held breath — finding the natural rhythm</li>
+      </ul></div>
+      <div class="outline-section"><h4>Conclusion / Evaluation</h4><ul>
+        <li>Wu-wei is not moral relativism — it requires deep self-knowledge and courage</li>
+        <li>Compare: Buddhist Right Effort (also avoids extremes); Sikh gurmukh (flowing with God's will/hukam)</li>
+        <li>Evaluate: Is wu-wei practical as an ethical framework in modern society, or does it risk endorsing passivity in the face of injustice?</li>
+      </ul></div>
+      <div class="essay-tip">💡 The most common mistake on this essay is equating wu-wei with doing nothing. Always emphasize it is aligned action — like a skilled sailor who uses the wind rather than fighting it.</div>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">2</div>
+      <h3>"The Tao is not God." Examine the significance of this statement for Taoist theology.</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">"The Tao is not God." Examine the significance of this statement for understanding Taoist theology and practice. [30]</div>
+      <div class="outline-section"><h4>Introduction</h4><ul>
+        <li>The Tao is the ultimate creative principle of the universe — greater than us, yet our original nature</li>
+        <li>Define what Tao is and is not: not worshipped, not personal, not separate from the universe</li>
+        <li>Thesis: The non-theistic nature of the Tao shapes everything in Taoist practice — no prayer, no worship, no creator-creature divide</li>
+      </ul></div>
+      <div class="outline-section"><h4>The Tao vs. Theistic Gods</h4><ul>
+        <li>The Tao cannot be named: "The Tao that can be named is not the eternal Tao"</li>
+        <li>God(s) exist within the realm of Tao — all deities are subject to and part of Tao</li>
+        <li>Taoism has borrowed deities from other cultures — but they are not the Tao itself</li>
+        <li>No creator god who made the world from outside — the Tao IS the universe's creative principle</li>
+      </ul></div>
+      <div class="outline-section"><h4>Implications for Practice</h4><ul>
+        <li>No worship of the Tao itself — harmony replaces prayer</li>
+        <li>The goal is alignment, not pleasing a personal God</li>
+        <li>No doctrine of sin — only imbalance and departure from the Way</li>
+        <li>No set afterlife — return to Tao rather than judgment before God</li>
+      </ul></div>
+      <div class="outline-section"><h4>Comparison</h4><ul>
+        <li>Contrast with Sikhism: Waheguru is personal (Nirguna but relational — Nadar, Gurprasad)</li>
+        <li>Contrast with Sanatana Dharma: Brahman is ultimate reality but also worshipped through deities</li>
+        <li>Compare with Buddhism: both are non-theistic at their philosophical core; Tao ≠ Brahman ≠ nirvana but all three are "ultimate reality beyond personal God"</li>
+      </ul></div>
+      <div class="outline-section"><h4>Conclusion / Evaluation</h4><ul>
+        <li>The non-theistic Tao makes Taoism radically inclusive — it cannot exclude any religion because all deities exist within Tao</li>
+        <li>Evaluate: Does this make Taoism more or less effective as a framework for ethical living? Argue both.</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">3</div>
+      <h3>"Compare the Taoist and Buddhist understandings of suffering and its resolution."</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">Compare and contrast the Taoist and Buddhist understandings of suffering and its resolution. [30]</div>
+      <div class="outline-section"><h4>Introduction</h4><ul>
+        <li>Both Taoism and Buddhism emerged in the Axial Age as responses to human suffering</li>
+        <li>Both blended in China to form Chan Buddhism — showing compatibility</li>
+        <li>Thesis: Both diagnose suffering as a departure from natural harmony, but differ fundamentally in metaphysics and method</li>
+      </ul></div>
+      <div class="outline-section"><h4>The Cause of Suffering</h4><ul>
+        <li>Taoism: departing from the Tao; civilization forcing against nature; blocking Chi; yin-yang imbalance</li>
+        <li>Buddhism: tanha (craving/desire) rooted in maya (illusion) and anatta (no-self)</li>
+        <li>Similarity: both see suffering as rooted in going against the natural order</li>
+        <li>Difference: Taoism = structural disharmony; Buddhism = psychological craving</li>
+      </ul></div>
+      <div class="outline-section"><h4>The Path to Resolution</h4><ul>
+        <li>Taoism: Wu-wei (align with the flow); release Chi; balance yin and yang; contemplative life in nature</li>
+        <li>Buddhism: Four Noble Truths → Noble Eightfold Path; meditation; ethical conduct (sila)</li>
+        <li>Shared: meditation; non-attachment ("we own nothing" parallels Buddhist non-clinging); simplicity</li>
+        <li>Chan Buddhism shows how the paths merged: Zen meditation blends Buddhist mindfulness with Taoist flow</li>
+      </ul></div>
+      <div class="outline-section"><h4>The Ultimate Goal</h4><ul>
+        <li>Taoism: harmony with Tao; we are already there — realize it. Return to Tao at death (Fu).</li>
+        <li>Buddhism: nirvana — extinguishing of craving; end of samsara; pari-nirvana at death</li>
+        <li>Similarity: both see the goal as already present (we have the nature; we have the buddha-nature)</li>
+        <li>Difference: Buddhism focuses on individual liberation from craving; Taoism on cosmic harmony with the Way</li>
+      </ul></div>
+      <div class="outline-section"><h4>Conclusion / Evaluation</h4><ul>
+        <li>Both offer a non-theistic response to suffering that emphasizes harmony over salvation</li>
+        <li>Taoism's answer is more ecological and structural; Buddhism's is more psychological and systematic</li>
+        <li>Chan Buddhism's existence proves they are compatible — evaluate whether synthesis is always productive</li>
+      </ul></div>
+      <div class="essay-tip">💡 Chan/Zen Buddhism is the IB's best cross-tradition connection for Taoism. Use it to show how two traditions engaged, blended, and influenced each other.</div>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">4</div>
+      <h3>"Examine the role of nature in Taoist thought and practice."</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">Examine the role of nature in Taoist thought and practice. [30]</div>
+      <div class="outline-section"><h4>Introduction</h4><ul>
+        <li>Define: the Tao flows through nature; nature is the closest visible expression of the Way</li>
+        <li>Thesis: Nature is not merely a backdrop for Taoist practice — it is its most fundamental teacher and model</li>
+      </ul></div>
+      <div class="outline-section"><h4>Nature as the Expression of Tao</h4><ul>
+        <li>Everything flows out of Tao — nature demonstrates this constantly (seasons, water, growth, decay)</li>
+        <li>Fu: nature's cycles of return — winter to spring, death to regeneration</li>
+        <li>Yin and yang: nature is the original expression of complementary forces in balance</li>
+      </ul></div>
+      <div class="outline-section"><h4>Civilization as Nature's Enemy</h4><ul>
+        <li>"Civilization is the enemy of the centered human"</li>
+        <li>Humans try to improve on nature → conflict and chaos</li>
+        <li>Suffering comes from conquering nature and altering the Way of the universe</li>
+        <li>The Lao-Tzu quote: watch what you cultivate — your habits become your destiny</li>
+      </ul></div>
+      <div class="outline-section"><h4>Practices That Connect to Nature</h4><ul>
+        <li>Living a contemplative life in nature — solitude, simplicity, observation</li>
+        <li>Tai Chi and Qigong: movements that mirror water, wind, and natural forms</li>
+        <li>Feng Shui: arranging human environments to mirror natural Chi flow</li>
+        <li>Traditional Chinese Medicine: working with the body's natural energy (Chi) rather than against it</li>
+      </ul></div>
+      <div class="outline-section"><h4>Conclusion / Evaluation</h4><ul>
+        <li>Taoism's relationship to nature makes it one of the most ecologically resonant world religions today</li>
+        <li>Compare: Sanatana Dharma also honors nature (sacred rivers, animals, ahimsa) — but as divine creation; Taoism sees nature AS the Way itself</li>
+        <li>Evaluate: Does Taoism's rejection of civilization make it incompatible with modern life? Or does it offer a corrective wisdom?</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">5</div>
+      <h3>"Taoism's lack of fixed ethical rules makes it morally inadequate." Evaluate this claim.</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">"Taoism's lack of fixed ethical rules makes it morally inadequate as a guide for human life." Evaluate this claim. [30]</div>
+      <div class="outline-section"><h4>Introduction</h4><ul>
+        <li>Taoism has no set rules of "do's and don'ts," no organizational hierarchy, and no fixed ethical code</li>
+        <li>Thesis: While this appears to be a weakness, Taoism offers a sophisticated alternative ethics — one of alignment, self-knowledge, and contextual wisdom rather than rule-following</li>
+      </ul></div>
+      <div class="outline-section"><h4>The Case For the Claim (Rules Missing)</h4><ul>
+        <li>No equivalent to Buddhist Five Precepts or Sikh Rehat Maryada</li>
+        <li>No hierarchy to enforce moral standards</li>
+        <li>Eschatology is not fixed — "believe what you want" offers no moral motivation from afterlife</li>
+        <li>Without rules, practitioners may justify harmful behavior as "going with the flow"</li>
+      </ul></div>
+      <div class="outline-section"><h4>The Case Against the Claim (Ethics of Alignment)</h4><ul>
+        <li>Wu-wei provides a sophisticated ethical framework: do not force, do not harm, do not manipulate</li>
+        <li>"Be true to yourself" + "treat others as you want to be treated" — implicit reciprocity ethics</li>
+        <li>"We own nothing" — radical non-attachment as ethical principle (no theft, no greed)</li>
+        <li>Equal gender roles: no set hierarchy — genuinely egalitarian</li>
+        <li>The wisdom to know when to fight, flee, or flow is more sophisticated than following a fixed rule</li>
+      </ul></div>
+      <div class="outline-section"><h4>Conclusion / Evaluation</h4><ul>
+        <li>Taoism's ethics are process-oriented rather than rule-based — alignment with Tao produces right action naturally</li>
+        <li>Compare: Buddhist contextual ethics (upaya in Mahayana — skillful means) shows similar flexibility</li>
+        <li>Conclusion: The claim confuses the absence of rules with the absence of ethics. Taoism offers a virtue ethics of natural harmony.</li>
+      </ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAB 5: PRACTICE PAPERS ══ -->
+<div id="papers" class="tab-content">
+  <div class="ib-tip">
+    <strong>IB Format Reminder:</strong> Reference sources by letter. Identify whether the source represents Taoism as philosophy or as religion — this distinction matters. Use terms precisely: Tao (not God), wu-wei (not "laziness"), Chi (not "soul").
+  </div>
+
+  <div class="paper-section">
+    <div class="paper-section-header">
+      <h3>Practice Paper 1 — Source Analysis</h3>
+      <p>Taoism · Answer all questions · Reference sources by letter</p>
+    </div>
+    <div class="paper-body">
+
+      <div class="source-box">
+        <div class="source-label">Source A — Tao Te Ching, Chapter 8 (Lao-Tzu, attributed, trans. adapted)</div>
+        <p>"The supreme good is like water, which nourishes all things without trying to. It is content with the low places that people disdain. Thus it is like the Tao. In dwelling, live close to the ground. In thinking, keep to the simple. In conflict, be fair and generous. In governing, don't try to control. In work, do what you enjoy. In family life, be completely present. When you are content to be simply yourself and don't compare or compete, everybody will respect you."</p>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Source B — A Contemporary Taoist Practitioner on Tai Chi (adapted)</div>
+        <p>"Every morning before sunrise, I practice Tai Chi in the garden. There is no forcing here — I do not push the air; I move through it. My teacher says: be like water. Water does not try to be water. It simply flows, fills the low places, and never loses itself. When I finish, I feel the Chi moving freely through my body again — the places that were tight have loosened, and the thoughts that were tangled have quieted. This is not religion. This is simply learning to be in accord with what is."</p>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">Question 1</span><span class="q-marks">3 marks</span>
+        <div class="q-text">According to Source A, what qualities does water have, and how does Lao-Tzu use these to describe the Tao?</div>
+        <div class="answer-toggle"><button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button></div>
+        <div class="model-answer">Source A describes water as: (1) <em>nourishing all things without trying</em> — effortlessly beneficial (illustrating wu-wei); (2) <em>content with low places people disdain</em> — humble and non-assertive (like the Tao, which does not impose itself); (3) <em>like the Tao</em> — Lao-Tzu uses water as a direct metaphor for the Tao's nature: yielding yet powerful, life-giving yet effortless. The passage then translates these qualities into practical ethics: live simply, keep to the simple (in thinking), be fair in conflict, don't control (in governing). The water metaphor teaches that the greatest power comes from alignment with the Way, not from assertion or force — this is the core principle of wu-wei.</div>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">Question 2</span><span class="q-marks">5 marks</span>
+        <div class="q-text">Using Source B and your own knowledge, explain how Tai Chi expresses the Taoist principle of wu-wei and the concept of Chi.</div>
+        <div class="answer-toggle"><button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button></div>
+        <div class="model-answer"><strong>Model Answer:</strong> Source B presents Tai Chi as a physical embodiment of two core Taoist principles: wu-wei and Chi. The practitioner describes "no forcing here — I do not push the air; I move through it" — this is a direct description of wu-wei (non-interference, acting in alignment rather than assertion). The instruction to "be like water" echoes Source A's water metaphor from the Tao Te Ching. Water does not try to be water; it simply flows — and so the Tai Chi practitioner does not try to impose form, but allows movement to arise naturally. This is the essence of wu-wei: not passivity, but aligned, effortless action. Source B also describes Chi (the life force): "I feel the Chi moving freely through my body again — the places that were tight have loosened." This reveals Tai Chi's therapeutic function as a practice that stimulates and unblocks Chi flow. Blocked Chi causes physical and mental disharmony — disharmony with the Tao. Tai Chi restores the natural flow. The practitioner's final comment — "This is not religion. This is simply learning to be in accord with what is" — reflects Taoism's ability to be practiced as philosophy without religious belief. It is a practice of alignment with the Tao, accessible without doctrine.</div>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">Question 3</span><span class="q-marks">5 marks</span>
+        <div class="q-text">Using both sources and your own knowledge, explain the Taoist understanding of the human condition and the path to harmony.</div>
+        <div class="answer-toggle"><button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button></div>
+        <div class="model-answer"><strong>Model Answer:</strong> Both sources illuminate the Taoist diagnosis of the human condition and its resolution. The human problem, according to Taoism, is <em>departure from the Tao</em> — our original nature is the Way itself, but civilization's attempts to "improve" on nature have created conflict and chaos. Suffering comes from forced assertion, comparing and competing (Source A warns "don't compare or compete"), and blocking the natural flow of Chi (Source B describes tightness and tangled thoughts before Tai Chi). The path to harmony has several dimensions. First, wu-wei: Source A illustrates this through water — accomplishing without forcing, living close to the ground, not trying to control. Source B shows this in physical practice — moving through the air rather than pushing it. Second, releasing Chi: Source B describes how Tai Chi restores free Chi flow — "the places that were tight have loosened." Chi is the life force; blocking it creates disharmony with the Tao. Third, balance of yin and yang: the complementary forces in the universe must be reconciled. The quiet, early-morning practice of Tai Chi in the garden (yin) before sunrise brings balance to a life otherwise filled with activity (yang). Fourth, Fu — the law of return: the Tao ensures that what is out of balance returns to balance. Human effort is about removing the obstacles to that natural return, not forcing an outcome. Ultimately, the Taoist answer to the human condition is: "We are already there — we just have to realize it."</div>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">Question 4</span><span class="q-marks">10 marks</span>
+        <div class="q-text">Using both sources and your own knowledge, compare the Taoist and Buddhist approaches to the problem of suffering.</div>
+        <div class="answer-toggle"><button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button></div>
+        <div class="model-answer"><strong>Model Answer (Key Points):</strong><br><br>
+        <strong>Introduction:</strong> Both Taoism and Buddhism emerged in Asia during the Axial Age and both identify the root of suffering in a departure from natural harmony — yet they differ substantially in diagnosis and method. Significantly, the two traditions blended in China to produce Chan Buddhism (~220 CE), the ancestor of Zen — suggesting deep compatibility alongside difference.<br><br>
+        <strong>Shared Diagnosis:</strong> Both traditions see suffering as rooted in going against the natural order. Source A's water metaphor illustrates Taoism's diagnosis: suffering arises from comparing, competing, trying to control — from not being "content to be simply yourself." Buddhism similarly identifies tanha (craving/desire) as the root of suffering — the grasping that arises when we cannot accept things as they are. Both also value non-attachment: Source B's practitioner "simply flows" without clinging; Buddhism teaches non-clinging as the path to nirvana.<br><br>
+        <strong>Key Differences in Diagnosis:</strong> Taoism locates suffering in structural disharmony with the Tao — civilization itself is the problem. Buddhism locates suffering in psychological craving (tanha) arising from ignorance (maya) of the self's true nature. For Taoism, the enemy is civilization; for Buddhism, the enemy is craving within the mind.<br><br>
+        <strong>Different Paths:</strong> Taoism's path is wu-wei (aligned non-interference), releasing Chi (Source B), and returning to natural simplicity. Buddhism's path is the Noble Eightfold Path — a structured ethical and meditative program. Taoism has no fixed code; Buddhism has systematic guidelines. Yet both converge in meditation — Source B's practitioner in the garden echoes Buddhist mindfulness practice.<br><br>
+        <strong>Evaluation:</strong> The existence of Chan/Zen Buddhism proves these traditions are compatible. Yet they remain distinct: Taoism is more ecological (nature as teacher), Buddhism more psychological (mind as the arena of liberation). Neither posits a creator God; both offer non-theistic wisdom applicable across religious traditions — Taoism says it explicitly: "Taoism can be practiced in conjunction with other faiths."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="paper-section">
+    <div class="paper-section-header">
+      <h3>Practice Paper 2 — Extended Essay Questions</h3>
+      <p>Choose one · Plan before writing · ~600–800 words</p>
+    </div>
+    <div class="paper-body">
+      <div class="p2-question">
+        <strong>Question 1.</strong> "Wu-wei is the most important concept in Taoism." To what extent do you agree? <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Define wu-wei carefully (not passivity — aligned action). Argue its centrality: it connects Tao (theory) to practice; it governs ethics, politics, personal life, martial arts, medicine. Counter: Is the Tao itself more fundamental? Is Chi equally important? Evaluate which concept is most theologically central vs. most practically significant.</div>
+      </div>
+      <div class="p2-question">
+        <strong>Question 2.</strong> Compare the Taoist concept of Fu (return) with the Buddhist concept of samsara (rebirth). To what extent do they describe the same reality? <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Fu = invariable law that all imbalance returns to balance; life and death are the same thing; we return to Tao. Samsara = cycle of rebirth driven by karma and craving; escape is the goal. Similarities: both involve cyclical processes; both are resolved by harmony/nirvana. Differences: Fu is natural and neutral (not a problem to escape); samsara is a trap driven by craving. Chan Buddhism: how do the two concepts coexist in one tradition?</div>
+      </div>
+      <div class="p2-question">
+        <strong>Question 3.</strong> "Civilization is the enemy of the centered human." Evaluate this Taoist claim in light of at least one other religious tradition. <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Taoism: civilization forces against nature; creates conflict/chaos; blocks Chi. Compare Buddhism: civilization is not the enemy — craving within the mind is. Compare Sikhism: civilization is where gurmukh living is practiced (honest work, langar, gurdwara). Evaluate: Is the Taoist anti-civilization stance coherent? Does it account for the social justice traditions in Sikhism and Buddhism that work within civilization to reform it?</div>
+      </div>
+      <div class="p2-question">
+        <strong>Question 4.</strong> Examine how yin and yang express the Taoist understanding of reality, ethics, and liberation. <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Yin-yang as cosmology (the structure of reality — complementary forces). Yin-yang as ethics (no fixed good/evil; balance is the goal; gender equality). Yin-yang and liberation (reconciling opposites on a higher level; returning to Tao through balance). The symbol: each contains seed of the other. Compare with other traditions' use of complementary pairs (Brahman/Atman; nirvana/samsara as ultimately the same in Mahayana).</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(id,btn){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
+function toggleNote(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('open');}
+function toggleEssay(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('open');}
+function showChart(id,btn){document.querySelectorAll('.chart-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.chart-tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
+function toggleAnswer(btn){const a=btn.closest('.answer-toggle').nextElementSibling;a.classList.toggle('open');btn.textContent=a.classList.contains('open')?'Hide Answer':'Reveal Model Answer';}
+
+const cards=[
+  {term:"Tao",hint:"The Way — impossible to fully define",def:"'The Way.' The ultimate creative principle of the universe — everything greater than us, yet also our original nature. All things are unified and connected through the Tao. It cannot be fully named or described.",note:"The Tao is NOT God. God(s) exist within the realm of Tao. 'The Tao that can be named is not the eternal Tao.' — Tao Te Ching, Ch.1"},
+  {term:"Wu-wei",hint:"Non-action — but NOT passivity",def:"Non-action / non-interference. Accomplishing tasks without forced assertion. Those in harmony with the flow of Tao can accomplish more than those who assert themselves. 'Less is more.' Sometimes the best action is to wait.",note:"IB CRITICAL: Wu-wei is NOT doing nothing. It is acting in alignment with the natural flow — like water flowing around stones. The key question: when to fight, flee, or flow?"},
+  {term:"Fu",hint:"Return — the invariable law",def:"Return to the beginning; the invariable law of nature that ensures everything returns to a balanced state. What becomes unbalanced will return to balance. Life and death are basically the same thing (Fu) — we 'return' to Tao.",note:"Fu is why Taoism is not pessimistic about death — return to Tao is natural, like water returning to the sea. Also called the 'law of return to roots.'"},
+  {term:"Chi / Qi",hint:"The life force — don't block it",def:"The vital life force that flows through all living things and through the universe. Blocking Chi creates disharmony, illness, and suffering. Taoist practices (Tai Chi, Qigong, acupuncture, feng shui) all aim to stimulate and harmonize Chi flow.",note:"Chi connects Taoist philosophy to Taoist medicine (TCM) and martial arts. Kung Fu, Tai Chi, and acupuncture all work with Chi. Feng Shui arranges environments to help Chi flow."},
+  {term:"Yin",hint:"Dark, receptive, female force",def:"The receptive, dark, female principle in the universe. Yin qualities: female, dark, cold, passive, night, earth, water. One half of the complementary yin-yang unity — not evil or inferior, but necessary.",note:"Each yin carries a seed of yang (the white dot in the dark half of the symbol). Neither force is complete without the other."},
+  {term:"Yang",hint:"Bright, assertive, male force",def:"The assertive, bright, male principle in the universe. Yang qualities: male, bright, hot, active, day, heaven, fire. One half of the complementary yin-yang unity — not good by itself, only in balance with yin.",note:"Excessive yang (pure assertion/force) leads to imbalance. Wu-wei is largely about restraining excessive yang and allowing yin's receptive wisdom."},
+  {term:"Feng Shui",hint:"Arranging space for Chi flow",def:"The practice of arranging homes, furniture, gardens, and household items to help the natural flow of Chi. An applied expression of Taoist principles — the environment mirrors the Tao, and harmonizing it affects health and well-being.",note:"One of the most widely recognized Taoist practices globally. Rooted in the principle that Chi flows through spaces just as it flows through the body."},
+  {term:"Tao Te Ching",hint:"The sacred text of Taoism",def:"'The Book of the Way and Its Power.' The primary sacred text of Taoism, attributed to Lao-Tzu. ~81 short, poetic chapters on the nature of Tao, wu-wei, and the art of living in harmony with the Way.",note:"Zhuangzi (369–286 BCE) expanded the teachings of the Tao Te Ching. The text is used for reading and chanting (scripture practice). It is both philosophical and religious in use."},
+  {term:"Lao-Tzu",hint:"The (uncertain) founder",def:"Traditionally considered the founder of Taoism and author of the Tao Te Ching. His historicity is uncertain — he may be legendary. Key quote: 'Watch your thoughts; they become words... Watch your character; it becomes your destiny.'",note:"His uncertainty as a founder is itself very Taoist — the Way does not need a named founder. Compare with Jainism (Mahavira, certain) and Buddhism (Siddhartha, historical) for contrast."},
+  {term:"Zhuangzi / Chuang Tzu",hint:"Key philosopher of Taoism",def:"Zhuangzi (c. 369–286 BCE) expanded the teachings of Tao in the Tao Te Ching and his own writings. A key philosophical figure who developed Taoist thought through parable and paradox.",note:"Zhuangzi is known for vivid philosophical parables — e.g., the butterfly dream ('Am I a man who dreamed of being a butterfly, or a butterfly dreaming of being a man?') — expressing the fluidity of self and the Tao."},
+  {term:"Chan Buddhism",hint:"Tao + Buddhism blended",def:"The blend of Taoism and Buddhism that emerged in China around 220 CE. Chan Buddhism emphasizes meditation and direct experience over scripture — deeply influenced by Taoist wu-wei and natural simplicity. Chan = Chinese; Zen = Japanese form.",note:"Kung Fu / Shaolin martial arts emerge from the Chan Buddhist (Tao + Buddhism) tradition. Chan Buddhism shows Taoism's compatibility with other faiths — it can be practiced alongside other traditions."},
+  {term:"Tai Chi / Qigong",hint:"Physical expression of wu-wei",def:"Physical exercises that stimulate the flow of Chi. Tai Chi features slow, flowing movements that mirror natural Taoist principles (wu-wei, yin-yang balance). Qigong = 'life energy cultivation' — breathing and movement practice.",note:"Source B in Paper 1 describes Tai Chi practice. Note: 'I do not push the air; I move through it' — this IS wu-wei in physical form."},
+  {term:"TCM / Acupuncture",hint:"Traditional Chinese Medicine",def:"Traditional Chinese Medicine — a system of healing rooted in Taoist principles. Acupuncture stimulates Chi flow through energy meridians in the body. The goal is to restore natural balance rather than fight disease with external force.",note:"TCM is practiced in conjunction with Taoism and Chan Buddhism. It is one of the most globally widespread applications of Taoist principles."},
+  {term:"Embryonic Breathing",hint:"Inward vision meditation",def:"A Taoist meditative practice involving holding the breath for extended periods while having inward visions. Aims to connect the practitioner with the Tao from within — a deep form of contemplative self-knowledge.",note:"One of the more esoteric Taoist practices. Reflects the tradition's emphasis on internal cultivation and the discovery of one's original Taoist nature."},
+  {term:"Warring States Period / Axial Age",hint:"The historical context of Taoism",def:"The Warring States Period (~475–221 BCE) was an era of political upheaval and civilizational crisis in China as the Zhou Dynasty collapsed. Taoism emerged as a response — offering an alternative to the chaos of competing states.",note:"The Axial Age (~800–200 BCE) is the global term for this period of spiritual awakening. Taoism, Buddhism, Jainism, Greek philosophy, and the Hebrew prophets all emerged during this era."},
+  {term:"Ancestor Worship",hint:"Taoist religious practice",def:"Honoring and venerating ancestors as part of Taoist religious practice. Ancestors continue in the cosmic flow of Tao after death and may be consulted or remembered through ritual.",note:"Part of the religious (not just philosophical) dimension of Taoism. Connects to the eschatological view that we return to Tao — ancestors are not gone but transformed."},
+  {term:"The Human Condition (Taoist)",hint:"We are already there — but lost",def:"Tao is our original nature. Nothing is evil — but things are out of balance because humans departed from the Way. Civilization's attempt to improve on nature creates conflict and chaos. We are already in harmony with Tao; we must simply realize it.",note:"Key contrast with other traditions: Taoism does NOT say we need to escape the world, earn liberation, or follow commandments. We need to return to what we already are."}
+];
+
+let currentCard=0,cardOrder=cards.map((_,i)=>i);
+function renderCard(){const c=cards[cardOrder[currentCard]];document.getElementById('cardTerm').textContent=c.term;document.getElementById('cardHint').textContent=c.hint;document.getElementById('cardDef').textContent=c.def;document.getElementById('cardNote').textContent=c.note;document.getElementById('counter').textContent=`${currentCard+1} / ${cards.length}`;document.getElementById('progressBar').style.width=`${((currentCard+1)/cards.length)*100}%`;document.getElementById('mainCard').classList.remove('flipped');}
+function flipCard(){document.getElementById('mainCard').classList.toggle('flipped');}
+function nextCard(){currentCard=(currentCard+1)%cardOrder.length;renderCard();}
+function prevCard(){currentCard=(currentCard-1+cardOrder.length)%cardOrder.length;renderCard();}
+function shuffleCards(){for(let i=cardOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[cardOrder[i],cardOrder[j]]=[cardOrder[j],cardOrder[i]];}currentCard=0;renderCard();}
+document.addEventListener('keydown',e=>{if(document.getElementById('flashcards').classList.contains('active')){if(e.key==='ArrowRight')nextCard();else if(e.key==='ArrowLeft')prevCard();else if(e.key===' '){e.preventDefault();flipCard();}}});
+renderCard();
+</script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IB World Religions — Study Guides</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --dark: #0d0d0d;
+    --surface: #141414;
+    --card-bg: #1a1a1a;
+    --border: rgba(201,168,76,0.18);
+    --text: #e8e0d0;
+    --muted: #8a8070;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Crimson Text', Georgia, serif;
+    background: var(--dark);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 5rem 2rem 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-symbol {
+    font-size: 3.2rem;
+    letter-spacing: 0.8rem;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+  .hero h1 span {
+    color: var(--gold);
+    display: block;
+    font-size: 0.65em;
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 0.3rem;
+    letter-spacing: 0.08em;
+  }
+  .gold-bar {
+    width: 180px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 2rem auto;
+    opacity: 0.6;
+  }
+  .hero-sub {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── BADGES ── */
+  .badges {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin: 2rem auto 0;
+    max-width: 600px;
+  }
+  .badge {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--border);
+    color: var(--gold-light);
+    font-size: 0.78rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── GRID ── */
+  .grid-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+  .section-label {
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+  }
+
+  /* ── RELIGION CARD ── */
+  .rcard {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.6rem 1.8rem;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .rcard::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent-color, var(--gold));
+    opacity: 0.85;
+  }
+  .rcard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    border-color: rgba(201,168,76,0.4);
+  }
+  .rcard-symbol {
+    font-size: 2.4rem;
+    line-height: 1;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .rcard-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.2rem;
+  }
+  .rcard-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .rcard-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+  .rcard-tag {
+    font-size: 0.72rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    color: var(--muted);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .rcard-arrow {
+    position: absolute;
+    bottom: 1.4rem;
+    right: 1.6rem;
+    font-size: 1rem;
+    color: var(--gold);
+    opacity: 0;
+    transition: opacity 0.2s, right 0.2s;
+  }
+  .rcard:hover .rcard-arrow { opacity: 1; right: 1.2rem; }
+
+  /* ── FEATURES STRIP ── */
+  .features {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255,255,255,0.02);
+    padding: 2rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .feat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .feat-icon { font-size: 1.5rem; }
+  .feat-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  .feat-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-symbol">ॐ ✡ ✝ ☪ ☸ ☯ 🪬 🕉</span>
+  <h1>IB World Religions
+    <span>Interactive Study Guides</span>
+  </h1>
+  <div class="gold-bar"></div>
+  <p class="hero-sub">Paper 1 &amp; Paper 2 Exam Preparation</p>
+  <div class="badges">
+    <span class="badge">Flashcards</span>
+    <span class="badge">Summary Notes</span>
+    <span class="badge">Comparison Charts</span>
+    <span class="badge">Essay Outlines</span>
+    <span class="badge">Practice Papers</span>
+  </div>
+</div>
+
+<div class="features">
+  <div class="feat">
+    <span class="feat-icon">📚</span>
+    <span class="feat-label">Religions Covered</span>
+    <span class="feat-val">8</span>
+  </div>
+  <div class="feat">
+    <span class="feat-icon">🃏</span>
+    <span class="feat-label">Total Flashcards</span>
+    <span class="feat-val">160+</span>
+  </div>
+  <div class="feat">
+    <span class="feat-icon">📝</span>
+    <span class="feat-label">Practice Papers</span>
+    <span class="feat-val">8 Sets</span>
+  </div>
+  <div class="feat">
+    <span class="feat-icon">✍️</span>
+    <span class="feat-label">Essay Outlines</span>
+    <span class="feat-val">40+</span>
+  </div>
+</div>
+
+<div class="grid-section">
+  <p class="section-label">Select a religion to begin studying</p>
+  <div class="cards-grid">
+
+    <a class="rcard" href="Sanatana_Dharma_Study_Guide.html"
+       style="--accent-color: #7B1A1A;">
+      <span class="rcard-symbol">ॐ</span>
+      <div class="rcard-name">Sanatana Dharma</div>
+      <div class="rcard-sub">Hinduism</div>
+      <div class="rcard-tags">
+        <span class="rcard-tag">Dharma</span>
+        <span class="rcard-tag">Karma</span>
+        <span class="rcard-tag">Moksha</span>
+        <span class="rcard-tag">Brahman</span>
+      </div>
+      <span class="rcard-arrow">→</span>
+    </a>
+
+    <a class="rcard" href="Jainism_Study_Guide.html"
+       style="--accent-color: #1A5C5C;">
+      <span class="rcard-symbol">🕊</span>
+      <div class="rcard-name">Jainism</div>
+      <div class="rcard-sub">Dharmic tradition</div>
+      <div class="rcard-tags">
+        <span class="rcard-tag">Ahimsa</span>
+        <span class="rcard-tag">Anekantavada</span>
+        <span class="rcard-tag">Tirthankara</span>
+      </div>
+      <span class="rcard-arrow">→</span>
+    </a>
+
+    <a class="rcard" href="Buddhism_Study_Guide.html"
+       style="--accent-color: #1e2d5e;">
+      <span class="rcard-symbol">☸</span>
+      <div class="rcard-name">Buddhism</div>
+      <div class="rcard-sub">Dharmic tradition</div>
+      <div class="rcard-tags">
+        <span class="rcard-tag">Four Noble Truths</span>
+        <span class="rcard-tag">Nirvana</span>
+        <span class="rcard-tag">Sangha</span>
+      </div>
+      <span class="rcard-arrow">→</span>
+    </a>
+
+    <a class="rcard" href="Sikhism_Study_Guide.html"
+       style="--accent-color: #c96a00;">
+      <span class="rcard-symbol">🪬</span>
+      <div class="rcard-name">Sikhism</div>
+      <div class="rcard-sub">Monotheistic tradition</div>
+      <div class="rcard-tags">
+        <span class="rcard-tag">Waheguru</span>
+        <span class="rcard-tag">5 Ks</span>
+        <span class="rcard-tag">Guru Granth Sahib</span>
+      </div>
+      <span class="rcard-arrow">→</span>
+    </a>
+
+    <a class="rcard" href="Taoism_Study_Guide.html"
+       style="--accent-color: #1a3d2e;">
+      <span class="rcard-symbol">☯</span>
+      <div class="rcard-name">Taoism</div>
+      <div class="rcard-sub">Chinese tradition</div>
+      <div class="rcard-tags">
+        <span class="rcard-tag">Tao</span>
+        <span class="rcard-tag">Wu Wei</span>
+        <span class="rcard-tag">Yin-Yang</span>
+      </div>
+      <span class="rcard-arrow">→</span>
+    </a>
+
+    <a class="rcard" href="Judaism_Study_Guide.html"
+       style="--accent-color: #1a3a6e;">
+      <span class="rcard-symbol">✡</span>
+      <div class="rcard-name">Judaism</div>
+      <div class="rcard-sub">Abrahamic tradition</div>
+      <div class="rcard-tags">
+        <span class="rcard-tag">Torah</span>
+        <span class="rcard-tag">Covenant</span>
+        <span class="rcard-tag">Tikkun Olam</span>
+      </div>
+      <span class="rcard-arrow">→</span>
+    </a>
+
+    <a class="rcard" href="Christianity_Study_Guide.html"
+       style="--accent-color: #3a1a5c;">
+      <span class="rcard-symbol">✝</span>
+      <div class="rcard-name">Christianity</div>
+      <div class="rcard-sub">Abrahamic tradition</div>
+      <div class="rcard-tags">
+        <span class="rcard-tag">Trinity</span>
+        <span class="rcard-tag">Incarnation</span>
+        <span class="rcard-tag">Resurrection</span>
+      </div>
+      <span class="rcard-arrow">→</span>
+    </a>
+
+    <a class="rcard" href="Islam_Study_Guide.html"
+       style="--accent-color: #0d4a28;">
+      <span class="rcard-symbol">☪</span>
+      <div class="rcard-name">Islam</div>
+      <div class="rcard-sub">Abrahamic tradition</div>
+      <div class="rcard-tags">
+        <span class="rcard-tag">Tawhid</span>
+        <span class="rcard-tag">Five Pillars</span>
+        <span class="rcard-tag">Quran</span>
+      </div>
+      <span class="rcard-arrow">→</span>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  IB World Religions · Paper 1 &amp; Paper 2 · Interactive Study Suite
+</footer>
+
+</body>
+</html>

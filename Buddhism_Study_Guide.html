@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buddhism — IB World Religions Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1e2d5e;
+    --primary-light: #2e4080;
+    --secondary: #3d6b9e;
+    --accent: #c9a227;
+    --accent-light: #e8c95a;
+    --bg: #f0eff5;
+    --bg-card: #ffffff;
+    --bg-section: #eaecf5;
+    --text: #1a1a2e;
+    --text-light: #4a4a6a;
+    --border: #b0b8d8;
+    --theravada: #2e6e3e;
+    --mahayana: #6e2e5e;
+    --highlight: #fff3cd;
+    --shadow: rgba(30,45,94,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Crimson Text', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  .site-nav {
+    background: var(--primary);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    border-bottom: 3px solid var(--accent);
+  }
+  .site-nav span {
+    color: rgba(255,255,255,0.5);
+    font-family: 'Crimson Text', serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+  .site-nav a {
+    color: var(--accent-light);
+    text-decoration: none;
+    font-family: 'Crimson Text', serif;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .site-nav a:hover { background: var(--accent); color: var(--primary); }
+  .site-nav a.current { background: var(--accent); color: var(--primary); font-weight: 600; }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #0d1a3e 0%, #1e2d5e 50%, #2e4080 100%);
+    color: white;
+    text-align: center;
+    padding: 50px 20px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '☸';
+    position: absolute;
+    font-size: 220px;
+    opacity: 0.06;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 1;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 1;
+  }
+  header p {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.1rem;
+    color: var(--accent-light);
+    margin-top: 8px;
+    letter-spacing: 0.06em;
+    position: relative;
+    z-index: 1;
+  }
+  .ib-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--primary);
+    font-family: 'Crimson Text', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-top: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── TABS ── */
+  .tab-bar {
+    display: flex;
+    background: var(--primary);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-bottom: 3px solid var(--accent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    scrollbar-width: none;
+  }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex: 1 0 auto;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.65);
+    padding: 14px 20px;
+    cursor: pointer;
+    font-family: 'Crimson Text', serif;
+    font-size: 14px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--accent-light); background: rgba(255,255,255,0.05); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); background: rgba(201,162,39,0.08); }
+
+  /* ── MAIN CONTENT ── */
+  .tab-content { display: none; padding: 28px 20px 60px; max-width: 1000px; margin: 0 auto; }
+  .tab-content.active { display: block; }
+
+  /* ── IB TIP BOX ── */
+  .ib-tip {
+    background: #fff8e1;
+    border-left: 5px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 15px;
+    color: #5a4000;
+  }
+  .ib-tip strong { color: #3a2800; font-weight: 600; }
+
+  /* ═══════════════════════════════
+     TAB 1 — FLASHCARDS
+  ═══════════════════════════════ */
+  .flashcard-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .fc-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Crimson Text', serif;
+    font-size: 15px;
+    transition: background 0.2s;
+  }
+  .fc-btn:hover { background: var(--primary-light); }
+  .fc-btn.accent { background: var(--accent); color: var(--primary); font-weight: 600; }
+  .fc-btn.accent:hover { background: var(--accent-light); }
+  .fc-counter {
+    margin-left: auto;
+    font-family: 'Crimson Text', serif;
+    color: var(--text-light);
+    font-size: 15px;
+  }
+
+  .card-scene {
+    width: 100%;
+    max-width: 680px;
+    height: 280px;
+    margin: 0 auto 24px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  .card-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-inner.flipped { transform: rotateY(180deg); }
+  .card-face {
+    position: absolute;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 32px;
+    text-align: center;
+    box-shadow: 0 8px 32px var(--shadow);
+  }
+  .card-front {
+    background: linear-gradient(135deg, #1e2d5e, #2e4080);
+    color: white;
+  }
+  .card-back {
+    background: linear-gradient(135deg, #f5f4fa, #eaecf5);
+    color: var(--text);
+    transform: rotateY(180deg);
+  }
+  .card-front .card-term {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .card-front .card-hint {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    color: var(--accent-light);
+    font-size: 1rem;
+  }
+  .card-back .card-def {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .card-back .card-note {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    width: 100%;
+  }
+  .flip-hint {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 28px;
+  }
+  .progress-bar-wrap {
+    background: var(--border);
+    border-radius: 20px;
+    height: 6px;
+    max-width: 680px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 20px;
+    transition: width 0.35s ease;
+  }
+
+  /* ═══════════════════════════════
+     TAB 2 — SUMMARY NOTES
+  ═══════════════════════════════ */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary);
+    color: white;
+    padding: 13px 18px;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 14px;
+    transition: background 0.2s;
+  }
+  .section-header:hover { background: var(--primary-light); }
+  .section-header .icon { font-size: 1.2em; }
+  .section-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+    flex: 1;
+  }
+  .section-header .chevron {
+    font-size: 12px;
+    transition: transform 0.3s;
+    color: var(--accent-light);
+  }
+  .section-header.open .chevron { transform: rotate(180deg); }
+
+  .section-body {
+    display: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 20px 22px;
+    margin-bottom: 4px;
+  }
+  .section-body.open { display: block; }
+
+  .fact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 12px 0;
+  }
+  .fact-card {
+    background: var(--bg-section);
+    border-radius: 8px;
+    padding: 14px 16px;
+    border-left: 4px solid var(--accent);
+  }
+  .fact-card .label {
+    font-family: 'Crimson Text', serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+  .fact-card .value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .term-def {
+    margin: 8px 0;
+    padding: 10px 14px;
+    border-left: 3px solid var(--secondary);
+    background: var(--bg-section);
+    border-radius: 0 6px 6px 0;
+  }
+  .term-def strong {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .note-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  .note-list li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    border-bottom: 1px solid rgba(176,184,216,0.3);
+  }
+  .note-list li:last-child { border-bottom: none; }
+  .note-list li::before {
+    content: '☸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 12px;
+    top: 10px;
+  }
+
+  .sub-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 1.05rem;
+    margin: 16px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  .highlight-box {
+    background: var(--highlight);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 15px;
+  }
+  .highlight-box strong { color: #5a3000; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 12px 0;
+  }
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+  .col-box {
+    background: var(--bg-section);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .col-box.theravada { border-top: 4px solid var(--theravada); }
+  .col-box.mahayana { border-top: 4px solid var(--mahayana); }
+  .col-box h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .col-box.theravada h4 { color: var(--theravada); }
+  .col-box.mahayana h4 { color: var(--mahayana); }
+
+  .steps-list {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  .steps-list li {
+    counter-increment: step;
+    padding: 8px 8px 8px 44px;
+    position: relative;
+    border-bottom: 1px solid rgba(176,184,216,0.3);
+  }
+  .steps-list li:last-child { border-bottom: none; }
+  .steps-list li::before {
+    content: counter(step);
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    width: 26px;
+    height: 26px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Crimson Text', serif;
+  }
+  .steps-list li strong { color: var(--primary); }
+
+  /* ═══════════════════════════════
+     TAB 3 — COMPARISON CHARTS
+  ═══════════════════════════════ */
+  .chart-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .chart-tab-btn {
+    background: var(--bg-section);
+    border: 2px solid var(--border);
+    border-radius: 24px;
+    padding: 7px 16px;
+    cursor: pointer;
+    font-family: 'Crimson Text', serif;
+    font-size: 14px;
+    color: var(--text-light);
+    transition: all 0.2s;
+  }
+  .chart-tab-btn:hover { border-color: var(--secondary); color: var(--primary); }
+  .chart-tab-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
+
+  .chart-panel { display: none; }
+  .chart-panel.active { display: block; }
+
+  .chart-panel h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--accent);
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    box-shadow: 0 2px 12px var(--shadow);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .compare-table th {
+    background: var(--primary);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+  .compare-table th:first-child { background: #0d1a3e; }
+  .compare-table th.theravada-h { background: var(--theravada); }
+  .compare-table th.mahayana-h { background: var(--mahayana); }
+  .compare-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--bg-section); }
+  .compare-table tr:nth-child(odd) td { background: var(--bg-card); }
+  .compare-table td:first-child {
+    font-weight: 600;
+    color: var(--primary);
+    background: #eaecf5 !important;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.92rem;
+  }
+
+  /* ═══════════════════════════════
+     TAB 4 — ESSAY OUTLINES
+  ═══════════════════════════════ */
+  .essay-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .essay-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(90deg, #1e2d5e, #2e4080);
+    color: white;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .essay-header:hover { filter: brightness(1.1); }
+  .essay-num {
+    background: var(--accent);
+    color: var(--primary);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .essay-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.98rem;
+    flex: 1;
+    line-height: 1.35;
+  }
+  .essay-header .chevron {
+    font-size: 12px;
+    transition: transform 0.3s;
+    color: var(--accent-light);
+  }
+  .essay-header.open .chevron { transform: rotate(180deg); }
+  .essay-body {
+    display: none;
+    padding: 20px 22px;
+  }
+  .essay-body.open { display: block; }
+
+  .essay-q {
+    background: var(--bg-section);
+    border-left: 4px solid var(--accent);
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 15px;
+  }
+  .outline-section {
+    margin-bottom: 14px;
+  }
+  .outline-section h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary);
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+  .outline-section ul {
+    list-style: disc;
+    padding-left: 22px;
+    font-size: 15px;
+  }
+  .outline-section ul li { margin-bottom: 4px; }
+  .essay-tip {
+    background: #e8f4e8;
+    border: 1px solid #8bc48b;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #2a5a2a;
+    margin-top: 12px;
+  }
+
+  /* ═══════════════════════════════
+     TAB 5 — PRACTICE PAPERS
+  ═══════════════════════════════ */
+  .paper-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 10px var(--shadow);
+    overflow: hidden;
+  }
+  .paper-section-header {
+    background: linear-gradient(90deg, #0d1a3e, #1e2d5e);
+    color: white;
+    padding: 16px 22px;
+  }
+  .paper-section-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  .paper-section-header p {
+    color: var(--accent-light);
+    font-size: 13px;
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+  .paper-body { padding: 22px; }
+
+  .source-box {
+    background: #f8f7ff;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+  .source-box .source-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .source-box p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  .question-block {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .question-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .q-label {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    font-family: 'Crimson Text', serif;
+  }
+  .q-marks {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-family: 'Crimson Text', serif;
+  }
+  .q-text {
+    font-size: 16px;
+    margin: 8px 0 12px;
+    line-height: 1.5;
+  }
+
+  .answer-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .reveal-btn {
+    background: none;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Crimson Text', serif;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  .reveal-btn:hover { background: var(--primary); color: white; }
+  .model-answer {
+    display: none;
+    background: var(--bg-section);
+    border-left: 4px solid var(--theravada);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .model-answer.open { display: block; }
+  .model-answer strong { color: var(--primary); }
+
+  .p2-question {
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .p2-question .marks {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-family: 'Crimson Text', serif;
+  }
+  .essay-prompt {
+    color: var(--text-light);
+    font-size: 14px;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .compare-table { font-size: 13px; }
+    .compare-table th, .compare-table td { padding: 8px 10px; }
+    .flashcard-controls { gap: 6px; }
+    .fc-btn { padding: 8px 12px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Site Navigation -->
+<nav class="site-nav">
+  <span>IB WORLD RELIGIONS</span>
+  <a href="Sanatana_Dharma_Study_Guide.html">Sanatana Dharma</a>
+  <a href="Jainism_Study_Guide.html">Jainism</a>
+  <a href="Buddhism_Study_Guide.html" class="current">Buddhism</a>
+  <a href="Sikhism_Study_Guide.html">Sikhism</a>
+  <a href="Taoism_Study_Guide.html">Taoism</a>
+  <a href="Judaism_Study_Guide.html">Judaism</a>
+  <a href="Christianity_Study_Guide.html">Christianity</a>
+  <a href="Islam_Study_Guide.html">Islam</a>
+</nav>
+
+<!-- Header -->
+<header>
+  <h1>Buddhism</h1>
+  <p>IB World Religions — Comprehensive Study Guide</p>
+  <div class="ib-badge">Paper 1 &amp; Paper 2 Preparation</div>
+</header>
+
+<!-- Tab Bar -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('flashcards', this)">☸ Flashcards</button>
+  <button class="tab-btn" onclick="showTab('notes', this)">📖 Summary Notes</button>
+  <button class="tab-btn" onclick="showTab('charts', this)">📊 Comparison Charts</button>
+  <button class="tab-btn" onclick="showTab('essays', this)">✍ Essay Outlines</button>
+  <button class="tab-btn" onclick="showTab('papers', this)">📝 Practice Papers</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 1 — FLASHCARDS
+══════════════════════════════════════════ -->
+<div id="flashcards" class="tab-content active">
+
+  <div class="ib-tip">
+    <strong>⚠ Critical IB Distinction:</strong> <em>Dhamma/Dharma</em> in Buddhism means the <strong>teachings of the Historical Buddha / the Truth</strong>. This is NOT the same as Dharma in Sanatana Dharma (duty/law). Always clarify which tradition you are discussing.
+  </div>
+
+  <div class="flashcard-controls">
+    <button class="fc-btn" onclick="prevCard()">← Prev</button>
+    <button class="fc-btn" onclick="flipCard()">Flip</button>
+    <button class="fc-btn" onclick="nextCard()">Next →</button>
+    <button class="fc-btn accent" onclick="shuffleCards()">⇄ Shuffle</button>
+    <span class="fc-counter" id="counter">1 / 18</span>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressBar" style="width:5.6%"></div>
+  </div>
+
+  <div class="card-scene" onclick="flipCard()">
+    <div class="card-inner" id="mainCard">
+      <div class="card-face card-front">
+        <div class="card-term" id="cardTerm">Dukkha / Dukha</div>
+        <div class="card-hint" id="cardHint">The First Mark of Existence</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="card-def" id="cardDef">Suffering / unsatisfactoriness. The fundamental characteristic of conditioned existence. Three types: (1) physical pain, (2) suffering of change/loss, (3) suffering from illusion/maya.</div>
+        <div class="card-note" id="cardNote">First Noble Truth: Life is dukkha. The "illness" in the medical metaphor of the Four Noble Truths.</div>
+      </div>
+    </div>
+  </div>
+  <p class="flip-hint">Click card or press Space to flip · Arrow keys to navigate</p>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 2 — SUMMARY NOTES
+══════════════════════════════════════════ -->
+<div id="notes" class="tab-content">
+
+  <div class="ib-tip">
+    <strong>IB Key Tip:</strong> Always use <em>both</em> the Pali and Sanskrit terms where possible (e.g. "Dukkha/Dukha", "Nibbana/Nirvana"). Showing awareness of Theravada vs Mahayana distinctions earns higher marks.
+  </div>
+
+  <!-- ESSENTIAL FACTS -->
+  <div class="section-header open" onclick="toggleNote(this)">
+    <span class="icon">📌</span>
+    <h3>Essential Facts at a Glance</h3>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body open">
+    <div class="fact-grid">
+      <div class="fact-card"><div class="label">Founder</div><div class="value">Siddhartha Gautama (Historical Buddha)</div></div>
+      <div class="fact-card"><div class="label">Dates</div><div class="value">~560–480 BCE</div></div>
+      <div class="fact-card"><div class="label">Origin</div><div class="value">Northern India (Kapilavastu / Bodhi Gaya)</div></div>
+      <div class="fact-card"><div class="label">Caste of Origin</div><div class="value">Kshatriya (warrior/ruling class)</div></div>
+      <div class="fact-card"><div class="label">First Sermon</div><div class="value">Benares / Varanasi (Deer Park)</div></div>
+      <div class="fact-card"><div class="label">Death</div><div class="value">Age 80 — Pari-nirvana</div></div>
+      <div class="fact-card"><div class="label">Theravada</div><div class="value">~38% of Buddhists · SE Asia, Sri Lanka</div></div>
+      <div class="fact-card"><div class="label">Mahayana</div><div class="value">~62% of Buddhists · China, Japan, Tibet, Nepal</div></div>
+    </div>
+  </div>
+
+  <!-- LIFE OF SIDDHARTHA -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span class="icon">🏯</span>
+    <h3>Life of Siddhartha Gautama</h3>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <ul class="note-list">
+      <li><strong>Born ~560 BCE</strong> as a Kshatriya prince in Kapilavastu. His father sheltered him from all suffering.</li>
+      <li><strong>The Four Sights:</strong> An old man (aging), a sick man (illness), a corpse (death), a wandering ascetic (spiritual freedom). These confronted him with dukkha and inspired his spiritual quest.</li>
+      <li><strong>The Great Renunciation:</strong> Siddhartha left his palace, wife, and child to seek liberation — mirroring Mahavira in method but differing in conclusions.</li>
+      <li><strong>Extreme asceticism:</strong> Like Mahavira, he practiced harsh self-mortification — starving himself nearly to death. Unlike Mahavira, he rejected this as counterproductive.</li>
+      <li><strong>The Bodhi Tree:</strong> Sitting under a fig/bodhi tree at Bodhi Gaya, he meditated deeply and faced temptation by the demon Mara (fear, desire, social duty). He overcame Mara and attained enlightenment → <em>semi-nirvana</em> (still alive).</li>
+      <li><strong>The Middle Path:</strong> Between extreme indulgence (palace life) and extreme asceticism — neither too tight nor too loose, like a lute string.</li>
+      <li><strong>First Sermon at Benares (Varanasi)</strong> to 5 former companions (bhikkhus) — taught the Four Noble Truths and Eightfold Path. This launched the first Sangha.</li>
+      <li><strong>Death at age 80:</strong> Entered <em>pari-nirvana</em> (final nirvana at death) — no more rebirth.</li>
+    </ul>
+    <div class="highlight-box">
+      <strong>IB Comparison Hook:</strong> Both Siddhartha (Buddhism) and Mahavira (Jainism) were Kshatriya princes who rejected caste privilege and practiced extreme asceticism — but Buddhism rejected the extreme (Middle Way), while Jainism embraced it (Five Mahavratas). Buddhism emerged ~6th century BCE as a reaction to Sanatana Dharma caste rigidity.
+    </div>
+  </div>
+
+  <!-- HUMAN CONDITION -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span class="icon">🌀</span>
+    <h3>The Human Condition</h3>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <p>All humans are caught in <strong>samsara</strong> (cycle of rebirth and re-death), characterized by:</p>
+    <ul class="note-list">
+      <li><strong>Maya</strong> — illusion/delusion: we mistake the impermanent for permanent, the self for a fixed entity</li>
+      <li><strong>Tanha/Trishna</strong> — craving/desire: the root cause of our suffering and continued rebirth</li>
+      <li><strong>Aversion/Hatred</strong> — pushing away what we dislike, rooted in the same ignorance as craving</li>
+    </ul>
+    <p style="margin-top:10px;">These three (delusion, craving, aversion) feed the cycle of <strong>kamma/karma</strong> — actions that determine the quality of future rebirths.</p>
+
+    <div class="sub-heading">Eschatology — What Happens After Death?</div>
+    <div class="two-col">
+      <div class="col-box theravada">
+        <h4>Theravada Goal: Arahant/Arhat</h4>
+        <ul class="note-list">
+          <li>Enlightened individual who will <em>not</em> reincarnate after death</li>
+          <li>Attains nibbana/nirvana — cessation of craving, full liberation</li>
+          <li>The "selfish" path (critics say) — personal liberation only</li>
+        </ul>
+      </div>
+      <div class="col-box mahayana">
+        <h4>Mahayana Goal: Bodhisattva</h4>
+        <ul class="note-list">
+          <li>Enlightened being who <em>chooses rebirth</em> to help others attain liberation</li>
+          <li>Embodies karuna (compassion) above personal nirvana</li>
+          <li>Example: Avalokiteshvara / Kwan Yin (bodhisattva of compassion)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-heading">Two Types of Nirvana</div>
+    <ul class="note-list">
+      <li><strong>Semi-nirvana (Nibbana while alive):</strong> Attained at enlightenment — cessation of craving/delusion while still living in a body. Siddhartha experienced this under the Bodhi Tree.</li>
+      <li><strong>Pari-nirvana (Final nirvana at death):</strong> The complete cessation — no more rebirth. Attained at physical death after achieving enlightenment. Siddhartha's death at 80.</li>
+    </ul>
+  </div>
+
+  <!-- THREE MARKS / AGGREGATES -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span class="icon">🔱</span>
+    <h3>Three Marks of Existence &amp; Five Aggregates</h3>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub-heading">Three Marks of Existence (Tilakkhaṇa)</div>
+    <div class="term-def"><strong>Dukkha / Dukha</strong> — Suffering / unsatisfactoriness. The fundamental quality of conditioned existence. All things conditioned by craving lead to dissatisfaction.</div>
+    <div class="term-def"><strong>Anicca / Anitya</strong> — Impermanence. All things are in constant flux. Nothing conditioned is permanent — attachment to impermanent things causes dukkha. The sand mandala demonstrates this vividly.</div>
+    <div class="term-def"><strong>Anatta / Anatman</strong> — No-self / no-soul. There is no permanent, unchanging self or soul. What we call "self" is a combination of the Five Aggregates in flux. This directly contradicts the Hindu concept of Atman.</div>
+    <div class="highlight-box">
+      <strong>IB Contrast:</strong> Sanatana Dharma teaches Atman (eternal soul that reincarnates). Buddhism teaches Anatta — there is NO eternal soul. Ask: if there is no self, what is it that reincarnates? Buddhism's answer: the aggregates/consciousness stream, driven by karma — not a fixed soul.
+    </div>
+
+    <div class="sub-heading">Five Aggregates (Khandhas/Skandhas)</div>
+    <p>What we call the "self" is actually a combination of five constantly changing aggregates:</p>
+    <ol class="steps-list">
+      <li><strong>Form / Matter (Rupa):</strong> The physical body — the material component</li>
+      <li><strong>Sensation (Vedana):</strong> Feelings — pleasant, unpleasant, or neutral responses to stimuli</li>
+      <li><strong>Perception (Sanna/Samjna):</strong> Recognition and identification of objects</li>
+      <li><strong>Mental Formation (Sankhara/Samskara):</strong> Volition, intentions, mental habits — the seat of karma</li>
+      <li><strong>Consciousness (Vinnana/Vijnana):</strong> Awareness; the basic knowing function</li>
+    </ol>
+    <p style="margin-top:10px;">None of these aggregates, alone or together, constitutes a permanent self. They arise and pass away interdependently.</p>
+  </div>
+
+  <!-- FOUR NOBLE TRUTHS -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span class="icon">💊</span>
+    <h3>The Four Noble Truths</h3>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="highlight-box">
+      <strong>Medical Metaphor — The "Great Physician":</strong> The Buddha diagnosed the human condition like a doctor: (1) Name the illness → (2) Find the cause → (3) Determine if cure exists → (4) Prescribe the cure.
+    </div>
+
+    <ol class="steps-list">
+      <li>
+        <strong>Dukkha — The Illness:</strong> Life is suffering. Three types of dukkha:<br>
+        · Physical pain and discomfort<br>
+        · The suffering of change and loss (impermanence)<br>
+        · Existential suffering from maya/illusion (even pleasant states are unsatisfactory because impermanent)
+      </li>
+      <li>
+        <strong>Samudaya — The Cause:</strong> Dukkha arises from tanha (craving/desire). The 12-fold chain of dependent origination (Paticca-samuppada) explains how ignorance → craving → suffering → rebirth. Three roots of craving: greed, hatred, delusion.
+      </li>
+      <li>
+        <strong>Nirodha — The Prognosis:</strong> Cessation of dukkha is possible. Nirvana/nibbana — the complete extinguishing of craving — is achievable. Two forms: semi-nirvana (while alive) and pari-nirvana (at death).
+      </li>
+      <li>
+        <strong>Magga — The Cure:</strong> The Noble Eightfold Path / Middle Way. The practical road map to liberation.
+      </li>
+    </ol>
+  </div>
+
+  <!-- NOBLE EIGHTFOLD PATH -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span class="icon">🛤</span>
+    <h3>The Noble Eightfold Path (Middle Way)</h3>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <p>Eight interconnected practices forming three categories — not a linear sequence but a holistic, simultaneous way of living:</p>
+
+    <div class="sub-heading">Panna / Prajna — Wisdom</div>
+    <div class="term-def"><strong>1. Right View (Samma Ditthi):</strong> Understanding the Four Noble Truths, the Three Marks of Existence, karma, and the nature of reality.</div>
+    <div class="term-def"><strong>2. Right Intention (Samma Sankappa):</strong> Intention of renunciation (non-attachment), non-ill-will (loving kindness), and non-cruelty (compassion).</div>
+
+    <div class="sub-heading">Sila — Ethical Conduct</div>
+    <div class="term-def"><strong>3. Right Speech (Samma Vaca):</strong> No lying, divisive, harsh, or idle talk. Truthful and kind communication.</div>
+    <div class="term-def"><strong>4. Right Action (Samma Kammanta):</strong> No killing, stealing, or sexual misconduct. The basis of the Five Precepts.</div>
+    <div class="term-def"><strong>5. Right Livelihood (Samma Ajiva):</strong> No occupation that harms living beings — no weapons trade, no slave trade, no butchering, no intoxicant production.</div>
+
+    <div class="sub-heading">Bhavana — Mental Discipline</div>
+    <div class="term-def"><strong>6. Right Effort (Samma Vayama):</strong> Cultivating wholesome mental states; preventing and abandoning unwholesome states.</div>
+    <div class="term-def"><strong>7. Right Mindfulness (Samma Sati):</strong> Mindful awareness of body, feelings, mind, and phenomena — the foundation of meditation.</div>
+    <div class="term-def"><strong>8. Right Concentration (Samma Samadhi):</strong> Meditative concentration developing through the four jhanas (meditative absorptions) to deep stillness and insight.</div>
+
+    <div class="highlight-box">
+      <strong>Theravada Practice:</strong> Vipassana meditation (insight meditation) — systematic mindfulness. <br>
+      <strong>Mahayana:</strong> Diverse — includes Zen (koan meditation), Pure Land (devotion to Amitabha), Vajrayana (mantra/tantra/mandala).
+    </div>
+  </div>
+
+  <!-- THREE JEWELS / FIVE PRECEPTS -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span class="icon">💎</span>
+    <h3>Three Jewels, Five Precepts &amp; Lay Practice</h3>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub-heading">Three Jewels / Triple Refuge (Triratna)</div>
+    <p>The foundational commitment of all Buddhists — recited formally as an act of taking refuge:</p>
+    <div class="term-def"><strong>"I take refuge in the Buddha"</strong> — the Historical Buddha as teacher and example of liberation</div>
+    <div class="term-def"><strong>"I take refuge in the Dhamma"</strong> — the teachings, the Truth about reality</div>
+    <div class="term-def"><strong>"I take refuge in the Sangha"</strong> — the worldwide community of practitioners (monastic and lay)</div>
+
+    <div class="sub-heading">Five Precepts (Pañcasila) — Lay Buddhist Ethics</div>
+    <ol class="steps-list">
+      <li>Refrain from taking life (ahimsa principle — similar to Jainism but not absolute)</li>
+      <li>Refrain from taking what is not given (no stealing)</li>
+      <li>Refrain from sexual misconduct</li>
+      <li>Refrain from false speech (no lying)</li>
+      <li>Refrain from intoxicants that cloud the mind</li>
+    </ol>
+    <div class="highlight-box">
+      <strong>Note:</strong> Buddhist ahimsa is NOT as absolute as Jain ahimsa. Theravada monks may eat meat if they did not see, hear, or suspect the animal was killed for them (three-fold purity rule). Jains are strict vegetarians. Some Mahayana traditions emphasize vegetarianism more strongly.
+    </div>
+
+    <div class="sub-heading">Sangha — The Community</div>
+    <ul class="note-list">
+      <li>Worldwide community — both monastic (monks/bhikkhus and nuns/bhikkhunis) and lay practitioners</li>
+      <li>Theravada: strong monastic tradition, monks as primary practitioners; lay support monks through dana (giving)</li>
+      <li>Mahayana: more emphasis on lay practice; bodhisattva path available to all</li>
+    </ul>
+  </div>
+
+  <!-- THERAVADA VS MAHAYANA SPLIT -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span class="icon">🌿</span>
+    <h3>The Sangha Split: Theravada vs Mahayana</h3>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <p>Approximately 100 years after the Buddha's death, the Sangha split. The two main traditions diverged significantly:</p>
+    <div class="two-col">
+      <div class="col-box theravada">
+        <h4>☘ Theravada ("Way of the Elders")</h4>
+        <ul class="note-list">
+          <li>~38% of world Buddhists</li>
+          <li>SE Asia, Sri Lanka, Cambodia, Thailand, Burma</li>
+          <li>Ideal: <strong>Arahant</strong> — personal liberation, will not reincarnate</li>
+          <li>Scripture: <strong>Pali Canon only</strong> (Tripitaka)</li>
+          <li>Meditation: <strong>Vipassana</strong> (insight meditation)</li>
+          <li>Not strict vegetarians (three-fold purity rule for meat)</li>
+          <li>Simple, restrained art/images of the Buddha</li>
+          <li>Strong monastic tradition</li>
+        </ul>
+      </div>
+      <div class="col-box mahayana">
+        <h4>🪷 Mahayana ("Great Vehicle")</h4>
+        <ul class="note-list">
+          <li>~62% of world Buddhists</li>
+          <li>China, Korea, Japan, Tibet, Nepal, Vietnam</li>
+          <li>Ideal: <strong>Bodhisattva</strong> — chooses rebirth to help others</li>
+          <li>Scripture: Pali Canon <strong>+ Mahayana Sutras</strong> (Diamond, Heart, Lotus)</li>
+          <li>Diverse: Zen, Pure Land, Vajrayana, Chan</li>
+          <li>Elaborate art, thangkas, mandalas, rich iconography</li>
+          <li>Lay practice more accessible; bodhisattva path for all</li>
+          <li>Dalai Lama (Vajrayana/Tibetan), Kwan Yin/Avalokiteshvara</li>
+          <li>Uses <strong>upaya</strong> — skillful means (any method that helps beings toward liberation)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-heading">Mahayana Offshoots</div>
+    <ul class="note-list">
+      <li><strong>Chan (China) / Zen (Japan):</strong> Meditation-focused; koans; direct experience over scripture</li>
+      <li><strong>Pure Land:</strong> Devotion to Amitabha Buddha; rebirth in the "Western Paradise" / Pure Land as a stepping stone to nirvana</li>
+      <li><strong>Vajrayana / Tibetan Buddhism:</strong> Uses tantras, mantras, mudras, mandalas; esoteric practices; Dalai Lama tradition</li>
+    </ul>
+  </div>
+
+  <!-- SACRED TEXTS -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span class="icon">📜</span>
+    <h3>Sacred Texts</h3>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub-heading">Pali Canon / Tripitaka (All traditions)</div>
+    <div class="term-def"><strong>Vinaya Pitaka:</strong> "Basket of Discipline" — rules for monastic life, codes of conduct for monks and nuns</div>
+    <div class="term-def"><strong>Sutta Pitaka:</strong> "Basket of Discourses" — the teachings/sayings of the Buddha. Contains the <em>Dhammapada</em> (the most widely read Buddhist text — a collection of the Buddha's verses)</div>
+    <div class="term-def"><strong>Abhidhamma Pitaka:</strong> "Basket of Higher Teaching" — systematic philosophical and psychological analysis</div>
+
+    <div class="sub-heading">Mahayana Sutras (Mahayana only)</div>
+    <ul class="note-list">
+      <li><strong>Diamond Sutra:</strong> On non-attachment and the emptiness of phenomena (sunyata)</li>
+      <li><strong>Heart Sutra:</strong> On emptiness — "Form is emptiness, emptiness is form"</li>
+      <li><strong>Lotus Sutra:</strong> On universal buddhahood and the bodhisattva path — foundational for many Mahayana schools</li>
+    </ul>
+
+    <div class="sub-heading">Vajrayana Tantras</div>
+    <p>Esoteric texts used in Tibetan Buddhism — include mantras, ritual instructions, visualization practices.</p>
+
+    <div class="sub-heading">Three Dharma Seals (Mahayana)</div>
+    <p>Three marks that authenticate a teaching as Buddhist: (1) All conditioned phenomena are impermanent (anicca), (2) All conditioned phenomena are dukkha, (3) All phenomena are without self (anatta).</p>
+  </div>
+
+  <!-- RITUALS AND FESTIVALS -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span class="icon">🪔</span>
+    <h3>Rituals, Worship &amp; Festivals</h3>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub-heading">Core Practices</div>
+    <ul class="note-list">
+      <li><strong>Three Jewels Recitation:</strong> Taking refuge in Buddha, Dhamma, Sangha — the foundational Buddhist commitment</li>
+      <li><strong>Puja:</strong> Devotional offerings (flowers, incense, light, food) before Buddha images — more common in Mahayana</li>
+      <li><strong>Bhavana / Meditation:</strong> Central to all traditions — Vipassana (Theravada), Zen (Chan), visualization (Vajrayana)</li>
+      <li><strong>Pilgrimage:</strong> To sacred sites — Bodhi Gaya (enlightenment), Benares/Varanasi (first sermon), Kapilavastu (birth), Kushinagar (pari-nirvana)</li>
+      <li><strong>Dana (Giving):</strong> Lay people give food and support to monks; generates positive karma</li>
+    </ul>
+
+    <div class="sub-heading">Worship Objects (especially Mahayana)</div>
+    <ul class="note-list">
+      <li><strong>Rupa:</strong> Buddha images/statues — focal points of devotion and meditation</li>
+      <li><strong>Mudras:</strong> Sacred hand gestures of the Buddha — each has specific meaning (teaching, protection, meditation, earth-touching)</li>
+      <li><strong>Thangkas:</strong> Tibetan painted scrolls depicting Buddhas, bodhisattvas, and cosmological diagrams</li>
+      <li><strong>Mandalas:</strong> Sacred geometric diagrams representing the universe/cosmos — used in Vajrayana meditation; bell (awakening) and thunderbolt/vajra (enlightenment) are key ritual objects</li>
+      <li><strong>Sand Mandalas:</strong> Mainly Mahayana/Vajrayana — intricately created from colored sand, then destroyed to demonstrate anicca (impermanence); sand thrown into a river, representing 4 directions; no two are the same</li>
+      <li><strong>Stupas:</strong> Dome-shaped structures containing Buddhist relics — sites of pilgrimage and veneration</li>
+    </ul>
+
+    <div class="sub-heading">Key Festivals</div>
+    <div class="term-def"><strong>Wesak / Vaisakhi (Theravada):</strong> Full moon of May — commemorates the birth, enlightenment, AND death of the Buddha (all believed to have occurred on the same day). The most important Buddhist festival.</div>
+    <div class="term-def"><strong>Asala / Dhamma Day:</strong> Commemorates Siddhartha's conception, renunciation, and the first sermon at Benares.</div>
+    <div class="term-def"><strong>Mahayana New Year:</strong> Celebrated in spring — varies by culture (Chinese New Year, Tibetan Losar, etc.)</div>
+    <div class="term-def"><strong>Obon / Ullambana (Mahayana):</strong> Festival honoring ancestors and the departed — reflects the Mahayana emphasis on compassion for all beings across rebirths.</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 3 — COMPARISON CHARTS
+══════════════════════════════════════════ -->
+<div id="charts" class="tab-content">
+
+  <div class="chart-tabs">
+    <button class="chart-tab-btn active" onclick="showChart('tv-mv', this)">Theravada vs Mahayana</button>
+    <button class="chart-tab-btn" onclick="showChart('4nt', this)">Four Noble Truths</button>
+    <button class="chart-tab-btn" onclick="showChart('nep', this)">Noble Eightfold Path</button>
+    <button class="chart-tab-btn" onclick="showChart('key-terms', this)">Key Terms Summary</button>
+    <button class="chart-tab-btn" onclick="showChart('crossreligion', this)">Buddhism vs Jainism vs S. Dharma</button>
+  </div>
+
+  <!-- Chart 1: Theravada vs Mahayana -->
+  <div class="chart-panel active" id="tv-mv">
+    <h3>Theravada vs Mahayana — Side by Side</h3>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th class="theravada-h">Theravada</th>
+          <th class="mahayana-h">Mahayana</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Meaning</td><td>"Way of the Elders"</td><td>"Great Vehicle"</td></tr>
+        <tr><td>% of World Buddhists</td><td>~38%</td><td>~62%</td></tr>
+        <tr><td>Geographic Spread</td><td>Sri Lanka, Thailand, Burma, Cambodia, Laos</td><td>China, Japan, Korea, Tibet, Nepal, Vietnam</td></tr>
+        <tr><td>Ideal Being</td><td>Arahant/Arhat — personal liberation, no rebirth</td><td>Bodhisattva — enlightened, chooses rebirth for others</td></tr>
+        <tr><td>Sacred Texts</td><td>Pali Canon / Tripitaka only</td><td>Pali Canon + Mahayana Sutras (Diamond, Heart, Lotus) + Vajrayana Tantras</td></tr>
+        <tr><td>Meditation Style</td><td>Vipassana (insight meditation)</td><td>Zen/Chan, Pure Land devotion, Vajrayana visualization</td></tr>
+        <tr><td>Art / Images</td><td>Simple, restrained Buddha images</td><td>Elaborate: thangkas, mandalas, bodhisattva iconography</td></tr>
+        <tr><td>Diet</td><td>Not strictly vegetarian (three-fold purity rule)</td><td>Many emphasize vegetarianism (esp. Chinese)</td></tr>
+        <tr><td>Lay Practice</td><td>Supports monastic path; lay role = dana</td><td>Bodhisattva path accessible to lay practitioners</td></tr>
+        <tr><td>Key Figures</td><td>The Historical Buddha; local monks</td><td>Dalai Lama; Avalokiteshvara / Kwan Yin; Amitabha</td></tr>
+        <tr><td>Key Concept</td><td>Nibbana through personal effort</td><td>Upaya (skillful means); karuna (compassion) for all</td></tr>
+        <tr><td>When Sangha Split</td><td>~100 years after Buddha's death</td><td>~100 years after Buddha's death</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Chart 2: Four Noble Truths -->
+  <div class="chart-panel" id="4nt">
+    <h3>The Four Noble Truths — Structure &amp; Content</h3>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Truth</th>
+          <th>Name (Pali)</th>
+          <th>Medical Metaphor</th>
+          <th>Content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>First</td><td>Dukkha</td><td>The Illness</td><td>Life is suffering. Three types: physical pain, suffering of change/loss, existential suffering from maya.</td></tr>
+        <tr><td>Second</td><td>Samudaya</td><td>The Cause</td><td>Dukkha arises from tanha (craving/desire). Three roots: greed, hatred, delusion. 12-fold chain of dependent origination.</td></tr>
+        <tr><td>Third</td><td>Nirodha</td><td>The Prognosis</td><td>Cessation is possible. Nirvana — extinguishing of craving — is achievable. Two forms: semi-nirvana (alive) and pari-nirvana (at death).</td></tr>
+        <tr><td>Fourth</td><td>Magga</td><td>The Cure</td><td>The Noble Eightfold Path / Middle Way. Three categories: Wisdom (Panna), Ethics (Sila), Mental Discipline (Bhavana).</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Chart 3: Noble Eightfold Path -->
+  <div class="chart-panel" id="nep">
+    <h3>The Noble Eightfold Path — Organized by Category</h3>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Path Factor</th>
+          <th>Pali Name</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Panna / Prajna (Wisdom)</td><td>1. Right View</td><td>Samma Ditthi</td><td>Understanding Four Noble Truths, Three Marks, karma, dependent origination</td></tr>
+        <tr><td>Panna / Prajna (Wisdom)</td><td>2. Right Intention</td><td>Samma Sankappa</td><td>Intention of renunciation, non-ill-will, non-cruelty</td></tr>
+        <tr><td>Sila (Ethics)</td><td>3. Right Speech</td><td>Samma Vaca</td><td>No lying, divisive, harsh, or idle speech</td></tr>
+        <tr><td>Sila (Ethics)</td><td>4. Right Action</td><td>Samma Kammanta</td><td>No killing, stealing, sexual misconduct — basis of Five Precepts</td></tr>
+        <tr><td>Sila (Ethics)</td><td>5. Right Livelihood</td><td>Samma Ajiva</td><td>No occupation harming beings (weapons, slaves, butchering, intoxicants)</td></tr>
+        <tr><td>Bhavana (Mental Discipline)</td><td>6. Right Effort</td><td>Samma Vayama</td><td>Cultivating wholesome states; abandoning unwholesome states</td></tr>
+        <tr><td>Bhavana (Mental Discipline)</td><td>7. Right Mindfulness</td><td>Samma Sati</td><td>Mindful awareness of body, feelings, mind, phenomena</td></tr>
+        <tr><td>Bhavana (Mental Discipline)</td><td>8. Right Concentration</td><td>Samma Samadhi</td><td>Meditative absorption through the four jhanas</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Chart 4: Key Terms -->
+  <div class="chart-panel" id="key-terms">
+    <h3>Buddhism Key Terms — Pali / Sanskrit Reference</h3>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Pali / Sanskrit</th>
+          <th>Meaning</th>
+          <th>IB Exam Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Dukkha / Dukha</td><td>Suffering, unsatisfactoriness</td><td>First Mark of Existence; First Noble Truth</td></tr>
+        <tr><td>Tanha / Trishna</td><td>Craving, thirst, desire</td><td>Root cause of dukkha — Second Noble Truth</td></tr>
+        <tr><td>Anicca / Anitya</td><td>Impermanence</td><td>Second Mark of Existence; sand mandala demonstrates this</td></tr>
+        <tr><td>Anatta / Anatman</td><td>No-self, no permanent soul</td><td>Third Mark; CONTRADICTS Hindu Atman</td></tr>
+        <tr><td>Nibbana / Nirvana</td><td>Extinguishing of craving; liberation</td><td>Two types: semi (alive) and pari (at death)</td></tr>
+        <tr><td>Samsara</td><td>Cycle of rebirth and re-death</td><td>Shared with Hinduism and Jainism</td></tr>
+        <tr><td>Kamma / Karma</td><td>Action leading to rebirth state</td><td>NOT material particles (unlike Jain karma)</td></tr>
+        <tr><td>Dhamma / Dharma</td><td>Teachings of the Historical Buddha; the Truth</td><td>NOT the same as Hindu Dharma (duty)</td></tr>
+        <tr><td>Sangha / Samgha</td><td>Worldwide Buddhist community (monastic + lay)</td><td>One of the Three Jewels</td></tr>
+        <tr><td>Buddha</td><td>The Enlightened One</td><td>Refers to Historical Siddhartha Gautama (and other Buddhas in Mahayana)</td></tr>
+        <tr><td>Bodhisatta / Bodhisattva</td><td>Enlightened being choosing rebirth to help others</td><td>Mahayana ideal — contrast with Theravada Arahant</td></tr>
+        <tr><td>Arahant / Arhat</td><td>Enlightened one who will not reincarnate</td><td>Theravada ideal</td></tr>
+        <tr><td>Maya</td><td>Illusion, delusion</td><td>Misperception of impermanent as permanent</td></tr>
+        <tr><td>Bhavana</td><td>Mental discipline / meditation / formal training</td><td>Third category of Eightfold Path</td></tr>
+        <tr><td>Karuna</td><td>Compassion</td><td>Key Mahayana value; motivates bodhisattva</td></tr>
+        <tr><td>Panna / Prajna</td><td>Wisdom / insight</td><td>First category of Eightfold Path</td></tr>
+        <tr><td>Sila</td><td>Ethical conduct</td><td>Second category of Eightfold Path; Five Precepts</td></tr>
+        <tr><td>Upaya</td><td>Skillful means / skill in means</td><td>Mahayana — any method that helps beings toward liberation, including small deception</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Chart 5: Cross-Religion Comparison -->
+  <div class="chart-panel" id="crossreligion">
+    <h3>Buddhism vs Jainism vs Sanatana Dharma — Key Comparisons</h3>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Sanatana Dharma (Hinduism)</th>
+          <th>Jainism</th>
+          <th>Buddhism</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Founder</td><td>No single founder; eternal dharma</td><td>Mahavira (24th Tirthankara), ~540–468 BCE</td><td>Siddhartha Gautama, ~560–480 BCE</td></tr>
+        <tr><td>Caste of Founder</td><td>N/A</td><td>Kshatriya</td><td>Kshatriya</td></tr>
+        <tr><td>Soul / Self</td><td>Atman — eternal, individual soul</td><td>Jiva — eternal, individual soul</td><td>Anatta — NO permanent self/soul</td></tr>
+        <tr><td>Karma</td><td>Moral law; volitional actions affect rebirth; not material</td><td>Material particles that literally stick to the soul (Jiva)</td><td>Volitional action; shapes rebirth; NOT material</td></tr>
+        <tr><td>Liberation / Goal</td><td>Moksha — union with Brahman</td><td>Moksha — Jiva freed from all karma, ascends to Siddhashila</td><td>Nirvana/Nibbana — extinguishing of craving; no-self merges with nothing</td></tr>
+        <tr><td>Path to Liberation</td><td>Three Paths: Jnana, Bhakti, Karma Yoga</td><td>Triple Gems: Right Faith, Right Knowledge, Right Conduct + Five Anuvratas</td><td>Four Noble Truths; Noble Eightfold Path; Three Jewels</td></tr>
+        <tr><td>Role of God / Deities</td><td>Brahman (universal reality); many deities (Brahma, Vishnu, Shiva, etc.)</td><td>No creator God; Tirthankaras are models (not saviors)</td><td>No creator God; Buddha is teacher, not savior (Theravada)</td></tr>
+        <tr><td>Ahimsa / Non-Harm</td><td>Important value; not absolute; animal sacrifice permitted in Vedic rites</td><td>Absolute — most rigorous of all three; Digambaras sweep ground, filter water</td><td>Important; not absolute; Theravada allows meat (three-fold purity)</td></tr>
+        <tr><td>Sacred Texts</td><td>Vedas (Shruti); Upanishads; Bhagavad Gita (Smriti)</td><td>Agamas (originally Mahavira's teachings, orally transmitted)</td><td>Pali Canon/Tripitaka; Mahayana Sutras; Vajrayana Tantras</td></tr>
+        <tr><td>Caste System</td><td>Varna system — part of dharma; eternal social order</td><td>Rejected caste as path to liberation</td><td>Rejected caste — all can attain nirvana regardless of birth</td></tr>
+        <tr><td>Key Reaction</td><td>Source tradition</td><td>Reaction to Vedic sacrifice, caste rigidity, Brahmin monopoly on liberation</td><td>Reaction to caste hierarchy, Vedic ritual excess, and extreme asceticism</td></tr>
+        <tr><td>Diwali</td><td>Return of Rama; victory of light over darkness</td><td>Mahavira's pari-nirvana (liberation) — completely different meaning!</td><td>Not a significant festival</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 4 — ESSAY OUTLINES
+══════════════════════════════════════════ -->
+<div id="essays" class="tab-content">
+
+  <div class="ib-tip">
+    <strong>IB Paper 2 Tips:</strong> Essays are marked out of 30 (or combined mark). Always: (1) define key terms, (2) show evidence from the tradition, (3) acknowledge diversity within Buddhism (Theravada ≠ Mahayana), (4) evaluate/conclude. If it's a comparative question, structure around <em>similarities then differences</em>, or <em>theme by theme</em>.
+  </div>
+
+  <!-- Essay 1 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">1</div>
+      <h3>"Examine how the Four Noble Truths address the problem of suffering in Buddhism."</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">Examine how the Four Noble Truths address the problem of suffering in Buddhism. [30]</div>
+      <div class="outline-section">
+        <h4>Introduction</h4>
+        <ul>
+          <li>Define dukkha — the central problem of Buddhism (three types: physical, change, maya)</li>
+          <li>Introduce Buddha as "Great Physician" using medical metaphor</li>
+          <li>Thesis: The Four Noble Truths form a systematic diagnosis and treatment plan for the human condition</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>First Noble Truth — Naming the Illness (Dukkha)</h4>
+        <ul>
+          <li>All conditioned existence is unsatisfactory — even pleasant states end (anicca)</li>
+          <li>Three Marks of Existence: dukkha, anicca, anatta — why the self itself is a source of suffering</li>
+          <li>Five Aggregates as evidence: what we call "self" is a flux of impermanent processes</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Second Noble Truth — The Cause (Tanha)</h4>
+        <ul>
+          <li>Tanha (craving/desire) as root cause — three roots: greed, hatred, delusion</li>
+          <li>12-fold chain: ignorance → formations → consciousness → ... → craving → becoming → birth → aging/death</li>
+          <li>Kamma: how craving-driven actions perpetuate samsara</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Third Noble Truth — The Prognosis (Nirodha)</h4>
+        <ul>
+          <li>Cessation IS possible — nirvana is achievable in this lifetime (semi-nirvana) and at death (pari-nirvana)</li>
+          <li>Theravada: Arahant ideal vs Mahayana: Bodhisattva ideal — different visions of liberation</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Fourth Noble Truth — The Cure (Eightfold Path)</h4>
+        <ul>
+          <li>Noble Eightfold Path as the Middle Way — neither indulgence nor extreme asceticism</li>
+          <li>Three categories: Wisdom (Panna), Ethics (Sila), Mental Discipline (Bhavana) — holistic, not sequential</li>
+          <li>Example: Right Mindfulness/Concentration → Vipassana meditation (Theravada)</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Conclusion / Evaluation</h4>
+        <ul>
+          <li>The Four Noble Truths are comprehensive: diagnosis + cause + possibility of cure + prescription</li>
+          <li>Evaluate: Do they fully address all suffering? Mahayana expands with bodhisattva compassion — the individual path is not sufficient</li>
+          <li>Contrast with Sanatana Dharma: moksha through union vs Buddhist nirvana through extinguishing — different solutions to related problems</li>
+        </ul>
+      </div>
+      <div class="essay-tip">💡 Always distinguish Theravada and Mahayana responses to the Truths — marks awarded for showing diversity within Buddhism.</div>
+    </div>
+  </div>
+
+  <!-- Essay 2 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">2</div>
+      <h3>"To what extent is the Theravada ideal of the Arahant superior to the Mahayana ideal of the Bodhisattva?"</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">To what extent is the Theravada ideal of the Arahant superior to the Mahayana ideal of the Bodhisattva? [30]</div>
+      <div class="outline-section">
+        <h4>Introduction</h4>
+        <ul>
+          <li>Context: Sangha split ~100 years after Buddha's death; theological and practical differences</li>
+          <li>Define Arahant (personal liberation; Theravada) and Bodhisattva (compassionate rebirth; Mahayana)</li>
+          <li>Thesis: The question of "superiority" depends on whether one prioritizes personal liberation or compassionate engagement — and both claim scriptural basis</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Case For the Arahant (Theravada)</h4>
+        <ul>
+          <li>Closest to the Historical Buddha's own teaching (Pali Canon only)</li>
+          <li>Individual effort honors the Buddha's last words: "Work out your own salvation with diligence"</li>
+          <li>Cleaner metaphysics: consistent with anatta (no-self) — who is the Bodhisattva choosing rebirth if there's no self?</li>
+          <li>Vipassana: rigorous, monastic, evidence-based practice</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Case For the Bodhisattva (Mahayana)</h4>
+        <ul>
+          <li>More consistent with the Buddha's own compassionate ministry (he stayed to teach rather than remain in private nirvana)</li>
+          <li>Upaya (skillful means): uses any method to help beings — more accessible to lay practitioners</li>
+          <li>Karuna (compassion) as the highest virtue — the Arahant is criticized as selfish ("Hinayana" / lesser vehicle)</li>
+          <li>Avalokiteshvara / Kwan Yin: iconic expression of universal compassion</li>
+          <li>Reaches more people (~62% of Buddhists) — arguably more effective in relieving suffering</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Conclusion / Evaluation</h4>
+        <ul>
+          <li>Neither is objectively "superior" — both are valid paths with historical and scriptural grounding</li>
+          <li>The debate reflects a fundamental tension: individual liberation vs collective compassion</li>
+          <li>Evaluate using evidence: both aim at cessation of dukkha — they differ on means and scope</li>
+        </ul>
+      </div>
+      <div class="essay-tip">💡 Use the term "Hinayana" only to explain what Mahayana critics called Theravada — do not use it as your own label, as it is considered pejorative.</div>
+    </div>
+  </div>
+
+  <!-- Essay 3 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">3</div>
+      <h3>"Examine the role of the Sangha in Buddhism."</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">Examine the role of the Sangha in the Buddhist path to liberation. [30]</div>
+      <div class="outline-section">
+        <h4>Introduction</h4>
+        <ul>
+          <li>Define Sangha — the worldwide community of Buddhist practitioners, monastic and lay</li>
+          <li>Context: One of the Three Jewels (Buddha, Dhamma, Sangha) — central to Buddhist identity</li>
+          <li>Thesis: The Sangha is both the context for and the expression of Buddhist practice</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>The Sangha as Community</h4>
+        <ul>
+          <li>First Sangha: 5 bhikkhus at Benares after first sermon — foundational moment</li>
+          <li>Monastic Sangha (bhikkhus/bhikkhunis): dedicated practitioners; Vinaya Pitaka governs monastic life</li>
+          <li>Lay Sangha: broader community; practices Five Precepts; supports monks through dana</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Theravada Role of the Sangha</h4>
+        <ul>
+          <li>Monks as primary practitioners; laypeople generate merit through supporting monks</li>
+          <li>Vipassana meditation communities; teaching lineages</li>
+          <li>Sangha as embodiment of the Dhamma in action</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Mahayana Role of the Sangha</h4>
+        <ul>
+          <li>More inclusive — Bodhisattva path available to laypeople; Sangha not restricted to monastics</li>
+          <li>Bodhisattvas as Sangha members across rebirths — compassionate network</li>
+          <li>Diverse forms: Zen communities, Pure Land devotional groups, Tibetan monastery-universities (Nalanda tradition)</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Conclusion / Evaluation</h4>
+        <ul>
+          <li>The Sangha provides structure, accountability, and teaching lineages essential for practice</li>
+          <li>Without the Sangha, access to the Dhamma would be lost — the Buddha specifically maintained it</li>
+          <li>Evaluate: Is the Sangha a means to liberation or an expression of it? Argue both</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Essay 4 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">4</div>
+      <h3>"Compare the Buddhist and Jain responses to the problem of karma."</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">Compare and contrast the Buddhist and Jain understandings of karma and liberation. [30]</div>
+      <div class="outline-section">
+        <h4>Introduction</h4>
+        <ul>
+          <li>Both Buddhism and Jainism emerged ~6th century BCE in the same region, as reactions to Vedic Sanatana Dharma</li>
+          <li>Both retain karma and samsara but radically redefine them</li>
+          <li>Thesis: Despite shared vocabulary, Buddhist and Jain karma differ fundamentally in metaphysics and in the path to liberation</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Buddhist Karma</h4>
+        <ul>
+          <li>Kamma = volitional action — it is <em>intention</em> (cetana) that determines karmic weight</li>
+          <li>Not material — karma is a moral/energetic force shaping the stream of consciousness/aggregates</li>
+          <li>Consistent with anatta: no permanent soul carries karma — the stream of conditioned consciousness does</li>
+          <li>Path: Noble Eightfold Path ceases karma-generating craving → nirvana</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Jain Karma</h4>
+        <ul>
+          <li>Karma is MATERIAL particles — literally physical matter that sticks to the Jiva (soul)</li>
+          <li>Even unintentional action produces karma — intention matters less; the action itself leaves residue</li>
+          <li>Ahimsa is absolute because ANY killing generates material karma regardless of intent</li>
+          <li>Path: Five Anuvratas + Triple Gems → shed accumulated karma + prevent new karma → Moksha (Jiva freed, ascends to Siddhashila)</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Liberation Compared</h4>
+        <ul>
+          <li>Both traditions reject Vedic ritual/sacrifice as a valid path</li>
+          <li>Buddhism: nirvana = extinguishing of craving; anatta means no permanent self achieves it</li>
+          <li>Jainism: moksha = Jiva permanently freed from all karma, existing in perfect knowledge/bliss at top of universe</li>
+          <li>Key difference: Buddhism denies a permanent soul; Jainism affirms it</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Conclusion / Evaluation</h4>
+        <ul>
+          <li>Both provide systematic accounts of why suffering exists (karma) and how to end it</li>
+          <li>Buddhism: liberation is from craving, not from material karma; Jainism: liberation is from accumulated matter</li>
+          <li>These differences produce radically different ethics: Jain absolute ahimsa vs Buddhist contextual ahimsa</li>
+        </ul>
+      </div>
+      <div class="essay-tip">💡 This is a high-value cross-tradition essay. Showing you understand the metaphysical differences (material vs intentional karma) will impress examiners.</div>
+    </div>
+  </div>
+
+  <!-- Essay 5 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">5</div>
+      <h3>"Examine the significance of the Three Marks of Existence for Buddhist practice."</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">Examine the significance of the Three Marks of Existence for Buddhist practice. [30]</div>
+      <div class="outline-section">
+        <h4>Introduction</h4>
+        <ul>
+          <li>Define Three Marks (Tilakkhana): Dukkha, Anicca, Anatta</li>
+          <li>Thesis: The Three Marks provide the foundational worldview from which all Buddhist practice flows</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Dukkha — Practice Implication</h4>
+        <ul>
+          <li>Recognition of suffering motivates the spiritual search — as the Four Noble Truths describe</li>
+          <li>Without accepting dukkha, there is no urgency for the path</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Anicca — Practice Implication</h4>
+        <ul>
+          <li>Impermanence → non-attachment → key practice of letting go</li>
+          <li>Sand mandala: deliberately created and destroyed — a ritual embodiment of anicca teaching</li>
+          <li>Right Mindfulness: observing the arising and passing of all phenomena</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Anatta — Practice Implication</h4>
+        <ul>
+          <li>No-self → undermines ego-based craving → most radical teaching</li>
+          <li>Five Aggregates analysis: meditating on each aggregate as impermanent and not-self</li>
+          <li>Contrast with Sanatana Dharma (Atman) and Jainism (Jiva) — both affirm a permanent soul</li>
+          <li>Mahayana: anatta extended to all phenomena (sunyata / emptiness — Heart Sutra)</li>
+        </ul>
+      </div>
+      <div class="outline-section">
+        <h4>Conclusion / Evaluation</h4>
+        <ul>
+          <li>The Three Marks function together: dukkha arises from clinging to what is anicca while believing in anatta as a fixed self</li>
+          <li>Seeing the Marks clearly (Right View) is itself the beginning of liberation</li>
+          <li>Evaluate: Are the Three Marks universal truth-claims or culturally conditioned diagnoses? Engage with this critically.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 5 — PRACTICE PAPERS
+══════════════════════════════════════════ -->
+<div id="papers" class="tab-content">
+
+  <div class="ib-tip">
+    <strong>IB Format Reminder:</strong> Paper 1 = source-based analysis. Read each source carefully, use specific evidence, and reference the source by name/letter. Paper 2 = extended essays — plan before you write. Always use specific Buddhist terms.
+  </div>
+
+  <!-- PAPER 1 -->
+  <div class="paper-section">
+    <div class="paper-section-header">
+      <h3>Practice Paper 1 — Source Analysis</h3>
+      <p>Buddhism · Use all sources provided · Answer all questions</p>
+    </div>
+    <div class="paper-body">
+
+      <div class="source-box">
+        <div class="source-label">Source A — The First Sermon at Benares (adapted from the Pali Canon, Dhammacakkappavattana Sutta)</div>
+        <p>"Monks, these two extremes ought not to be practiced by one who has gone forth from the home life. There is an addiction to indulgence of sense-pleasures, which is low, coarse, the way of the pworldling, ignoble, and unprofitable; and there is an addiction to self-mortification, which is painful, ignoble, and unprofitable. Without veering toward either of these extremes, the Tathagata has awakened to the middle way, which gives rise to vision, which gives rise to knowledge, and which leads to calm, to direct knowledge, to enlightenment, to Nibbana... Now this, monks, is the noble truth of dukkha: birth is dukkha, aging is dukkha, sickness is dukkha, death is dukkha..."</p>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Source B — The Sand Mandala (adapted from a Tibetan Buddhist teacher's explanation)</div>
+        <p>"The construction of the sand mandala takes many days. Monks work in precise, meditative concentration, placing colored sand grain by grain to form an intricate geometric diagram representing the cosmos and the mind of the awakened one. When it is finally completed — beautiful and perfect — it is immediately destroyed. The colored sands are swept together and poured into a river, that the blessings may flow out to all beings in the four directions. No two mandalas are the same. This is our teaching on anicca — all things that arise must pass away. The beauty of the mandala is not diminished by its destruction; it is completed by it."</p>
+      </div>
+
+      <!-- Q1 -->
+      <div class="question-block">
+        <span class="q-label">Question 1</span>
+        <span class="q-marks">3 marks</span>
+        <div class="q-text">According to Source A, what is the "middle way" and why does the Buddha teach it?</div>
+        <div class="answer-toggle">
+          <button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button>
+        </div>
+        <div class="model-answer">
+          <strong>Model Answer:</strong> According to Source A, the Middle Way is the path between two extremes: (1) addiction to sense-pleasures ("low, coarse, the way of the worldling") and (2) addiction to self-mortification ("painful, ignoble, and unprofitable"). The Buddha (referred to as "the Tathagata") teaches it because it "gives rise to vision, which gives rise to knowledge, and which leads to calm, to direct knowledge, to enlightenment, to Nibbana." The Middle Way is thus taught as the effective path to liberation, in contrast to the two ineffective extremes Siddhartha himself had tried — palace luxury and extreme asceticism.
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="question-block">
+        <span class="q-label">Question 2</span>
+        <span class="q-marks">5 marks</span>
+        <div class="q-text">Using your own knowledge, explain the Four Noble Truths as a complete framework for addressing suffering. Reference Source A in your answer.</div>
+        <div class="answer-toggle">
+          <button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button>
+        </div>
+        <div class="model-answer">
+          <strong>Model Answer:</strong> The Four Noble Truths form a systematic diagnosis and cure for human suffering — the Buddha is often called the "Great Physician." The First Truth (Dukkha) names the illness: suffering is the fundamental characteristic of conditioned existence. Source A illustrates this directly: "birth is dukkha, aging is dukkha, sickness is dukkha, death is dukkha." This is not pessimism but honest diagnosis. The Second Truth (Samudaya) identifies the cause: tanha (craving/desire), rooted in ignorance, greed, and hatred. The Third Truth (Nirodha) offers prognosis: cessation is possible. Nirvana — the extinguishing of craving — is achievable in this lifetime (semi-nirvana) and at death (pari-nirvana). The Fourth Truth (Magga) prescribes the cure: the Noble Eightfold Path, the Middle Way between indulgence and asceticism, as Source A describes. This framework makes Buddhism uniquely practical: suffering is real, its cause is knowable, its end is possible, and the path is described.
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="question-block">
+        <span class="q-label">Question 3</span>
+        <span class="q-marks">5 marks</span>
+        <div class="q-text">Using Source B and your own knowledge, explain how the sand mandala illustrates the Buddhist teaching of anicca (impermanence). How does this connect to the broader goal of liberation?</div>
+        <div class="answer-toggle">
+          <button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button>
+        </div>
+        <div class="model-answer">
+          <strong>Model Answer:</strong> Source B presents the sand mandala as a deliberate ritual embodiment of anicca (impermanence). The mandala is painstakingly created with "colored sand grain by grain" over many days — requiring immense effort and concentration — then immediately destroyed. This destruction is not a failure but the point: "all things that arise must pass away." The source explicitly states: "The beauty of the mandala is not diminished by its destruction; it is completed by it." This teaching connects directly to the Three Marks of Existence (Tilakkhana). Anicca (impermanence) is the second Mark: all conditioned phenomena are impermanent. Attachment to what is impermanent causes dukkha (the first Mark). The mandala ritual trains practitioners to observe beauty, appreciate it fully, and then release it without clinging — this non-attachment is the practical antidote to tanha (craving). The sand being poured into a river to "flow out to all beings in the four directions" also reflects the Mahayana ideal of karuna (compassion) — liberation is not merely personal. The practice is primarily Mahayana/Vajrayana, illustrating how that tradition uses upaya (skillful means) — physical ritual — to convey philosophical insight about impermanence and the path to nirvana.
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="question-block">
+        <span class="q-label">Question 4</span>
+        <span class="q-marks">10 marks</span>
+        <div class="q-text">Using both sources and your own knowledge, compare and evaluate the Theravada and Mahayana approaches to achieving liberation in Buddhism.</div>
+        <div class="answer-toggle">
+          <button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button>
+        </div>
+        <div class="model-answer">
+          <strong>Model Answer (Key Points):</strong><br><br>
+          <strong>Introduction:</strong> Both sources represent different strands of Buddhism. Source A reflects the earliest canonical teaching (Pali Canon, Theravada scripture). Source B represents Mahayana/Vajrayana practice (Tibetan Buddhism). Both seek nirvana/liberation from samsara but differ substantially in method, ideal, and community focus.<br><br>
+          <strong>Theravada (Source A tradition):</strong> Focuses on the individual path — the Noble Eightfold Path leads the practitioner (ideally a monk) to become an Arahant: an enlightened being who, at death, will not be reborn (pari-nirvana). The emphasis is on personal effort, Vipassana meditation, and strict adherence to the Pali Canon. Source A's language addresses "monks" specifically, reflecting the monastic ideal. Liberation is personal and immediate.<br><br>
+          <strong>Mahayana (Source B tradition):</strong> The sand mandala (Source B) illustrates Mahayana emphases: the ritual is communal, compassionate (sand poured for "all beings"), and uses elaborate physical means (upaya — skillful means) to convey philosophical insight. The Mahayana ideal is the Bodhisattva: an enlightened being who delays personal nirvana to help all sentient beings attain liberation. Karuna (compassion) is placed above personal liberation.<br><br>
+          <strong>Evaluation:</strong> The Theravada approach is arguably closer to the Historical Buddha's original teaching and is philosophically consistent with anatta (no-self). The Mahayana critique — that the Arahant ideal is "selfish" — reflects genuine tension about whether individual liberation is sufficient. The Mahayana's bodhisattva ideal is more accessible to lay practitioners and has proven more culturally adaptive (~62% of Buddhists). Both, however, agree on the fundamental diagnosis (Four Noble Truths) and the necessity of the Eightfold Path. Neither tradition rejects the Pali Canon — the divergence is in what else is accepted (Mahayana Sutras) and in the scale of compassion expected.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PAPER 2 -->
+  <div class="paper-section">
+    <div class="paper-section-header">
+      <h3>Practice Paper 2 — Extended Essay Questions</h3>
+      <p>Choose one question · Plan your response · Aim for ~600–800 words</p>
+    </div>
+    <div class="paper-body">
+
+      <div class="p2-question">
+        <strong>Question 1.</strong> "Buddhism's rejection of a permanent self (anatta) makes the concept of karma incoherent." Discuss. <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Define anatta and karma. Explain how Buddhist karma works without a fixed self (stream of consciousness / aggregates). Compare Jain karma (material particles + permanent Jiva). Evaluate both positions. Consider Mahayana sunyata (emptiness) as an extension of anatta.</div>
+      </div>
+
+      <div class="p2-question">
+        <strong>Question 2.</strong> Compare and contrast the Buddhist Bodhisattva ideal with the Jain Tirthankara ideal. To what extent do they serve similar functions in their respective traditions? <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Define both (Bodhisattva = chooses rebirth for others; Tirthankara = ford-builder who shows the path; 24 in this cosmic cycle, Mahavira = 24th). Both are exemplary figures — not saviors (God does not exist in either tradition). Bodhisattva is accessible ideal; Tirthankara is historical/cosmic. Compare roles in texts, art, and community identity.</div>
+      </div>
+
+      <div class="p2-question">
+        <strong>Question 3.</strong> "The Noble Eightfold Path is not fundamentally different from the moral codes found in other Indian religious traditions." Evaluate this claim. <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Compare Eightfold Path (esp. Sila: Right Speech, Action, Livelihood) with Jain Five Anuvratas and Hindu Purusharthas/Dharma. Show similarities (ahimsa, non-stealing, ethical speech). Then distinguish: Buddhist Middle Way rejects Vedic ritual, caste, and soul; Jain karma is material; Hindu dharma is caste-based duty. Evaluate whether the ethics are similar even if the metaphysics differ.</div>
+      </div>
+
+      <div class="p2-question">
+        <strong>Question 4.</strong> Examine how Buddhist ritual practices express and reinforce core Buddhist beliefs. <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Three Jewels recitation (reinforces identity/commitment), Vipassana (embodies Right Mindfulness), sand mandala (anicca), puja (reinforces veneration without worship), pilgrimage to Bodh Gaya etc. (historical connection to the Buddha), dana (reinforces non-attachment). Show how Theravada and Mahayana rituals differ in method but both express the same core Truths.</div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end papers tab -->
+
+<script>
+// ── TAB SWITCHING ──
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── COLLAPSIBLE NOTES ──
+function toggleNote(header) {
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+
+// ── ESSAY ACCORDION ──
+function toggleEssay(header) {
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+
+// ── CHART TABS ──
+function showChart(id, btn) {
+  document.querySelectorAll('.chart-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.chart-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── ANSWER REVEAL ──
+function toggleAnswer(btn) {
+  const answer = btn.closest('.answer-toggle').nextElementSibling;
+  answer.classList.toggle('open');
+  btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Model Answer';
+}
+
+// ── FLASHCARD DATA ──
+const cards = [
+  {
+    term: "Dukkha / Dukha",
+    hint: "The First Mark of Existence",
+    def: "Suffering / unsatisfactoriness. The fundamental characteristic of conditioned existence. Three types: (1) physical pain, (2) suffering of change/loss, (3) existential suffering from maya/illusion.",
+    note: "First Noble Truth: Life is dukkha. The 'illness' in the medical metaphor. One of the Three Marks of Existence."
+  },
+  {
+    term: "Tanha / Trishna",
+    hint: "Root cause of all suffering",
+    def: "Craving, thirst, or desire. The root cause of dukkha and continued rebirth in samsara. Three roots: greed (lobha), hatred (dosa), and delusion (moha).",
+    note: "Second Noble Truth: dukkha arises from tanha. The 12-fold chain of dependent origination begins with ignorance → leading to tanha → rebirth."
+  },
+  {
+    term: "Anicca / Anitya",
+    hint: "The Second Mark of Existence",
+    def: "Impermanence. All conditioned phenomena are in constant flux — nothing lasts. Attachment to impermanent things inevitably causes dukkha.",
+    note: "The sand mandala demonstrates anicca: built painstakingly over days, then immediately destroyed. 'All things that arise must pass away.'"
+  },
+  {
+    term: "Anatta / Anatman",
+    hint: "The Third Mark of Existence — controversial!",
+    def: "No-self / no permanent soul. There is no fixed, eternal self or soul. What we call 'self' is a combination of five impermanent aggregates (khandhas) in flux.",
+    note: "CRITICAL IB: This CONTRADICTS the Hindu Atman (eternal soul) and Jain Jiva (eternal soul). Buddhism denies a permanent self — yet karma and rebirth continue via the stream of consciousness."
+  },
+  {
+    term: "Nibbana / Nirvana",
+    hint: "Two types — know both!",
+    def: "The extinguishing of craving and delusion; liberation from samsara. Two types: (1) Semi-nirvana — attained while alive (Siddhartha under Bodhi Tree). (2) Pari-nirvana — final nirvana at death; no more rebirth.",
+    note: "Third Noble Truth: cessation IS possible. Not 'nothingness' but the cessation of conditioned existence and craving."
+  },
+  {
+    term: "Samsara",
+    hint: "The cycle all are caught in",
+    def: "The cycle of rebirth and re-death (not just reincarnation). Driven by karma and tanha, beings continue to be born, die, and be reborn in various realms, experiencing dukkha.",
+    note: "Shared concept with Sanatana Dharma and Jainism — but Buddhist samsara has no permanent soul passing through it (anatta). The aggregates/stream of consciousness continues."
+  },
+  {
+    term: "Kamma / Karma",
+    hint: "Action and its consequences",
+    def: "Volitional action — intentional deeds of body, speech, or mind that determine the quality of future rebirths. It is the INTENTION (cetana) that carries karmic weight.",
+    note: "IB DISTINCTION: Buddhist karma is NOT material particles (unlike Jain karma). It is a moral/energetic force. Consistent with anatta — no fixed soul carries karma, the stream of consciousness does."
+  },
+  {
+    term: "Dhamma / Dharma",
+    hint: "Buddhism's foundational teachings",
+    def: "The teachings of the Historical Buddha; the Truth about the nature of reality. One of the Three Jewels. Includes the Four Noble Truths, Eightfold Path, and all Buddhist doctrine.",
+    note: "⚠️ NOT the same as Hindu Dharma (duty/law/caste-based obligation). Buddhist Dhamma = the teachings/Truth. Always clarify which tradition you mean."
+  },
+  {
+    term: "Buddha",
+    hint: "The Enlightened One",
+    def: "Literally 'the Enlightened/Awakened One.' Refers primarily to Siddhartha Gautama, the Historical Buddha (~560–480 BCE). In Mahayana, there are multiple Buddhas across cosmic time (e.g., Amitabha).",
+    note: "The Buddha is a teacher and exemplar — NOT a god or savior (especially in Theravada). He found the path and shared it; practitioners must walk it themselves."
+  },
+  {
+    term: "Bodhisattva / Bodhisatta",
+    hint: "Mahayana ideal — compassionate hero",
+    def: "An enlightened being who has attained nirvana but chooses to be reborn to help all sentient beings attain liberation. The highest ideal in Mahayana Buddhism.",
+    note: "Motivated by karuna (compassion). Example: Avalokiteshvara / Kwan Yin. Contrast with Theravada Arahant — the Bodhisattva delays personal liberation for the sake of all beings."
+  },
+  {
+    term: "Arahant / Arhat",
+    hint: "Theravada's enlightened ideal",
+    def: "An enlightened person who has eradicated all defilements and will NOT be reborn after death. The highest attainment in Theravada Buddhism — pari-nirvana at death.",
+    note: "Theravada ideal — closely follows the Historical Buddha's teaching. Mahayana critics call this path 'selfish' — the Arahant achieves personal liberation without staying to help others."
+  },
+  {
+    term: "Maya",
+    hint: "Illusion / delusion",
+    def: "Illusion or delusion — the fundamental misperception of reality. We mistake the impermanent for permanent, the non-self for a fixed self, and the unsatisfactory for satisfying.",
+    note: "Maya leads to tanha (craving) → dukkha. Right View (first step of the Eightfold Path) involves seeing through maya. Note: Hindu Maya = the cosmic illusion of the material world — related but different context."
+  },
+  {
+    term: "Sangha / Samgha",
+    hint: "One of the Three Jewels",
+    def: "The worldwide community of Buddhist practitioners — both monastic (monks/bhikkhus, nuns/bhikkhunis) and lay followers. One of the Three Jewels alongside Buddha and Dhamma.",
+    note: "The first Sangha was formed at Benares with 5 bhikkhus after the first sermon. In Theravada, primarily monastic; in Mahayana, includes lay bodhisattvas."
+  },
+  {
+    term: "Bhavana",
+    hint: "Mental training — the third category",
+    def: "Mental discipline / meditation / formal mental training. The third category of the Noble Eightfold Path, comprising Right Effort, Right Mindfulness, and Right Concentration.",
+    note: "Theravada: Vipassana (insight meditation). Mahayana: diverse — Zen (koan), Pure Land (devotion), Vajrayana (visualization, mantra). Bhavana is how the wisdom of Panna is directly experienced."
+  },
+  {
+    term: "Karuna",
+    hint: "Mahayana's highest value",
+    def: "Compassion — active, engaged concern for the suffering of all beings. In Mahayana, paired with Panna (wisdom) as the two wings of enlightenment.",
+    note: "Karuna motivates the Bodhisattva to remain in samsara for the benefit of all beings. Kwan Yin / Avalokiteshvara is the iconic bodhisattva of compassion."
+  },
+  {
+    term: "Panna / Prajna",
+    hint: "Wisdom — the first category",
+    def: "Wisdom / insight into the true nature of reality. The first category of the Noble Eightfold Path (Right View and Right Intention). Seeing things as they really are — dukkha, anicca, anatta.",
+    note: "The Heart Sutra and Diamond Sutra are key Mahayana texts on prajna. In Theravada, Vipassana meditation directly cultivates panna through mindful observation of impermanence."
+  },
+  {
+    term: "Sila",
+    hint: "Ethical conduct — the second category",
+    def: "Ethical conduct / morality. The second category of the Noble Eightfold Path (Right Speech, Right Action, Right Livelihood). The moral foundation of Buddhist life, also expressed in the Five Precepts.",
+    note: "Sila is not an end in itself but the prerequisite for meditation (bhavana) and wisdom (panna). Without ethical behavior, meditation becomes unstable."
+  },
+  {
+    term: "Upaya",
+    hint: "Mahayana's flexible approach",
+    def: "Skillful means / skill in means. The Mahayana teaching that any method — including unconventional or even apparently deceptive means — is valid if it genuinely helps beings toward liberation.",
+    note: "Uniquely Mahayana. Justifies the diversity of Mahayana forms (Pure Land devotion, Zen koans, Vajrayana ritual). The Lotus Sutra teaches that the Buddha himself used upaya — telling people what they needed to hear at their level."
+  }
+];
+
+let currentCard = 0;
+let cardOrder = cards.map((_, i) => i);
+
+function renderCard() {
+  const c = cards[cardOrder[currentCard]];
+  document.getElementById('cardTerm').textContent = c.term;
+  document.getElementById('cardHint').textContent = c.hint;
+  document.getElementById('cardDef').textContent = c.def;
+  document.getElementById('cardNote').textContent = c.note;
+  document.getElementById('counter').textContent = `${currentCard + 1} / ${cards.length}`;
+  document.getElementById('progressBar').style.width = `${((currentCard + 1) / cards.length) * 100}%`;
+  document.getElementById('mainCard').classList.remove('flipped');
+}
+
+function flipCard() {
+  document.getElementById('mainCard').classList.toggle('flipped');
+}
+
+function nextCard() {
+  currentCard = (currentCard + 1) % cardOrder.length;
+  renderCard();
+}
+
+function prevCard() {
+  currentCard = (currentCard - 1 + cardOrder.length) % cardOrder.length;
+  renderCard();
+}
+
+function shuffleCards() {
+  for (let i = cardOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cardOrder[i], cardOrder[j]] = [cardOrder[j], cardOrder[i]];
+  }
+  currentCard = 0;
+  renderCard();
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (document.getElementById('flashcards').classList.contains('active')) {
+    if (e.key === 'ArrowRight') nextCard();
+    else if (e.key === 'ArrowLeft') prevCard();
+    else if (e.key === ' ') { e.preventDefault(); flipCard(); }
+  }
+});
+
+// Init
+renderCard();
+</script>
+</body>
+</html>

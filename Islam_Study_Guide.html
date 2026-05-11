@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Islam – IB World Religions Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0d4a28;
+  --primary-dark: #072d18;
+  --primary-light: #1a6b3c;
+  --accent: #c9a84c;
+  --accent-light: #f0d880;
+  --accent-dark: #9a7820;
+  --bg: #f4f8f5;
+  --surface: #ffffff;
+  --surface2: #eaf5ee;
+  --text: #0a1f0f;
+  --text-light: #3a5a42;
+  --border: #b8d8c0;
+  --shadow: rgba(13,74,40,0.13);
+  --danger: #8b1a1a;
+  --success: #0d4a28;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Crimson Text', Georgia, serif; background: var(--bg); color: var(--text); font-size: 1.05rem; line-height: 1.65; }
+
+/* ── NAV BAR ── */
+.site-nav { background: var(--primary-dark); padding: 0.5rem 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.site-nav a { color: #a8d0b0; text-decoration: none; font-family: 'Crimson Text', serif; font-size: 0.88rem; padding: 0.25rem 0.6rem; border-radius: 4px; transition: background 0.2s; }
+.site-nav a:hover { background: rgba(255,255,255,0.12); }
+.site-nav a.current { background: var(--accent); color: var(--primary-dark); font-weight: 600; }
+.site-nav .nav-label { color: #5a8a62; font-size: 0.8rem; margin-right: 0.3rem; }
+
+/* ── HEADER ── */
+header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 100%); color: white; padding: 2.5rem 1.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+header::before { content: '☪'; position: absolute; right: 4%; top: 50%; transform: translateY(-50%); font-size: 8rem; opacity: 0.08; }
+header::after { content: '☪'; position: absolute; left: 4%; top: 50%; transform: translateY(-50%); font-size: 8rem; opacity: 0.08; }
+header h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; letter-spacing: 0.03em; margin-bottom: 0.3rem; }
+header p { color: var(--accent-light); font-style: italic; font-size: 1.05rem; }
+header .subtitle { margin-top: 0.4rem; color: #90c898; font-size: 0.92rem; }
+
+/* ── TABS ── */
+.tab-bar { display: flex; background: var(--primary); position: sticky; top: 0; z-index: 100; overflow-x: auto; box-shadow: 0 2px 8px var(--shadow); }
+.tab-btn { flex: 1; min-width: 110px; padding: 0.85rem 0.5rem; background: none; border: none; color: #90c898; font-family: 'Playfair Display', serif; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; border-bottom: 3px solid transparent; white-space: nowrap; }
+.tab-btn:hover { color: white; background: rgba(255,255,255,0.08); }
+.tab-btn.active { color: var(--accent-light); border-bottom-color: var(--accent); background: rgba(255,255,255,0.06); }
+
+/* ── CONTENT PANELS ── */
+.tab-panel { display: none; max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem; }
+.tab-panel.active { display: block; }
+
+/* ── FLASHCARDS ── */
+.card-controls { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.2rem; }
+.card-controls button { padding: 0.45rem 1.1rem; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: 6px; font-family: 'Crimson Text', serif; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.card-controls button:hover { background: var(--primary); color: white; }
+.progress-bar { height: 5px; background: var(--border); border-radius: 3px; margin-bottom: 1rem; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 3px; transition: width 0.4s; }
+.card-counter { text-align: center; color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; }
+.flashcard-scene { perspective: 1000px; max-width: 680px; margin: 0 auto 1.2rem; }
+.flashcard { width: 100%; min-height: 240px; position: relative; transform-style: preserve-3d; transition: transform 0.55s; cursor: pointer; }
+.flashcard.flipped { transform: rotateY(180deg); }
+.card-face { position: absolute; width: 100%; min-height: 240px; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 14px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 6px 24px var(--shadow); }
+.card-front { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; }
+.card-front .card-hint { font-size: 0.78rem; color: var(--accent-light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.8rem; }
+.card-front .card-term { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 0.5rem; }
+.card-front .card-hint2 { font-size: 0.85rem; color: #90c898; font-style: italic; }
+.card-back { background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%); color: var(--text); transform: rotateY(180deg); border: 2px solid var(--border); }
+.card-back .card-def { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; line-height: 1.5; }
+.card-back .card-note { font-size: 0.88rem; color: var(--text-light); font-style: italic; border-top: 1px solid var(--border); padding-top: 0.6rem; margin-top: 0.4rem; }
+.flip-hint { text-align: center; color: var(--text-light); font-size: 0.85rem; margin-bottom: 0.5rem; }
+.nav-btns { display: flex; justify-content: center; gap: 1rem; }
+.nav-btns button { padding: 0.55rem 1.8rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-family: 'Crimson Text', serif; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+.nav-btns button:hover { background: var(--primary-light); }
+
+/* ── NOTES ── */
+.section-intro { background: var(--surface2); border-left: 4px solid var(--accent); padding: 0.9rem 1.2rem; border-radius: 0 8px 8px 0; margin-bottom: 1.5rem; font-style: italic; color: var(--text-light); }
+.note-header { background: var(--primary); color: white; padding: 0.9rem 1.2rem; border-radius: 10px 10px 0 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-top: 1rem; transition: background 0.2s; user-select: none; }
+.note-header:hover { background: var(--primary-light); }
+.note-header::after { content: '▼'; font-size: 0.8rem; transition: transform 0.3s; }
+.note-header.open::after { transform: rotate(180deg); }
+.note-body { display: none; background: var(--surface); border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; padding: 1.2rem 1.4rem; margin-bottom: 0.3rem; }
+.note-body.open { display: block; }
+.note-body h4 { color: var(--primary); font-family: 'Playfair Display', serif; margin: 1rem 0 0.4rem; font-size: 1rem; }
+.note-body h4:first-child { margin-top: 0; }
+.note-body ul { padding-left: 1.4rem; }
+.note-body ul li { margin-bottom: 0.35rem; }
+.note-body p { margin-bottom: 0.6rem; }
+.note-body strong { color: var(--primary-dark); }
+.ib-tip { background: #fff8e1; border: 1.5px solid var(--accent); border-radius: 8px; padding: 0.7rem 1rem; margin: 0.8rem 0; }
+.ib-tip .tip-label { font-weight: 700; color: var(--accent-dark); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.ib-tip p { margin: 0.3rem 0 0; font-size: 0.95rem; }
+.term-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.7rem; margin: 0.8rem 0; }
+.term-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.9rem; }
+.term-card .tc-term { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
+.term-card .tc-def { font-size: 0.88rem; color: var(--text-light); margin-top: 0.2rem; }
+.timeline-row { display: flex; gap: 1rem; margin-bottom: 0.8rem; align-items: flex-start; }
+.timeline-date { background: var(--primary); color: var(--accent-light); padding: 0.3rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.88rem; white-space: nowrap; min-width: 90px; text-align: center; }
+.timeline-text { flex: 1; font-size: 0.95rem; }
+.pillar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.8rem; margin: 0.8rem 0; }
+.pillar-card { background: linear-gradient(135deg, var(--surface2), white); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: 0 10px 10px 0; padding: 0.9rem 1rem; }
+.pillar-card .pc-num { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dark); font-weight: 700; }
+.pillar-card .pc-name { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1rem; margin: 0.2rem 0; }
+.pillar-card .pc-detail { font-size: 0.88rem; color: var(--text-light); }
+.holy-day-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.7rem; margin: 0.8rem 0; }
+.holy-day-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1rem; border-top: 3px solid var(--primary); }
+.holy-day-card .hd-name { font-weight: 700; color: var(--primary); font-family: 'Playfair Display', serif; font-size: 1rem; }
+.holy-day-card .hd-detail { font-size: 0.88rem; color: var(--text-light); margin-top: 0.25rem; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.8rem 0; }
+.denom-card { background: var(--surface2); border-left: 4px solid var(--primary); border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; }
+.denom-card h5 { color: var(--primary); font-family: 'Playfair Display', serif; margin-bottom: 0.4rem; }
+.sharia-row { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 0.6rem; }
+.sharia-num { background: var(--primary); color: white; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; margin-top: 0.1rem; }
+.sharia-text { flex: 1; font-size: 0.95rem; }
+
+/* ── CHARTS ── */
+.chart-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+.chart-tab { padding: 0.4rem 1rem; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: 20px; font-family: 'Crimson Text', serif; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+.chart-tab.active, .chart-tab:hover { background: var(--primary); color: white; }
+.chart-panel { display: none; }
+.chart-panel.active { display: block; }
+.chart-panel h3 { font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 1rem; }
+.comp-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.comp-table th { background: var(--primary); color: white; padding: 0.65rem 0.8rem; text-align: left; font-family: 'Playfair Display', serif; font-weight: 600; }
+.comp-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.comp-table tr:nth-child(even) td { background: var(--surface2); }
+.comp-table tr:hover td { background: #d8edd0; }
+.comp-table .category { font-weight: 700; color: var(--primary-dark); background: #c8e8d0 !important; }
+.highlight { background: #fff8d6 !important; }
+
+/* ── ESSAYS ── */
+.essay-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 12px; margin-bottom: 1.2rem; overflow: hidden; }
+.essay-header { background: var(--primary); color: white; padding: 0.9rem 1.2rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Playfair Display', serif; }
+.essay-header:hover { background: var(--primary-light); }
+.essay-header .essay-q { flex: 1; }
+.essay-header .essay-toggle { font-size: 0.85rem; color: var(--accent-light); white-space: nowrap; margin-left: 1rem; }
+.essay-body { display: none; padding: 1.2rem 1.4rem; }
+.essay-body.open { display: block; }
+.essay-body h4 { color: var(--primary); font-family: 'Playfair Display', serif; margin: 0.9rem 0 0.3rem; font-size: 1rem; }
+.essay-body h4:first-child { margin-top: 0; }
+.essay-body ul { padding-left: 1.4rem; }
+.essay-body ul li { margin-bottom: 0.3rem; font-size: 0.95rem; }
+.essay-body p { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.essay-marks { display: inline-block; background: var(--accent); color: var(--primary-dark); border-radius: 4px; padding: 0.1rem 0.5rem; font-size: 0.8rem; font-weight: 700; margin-left: 0.5rem; }
+
+/* ── PRACTICE PAPERS ── */
+.paper-section { margin-bottom: 2rem; }
+.paper-section h3 { font-family: 'Playfair Display', serif; color: var(--primary-dark); border-bottom: 2px solid var(--accent); padding-bottom: 0.4rem; margin-bottom: 1rem; }
+.source-box { background: #eef8f0; border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.2rem; margin-bottom: 1rem; font-size: 0.93rem; }
+.source-box .source-label { font-weight: 700; color: var(--primary); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+.source-box p { font-style: italic; margin-bottom: 0.4rem; }
+.source-box .source-attr { font-style: normal; font-size: 0.85rem; color: var(--text-light); }
+.question-block { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 0.9rem; }
+.question-block p { font-weight: 600; margin-bottom: 0.6rem; }
+.answer-toggle { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.5rem; }
+.answer-toggle button { padding: 0.35rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; font-family: 'Crimson Text', serif; font-size: 0.88rem; cursor: pointer; transition: background 0.2s; }
+.answer-toggle button:hover { background: var(--primary-light); }
+.answer-toggle .marks { color: var(--text-light); font-size: 0.88rem; }
+.model-answer { display: none; background: #f0f5e8; border: 1px solid #c5d8a0; border-radius: 6px; padding: 0.9rem 1.1rem; margin-top: 0.7rem; font-size: 0.92rem; }
+.model-answer.open { display: block; }
+.model-answer h5 { color: var(--success); font-family: 'Playfair Display', serif; margin-bottom: 0.4rem; font-size: 0.92rem; }
+.model-answer ul { padding-left: 1.3rem; }
+.model-answer ul li { margin-bottom: 0.3rem; }
+.essay-prompt { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 0.9rem; }
+.essay-prompt .ep-q { font-weight: 700; font-family: 'Playfair Display', serif; color: var(--primary-dark); margin-bottom: 0.5rem; }
+.essay-prompt .ep-hint { font-size: 0.9rem; color: var(--text-light); font-style: italic; }
+
+@media (max-width: 600px) {
+  header h1 { font-size: 1.7rem; }
+  .two-col { grid-template-columns: 1fr; }
+  .tab-btn { font-size: 0.8rem; min-width: 80px; padding: 0.7rem 0.3rem; }
+  .term-grid { grid-template-columns: 1fr 1fr; }
+  header::before, header::after { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <span class="nav-label">IB World Religions:</span>
+  <a href="Sanatana_Dharma_Study_Guide.html">Sanatana Dharma</a>
+  <a href="Jainism_Study_Guide.html">Jainism</a>
+  <a href="Buddhism_Study_Guide.html">Buddhism</a>
+  <a href="Sikhism_Study_Guide.html">Sikhism</a>
+  <a href="Taoism_Study_Guide.html">Taoism</a>
+  <a href="Judaism_Study_Guide.html">Judaism</a>
+  <a href="Christianity_Study_Guide.html">Christianity</a>
+  <a href="Islam_Study_Guide.html" class="current">Islam</a>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <h1>Islam</h1>
+  <p>"Bismillah al-Rahman al-Rahim — In the name of God, the Merciful, the Compassionate"</p>
+  <div class="subtitle">IB World Religions · Paper 1 &amp; Paper 2 Study Guide</div>
+</header>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('flashcards')">✦ Flashcards</button>
+  <button class="tab-btn" onclick="showTab('notes')">📜 Summary Notes</button>
+  <button class="tab-btn" onclick="showTab('charts')">⚖ Comparison Charts</button>
+  <button class="tab-btn" onclick="showTab('essays')">✍ Essay Outlines</button>
+  <button class="tab-btn" onclick="showTab('papers')">📋 Practice Papers</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 1 · FLASHCARDS                                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-flashcards" class="tab-panel active">
+  <div class="card-controls">
+    <button onclick="shuffleCards()">🔀 Shuffle</button>
+    <button onclick="resetCards()">↺ Reset</button>
+    <button onclick="prevCard()">◀ Prev</button>
+    <button onclick="nextCard()">▶ Next</button>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="card-counter" id="cardCounter"></div>
+  <div class="flashcard-scene">
+    <div class="flashcard" id="mainCard" onclick="flipCard()">
+      <div class="card-face card-front">
+        <div class="card-hint" id="cardHint"></div>
+        <div class="card-term" id="cardTerm"></div>
+        <div class="card-hint2" id="cardHint2">Click to reveal definition</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="card-def" id="cardDef"></div>
+        <div class="card-note" id="cardNote"></div>
+      </div>
+    </div>
+  </div>
+  <p class="flip-hint">Click card to flip · Arrow keys to navigate · Space to flip</p>
+  <div class="nav-btns">
+    <button onclick="prevCard()">◀ Previous</button>
+    <button onclick="nextCard()">Next ▶</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 2 · SUMMARY NOTES                                 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-notes" class="tab-panel">
+  <p class="section-intro">Click any section to expand. IB-critical distinctions are in gold tip boxes. Islam = "submission"; Muslim = "one who submits to God."</p>
+
+  <!-- KEY TERMS -->
+  <div class="note-header" onclick="toggleNote(this)">Core Key Terms (18 Definitions)</div>
+  <div class="note-body">
+    <div class="term-grid">
+      <div class="term-card"><div class="tc-term">Shahadah</div><div class="tc-def">1st Pillar: "There is no God but God and Muhammad is his prophet" — the declaration of faith</div></div>
+      <div class="term-card"><div class="tc-term">Imaan</div><div class="tc-def">Faith in God — personal belief; accepting the Quran is true</div></div>
+      <div class="term-card"><div class="tc-term">Islam</div><div class="tc-def">Submission to the will of Allah</div></div>
+      <div class="term-card"><div class="tc-term">Tawhid</div><div class="tc-def">Oneness of Allah — the Islamic expression of absolute monotheism; the most fundamental doctrine</div></div>
+      <div class="term-card"><div class="tc-term">Shirk</div><div class="tc-def">Polytheism — devoting worship to anyone or thing that is not Allah. The gravest sin in Islam.</div></div>
+      <div class="term-card"><div class="tc-term">Risalah</div><div class="tc-def">The message/prophecy of God as revealed to the Prophet Muhammad (pbuh — peace be upon him)</div></div>
+      <div class="term-card"><div class="tc-term">Yawm al-din</div><div class="tc-def">Judgement Day — when all souls are judged by Allah's book of deeds</div></div>
+      <div class="term-card"><div class="tc-term">Akhira</div><div class="tc-def">Life after death; gateway to a higher existence. Barzakh = the period between death and resurrection</div></div>
+      <div class="term-card"><div class="tc-term">Ummah</div><div class="tc-def">The local and global Muslim community — both individual congregation and worldwide Islam</div></div>
+      <div class="term-card"><div class="tc-term">Ibadah</div><div class="tc-def">Worship — includes following Islamic beliefs and practices; observing halal and avoiding haram</div></div>
+      <div class="term-card"><div class="tc-term">Akhlaq</div><div class="tc-def">Ethics — virtue, morality, manners; the Islamic ethical framework</div></div>
+      <div class="term-card"><div class="tc-term">Jihad</div><div class="tc-def">To struggle. Greater jihad = struggle against oneself (inner). Lesser jihad = struggle against others for self-defense or helping the oppressed</div></div>
+      <div class="term-card"><div class="tc-term">Niyya</div><div class="tc-def">Intention — what one evokes in the heart for Allah. May or may not be spoken aloud. Required before worship.</div></div>
+      <div class="term-card"><div class="tc-term">Kufr / Kaafir</div><div class="tc-def">Unbelief — concealing or denying the truth by not following obligations like praying or fasting</div></div>
+      <div class="term-card"><div class="tc-term">Halal</div><div class="tc-def">What is permitted — rules for food, drink, and daily life. Includes certain foods, behaviours, financial practices.</div></div>
+      <div class="term-card"><div class="tc-term">Haram</div><div class="tc-def">What is prohibited/sinful — alcohol, pork, pre-marital relations, dating, charging interest (riba), dogs</div></div>
+      <div class="term-card"><div class="tc-term">Deen</div><div class="tc-def">Religious way of life — the Godly dimension of existence. Islam as complete life system.</div></div>
+      <div class="term-card"><div class="tc-term">Dunya</div><div class="tc-def">Earthly, temporal world. Deen and dunya must be balanced — religious obligations AND worldly pursuits</div></div>
+    </div>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — Jihad</div><p>The <strong>Greater Jihad</strong> (al-jihad al-akbar) is the inner spiritual struggle against one's own ego, desires, and sins. The <strong>Lesser Jihad</strong> (al-jihad al-asghar) is external — and only justified for self-defense or helping the oppressed. Terrorism is NOT legitimate Lesser Jihad under Islamic law. IB examiners specifically test this distinction.</p></div>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — Shirk</div><p>Shirk (associating partners with Allah) is the gravest sin in Islam — the one sin that, if unrepented, is not forgiven. This is why Islam rejects the Christian Trinity so firmly: attributing a Son and Holy Spirit to God is, in Islamic theology, a form of Shirk. This is critical for IB comparison questions on monotheism.</p></div>
+  </div>
+
+  <!-- HUMAN CONDITION -->
+  <div class="note-header" onclick="toggleNote(this)">Human Condition</div>
+  <div class="note-body">
+    <h4>1. What is the Human Condition?</h4>
+    <p>Humans must strive to submit themselves to the will of God. Without divine guidance, they are likely to stray from the path of prescribed and prohibited actions that God has set out in order to prevent moral error. Deen and dunya must be kept in balance.</p>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — No Original Sin</div><p>Islam has <strong>NO concept of Original Sin</strong>. All humans are born in a state of <em>fitra</em> — natural purity and innate faith in God. Sin is the result of individual disobedient acts, NOT an inherited condition. This contrasts sharply with Christianity (and to a lesser extent Judaism). There is no need for a divine saviour to fix a pre-existing human flaw — just submission and return to the straight path.</p></div>
+
+    <h4>2. Where Are We Going?</h4>
+    <ul>
+      <li><strong>Jannah (Paradise)</strong> — for the faithful; eternal obedience to God's will; a literal physical place</li>
+      <li><strong>Jahannam (Hell)</strong> — by disobedience to God's will; reserved for those whom God has decided to punish for grave sins and not repenting. BUT: Allah can/will send some souls to Jahannam for a while then bring them to Janna — it is not eternal for all (unlike Christian Hell)</li>
+      <li><strong>Barzakh</strong> — the period between death and Yawm al-din (Resurrection Day) where souls await with Allah</li>
+    </ul>
+
+    <h4>3. How Do We Get There?</h4>
+    <ul>
+      <li>Acknowledging <strong>Tawhid</strong> (the oneness of God) and submitting to His will</li>
+      <li>Believing in God, the scriptures, angels, jinns, and Akhira (life after death)</li>
+      <li>Living according to the Quran and the divinely inspired Hadith of the Prophet Muhammad</li>
+      <li>Practising the <strong>Five Pillars of Islam</strong> — obligations prescribed in the Quran for individual Muslims</li>
+    </ul>
+  </div>
+
+  <!-- HISTORY: MUHAMMAD -->
+  <div class="note-header" onclick="toggleNote(this)">Muhammad's Life &amp; Early History</div>
+  <div class="note-body">
+    <p>Religiously, Islam begins with Adam, Eve, then Abraham, Hagar, and their son <strong>Ishmael</strong> (half-brother of the Jewish Isaac). Historically, it begins with the Prophet Muhammad.</p>
+
+    <div class="timeline-row"><div class="timeline-date">570 CE</div><div class="timeline-text">Muhammad born in the wilds of Saudi Arabia — an illiterate caravan manager. Orphaned at a young age, raised by his uncle. An illiterate man from a trading city.</div></div>
+    <div class="timeline-row"><div class="timeline-date">Pre-610</div><div class="timeline-text">Married <strong>Khadija</strong>, a wealthy widow merchant — his only wife until her death. She was the first Muslim convert.</div></div>
+    <div class="timeline-row"><div class="timeline-date">610 CE</div><div class="timeline-text"><strong>"Night of Power" (Laylat al-Qadr)</strong> — Age 40, meditating in a cave on Mt. Hira, called by the angel <strong>Jibril (Gabriel)</strong> to be a prophet of Allah. Received revelations for 22 years. As is the case with most prophets, was really mistreated. He proclaimed sweeping reform from business to life, gender, and family relations.</div></div>
+    <div class="timeline-row"><div class="timeline-date">619 CE</div><div class="timeline-text"><strong>Year of Sorrow</strong> — the ummah is persecuted; his uncle (and protector) bankrupt and dies; Khadija dies; assassination attempts against Muhammad.</div></div>
+    <div class="timeline-row"><div class="timeline-date">619–620 CE</div><div class="timeline-text"><strong>The Night Journey &amp; Ascension (Isra and Mi'raj)</strong> — While sleeping near the Ka'ba, Muhammad was awakened by Jibril, who mounted him on a mystical steed (Buraq) that flew him to <strong>Jerusalem</strong> (to the al-Masjid al-Aqsa / Furthest Mosque — the Temple Mount, site of the 2nd Jewish Temple). He climbed a ladder to the throne of God. He met great prophets: Abraham, Moses, Jesus, John the Baptist and others. He received guidance — including fixing the daily prayers at 5. This made Jerusalem the <strong>third holiest city</strong> after Mecca and Medina, and affirmed Islam as part of the Abrahamic lineage.</div></div>
+    <div class="timeline-row"><div class="timeline-date">622 CE</div><div class="timeline-text"><strong>The Hijra</strong> — Due to conflict in Mecca, the ummah flees to Medina. This migration is so significant the <strong>Muslim calendar begins with the year of the Hijra</strong>. Hijra or Jihad: migrate OR stay and resist — twin ideals and guiding principles (Greater Jihad = inner struggle; Lesser Jihad = outside struggles).</div></div>
+    <div class="timeline-row"><div class="timeline-date">630 CE</div><div class="timeline-text">The Meccan tribes recognized his leadership; feud came to an end. After tribes clashed and truce was broken, Muhammad moved against Mecca with a large force. <strong>He proved magnanimous in victory</strong> — used diplomacy rather than force. Many former enemies converted and became leaders. He regarded the <strong>Ka'ba</strong> as the true house of monotheism.</div></div>
+    <div class="timeline-row"><div class="timeline-date">632 CE</div><div class="timeline-text">Death of Muhammad. <strong>Islam split</strong> over succession: Sunni vs Shia.</div></div>
+
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — Islam &amp; Earlier Religions</div><p>Islam and the Quran were intended to be a <strong>perfecting</strong> of Judaism and Christianity — NOT a replacement. Both were seen to have strayed from God's intention. Islam affirms the Torah and Gospels as originally revealed, but believes they were corrupted by human hands. The Quran is the final, uncorrupted revelation. This is why Muslims accept Abraham, Moses, and Jesus as prophets.</p></div>
+  </div>
+
+  <!-- DENOMINATIONS -->
+  <div class="note-header" onclick="toggleNote(this)">Sunni vs Shia &amp; Other Groups</div>
+  <div class="note-body">
+    <h4>The Succession Split</h4>
+    <p>Islam split soon after Muhammad's death (632 CE) over the question: who should lead the ummah?</p>
+    <div class="two-col">
+      <div class="denom-card">
+        <h5>Sunni — 80% of worldwide Muslims</h5>
+        <ul>
+          <li>Follows <strong>Abu Bakr</strong> as the 1st Rightly Guided Caliph</li>
+          <li>The majority of the ummah supported Abu Bakr — felt he was the most capable; he claimed the leadership</li>
+          <li>Sunni have <strong>not split</strong> into major sub-sects</li>
+          <li>Follow the Sunnah of the Prophet strictly</li>
+        </ul>
+      </div>
+      <div class="denom-card">
+        <h5>Shia — 20% of worldwide Muslims</h5>
+        <ul>
+          <li>Follows <strong>Ali</strong> (Muhammad's cousin and son-in-law) as the 4th Rightly Guided Caliph</li>
+          <li>Felt Ali should have led from the beginning — bloodline succession</li>
+          <li>Has several sub-sects: <strong>Fiver, Sevener, Twelver</strong> Shiites (based on how many Imams they recognise)</li>
+          <li>Shia sects have beliefs/doctrine that diverge from Sunni</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Sufism</h4>
+    <p>Islamic mysticism — associated with Shia tradition, sort of like monks. <strong>Responsible for much of the spread of Islam</strong> through personal devotion and mystical practice. Often rejected by Sunni as innovation. Features the Whirling Dervishes (a Sufi practice).</p>
+
+    <h4>Nation of Islam</h4>
+    <p>Founded in 1930 in Detroit by Wallace Fard Muhammad. An African-American religious movement that uses Islamic themes. <strong>Controversial</strong> — not recognized as orthodox Islam by mainstream Sunni or Shia.</p>
+
+    <h4>What Sunni and Shia Agree On</h4>
+    <ul>
+      <li>Both agree on Muhammad and his status as the final Prophet</li>
+      <li>The Quran is sacred and irrefutable</li>
+      <li>The Five Pillars, including Hajj</li>
+    </ul>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Tip — Sunni/Shia Split</div><p>The Sunni/Shia split is fundamentally about <strong>political succession</strong>, not theology. They agree on core doctrine (Tawhid, Quran, Five Pillars) — the split is about who had the legitimate right to lead the ummah after Muhammad's death. Compare to the Christian Great Schism — also political as much as theological.</p></div>
+  </div>
+
+  <!-- SCRIPTURE / SHARIA -->
+  <div class="note-header" onclick="toggleNote(this)">Sacred Texts, Sharia &amp; Authority</div>
+  <div class="note-body">
+    <h4>The Quran</h4>
+    <ul>
+      <li>Sacred and irrefutable — the direct Word of God revealed to Muhammad by the angel Jibril (Gabriel) in Arabic over 22 years</li>
+      <li>Collated after Muhammad's death by the ummah under Caliph Uthman</li>
+      <li><strong>Hafiz</strong>: a person who has memorized and can recite the entire Quran — MILLIONS have done this</li>
+      <li>Arabic is the sacred language — prayers are all in Arabic; the Quran "should" be read in Arabic</li>
+      <li>The Quran is meant to <strong>perfect</strong> earlier Abrahamic scriptures, NOT abrogate them</li>
+    </ul>
+
+    <h4>Sunnah &amp; Hadith</h4>
+    <ul>
+      <li><strong>Sunnah</strong>: the behaviour and actions of the Prophet — not sacred but very important as a guide to right behaviour (orthopraxy)</li>
+      <li><strong>Hadith</strong>: a collection of sayings from the Prophet Muhammad — his advice, commentary, guidance to the ummah</li>
+      <li><strong>Isnad</strong>: the documented/transmitted chain of knowledge from one scholar to the next, from Muhammad to the present — used to authenticate Hadith</li>
+      <li>Authentication of Hadith is an issue — people have claimed false hadith (e.g. the 72 virgins claim for terrorists; Muhammad's marriage age to Aisha)</li>
+    </ul>
+
+    <h4>Sources of Shariah (Islamic Law)</h4>
+    <div class="sharia-row"><div class="sharia-num">1</div><div class="sharia-text"><strong>The Quran</strong> — primary and most authoritative source</div></div>
+    <div class="sharia-row"><div class="sharia-num">2</div><div class="sharia-text"><strong>Sunnah / Hadith</strong> — the Prophet's example</div></div>
+    <div class="sharia-row"><div class="sharia-num">3</div><div class="sharia-text"><strong>Qiyas</strong> — analogical reasoning (Fiqh): applying known rulings to new situations</div></div>
+    <div class="sharia-row"><div class="sharia-num">4</div><div class="sharia-text"><strong>Ijtihad</strong> — independent judgement/reasoning by qualified scholars</div></div>
+    <div class="sharia-row"><div class="sharia-num">5</div><div class="sharia-text"><strong>Ijma</strong> — consensus of the Ulama (scholars)</div></div>
+
+    <h4>Key Roles &amp; Institutions</h4>
+    <ul>
+      <li><strong>Imam</strong>: local leaders at the masjid (mosque), like a rabbi — guides the community in prayer and Islamic life</li>
+      <li><strong>Ulama</strong>: Islamic scholars who interpret and apply Islamic law</li>
+      <li><strong>Qadi</strong>: Islamic judge who rules on legal matters</li>
+      <li><strong>Islamic law schools (madhabs)</strong>: Hanafi, Shafi'i, Maliki, Hanbali — each school varies in some rulings, some very conservative</li>
+    </ul>
+
+    <h4>Two Categories of Shariah Duties</h4>
+    <ul>
+      <li>Duties to God (Ibadah) — prayer, fasting, pilgrimage, etc.</li>
+      <li>Duties to others (Mu'amalat) — social, family, financial obligations</li>
+    </ul>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — Quran vs Hadith Authority</div><p>The Quran is the direct, uncorrupted Word of God — absolute authority. The Hadith are important guides but can be authenticated or rejected (the Isnad chain system). This hierarchy of authority matters for understanding how Islamic law works and why there is diversity within Islam.</p></div>
+  </div>
+
+  <!-- ESCHATOLOGY / COSMOLOGY -->
+  <div class="note-header" onclick="toggleNote(this)">Eschatology &amp; The Quranic Universe</div>
+  <div class="note-body">
+    <h4>Three Levels of the Universe</h4>
+    <p>The Quranic universe has three levels: <strong>Earth, Heaven, Hell</strong>. On Earth there are two types of beings: <strong>humans</strong> and <strong>spirits</strong>. All beings are called to obedience to God.</p>
+
+    <h4>Spiritual Beings</h4>
+    <ul>
+      <li><strong>Angels</strong> — messengers from God to human beings; immortal and genderless; function as guardians</li>
+      <li><strong>Jinns (Genies)</strong> — invisible by nature but can appear in human form; made from fire. Can be good or bad. They too will be judged in the afterlife. Often portrayed as magical beings in folklore.</li>
+      <li><strong>Shaytan / Iblis (Satan)</strong> — leader of the devils; a jinn who tempts humans in their jihad. Represents evil/disobedience to God. His fall was caused by his refusal to prostrate before Adam upon God's commandment — he was too proud.</li>
+      <li><strong>Devils</strong> — fallen angels and jinns who tempt humans. The Fall represents the ongoing human struggle between good and evil.</li>
+    </ul>
+
+    <h4>Sin — No Original Sin</h4>
+    <ul>
+      <li><strong>No Original Sin</strong> in Islam — humans are born in fitra (pure natural state)</li>
+      <li>Humans enjoy a special status because God breathed His spirit into the first being, Adam</li>
+      <li>Sin = the result of an act of disobedience, NOT a state of being</li>
+      <li>There is no need for guilt, shame or disgrace — just return to the straight path</li>
+      <li>The focus is on <strong>Jihad</strong> — the ongoing struggle for what is right and just in the path of God</li>
+    </ul>
+
+    <h4>The End Times</h4>
+    <ul>
+      <li><strong>Barzakh</strong> — souls are with Allah between death and Resurrection Day</li>
+      <li><strong>Yawm al-din</strong> (Judgement Day / Resurrection Day) — all souls reunite with their bodies; Allah has a book of deeds for every human</li>
+      <li>Jesus (<strong>Isa</strong>) will appear with Muhammad (pbuh) on the Day of Judgement</li>
+      <li>Jesus (Isa) will kill the <strong>Dajjal</strong> ("Fake Jesus" / the Antichrist)</li>
+      <li>Allah can/will send some souls to Jahannam for a while then bring to Janna — it is <strong>not eternal</strong> for all</li>
+    </ul>
+
+    <h4>Islamic View of Jesus (Isa)</h4>
+    <ul>
+      <li>Jesus is a great prophet — NOT the Son of God (that would be Shirk)</li>
+      <li>Jesus did NOT die on the cross — Allah placed a substitute on the cross; Jesus was taken to Heaven</li>
+      <li>Jesus will return at the end of times — a future role, not a past saving act</li>
+    </ul>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — Islam's View of Jesus</div><p>Islam affirms Jesus as a great prophet (Isa) but firmly denies his divinity and crucifixion. "Allah placed a substitute on the cross" — Jesus was taken directly to Heaven. This is a major IB comparison point between Islam and Christianity. Know this clearly.</p></div>
+  </div>
+
+  <!-- FIVE PILLARS -->
+  <div class="note-header" onclick="toggleNote(this)">The Five Pillars of Islam</div>
+  <div class="note-body">
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pc-num">Pillar 1</div>
+        <div class="pc-name">Shahadah — Declaration of Faith</div>
+        <div class="pc-detail">"There is no God but God (Allah) and Muhammad is his Prophet." The foundational statement of Islamic faith. To become Muslim: recite with Niyya (sincere intention).</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pc-num">Pillar 2</div>
+        <div class="pc-name">Salat — Prayer (5 Times Daily)</div>
+        <div class="pc-detail">5 times a day facing Mecca. Can be done anywhere there is a clean space. Group prayer is better than praying alone. Jummah (Friday communal prayer) required for men if not working. Muezzin calls from the minaret. Women not required to attend mosque.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pc-num">Pillar 3</div>
+        <div class="pc-name">Zakat — Charity</div>
+        <div class="pc-detail">Help those in need as much as possible. Obligatory giving — typically 2.5% of savings per year. Not optional generosity but a justice obligation (compare to Jewish Tzedakah).</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pc-num">Pillar 4</div>
+        <div class="pc-name">Sawm — Fasting (Ramadan)</div>
+        <div class="pc-detail">Fasting during the holy month of Ramadan. No food, drink, smoking, or sex from dawn to sunset. During menstruation: no fasting (make up the days later), no praying, cannot handle the Quran, cannot enter the mosque.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pc-num">Pillar 5</div>
+        <div class="pc-name">Hajj — Pilgrimage to Mecca</div>
+        <div class="pc-detail">At least once in a lifetime ($$$). Only Muslims are allowed in Mecca. 10 days in the final month of the Islamic calendar (~2 months after Ramadan). Umrah = pilgrimage to Mecca at any time but does not count for Hajj.</div>
+      </div>
+    </div>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — The Five Pillars</div><p>The Five Pillars are the obligatory framework of Muslim life prescribed in the Quran. They are the "how do we get there?" answer — the practical path of submission to God's will. Note: both Sunni and Shia agree on the Five Pillars. The Pillars make Islam a remarkably unified practice across 1.8 billion Muslims worldwide.</p></div>
+  </div>
+
+  <!-- HOLY DAYS & WORSHIP -->
+  <div class="note-header" onclick="toggleNote(this)">Holy Days, Worship &amp; Halal/Haram</div>
+  <div class="note-body">
+    <h4>Worship &amp; the Masjid (Mosque)</h4>
+    <ul>
+      <li>5 daily prayers — can be done anywhere with a clean space</li>
+      <li><strong>Jummah</strong> — Friday prayer at the masjid; required for men if not working</li>
+      <li><strong>Muezzin</strong> — man who calls Muslims to prayer from the minaret of the mosque</li>
+      <li>Women are NOT required to go to the masjid at all</li>
+      <li>Men sit on the ground floor; women up in a balcony — separate but equal in theory</li>
+      <li>Menstruation: cannot enter mosque, no fasting (make up the days), no praying, don't handle the Quran</li>
+    </ul>
+
+    <div class="holy-day-grid">
+      <div class="holy-day-card">
+        <div class="hd-name">Ramadan</div>
+        <div class="hd-detail">Holy month of fasting — the month the Quran was first revealed. Fast from dawn to sunset. Night prayers (Tarawih). Community spirit intensifies. Laylat al-Qadr (Night of Power) — the night Muhammad first received revelation — falls near the end of Ramadan.</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Eid al-Fitr</div>
+        <div class="hd-detail">3-day festival to END Ramadan. Very festive — new clothes, gifts, communal prayers, special foods. Celebrated worldwide, not just in Muslim-majority countries.</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Hajj (Pilgrimage)</div>
+        <div class="hd-detail">10 days in the final month of the Islamic calendar (~2 months after Ramadan). Only Muslims allowed in Mecca. At least once in a lifetime. The largest annual peaceful gathering of humans on earth.</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Eid al-Adha</div>
+        <div class="hd-detail">Feast of the Sacrifice — end of Hajj. Commemorates Abraham's obedience to God in his willingness to sacrifice Ishmael (NOT Isaac — Islamic tradition differs from Jewish/Christian). An animal is ritually sacrificed, prepared, and distributed to the poor. Celebrated worldwide.</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Ashura</div>
+        <div class="hd-detail">Mainly a Shia holiday about the death of Muhammad's grandson Hussayn — commemorating his martyrdom at Karbala. Also observed by some Sunni as a day of fasting (Moses' crossing of the Red Sea).</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Umrah</div>
+        <div class="hd-detail">Pilgrimage to Mecca at any time of year — but does NOT count as Hajj. A voluntary act of devotion, not one of the Five Pillars.</div>
+      </div>
+    </div>
+
+    <h4>Halal vs Haram</h4>
+    <ul>
+      <li><strong>Halal</strong> (permitted): certain foods, slaughter of meat according to Islamic method, cats</li>
+      <li><strong>Haram</strong> (prohibited): alcohol, pork, pre-marital relations, dating, breaking the Ten Commandments, dogs, charging interest on loans (riba)</li>
+      <li>Islam has its own <strong>banking/financial system</strong> — no interest (riba)</li>
+      <li>What is considered haram varies by culture: dancing, music, gold jewelry for men</li>
+    </ul>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Tip — Eid al-Adha</div><p>In Islamic tradition, it was <strong>Ishmael</strong> (not Isaac) whom Abraham was commanded to sacrifice. This is a key difference from the Jewish and Christian account. It also explains why Islam traces its religious lineage through Ishmael (ancestor of the Arabs) rather than Isaac (ancestor of the Jews). Know this for cross-religion comparison questions.</p></div>
+  </div>
+
+  <!-- WOMEN & MARRIAGE -->
+  <div class="note-header" onclick="toggleNote(this)">Women in Islam, Marriage &amp; Religious Experience</div>
+  <div class="note-body">
+    <h4>The Quran Raised the Status of Women</h4>
+    <p>In 7th-century Arabia, the revelation of Islam raised women's status by prohibiting:</p>
+    <ul>
+      <li><strong>Female infanticide</strong> (killing baby girls)</li>
+      <li>Treating women as property</li>
+    </ul>
+    <p>And by granting women:</p>
+    <ul>
+      <li>The right to receive and own their own dowry</li>
+      <li>Changing marriage from a proprietary to a <strong>contractual relationship</strong></li>
+      <li>Allowing women to retain control over their property</li>
+    </ul>
+
+    <h4>Marriage (Nikah)</h4>
+    <ul>
+      <li><strong>No dating</strong> in Islam; no unsupervised contact between genders</li>
+      <li><strong>Wali</strong> — a woman's male guardian in marriage negotiations</li>
+      <li><strong>Nikah</strong> — the religious ceremony/union in front of two witnesses; often done before a larger wedding reception</li>
+      <li>Type of wedding varies by region/culture</li>
+      <li>Women are to receive financial maintenance from husbands in marriage and/or divorce; men are complete providers for the family</li>
+      <li><strong>Divorce</strong>: a man must say he wants it 3 times, breaking the religious union (not the civil marriage). Women can also pursue divorce.</li>
+    </ul>
+
+    <h4>The Hijab &amp; Dress</h4>
+    <ul>
+      <li>The hijab or head/body coverings: NOT "required" (except in Afghanistan, maybe Iran) — the Quran says to dress modestly but nothing about a specific type of head covering</li>
+      <li>It is mostly a <strong>cultural/family thing</strong> — a controversial misconception that it is doctrinally mandated</li>
+      <li>Many Muslim women CHOOSE to wear some form of head covering</li>
+      <li>It should NOT be a symbol of repression or patriarchy</li>
+    </ul>
+
+    <h4>Equality vs Difference</h4>
+    <p>The Quran declares that men and women are equal in the eyes of God — both created to be equal pairs. BUT: men and women are not equal in role — they have different rights and responsibilities due to their different natures. Regional patriarchy pre-dates Islam and has impacted women's rights in some countries.</p>
+
+    <h4>Reversion, NOT Conversion</h4>
+    <p>In Islamic theology, all humans are born in a state of purity (<em>fitra</em>) as Muslims — innately we have Imaan (faith in God). If raised outside of Islam, one does not "convert" but rather <strong>reverts</strong> to their original state at birth. To revert: recite the Shahadah with Niyya (sincere intention).</p>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — Reversion</div><p>"Reversion not Conversion" — Islam believes all humans are born Muslim (in submission to God). Becoming Muslim is returning to one's true nature, not adopting something foreign. Compare to Christian conversion (which requires faith in Jesus as new belief) and Jewish conversion (which is actively discouraged). This theological difference reflects fundamentally different understandings of human nature.</p></div>
+  </div>
+
+  <!-- ETHICS -->
+  <div class="note-header" onclick="toggleNote(this)">Ethical &amp; Legal Issues</div>
+  <div class="note-body">
+    <ul>
+      <li><strong>Abortion</strong>: acceptable ONLY when it is for the health and safety of the mother</li>
+      <li><strong>Circumcision</strong>: required for male infants</li>
+      <li><strong>Birth control</strong>: varies but overall accepted; family planning is OK</li>
+      <li><strong>IVF</strong>: OK if it's the married couple's own sperm and egg. No donor eggs. Surrogacy not really accepted but depends.</li>
+      <li><strong>Homosexuality</strong>: No acceptance of anything — not marriage, not openly gay couples. Nothing at all. (Your notes say "Nada. Period.")</li>
+      <li><strong>Riba (interest)</strong>: Haram — Islam has its own banking system to avoid charging interest on loans</li>
+      <li><strong>Alcohol</strong>: Haram</li>
+      <li><strong>Pork</strong>: Haram</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 3 · COMPARISON CHARTS                             -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-charts" class="tab-panel">
+  <div class="chart-tabs">
+    <button class="chart-tab active" onclick="showChart('c1')">Sunni vs Shia</button>
+    <button class="chart-tab" onclick="showChart('c2')">Islam vs Other Abrahamic Traditions</button>
+    <button class="chart-tab" onclick="showChart('c3')">Islam vs Other World Religions</button>
+    <button class="chart-tab" onclick="showChart('c4')">Sources of Shariah</button>
+    <button class="chart-tab" onclick="showChart('c5')">"Don't Confuse" Guide</button>
+  </div>
+
+  <!-- CHART 1 -->
+  <div id="chart-c1" class="chart-panel active">
+    <h3>Sunni vs Shia Islam</h3>
+    <table class="comp-table">
+      <tr><th>Aspect</th><th>Sunni (80%)</th><th>Shia (20%)</th></tr>
+      <tr><td class="category" colspan="3">Origins of the Split</td></tr>
+      <tr><td><strong>Cause of split</strong></td><td>Supported Abu Bakr as Muhammad's successor — felt he was most capable</td><td>Felt Ali (cousin and son-in-law) should have led from the beginning — bloodline succession</td></tr>
+      <tr><td><strong>First legitimate leader</strong></td><td>Abu Bakr (1st Rightly Guided Caliph)</td><td>Ali (4th Rightly Guided Caliph — should have been 1st)</td></tr>
+      <tr><td class="category" colspan="3">Beliefs &amp; Practice</td></tr>
+      <tr><td><strong>Core agreements</strong></td><td colspan="2" class="highlight">Both: Tawhid, the Quran, Muhammad as final Prophet, Five Pillars including Hajj — the split is political/succession, not doctrinal</td></tr>
+      <tr><td><strong>Internal unity</strong></td><td>Have NOT split — relatively unified</td><td>Several sub-sects: Fiver, Sevener, and Twelver Shiites (based on number of Imams recognized)</td></tr>
+      <tr><td><strong>Sufism</strong></td><td>Often rejects Sufism as innovation (bid'ah)</td><td class="highlight">Associated with Shia; Sufism responsible for much of Islam's spread. Whirling Dervishes are Sufi.</td></tr>
+      <tr><td><strong>Ashura</strong></td><td>Minor observance (fasting — Moses crossing the Red Sea)</td><td class="highlight">Major, solemn commemoration of Hussayn's martyrdom at Karbala</td></tr>
+      <tr><td><strong>Imam role</strong></td><td>Community leader and prayer leader at mosque</td><td>Higher authority — divinely guided, infallible leader of the ummah (especially in Twelver Shia)</td></tr>
+      <tr><td><strong>Geographic strongholds</strong></td><td>Saudi Arabia, Egypt, Turkey, Indonesia, most of the Muslim world</td><td>Iran, Iraq, Lebanon (Hezbollah), parts of Pakistan</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 2 -->
+  <div id="chart-c2" class="chart-panel">
+    <h3>Islam vs Judaism vs Christianity (Abrahamic Traditions)</h3>
+    <table class="comp-table">
+      <tr><th>Aspect</th><th>Islam</th><th>Judaism</th><th>Christianity</th></tr>
+      <tr><td><strong>God</strong></td><td class="highlight">Absolute monotheism (Tawhid) — no Trinity, no Son</td><td>Absolute monotheism — no Trinity, no Son</td><td>Trinitarian monotheism — Father, Son, Holy Spirit</td></tr>
+      <tr><td><strong>Jesus</strong></td><td>Prophet (Isa) — not divine; did not die on the cross; will return</td><td>Not the Messiah; perhaps a teacher</td><td class="highlight">Son of God; divine saviour; rose from dead</td></tr>
+      <tr><td><strong>Muhammad</strong></td><td class="highlight">Final and greatest Prophet (pbuh)</td><td>Not recognized</td><td>Not recognized</td></tr>
+      <tr><td><strong>Sacred Text</strong></td><td>Quran (direct Word of God, uncorrupted); Hadith</td><td>TaNakh + Talmud</td><td>Bible (OT + NT)</td></tr>
+      <tr><td><strong>Relationship to earlier texts</strong></td><td class="highlight">Quran perfects Torah and Gospels — both were corrupted. All three religions share Abrahamic foundation.</td><td>Torah is the authoritative revelation; NT not accepted</td><td>OT fulfilled by NT; Torah partially binding</td></tr>
+      <tr><td><strong>Original Sin</strong></td><td class="highlight">No — humans born in fitra (purity)</td><td>No — humans born morally neutral</td><td class="highlight">Yes — all humans inherit Adam's sin; need a saviour</td></tr>
+      <tr><td><strong>Salvation/Righteousness</strong></td><td>Submission to Allah; Five Pillars; returning to straight path</td><td>Covenant; 613 mitzvot; Teshuvah; Tikkun Olam</td><td>Faith in Jesus; grace; sacraments</td></tr>
+      <tr><td><strong>Afterlife</strong></td><td>Jannah (Paradise) and Jahannam (Hell); Barzakh; not necessarily eternal Hell</td><td>Olam ha-ba (vague); focus on THIS life</td><td>Heaven and Hell (defined); Purgatory (Catholic)</td></tr>
+      <tr><td><strong>Abraham's sacrifice</strong></td><td class="highlight">Ishmael (ancestor of Arabs)</td><td>Isaac (ancestor of Jews)</td><td>Isaac</td></tr>
+      <tr><td><strong>Dietary laws</strong></td><td>Halal/Haram — no pork, no alcohol; ritual slaughter</td><td>Kashrut — no pork, no shellfish, no meat+dairy</td><td>Generally none (some denominations vary)</td></tr>
+      <tr><td><strong>Place of worship</strong></td><td>Masjid (Mosque)</td><td>Synagogue</td><td>Church / Cathedral</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 3 -->
+  <div id="chart-c3" class="chart-panel">
+    <h3>Islam vs Buddhism vs Sikhism vs Sanatana Dharma</h3>
+    <table class="comp-table">
+      <tr><th>Aspect</th><th>Islam</th><th>Buddhism</th><th>Sikhism</th><th>Sanatana Dharma</th></tr>
+      <tr><td><strong>God</strong></td><td>One personal God (Allah) — absolute monotheism</td><td>No God / agnostic about God; no creator deity in Theravada</td><td>One formless God (Waheguru) — monotheism</td><td>Brahman (ultimate reality); many manifestations (gods)</td></tr>
+      <tr><td><strong>Human problem</strong></td><td>Disobedience to Allah; straying from the straight path</td><td>Dukkha (suffering) caused by attachment and ignorance</td><td>Haumai (ego/self-centredness)</td><td>Ignorance (avidya); attachment to Maya (illusion)</td></tr>
+      <tr><td><strong>Solution/Path</strong></td><td>Submission (Islam); Five Pillars</td><td>Eightfold Path; Middle Way; Dharma</td><td>Naam Japna, Kirat Karni, Vand Chakna</td><td>Dharma, Yoga, Karma; liberation (moksha)</td></tr>
+      <tr><td><strong>Afterlife</strong></td><td>Jannah or Jahannam; based on deeds and faith</td><td>Reincarnation until Nirvana (escape from cycle)</td><td>Reincarnation until Mukti (merger with Waheguru)</td><td>Reincarnation (samsara) until Moksha</td></tr>
+      <tr><td><strong>Founder</strong></td><td>Prophet Muhammad (pbuh) 570–632 CE</td><td>Siddhartha Gautama (~563–483 BCE)</td><td>Guru Nanak (1469–1539 CE)</td><td>No single founder — ancient tradition</td></tr>
+      <tr><td><strong>Sacred text</strong></td><td>Quran + Hadith</td><td>Tipitaka (Pali Canon); various Mahayana sutras</td><td>Guru Granth Sahib</td><td>Vedas, Upanishads, Bhagavad Gita</td></tr>
+      <tr><td><strong>Monotheism?</strong></td><td class="highlight">Yes — absolute (Tawhid)</td><td>No — non-theistic</td><td>Yes — Ik Onkar (One God)</td><td>Complex — monistic/polytheistic/henotheistic</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 4 -->
+  <div id="chart-c4" class="chart-panel">
+    <h3>Sources of Shariah &amp; Islamic Legal Structure</h3>
+    <table class="comp-table">
+      <tr><th>Source</th><th>Arabic Term</th><th>Description</th><th>Authority Level</th></tr>
+      <tr><td><strong>1. Quran</strong></td><td>القرآن</td><td>Direct Word of God revealed to Muhammad; sacred and irrefutable; primary source of all law</td><td class="highlight">Highest — absolute</td></tr>
+      <tr><td><strong>2. Sunnah / Hadith</strong></td><td>السنة / الحديث</td><td>Actions/sayings of the Prophet Muhammad; authenticated by Isnad (chain of transmission); not sacred but very important</td><td>Second — very high but subject to authentication</td></tr>
+      <tr><td><strong>3. Qiyas</strong></td><td>القياس</td><td>Analogical reasoning — applying a known Quranic/Hadith ruling to a new situation by analogy</td><td>Third — human reasoning from divine sources</td></tr>
+      <tr><td><strong>4. Ijtihad</strong></td><td>الاجتهاد</td><td>Independent scholarly judgement on new legal questions; requires deep Islamic knowledge</td><td>Fourth — expert human reasoning</td></tr>
+      <tr><td><strong>5. Ijma</strong></td><td>الإجماع</td><td>Consensus of the Ulama (scholars) — what the scholarly community agrees upon</td><td>Fifth — collective human authority</td></tr>
+      <tr><td class="category" colspan="4">Legal Roles &amp; Institutions</td></tr>
+      <tr><td><strong>Imam</strong></td><td>إمام</td><td>Local mosque leader; prayer leader; community guide; like a rabbi</td><td>Community level</td></tr>
+      <tr><td><strong>Ulama</strong></td><td>العلماء</td><td>Islamic scholars who interpret and apply the law; "those who know"</td><td>Scholarly authority</td></tr>
+      <tr><td><strong>Qadi</strong></td><td>القاضي</td><td>Islamic judge who rules on legal matters in a court</td><td>Judicial authority</td></tr>
+      <tr><td><strong>Law Schools (Madhabs)</strong></td><td>المذاهب</td><td>Hanafi, Shafi'i, Maliki, Hanbali — four schools of Islamic jurisprudence; vary in rulings, some very conservative</td><td>Traditional scholarly frameworks</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 5 -->
+  <div id="chart-c5" class="chart-panel">
+    <h3>"Don't Confuse" — Common IB Mistakes in Islam</h3>
+    <table class="comp-table">
+      <tr><th>Concept</th><th>What It IS</th><th>What It Is NOT / Common Mistake</th></tr>
+      <tr><td><strong>Jihad</strong></td><td>Greater Jihad = inner spiritual struggle against ego and sin (the more important one). Lesser Jihad = external struggle in self-defense or to help the oppressed.</td><td>NOT terrorism. NOT "holy war" as a blanket concept. Terrorism explicitly violates Islamic law. The misuse of Lesser Jihad to justify terrorism is condemned by mainstream Islamic scholars.</td></tr>
+      <tr><td><strong>Shirk</strong></td><td>The gravest sin in Islam — associating partners/equals with Allah. This is why Islam rejects the Trinity.</td><td>NOT just "worshipping idols." Any act that puts something on equal footing with God — including the Christian belief in the Son of God — is Shirk in Islamic theology.</td></tr>
+      <tr><td><strong>Islam &amp; Jesus</strong></td><td>Islam affirms Jesus (Isa) as a great prophet. Jesus will return at the end of times. Jesus did NOT die on the cross — a substitute was placed there.</td><td>NOT the same Jesus as Christianity's. Islam's Jesus is a prophet, not divine, not the Son of God, and did not atone for anyone's sins.</td></tr>
+      <tr><td><strong>Reversion</strong></td><td>Becoming Muslim is a "reversion" — returning to your true nature (fitra). All humans are born Muslim.</td><td>NOT "conversion" — which implies adopting something foreign. This distinction reflects the Islamic belief that Islam is the natural religion of humanity.</td></tr>
+      <tr><td><strong>Hijab</strong></td><td>Primarily a cultural/family practice in most countries. The Quran says dress modestly but does not specify a type of head covering. Many Muslim women choose it freely.</td><td>NOT universally required by Islamic scripture. NOT inherently a symbol of repression — many women wear it by choice. Regional patriarchy (Afghanistan, Iran) imposes it politically, not theologically.</td></tr>
+      <tr><td><strong>Eid al-Adha sacrifice</strong></td><td>Commemorates Abraham's willingness to sacrifice ISHMAEL (Islamic tradition).</td><td>NOT Isaac (that's the Jewish/Christian account). This is a key Abrahamic distinction — which son was to be sacrificed differs between Islam and the Bible.</td></tr>
+      <tr><td><strong>Sunni/Shia split</strong></td><td>Fundamentally about political succession after Muhammad's death — who should lead the ummah.</td><td>NOT primarily a theological dispute. Both agree on Tawhid, the Quran, Five Pillars, and Muhammad as final prophet. The split is about leadership, not core belief.</td></tr>
+      <tr><td><strong>No Original Sin</strong></td><td>Humans are born in fitra — purity. Sin is individual acts, not an inherited condition. No need for a divine saviour to fix a broken human nature.</td><td>NOT the same as Christianity's Original Sin. Islam's view of humanity is fundamentally more optimistic — you just need to return to the straight path, not be rescued from a broken nature.</td></tr>
+      <tr><td><strong>Quran vs Hadith</strong></td><td>The Quran = direct Word of God, absolute authority. The Hadith = sayings of the Prophet, important but subject to authentication via Isnad.</td><td>NOT equally authoritative. False Hadith exist and have been used to justify terrorism, misogyny, etc. The Isnad system exists precisely because Hadith can be fabricated.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 4 · ESSAY OUTLINES                                -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-essays" class="tab-panel">
+  <p class="section-intro">Click an essay to expand the full outline. These cover the most likely IB Paper 2 extended essay themes for Islam.</p>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">Discuss the significance of Tawhid (the oneness of God) as the foundational doctrine of Islam. <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>Tawhid is not merely one doctrine among many — it is the lens through which all of Islamic theology, ethics, law, and practice is understood. Everything in Islam flows from the absolute oneness of God.</p>
+      <h4>Introduction Points</h4>
+      <ul>
+        <li>Define Tawhid: the absolute, uncompromising oneness of Allah — no partners, no Trinity, no Son</li>
+        <li>Shirk (associating partners with Allah) is the gravest sin — this shows how central Tawhid is</li>
+        <li>The Shahadah (1st Pillar) begins with Tawhid: "There is no God but God"</li>
+      </ul>
+      <h4>Body — How Tawhid Shapes Everything</h4>
+      <ul>
+        <li><strong>Theology:</strong> Rejects the Christian Trinity as Shirk. Affirms Judaism's monotheism as closer to Islam but sees it as incomplete without Muhammad's revelation. Allah is utterly transcendent — no images, no physical depictions.</li>
+        <li><strong>Ethics:</strong> All human beings are equal before the one God — no racial or class hierarchy. Zakaat (charity) flows from the equality all humans share under Tawhid.</li>
+        <li><strong>Worship:</strong> All Five Pillars are directed exclusively at the one Allah. Prayer 5 times daily facing Mecca — the direction unifies the ummah toward one God. No intercessors, no saints (contrast with Catholicism).</li>
+        <li><strong>Law (Shariah):</strong> The Quran is Allah's direct speech — its authority derives from Tawhid. No human law can override God's law.</li>
+        <li><strong>Community:</strong> The ummah (global Muslim community) is united by shared submission to the one God — regardless of ethnicity, language, or culture.</li>
+      </ul>
+      <h4>Counter-argument</h4>
+      <ul>
+        <li>Some argue the Five Pillars are more "foundational" in practice — they are what Muslims actually do daily. Tawhid is belief; the Pillars are action.</li>
+        <li>Response: The Pillars only make sense because of Tawhid — they are expressions of submission to the one God. Without Tawhid, the Pillars have no meaning.</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>Tawhid is the theological foundation upon which every other aspect of Islam stands. Its rejection of all forms of polytheism, including the Trinity, sets Islam apart from Christianity while aligning it closely with Judaism. The uncompromising nature of Islamic monotheism explains both the religion's global unity (all Muslims worship the same one God in essentially the same way) and its historical tensions with Christianity.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">Examine the role of the Quran and Hadith as sources of authority in Islamic life and law. <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>The Quran as the direct Word of God provides absolute authority; the Hadith as the Prophet's human guidance provides practical wisdom — together they form the foundation of Islamic life and the basis of Shariah. Their different levels of authority explain both the unity and diversity within Islam.</p>
+      <h4>The Quran</h4>
+      <ul>
+        <li>Direct, uncorrupted Word of Allah — revealed to Muhammad over 22 years via Jibril</li>
+        <li>Sacred and irrefutable — absolute first source of all authority</li>
+        <li>Must be read in Arabic; Hafiz memorize it entirely — over a billion Muslims</li>
+        <li>Intended to perfect, not replace, earlier Abrahamic revelations</li>
+        <li>Shapes everything from prayer (Salat) to criminal law to family life</li>
+      </ul>
+      <h4>The Hadith</h4>
+      <ul>
+        <li>Muhammad's sayings and guidance — his advice, commentary on the ummah</li>
+        <li>Authenticated by the Isnad (chain of transmission) — because false Hadith exist</li>
+        <li>Examples of false Hadith: the 72 virgins for terrorists; young age of Aisha</li>
+        <li>Not sacred like the Quran — but very important for orthopraxy (right practice)</li>
+        <li>The Sunnah (the Prophet's actions) and Hadith together form the second pillar of Shariah</li>
+      </ul>
+      <h4>Shariah and the Sources (5 layers)</h4>
+      <ul>
+        <li>Quran → Sunnah/Hadith → Qiyas (analogy) → Ijtihad (independent reasoning) → Ijma (scholarly consensus)</li>
+        <li>The lower layers address situations the Quran/Hadith don't explicitly cover — allowing Islam to adapt</li>
+        <li>Four major legal schools (Hanafi, Shafi'i, Maliki, Hanbali) vary in their application of these sources</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>The Quran and Hadith together constitute a living system of authority that has guided 1.8 billion Muslims across 14 centuries. The Quran's absolute authority preserves Islamic unity; the Hadith and Shariah's interpretive flexibility allows Islam to function in every cultural context. The tension between strict application and contextual interpretation is the engine of Islamic legal debate.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">To what extent is Islam best understood as "a complete way of life" rather than merely a religion? <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>Islam explicitly rejects the Western separation of "religion" from other spheres of life. Deen (the Godly dimension) must be balanced with Dunya (the worldly) — but both are subject to God's authority. This makes Islam uniquely totalizing in its claims on human life.</p>
+      <h4>Evidence — Islam as Complete Way of Life</h4>
+      <ul>
+        <li><strong>Five Pillars structure every day, week, and year:</strong> prayer 5 times daily (Salat), annual fast (Sawm), annual pilgrimage (Hajj), regular charity (Zakat), constant declaration of faith (Shahadah)</li>
+        <li><strong>Shariah governs all areas:</strong> family law, criminal law, financial law (no interest/riba), food (Halal/Haram), dress, marriage, divorce</li>
+        <li><strong>Deen AND Dunya:</strong> Islam does not permit withdrawal from the world — it requires engagement with it according to God's guidance</li>
+        <li><strong>Ibadah (worship) = everything:</strong> every act done with Niyya (right intention) for Allah is worship — not just prayer</li>
+        <li><strong>Islamic finance, architecture, art, education, governance</strong> — all have Islamic forms</li>
+        <li><strong>Akhlaq (ethics):</strong> virtue, morality, and manners are religious obligations, not personal choices</li>
+      </ul>
+      <h4>Counter-argument — It IS "just" a religion in practice</h4>
+      <ul>
+        <li>Muslims in secular states live perfectly well with separation of religion and state</li>
+        <li>The diversity of Islamic practice globally (from Indonesia to Morocco to the US) shows no single "complete way of life" exists</li>
+        <li>Nation of Islam, Sufism, and many cultural expressions of Islam show that "Islam" means many things to many people</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>In theological intention, Islam is unambiguously designed as a complete way of life — the word "Deen" means this explicitly. In practice, Muslims navigate secular realities while maintaining core commitments. The Five Pillars and Shariah provide a framework that is more comprehensive than most other world religions — making Islam's claim to be a "complete way of life" more than rhetoric. But "complete" does not mean "identical everywhere" — Islamic practice is shaped by culture, denomination, and individual interpretation.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">Compare the understanding of the human condition and the path to salvation in Islam and one other religion you have studied. <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>Islam and Christianity share the Abrahamic starting point but diverge fundamentally on the nature of the human problem and what fixes it — making this one of the most productive IB comparisons available.</p>
+      <h4>Islam — Human Condition &amp; Salvation</h4>
+      <ul>
+        <li><strong>Problem:</strong> Humans stray from the straight path without divine guidance. NOT Original Sin — humans are born in fitra (purity). Sin = individual acts of disobedience, not an inherited condition.</li>
+        <li><strong>No saviour needed:</strong> Because there is no inherited brokenness, no divine sacrifice is required. Just return to the path.</li>
+        <li><strong>Solution:</strong> Submission to Allah (Islam); practising the Five Pillars; following Shariah; Niyya (right intention); Jihad (ongoing inner struggle).</li>
+        <li><strong>Destination:</strong> Jannah (Paradise) for the faithful; Jahannam (Hell) for the disobedient — not necessarily eternally.</li>
+      </ul>
+      <h4>Christianity — Human Condition &amp; Salvation (comparison)</h4>
+      <ul>
+        <li><strong>Problem:</strong> Original Sin — Adam and Eve's disobedience permanently damaged human nature. All humans are born separated from God.</li>
+        <li><strong>A saviour IS needed:</strong> Humans cannot save themselves — they need divine rescue (the Incarnation, death, and Resurrection of Jesus).</li>
+        <li><strong>Solution:</strong> Faith in Jesus Christ; grace (unearned gift from God); sacraments.</li>
+        <li><strong>Destination:</strong> Heaven (union with God) or Hell (separation from God); Purgatory (Catholic only).</li>
+      </ul>
+      <h4>Key Similarities</h4>
+      <ul>
+        <li>Both are monotheistic Abrahamic traditions</li>
+        <li>Both have a defined, literal afterlife (Heaven/Jannah and Hell/Jahannam)</li>
+        <li>Both believe human choices in this life determine the afterlife</li>
+        <li>Both trace lineage to Abraham</li>
+      </ul>
+      <h4>Key Differences</h4>
+      <ul>
+        <li>Islam: no Original Sin, no saviour — submission + right action. Christianity: Original Sin requires divine rescue through Jesus.</li>
+        <li>Islam: Jahannam may not be eternal for all. Christianity: Hell is generally permanent.</li>
+        <li>Islam: Jesus is a prophet who did not die on the cross. Christianity: Jesus' crucifixion IS the salvation event.</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>Both Islam and Christianity take human moral failure seriously — but their diagnoses and cures differ radically. Islam sees humanity as fundamentally capable of obedience with divine guidance; Christianity sees humanity as fundamentally broken and requiring divine rescue. This difference shapes everything: the role of ritual, the nature of the community, and the relationship between God and humanity.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"The Sunni/Shia split proves that political power is more divisive than theological difference in world religions." Discuss. <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>The Sunni/Shia split — like the Christian Great Schism — shows that religious communities are as susceptible to political power struggles as any other human institution. The question of WHO leads often matters more than WHAT is believed.</p>
+      <h4>Evidence Supporting the Claim</h4>
+      <ul>
+        <li>Both Sunni and Shia agree on Tawhid, the Quran, Five Pillars, Muhammad as final prophet — the split is about succession, not theology</li>
+        <li>The dispute: Abu Bakr (most capable, supported by majority) vs Ali (blood relation, divine right) — a political question about governance</li>
+        <li>The split happened within one generation of Muhammad's death — before significant theological differences could develop</li>
+        <li>The Sunni/Shia conflict has repeatedly been fuelled by state power (Iran-Saudi proxy conflict is political as much as religious)</li>
+        <li>Compare: Christian Great Schism (1054) — Pope vs Patriarch was explicitly about political authority in the Roman Empire</li>
+      </ul>
+      <h4>Counter-argument — Theology DOES divide</h4>
+      <ul>
+        <li>Over time, Shia developed distinctive doctrines: elevated status of the Imam (divinely guided), different view of Ashura, Sufism association</li>
+        <li>Protestant Reformation (1517) was driven by genuine theological dispute — not just political power (though politics amplified it)</li>
+        <li>The filioque controversy (Holy Spirit proceeding from Father alone vs Father AND Son) in the Great Schism was a real theological difference</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>The evidence from both Islam (Sunni/Shia) and Christianity (Great Schism, Reformation) suggests that initial splits are political, but theological differences then develop to justify and deepen them. Power is the trigger; theology becomes the language. The Sunni/Shia split is perhaps the clearest example of this pattern in world religion — and it continues to shape geopolitics 1,400 years later.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 5 · PRACTICE PAPERS                               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-papers" class="tab-panel">
+
+  <!-- PAPER 1 -->
+  <div class="paper-section">
+    <h3>📄 Paper 1 — Source Analysis (Islam)</h3>
+    <p style="color:var(--text-light);font-size:0.93rem;margin-bottom:1rem;">Read all sources carefully. Answer all questions. Refer to the sources directly in your responses.</p>
+
+    <div class="source-box">
+      <div class="source-label">Source A — Primary Text (The Quran)</div>
+      <p>"Say: He is Allah, the One! Allah, the eternally Besought of all! He begetteth not nor was begotten. And there is none comparable unto Him."</p>
+      <div class="source-attr">Quran, Surah 112 (Al-Ikhlas — "The Sincerity") — one of the most recited suras, often called "one-third of the Quran" in Islamic tradition</div>
+    </div>
+
+    <div class="source-box">
+      <div class="source-label">Source B — Scholarly Commentary</div>
+      <p>"To understand Islam, one must understand that the concept of jihad has been catastrophically misrepresented in Western discourse. The Prophet Muhammad declared upon returning from battle: 'We have returned from the lesser jihad to the greater jihad.' When asked what the greater jihad was, he replied: 'The jihad against the self.' This inner spiritual struggle — against pride, laziness, dishonesty, selfishness — is what Islam considers the true and primary meaning of jihad. The martial dimension, where it exists, is strictly regulated: only in self-defense, only with just cause, only protecting the innocent."</p>
+      <div class="source-attr">Professor John Esposito, Georgetown University, "What Everyone Needs to Know About Islam," 2002</div>
+    </div>
+
+    <div class="question-block">
+      <p>1a. According to Source A, identify THREE things this passage reveals about the Islamic understanding of God (Allah). <span style="color:var(--text-light);font-size:0.88rem;">[3 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">3 marks — 1 per valid point</span></div>
+      <div class="model-answer">
+        <h5>Model Answer:</h5>
+        <ul>
+          <li>God is ONE (Tawhid) — absolute monotheism: "He is Allah, the One"</li>
+          <li>God is self-sufficient and eternally needed by all ("the eternally Besought of all") — everything depends on Allah, but Allah depends on nothing</li>
+          <li>God has no progeny and was not born ("He begetteth not nor was begotten") — directly rejects the Christian concept of Jesus as the Son of God</li>
+          <li>Nothing is comparable to God — God is utterly transcendent and unique; no idols, no partners, no equals</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <p>1b. Using Source A and your own knowledge, analyse how the doctrine of Tawhid shapes Islamic worship and practice. <span style="color:var(--text-light);font-size:0.88rem;">[5 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">5 marks — analysis required</span></div>
+      <div class="model-answer">
+        <h5>Model Answer:</h5>
+        <ul>
+          <li><strong>Source A establishes Tawhid:</strong> "None comparable unto Him" — this transcendence means no physical representations of God are permitted (no icons, no statues). Islamic art uses geometric patterns and calligraphy rather than imagery precisely because of Tawhid.</li>
+          <li><strong>The Five Pillars flow from Tawhid:</strong> The Shahadah ("There is no God but God") IS Tawhid declared. All five pillars are directed exclusively at the one Allah — no saints, no intercessors (unlike Catholicism).</li>
+          <li><strong>Shirk as the gravest sin:</strong> Because God is absolutely one (Source A: "none comparable"), associating any partner with Allah — even worshipping alongside Allah — is Shirk, the worst possible offense. This shapes everything from prayer to art to economics.</li>
+          <li><strong>Own knowledge — Prayer (Salat):</strong> 5 daily prayers all directed to Allah alone, facing Mecca — the geographic unity expressing theological unity. The mosque has no images; the direction of prayer (qibla) points to the Ka'ba — monotheism made architectural.</li>
+          <li><strong>Own knowledge — Islam and earlier scriptures:</strong> Tawhid explains why Islam affirms Jewish and Christian scripture as originally revealed by the same One God, but believes they were later corrupted. The Quran (Source A is from it) restores the pure Tawhid that earlier revelations contained.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <p>1c. Using Sources A and B and your own knowledge, evaluate the claim that Jihad is primarily an inner spiritual struggle. <span style="color:var(--text-light);font-size:0.88rem;">[5 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">5 marks — evaluation required</span></div>
+      <div class="model-answer">
+        <h5>Model Answer:</h5>
+        <ul>
+          <li><strong>Source B supports the claim:</strong> The Greater Jihad (the inner struggle against pride, laziness, selfishness) is explicitly ranked higher by Muhammad himself than the Lesser Jihad (military struggle). Esposito cites the Hadith directly.</li>
+          <li><strong>Own knowledge supporting claim:</strong> The word Jihad means "to struggle" — the Hijra (migration) itself was a Jihad; resisting temptation is Jihad; studying when tired is Jihad. The inner struggle framework is deeply embedded in Islamic spirituality, especially Sufism.</li>
+          <li><strong>Counter-evidence — Lesser Jihad is also real:</strong> Source B acknowledges the "martial dimension" does exist — strictly regulated (self-defense, just cause, protecting the innocent). Historical examples: Muhammad's defense of Medina, the Battle of Badr. Islam does not deny that external Jihad has a place.</li>
+          <li><strong>The misrepresentation problem:</strong> Source B notes it has been "catastrophically misrepresented." Extremist groups invoke Jihad to justify terrorism — which violates Islamic law (non-combatants cannot be targeted; suicide is forbidden; Jihad must be declared by legitimate authority). Mainstream Islamic scholars condemn this use.</li>
+          <li><strong>Evaluation:</strong> The claim is accurate as a theological priority — the Greater Jihad (inner) IS ranked first in Islamic thought. But "primarily" must acknowledge the Lesser Jihad's legitimate existence. The problem is not the concept but its weaponization by groups who distort Islamic law.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <p>1d. Using Sources A and B and your own knowledge, discuss the significance of Muhammad's life and revelations for the development of Islam as a world religion. <span style="color:var(--text-light);font-size:0.88rem;">[10 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">10 marks — extended response</span></div>
+      <div class="model-answer">
+        <h5>Model Answer — Key Points to Include:</h5>
+        <ul>
+          <li><strong>The Quran as the revelation (Source A):</strong> The entire Quran — including Surah 112 — was revealed to Muhammad over 22 years. This revelation IS Islam. Without Muhammad, there is no Quran; without the Quran, there is no Islam. The direct Word of God makes Muhammad unique among world religious founders: he is not the source of the religion, but its vessel.</li>
+          <li><strong>Muhammad's life as model:</strong> The Sunnah (Muhammad's actions) and Hadith (his sayings) form the second source of Islamic authority. His life — from honoring Khadija to being magnanimous in victory at Mecca — provides the practical template for Muslim ethical life. Every Muslim is called to emulate him.</li>
+          <li><strong>The Night of Power (610 CE):</strong> An illiterate caravan manager becomes the messenger of God — the revelation itself proves its divine origin in Islamic belief (how could an illiterate man produce the Quran?). This origin story gives Islam its claim to divine authority.</li>
+          <li><strong>The Night Journey (Isra and Mi'raj):</strong> Made Jerusalem the third holiest city; affirmed Islam as the culmination of Abrahamic prophecy (meeting Moses, Jesus, Abraham); established the 5 daily prayers. This event links Islam geographically, spiritually, and prophetically to Judaism and Christianity.</li>
+          <li><strong>The Hijra (622 CE):</strong> The Muslim calendar begins here — it is the founding moment of the Muslim community (ummah). Jihad as both migration and inner struggle emerges here. The ummah is born as a political and religious community simultaneously.</li>
+          <li><strong>Muhammad's diplomacy at Mecca (630 CE):</strong> Magnanimity in victory — converting former enemies; using diplomacy rather than force — became the model for Islamic expansion. This approach enabled the rapid, often peaceful spread of Islam throughout Arabia and beyond.</li>
+          <li><strong>Islam as a perfecting of Abrahamic tradition:</strong> Muhammad's revelations explicitly frame Islam as the correction of corrupted earlier revelations. This allows Islam to absorb the Abrahamic tradition while asserting its own supremacy — a key reason for Islam's rapid global spread.</li>
+          <li><strong>Source B — Jihad:</strong> Muhammad's framing of the "greater Jihad" as inner struggle shapes Islamic spirituality for 1,400 years. The martial lesser Jihad, where it occurred historically, enabled military expansion — but the inner framing enabled Sufism's peaceful conversion work across Africa, South Asia, and Southeast Asia.</li>
+          <li><strong>Conclusion:</strong> Muhammad's life and revelations gave Islam its theological core (Tawhid — Source A), its practical ethical framework (Sunnah/Hadith), its communal structure (ummah/Hijra), and its world-historical ambition (perfecting Abrahamic religion). To understand Islam is to understand that Muhammad is not its founder in the Western sense — he is its conduit. The religion belongs to Allah; Muhammad delivered it. This distinction is itself theologically central.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAPER 2 -->
+  <div class="paper-section">
+    <h3>✍ Paper 2 — Extended Essay Prompts (Islam)</h3>
+    <p style="color:var(--text-light);font-size:0.93rem;margin-bottom:1rem;">Choose ONE question. Write a structured essay of approximately 800–1000 words. Use specific examples and religious terminology.</p>
+
+    <div class="essay-prompt">
+      <div class="ep-q">1. "The Five Pillars are the most important expression of Islamic faith." To what extent do you agree?</div>
+      <div class="ep-hint">Hint: Agree — the Pillars structure every Muslim's day, year, and lifetime; they are the practical expression of Tawhid and submission. Counter — inner Niyya (intention) is required for the Pillars to count; without inner faith (Imaan), the Pillars are empty ritual. Deen (religious way of life) is broader than the Five Pillars. Conclude: the Pillars are the skeleton; Imaan is the soul.</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">2. Examine how Islam understands its relationship to Judaism and Christianity.</div>
+      <div class="ep-hint">Hint: Islam sees itself as the PERFECTING of both Judaism and Christianity — both were valid revelations that were corrupted by human hands. The Quran affirms Moses, Jesus, and the prophets. Muhammad is the final and definitive messenger. Abraham's sacrifice of Ishmael (not Isaac) is the key divergence point. Use Eid al-Adha as a concrete example. Consider how this "perfecting" claim both honors and supersedes earlier religions.</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">3. Compare the status and role of women in Islam and one other religion you have studied.</div>
+      <div class="ep-hint">Hint: The Quran raised women's status in 7th-century Arabia enormously (ended infanticide, gave property rights, made marriage contractual). The Quran declares men and women equal before God — but different in role. Compare to Judaism (women excluded from some rituals in Orthodoxy; no female rabbis) or Sikhism (Guru Nanak declared women equal; women can lead worship). Key IB point: distinguish Quranic Islam from cultural practice (hijab, Afghanistan).</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">4. Discuss the significance of the Sunni/Shia split for understanding diversity within Islam.</div>
+      <div class="ep-hint">Hint: The split (632 CE) is political at root — succession dispute. Both agree on Tawhid, Quran, Five Pillars. But over 1,400 years, theological differences have developed (Shia Imam doctrine, Ashura, Sufism connection). Today the split shapes geopolitics (Iran/Shia vs Saudi Arabia/Sunni). Also mention Nation of Islam and Sufism as further expressions of Islamic diversity. Conclude: Islam is remarkably unified in belief and practice across 1.8 billion Muslims despite real denominational diversity.</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">5. "The concept of Jihad is widely misunderstood." Discuss what Jihad means within Islamic thought, with reference to both its inner and outer dimensions.</div>
+      <div class="ep-hint">Hint: Greater Jihad (inner) = the primary and more important dimension — struggle against ego, sin, and moral failure. Lesser Jihad (outer) = strictly regulated defense of the ummah — self-defense only, just cause, protecting the innocent. The Isnad problem: some "Jihad" Hadith are fabricated (72 virgins for terrorists). Sufism's peaceful spread of Islam through the Greater Jihad. Conclude: the misrepresentation of Jihad as primarily military reflects both external misunderstanding and internal distortion by extremists.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ JAVASCRIPT ══ -->
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+const cards = [
+  { term: "Shahadah", hint: "1st Pillar — Declaration of Faith", def: "'There is no God but God (Allah) and Muhammad is his Prophet.' The foundational statement of Islamic faith and the first of the Five Pillars.", note: "To become Muslim (revert): recite the Shahadah with Niyya (sincere intention). It encapsulates both Tawhid and Risalah." },
+  { term: "Tawhid", hint: "Core Doctrine", def: "The absolute oneness of Allah — the foundational doctrine of Islam. No partners, no Trinity, no Son. Everything in Islam flows from Tawhid.", note: "IB: Shirk (associating partners with Allah) is the gravest sin precisely because Tawhid is the greatest truth. The Christian Trinity is Shirk in Islamic theology." },
+  { term: "Shirk", hint: "Gravest Sin", def: "Polytheism — devoting worship to anyone or thing that is not Allah. The gravest sin in Islam; if unrepented, the one sin that is not forgiven.", note: "Shirk is why Islam rejects the Christian Trinity — attributing a Son to God is associating a partner with Allah. Tawhid and Shirk are opposites." },
+  { term: "Jihad", hint: "Key Term — Often Misunderstood", def: "To struggle. Greater Jihad = inner spiritual struggle against ego, sin, and moral failure (the MORE important one). Lesser Jihad = external struggle in self-defense or to help the oppressed.", note: "IB: Muhammad said: 'We have returned from the lesser jihad to the greater jihad.' Terrorism is NOT legitimate Jihad under Islamic law." },
+  { term: "Five Pillars", hint: "Islamic Practice", def: "1. Shahadah (declaration); 2. Salat (5 daily prayers); 3. Zakat (charity); 4. Sawm (fasting/Ramadan); 5. Hajj (pilgrimage to Mecca).", note: "All Five Pillars are directed at the one Allah — they are the practical expression of submission (Islam). Both Sunni and Shia agree on the Five Pillars." },
+  { term: "Ummah", hint: "Community", def: "The local and global Muslim community — both your individual congregation and the worldwide Islamic community of 1.8 billion Muslims.", note: "The Hijra (622 CE) is the founding moment of the ummah — when the Muslim community became a political AND religious body in Medina." },
+  { term: "Quran", hint: "Sacred Text — Primary Authority", def: "The direct, uncorrupted Word of God revealed to Muhammad by the angel Jibril (Gabriel) over 22 years. Sacred and irrefutable. Primary source of all Islamic authority.", note: "Must be read in Arabic. Hafiz = one who has memorized the entire Quran — millions have done this. Intended to perfect, not replace, earlier Abrahamic scriptures." },
+  { term: "Hadith", hint: "Secondary Text", def: "Collection of sayings and guidance of the Prophet Muhammad — his advice, commentary, and example (Sunnah). Authenticated by the Isnad (chain of transmission).", note: "NOT equally authoritative to the Quran. False Hadith exist (72 virgins for terrorists, young marriage age of Aisha). The Isnad chain verifies authenticity." },
+  { term: "Shariah", hint: "Islamic Law", def: "Islamic law derived from: 1) Quran, 2) Sunnah/Hadith, 3) Qiyas (analogy), 4) Ijtihad (independent reasoning), 5) Ijma (scholarly consensus).", note: "Two categories: duties to God (Ibadah) and duties to others (Mu'amalat). Four main law schools: Hanafi, Shafi'i, Maliki, Hanbali." },
+  { term: "Hijra", hint: "Key Historical Event (622 CE)", def: "The migration of Muhammad and the ummah from Mecca to Medina due to conflict. THE foundational event — the Muslim calendar begins with the year of the Hijra.", note: "Hijra or Jihad — migrate OR stay and resist. Twin principles. The Hijra is Greater Jihad (inner struggle) as much as Lesser Jihad (external action)." },
+  { term: "Fitra", hint: "Human Nature", def: "The innate state of purity and submission to God in which all humans are born. Islam has NO Original Sin — all humans are born Muslim in state of fitra.", note: "IB: This is the basis of 'Reversion not Conversion.' All humans are born in fitra — being raised outside Islam is straying, not original sin. Sin = individual acts, not inherited condition." },
+  { term: "Barzakh", hint: "Afterlife — Intermediate State", def: "The period between death and Yawm al-din (Resurrection Day) where souls await with Allah. A gateway to a higher existence (Akhira).", note: "All souls are in Barzakh until the Day of Judgement, when they will reunite with their bodies. Compare to Catholic Purgatory — different but similar concept." },
+  { term: "Yawm al-din", hint: "Eschatology", def: "Judgement Day / Resurrection Day — when all souls reunite with their bodies and Allah judges everyone according to his book of deeds for each human.", note: "Jesus (Isa) appears on Yawm al-din and kills the Dajjal ('Fake Jesus' / Antichrist). This is Islam's end-times event. Note: Jesus RETURNS — he did not die on the cross." },
+  { term: "Jannah &amp; Jahannam", hint: "Heaven &amp; Hell", def: "Jannah (Paradise) — for the faithful who submitted to Allah's will. Jahannam (Hell) — for the disobedient. BUT: Jahannam may not be eternal for all — Allah may bring some to Janna after a time.", note: "IB: Unlike Christian Hell (often permanent), Islam's Jahannam may be temporary for some. Allah's mercy is emphasized — He can forgive most sins except Shirk." },
+  { term: "Sunni / Shia Split", hint: "Denominations", def: "Split (632 CE) over succession after Muhammad's death. Sunni (80%) follows Abu Bakr; Shia (20%) follows Ali. Political at root — both agree on Tawhid, Quran, and Five Pillars.", note: "IB: Compare to the Christian Great Schism — both are political power struggles disguised in theological language. The Sunni/Shia split continues to shape global geopolitics today." },
+  { term: "Halal / Haram", hint: "Permitted vs Prohibited", def: "Halal = permitted (certain foods, slaughter of meat, etc). Haram = prohibited (alcohol, pork, pre-marital relations, charging interest/riba, dogs).", note: "Islam has its own banking system to avoid riba (interest on loans). What counts as haram can vary by culture — music, dancing, gold jewelry for men are cultural/regional." },
+  { term: "Risalah", hint: "Prophethood", def: "The message/prophecy of God as revealed to the Prophet Muhammad (pbuh). God communicates through prophets — a long chain including Adam, Abraham, Moses, Jesus, ending with Muhammad (final prophet).", note: "Islam affirms ALL biblical prophets as authentic — but Muhammad is the FINAL and GREATEST. Jesus (Isa) is a prophet, not divine." },
+  { term: "Night Journey (Isra &amp; Mi'raj)", hint: "Key Event in Muhammad's Life", def: "Muhammad was taken from Mecca to Jerusalem (al-Aqsa Mosque) and then ascended to the throne of God, meeting Abraham, Moses, Jesus, and others. The 5 daily prayers were fixed here.", note: "Made Jerusalem the 3rd holiest city in Islam. Affirmed Islam's place in the Abrahamic tradition. A mystical experience — literal or allegorical, it is accepted as true by all Muslims." },
+  { term: "Nikah", hint: "Marriage", def: "The Islamic marriage ceremony — a religious contract/union in front of two witnesses. No dating beforehand; Wali (guardian) involved; no unsupervised contact between genders.", note: "Divorce: a man must say he wants it 3 times to break the religious union. Women can also pursue divorce. The Quran made marriage contractual rather than proprietary." },
+  { term: "Sufism", hint: "Islamic Mysticism", def: "Islamic mysticism — associated with Shia tradition, often like monks. Responsible for much of Islam's peaceful spread through personal devotion. Features the Whirling Dervishes.", note: "Often rejected by Sunni as innovation (bid'ah). Sufism represents the Greater Jihad — the inner spiritual path — more than any other Islamic tradition." }
+];
+
+let currentCard = 0;
+let cardOrder = cards.map((_, i) => i);
+
+function renderCard() {
+  const c = cards[cardOrder[currentCard]];
+  document.getElementById('cardHint').textContent = c.hint;
+  document.getElementById('cardTerm').textContent = c.term;
+  document.getElementById('cardDef').textContent = c.def;
+  document.getElementById('cardNote').textContent = c.note;
+  document.getElementById('mainCard').classList.remove('flipped');
+  document.getElementById('cardCounter').textContent = `Card ${currentCard + 1} of ${cards.length}`;
+  document.getElementById('progressFill').style.width = ((currentCard + 1) / cards.length * 100) + '%';
+}
+
+function flipCard() { document.getElementById('mainCard').classList.toggle('flipped'); }
+function nextCard() { currentCard = (currentCard + 1) % cardOrder.length; renderCard(); }
+function prevCard() { currentCard = (currentCard - 1 + cardOrder.length) % cardOrder.length; renderCard(); }
+function resetCards() { currentCard = 0; cardOrder = cards.map((_, i) => i); renderCard(); }
+function shuffleCards() {
+  for (let i = cardOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cardOrder[i], cardOrder[j]] = [cardOrder[j], cardOrder[i]];
+  }
+  currentCard = 0;
+  renderCard();
+}
+
+document.addEventListener('keydown', e => {
+  const active = document.getElementById('tab-flashcards');
+  if (!active.classList.contains('active')) return;
+  if (e.key === 'ArrowRight') nextCard();
+  else if (e.key === 'ArrowLeft') prevCard();
+  else if (e.key === ' ') { e.preventDefault(); flipCard(); }
+});
+
+renderCard();
+
+function toggleNote(h) {
+  h.classList.toggle('open');
+  h.nextElementSibling.classList.toggle('open');
+}
+
+function showChart(id) {
+  document.querySelectorAll('.chart-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.chart-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('chart-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+function toggleEssay(h) {
+  const body = h.nextElementSibling;
+  const toggle = h.querySelector('.essay-toggle');
+  body.classList.toggle('open');
+  toggle.textContent = body.classList.contains('open') ? 'Collapse ▲' : 'Expand ▼';
+}
+
+function toggleAnswer(btn) {
+  const answer = btn.closest('.answer-toggle').nextElementSibling;
+  answer.classList.toggle('open');
+  btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Model Answer';
+}
+</script>
+</body>
+</html>

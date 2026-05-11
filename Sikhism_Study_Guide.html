@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sikhism — IB World Religions Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #12234a;
+    --primary-light: #1c3570;
+    --accent: #c96a00;
+    --accent-light: #e8940a;
+    --accent-pale: #fdf0dc;
+    --bg: #f5f0e8;
+    --bg-card: #ffffff;
+    --bg-section: #ede8dc;
+    --text: #1a1208;
+    --text-light: #5a4a2a;
+    --border: #c8baa0;
+    --shadow: rgba(18,35,74,0.12);
+    --green: #1e5c3a;
+    --khalsa: #1a4a2e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Crimson Text', Georgia, serif; background: var(--bg); color: var(--text); font-size: 17px; line-height: 1.7; }
+
+  /* NAV */
+  .site-nav { background: var(--primary); padding: 10px 24px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; border-bottom: 3px solid var(--accent); }
+  .site-nav span { color: rgba(255,255,255,0.45); font-size: 12px; letter-spacing: 0.1em; }
+  .site-nav a { color: var(--accent-light); text-decoration: none; font-size: 13px; letter-spacing: 0.05em; padding: 4px 10px; border: 1px solid var(--accent); border-radius: 4px; transition: all 0.2s; }
+  .site-nav a:hover { background: var(--accent); color: white; }
+  .site-nav a.current { background: var(--accent); color: white; font-weight: 600; }
+
+  /* HEADER */
+  header { background: linear-gradient(135deg, #080f1f 0%, #12234a 55%, #1c3570 100%); color: white; text-align: center; padding: 50px 20px 40px; position: relative; overflow: hidden; }
+  header::before { content: 'ੴ'; position: absolute; font-size: 200px; opacity: 0.07; top: -20px; left: 50%; transform: translateX(-50%); line-height: 1; pointer-events: none; }
+  header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.2rem); font-weight: 700; position: relative; z-index: 1; }
+  header p { color: var(--accent-light); font-size: 1.1rem; margin-top: 8px; letter-spacing: 0.06em; position: relative; z-index: 1; }
+  .ib-badge { display: inline-block; background: var(--accent); color: white; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-top: 12px; position: relative; z-index: 1; }
+
+  /* TABS */
+  .tab-bar { display: flex; background: var(--primary); overflow-x: auto; -webkit-overflow-scrolling: touch; border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 100; scrollbar-width: none; }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab-btn { flex: 1 0 auto; background: none; border: none; color: rgba(255,255,255,0.6); padding: 14px 18px; cursor: pointer; font-family: 'Crimson Text', serif; font-size: 14px; letter-spacing: 0.07em; text-transform: uppercase; transition: all 0.2s; border-bottom: 3px solid transparent; margin-bottom: -3px; white-space: nowrap; }
+  .tab-btn:hover { color: var(--accent-light); }
+  .tab-btn.active { color: var(--accent-light); border-bottom-color: var(--accent-light); background: rgba(232,148,10,0.08); }
+
+  /* CONTENT */
+  .tab-content { display: none; padding: 28px 20px 60px; max-width: 1000px; margin: 0 auto; }
+  .tab-content.active { display: block; }
+
+  /* IB TIP */
+  .ib-tip { background: #fff8e1; border-left: 5px solid var(--accent); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 18px 0; font-size: 15px; color: #5a3a00; }
+  .ib-tip strong { color: #3a2000; }
+
+  /* FLASHCARD */
+  .flashcard-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+  .fc-btn { background: var(--primary); color: white; border: none; padding: 9px 18px; border-radius: 6px; cursor: pointer; font-family: 'Crimson Text', serif; font-size: 15px; transition: background 0.2s; }
+  .fc-btn:hover { background: var(--primary-light); }
+  .fc-btn.accent { background: var(--accent); color: white; font-weight: 600; }
+  .fc-btn.accent:hover { background: var(--accent-light); }
+  .fc-counter { margin-left: auto; color: var(--text-light); font-size: 15px; }
+  .progress-bar-wrap { background: var(--border); border-radius: 20px; height: 6px; max-width: 680px; margin: 0 auto 10px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 20px; transition: width 0.35s ease; }
+  .card-scene { width: 100%; max-width: 680px; height: 290px; margin: 0 auto 24px; perspective: 1000px; cursor: pointer; }
+  .card-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+  .card-inner.flipped { transform: rotateY(180deg); }
+  .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px 32px; text-align: center; box-shadow: 0 8px 32px var(--shadow); }
+  .card-front { background: linear-gradient(135deg, #12234a, #1c3570); color: white; }
+  .card-back { background: linear-gradient(135deg, #fdf5e8, #ede8dc); color: var(--text); transform: rotateY(180deg); }
+  .card-term { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem,4vw,2.1rem); font-weight: 700; margin-bottom: 8px; }
+  .card-hint { font-style: italic; color: var(--accent-light); font-size: 1rem; }
+  .card-def { font-size: 1.05rem; line-height: 1.6; margin-bottom: 10px; }
+  .card-note { font-size: 0.88rem; color: var(--text-light); font-style: italic; border-top: 1px solid var(--border); padding-top: 8px; width: 100%; }
+  .flip-hint { text-align: center; color: var(--text-light); font-size: 13px; font-style: italic; margin-bottom: 28px; }
+
+  /* NOTES */
+  .section-header { display: flex; align-items: center; gap: 10px; background: var(--primary); color: white; padding: 13px 18px; border-radius: 8px 8px 0 0; cursor: pointer; user-select: none; margin-top: 14px; transition: background 0.2s; }
+  .section-header:hover { background: var(--primary-light); }
+  .section-header h3 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.05rem; flex: 1; }
+  .section-header .chevron { font-size: 12px; transition: transform 0.3s; color: var(--accent-light); }
+  .section-header.open .chevron { transform: rotate(180deg); }
+  .section-body { display: none; background: var(--bg-card); border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; padding: 20px 22px; margin-bottom: 4px; }
+  .section-body.open { display: block; }
+  .fact-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 12px; margin: 12px 0; }
+  .fact-card { background: var(--bg-section); border-radius: 8px; padding: 12px 14px; border-left: 4px solid var(--accent); }
+  .fact-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); margin-bottom: 4px; }
+  .fact-card .value { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 0.97rem; }
+  .term-def { margin: 8px 0; padding: 10px 14px; border-left: 3px solid var(--accent); background: var(--bg-section); border-radius: 0 6px 6px 0; }
+  .term-def strong { color: var(--primary); font-weight: 600; }
+  .note-list { list-style: none; padding: 0; margin: 10px 0; }
+  .note-list li { padding: 6px 0 6px 24px; position: relative; border-bottom: 1px solid rgba(200,186,160,0.3); }
+  .note-list li:last-child { border-bottom: none; }
+  .note-list li::before { content: '✦'; position: absolute; left: 4px; color: var(--accent); font-size: 10px; top: 10px; }
+  .sub-heading { font-family: 'Playfair Display', serif; font-weight: 600; color: var(--primary); font-size: 1.05rem; margin: 16px 0 8px; padding-bottom: 4px; border-bottom: 2px solid var(--accent); display: inline-block; }
+  .highlight-box { background: #fff8e1; border: 1px solid var(--accent); border-radius: 8px; padding: 14px 18px; margin: 14px 0; font-size: 15px; }
+  .highlight-box strong { color: #5a3000; }
+  .guru-timeline { margin: 14px 0; }
+  .guru-row { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid rgba(200,186,160,0.3); }
+  .guru-row:last-child { border-bottom: none; }
+  .guru-num { background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; font-family: 'Crimson Text', serif; }
+  .guru-num.book { background: var(--accent); }
+  .guru-info strong { color: var(--primary); font-weight: 600; }
+  .guru-info span { color: var(--text-light); font-size: 14px; }
+  .steps-list { counter-reset: step; list-style: none; padding: 0; margin: 10px 0; }
+  .steps-list li { counter-increment: step; padding: 8px 8px 8px 44px; position: relative; border-bottom: 1px solid rgba(200,186,160,0.3); }
+  .steps-list li:last-child { border-bottom: none; }
+  .steps-list li::before { content: counter(step); position: absolute; left: 8px; top: 8px; width: 26px; height: 26px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; }
+  .five-ks { display: grid; grid-template-columns: repeat(auto-fit,minmax(170px,1fr)); gap: 10px; margin: 12px 0; }
+  .k-card { background: var(--khalsa); color: white; border-radius: 8px; padding: 12px 14px; }
+  .k-card .k-letter { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--accent-light); }
+  .k-card .k-name { font-weight: 600; margin: 2px 0; }
+  .k-card .k-desc { font-size: 13px; color: rgba(255,255,255,0.8); }
+
+  /* CHARTS */
+  .chart-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+  .chart-tab-btn { background: var(--bg-section); border: 2px solid var(--border); border-radius: 24px; padding: 7px 16px; cursor: pointer; font-family: 'Crimson Text', serif; font-size: 14px; color: var(--text-light); transition: all 0.2s; }
+  .chart-tab-btn:hover { border-color: var(--accent); color: var(--primary); }
+  .chart-tab-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
+  .chart-panel { display: none; }
+  .chart-panel.active { display: block; }
+  .chart-panel h3 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.3rem; margin-bottom: 18px; padding-bottom: 8px; border-bottom: 2px solid var(--accent); }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 15px; box-shadow: 0 2px 12px var(--shadow); border-radius: 10px; overflow: hidden; }
+  .compare-table th { background: var(--primary); color: white; padding: 12px 16px; text-align: left; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 0.92rem; }
+  .compare-table th:first-child { background: #080f1f; }
+  .compare-table th.accent-h { background: var(--accent); }
+  .compare-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--bg-section); }
+  .compare-table tr:nth-child(odd) td { background: var(--bg-card); }
+  .compare-table td:first-child { font-weight: 600; color: var(--primary); background: #ede8dc !important; font-family: 'Playfair Display', serif; font-size: 0.9rem; }
+
+  /* ESSAYS */
+  .essay-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 2px 8px var(--shadow); }
+  .essay-header { display: flex; align-items: center; gap: 12px; background: linear-gradient(90deg, #12234a, #1c3570); color: white; padding: 14px 18px; cursor: pointer; user-select: none; }
+  .essay-header:hover { filter: brightness(1.1); }
+  .essay-num { background: var(--accent); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  .essay-header h3 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 0.98rem; flex: 1; line-height: 1.35; }
+  .essay-header .chevron { font-size: 12px; transition: transform 0.3s; color: var(--accent-light); }
+  .essay-header.open .chevron { transform: rotate(180deg); }
+  .essay-body { display: none; padding: 20px 22px; }
+  .essay-body.open { display: block; }
+  .essay-q { background: var(--bg-section); border-left: 4px solid var(--accent); padding: 10px 14px; margin-bottom: 16px; border-radius: 0 6px 6px 0; font-style: italic; color: var(--text-light); font-size: 15px; }
+  .outline-section { margin-bottom: 14px; }
+  .outline-section h4 { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 0.95rem; margin-bottom: 6px; }
+  .outline-section ul { list-style: disc; padding-left: 22px; font-size: 15px; }
+  .outline-section ul li { margin-bottom: 4px; }
+  .essay-tip { background: #e8f4e8; border: 1px solid #8bc48b; border-radius: 6px; padding: 10px 14px; font-size: 14px; color: #2a5a2a; margin-top: 12px; }
+
+  /* PAPERS */
+  .paper-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 28px; box-shadow: 0 2px 10px var(--shadow); overflow: hidden; }
+  .paper-section-header { background: linear-gradient(90deg, #080f1f, #12234a); color: white; padding: 16px 22px; }
+  .paper-section-header h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; }
+  .paper-section-header p { color: var(--accent-light); font-size: 13px; margin-top: 4px; letter-spacing: 0.04em; }
+  .paper-body { padding: 22px; }
+  .source-box { background: #f8f5ef; border: 2px solid var(--border); border-radius: 8px; padding: 18px 20px; margin-bottom: 20px; }
+  .source-box .source-label { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--primary); font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+  .source-box p { font-size: 15px; line-height: 1.7; font-style: italic; }
+  .question-block { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px dashed var(--border); }
+  .question-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .q-label { display: inline-block; background: var(--primary); color: white; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 4px; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .q-marks { display: inline-block; background: var(--accent); color: white; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 4px; margin-left: 8px; }
+  .q-text { font-size: 16px; margin: 8px 0 12px; line-height: 1.5; }
+  .reveal-btn { background: none; border: 2px solid var(--primary); color: var(--primary); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-family: 'Crimson Text', serif; font-size: 14px; transition: all 0.2s; }
+  .reveal-btn:hover { background: var(--primary); color: white; }
+  .model-answer { display: none; background: var(--bg-section); border-left: 4px solid var(--green); border-radius: 0 8px 8px 0; padding: 14px 18px; margin-top: 12px; font-size: 15px; line-height: 1.7; }
+  .model-answer.open { display: block; }
+  .model-answer strong { color: var(--primary); }
+  .p2-question { background: var(--bg-section); border: 1px solid var(--border); border-left: 5px solid var(--accent); border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 16px; font-size: 16px; line-height: 1.55; }
+  .p2-question .marks { display: inline-block; background: var(--accent); color: white; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-left: 8px; }
+  .essay-prompt { color: var(--text-light); font-size: 14px; margin-top: 8px; font-style: italic; }
+
+  @media(max-width:600px){.compare-table{font-size:13px}.compare-table th,.compare-table td{padding:8px 10px}.five-ks{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <span>IB WORLD RELIGIONS</span>
+  <a href="Sanatana_Dharma_Study_Guide.html">Sanatana Dharma</a>
+  <a href="Jainism_Study_Guide.html">Jainism</a>
+  <a href="Buddhism_Study_Guide.html">Buddhism</a>
+  <a href="Sikhism_Study_Guide.html" class="current">Sikhism</a>
+  <a href="Taoism_Study_Guide.html">Taoism</a>
+  <a href="Judaism_Study_Guide.html">Judaism</a>
+  <a href="Christianity_Study_Guide.html">Christianity</a>
+  <a href="Islam_Study_Guide.html">Islam</a>
+</nav>
+
+<header>
+  <h1>Sikhism</h1>
+  <p>IB World Religions — Comprehensive Study Guide</p>
+  <div class="ib-badge">Paper 1 &amp; Paper 2 Preparation</div>
+</header>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('flashcards',this)">✦ Flashcards</button>
+  <button class="tab-btn" onclick="showTab('notes',this)">📖 Summary Notes</button>
+  <button class="tab-btn" onclick="showTab('charts',this)">📊 Comparison Charts</button>
+  <button class="tab-btn" onclick="showTab('essays',this)">✍ Essay Outlines</button>
+  <button class="tab-btn" onclick="showTab('papers',this)">📝 Practice Papers</button>
+</div>
+
+<!-- ══ TAB 1: FLASHCARDS ══ -->
+<div id="flashcards" class="tab-content active">
+  <div class="ib-tip">
+    <strong>⚠ Critical IB Points:</strong> Sikhism is NOT a synthesis of Hinduism and Islam — it is its own divine revelation. God told Guru Nanak "there is no Muslim and there is no Hindu." Diwali in Sikhism commemorates Guru Har Gobind's release from captivity — not the return of Rama. Vaisakhi celebrates the founding of the Khalsa — not a Hindu/Buddhist festival.
+  </div>
+  <div class="flashcard-controls">
+    <button class="fc-btn" onclick="prevCard()">← Prev</button>
+    <button class="fc-btn" onclick="flipCard()">Flip</button>
+    <button class="fc-btn" onclick="nextCard()">Next →</button>
+    <button class="fc-btn accent" onclick="shuffleCards()">⇄ Shuffle</button>
+    <span class="fc-counter" id="counter">1 / 25</span>
+  </div>
+  <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar" style="width:4%"></div></div>
+  <div class="card-scene" onclick="flipCard()">
+    <div class="card-inner" id="mainCard">
+      <div class="card-face card-front">
+        <div class="card-term" id="cardTerm">Nirguna</div>
+        <div class="card-hint" id="cardHint">The nature of God in Sikhism</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="card-def" id="cardDef">God as one and formless. The divine reality transcends human qualities, gender, and form. God is beyond all attributes yet present in all creation through hukam (will).</div>
+        <div class="card-note" id="cardNote">Contrasts with Hindu deities who have forms (Vishnu, Shiva). The Mul Mantra opens: "One Universal Creator God... No Fear, No Hatred, Image of the Timeless One."</div>
+      </div>
+    </div>
+  </div>
+  <p class="flip-hint">Click card or press Space to flip · Arrow keys to navigate</p>
+</div>
+
+<!-- ══ TAB 2: SUMMARY NOTES ══ -->
+<div id="notes" class="tab-content">
+  <div class="ib-tip">
+    <strong>IB Tip:</strong> Always refer to the Guru Granth Sahib (GGS) as the 11th and final guru — a living scripture, not merely a holy book. Sikhism is sometimes called a "religion of the book" because the GGS replaced human gurus after Guru Gobind Singh's death in 1708.
+  </div>
+
+  <!-- ESSENTIAL FACTS -->
+  <div class="section-header open" onclick="toggleNote(this)">
+    <span>📌</span><h3>Essential Facts at a Glance</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body open">
+    <div class="fact-grid">
+      <div class="fact-card"><div class="label">Founder / 1st Guru</div><div class="value">Guru Nanak (1469–1538)</div></div>
+      <div class="fact-card"><div class="label">Origin</div><div class="value">Punjab, Northern India (~15th–16th c. CE)</div></div>
+      <div class="fact-card"><div class="label">God's Name</div><div class="value">Waheguru ("Wonderful Lord")</div></div>
+      <div class="fact-card"><div class="label">Symbol</div><div class="value">Ik Onkar (ੴ) — God is One</div></div>
+      <div class="fact-card"><div class="label">Sacred Text</div><div class="value">Guru Granth Sahib (11th &amp; final Guru)</div></div>
+      <div class="fact-card"><div class="label">House of Worship</div><div class="value">Gurdwara (where GGS resides)</div></div>
+      <div class="fact-card"><div class="label">Human Gurus</div><div class="value">10 human gurus + GGS as 11th</div></div>
+      <div class="fact-card"><div class="label">Goal</div><div class="value">Mukti — liberation through union with God</div></div>
+      <div class="fact-card"><div class="label">Three Pillars</div><div class="value">Nam Japna · Kirat Karni · Vand de Chakna</div></div>
+    </div>
+    <div class="highlight-box">
+      <strong>Mul Mantra (Seed Mantra) — VERY IMPORTANT:</strong> The opening words of the Guru Granth Sahib, understood as a summary of all Sikh theology: <em>"One Universal Creator God, The Name is Truth, Creative Being Personified, No Fear, No Hatred, Image of the Timeless One, Beyond Birth, Self-existence, By Guru's Grace."</em>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>🏛</span><h3>Historical Context &amp; Origins</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <ul class="note-list">
+      <li>The Mughal Empire (Islamic rule in India from 1526) created intense tension with native Hindus — religious and political conflict was the backdrop for Sikhism's emergence.</li>
+      <li>Teachers of both religions believed a synthesis could be found. <strong>Kabir (1440–1518)</strong>, not a guru but the best-known reformer, led the <em>Bhakti movement</em> — a Muslim who worshipped alongside Hindu neighbors, preached one God, no caste, social equality.</li>
+      <li><strong>Guru Nanak (1469–1538)</strong>: Founder of Sikhism, born a Hindu, educated by Muslims, studied with Kabir. While meditating in the forest, God spoke to him: <em>"There is no Muslim and there is no Hindu."</em> This is the founding revelation — NOT a synthesis, but a new divine disclosure.</li>
+      <li>Nanak and his disciple <strong>Mardana</strong> traveled widely wearing a mix of Hindu and Muslim dress. His followers became known as <em>Sikhs</em> (Punjabi for "disciple"). He founded the first langar.</li>
+    </ul>
+
+    <div class="sub-heading">The Ten Human Gurus</div>
+    <div class="guru-timeline">
+      <div class="guru-row"><div class="guru-num">1</div><div class="guru-info"><strong>Guru Nanak (1469–1538)</strong><br><span>Founder; received God's revelation; began the langar; traveled with Mardana</span></div></div>
+      <div class="guru-row"><div class="guru-num">2</div><div class="guru-info"><strong>Guru Angad (d. 1552)</strong><br><span>Popularized Gurmukhi script; formalized rules for the langar</span></div></div>
+      <div class="guru-row"><div class="guru-num">3</div><div class="guru-info"><strong>Guru Amar Das (d. 1574)</strong><br><span>Spoke against sati (widow suicide) and purdah (veiling/hiding of women)</span></div></div>
+      <div class="guru-row"><div class="guru-num">4</div><div class="guru-info"><strong>Guru Ram Das (d. ~1581)</strong><br><span>Began construction of the Sri Harmandir Sahib (Golden Temple) at Amritsar; gurship became hereditary</span></div></div>
+      <div class="guru-row"><div class="guru-num">5</div><div class="guru-info"><strong>Guru Arjan (d. 1606, son of Ram Das)</strong><br><span>Compiled the Adi Granth (later GGS); finished the Golden Temple; <em>tortured and martyred by the Mughals</em></span></div></div>
+      <div class="guru-row"><div class="guru-num">6</div><div class="guru-info"><strong>Guru Har Gobind (d. 1644, son of Arjan)</strong><br><span>Instituted armed warrior-saints in response to Mughal persecution; later released from Mughal captivity (Sikh Diwali celebrates this)</span></div></div>
+      <div class="guru-row"><div class="guru-num">7</div><div class="guru-info"><strong>Guru Har Rai</strong><br><span>His eldest son should have been 8th guru but sold out to emperor Aurangzeb</span></div></div>
+      <div class="guru-row"><div class="guru-num">8</div><div class="guru-info"><strong>Guru Har Krishan (son of Har Rai)</strong><br><span>Died of smallpox before his 8th birthday</span></div></div>
+      <div class="guru-row"><div class="guru-num">9</div><div class="guru-info"><strong>Guru Tegh Bahadur (d. 1675)</strong><br><span>Opposed forced conversion of Hindus to Islam; <em>tortured and killed by Aurangzeb</em>; a martyr</span></div></div>
+      <div class="guru-row"><div class="guru-num">10</div><div class="guru-info"><strong>Guru Gobind Singh (d. 1708) — "The Smoking Hot 10th"</strong><br><span>Last human guru; founded the Khalsa (1699); added his father's (9th guru's) words to the Adi Granth, creating the Guru Granth Sahib; passed guruship to the GGS; killed by Mughal assassins</span></div></div>
+      <div class="guru-row"><div class="guru-num book">11</div><div class="guru-info"><strong>Guru Granth Sahib — The Eternal, Living Guru</strong><br><span>The sacred scripture as guru — given the same respect as a king. Sikhism becomes "a religion of the book." No more human gurus.</span></div></div>
+    </div>
+    <div class="highlight-box">
+      <strong>Modern Events (IB may use as sources):</strong> Operation Blue Star, 1984, Amritsar, India. Oak Creek, Wisconsin: August 5, 2012 — 6 killed, 4 wounded in a gurdwara attack by white supremacist Wade Michael Page.
+    </div>
+  </div>
+
+  <!-- HUMAN CONDITION -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>🌀</span><h3>The Human Condition</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <p>All living beings were created by God (Waheguru / Akal Purakh). Through <strong>maya</strong> (delusion) and <strong>haumai</strong> (ego-centeredness), the <strong>jot</strong> (divine spark/soul) is not realized. Human beings therefore remain in the state of <strong>manmukh</strong> — follower of the ego — focused on the baser emotions summarized as the <strong>Five Vices</strong>:</p>
+    <div class="fact-grid" style="margin-top:12px">
+      <div class="fact-card"><div class="label">Vice 1</div><div class="value">Lust (Kam)</div></div>
+      <div class="fact-card"><div class="label">Vice 2</div><div class="value">Covetousness / Greed (Lobh)</div></div>
+      <div class="fact-card"><div class="label">Vice 3</div><div class="value">Attachment (Moh)</div></div>
+      <div class="fact-card"><div class="label">Vice 4</div><div class="value">Anger (Krodh)</div></div>
+      <div class="fact-card"><div class="label">Vice 5</div><div class="value">Pride / Ego (Ahankar)</div></div>
+    </div>
+    <p style="margin-top:12px">The opposite of manmukh is <strong>gurmukh</strong> — one who is God-centered, focused on God and living by the teachings of the gurus.</p>
+
+    <div class="sub-heading">Eschatology — Where Are We Going?</div>
+    <ul class="note-list">
+      <li>A person's <strong>jot</strong> (divine spark) will pass to another living being (samsara, determined by karma) unless they achieve <strong>mukti</strong> (liberation).</li>
+      <li>Mukti means the jot has entered the <strong>Sach Khand</strong> (the Realm of Truth) where God is present — but it is God who decides this through <strong>Gurprasad</strong> (divine grace).</li>
+      <li>There are <strong>5 khands</strong> (stages/realms). Humans can progress on their own to the third khand; beyond that, only Gurprasad (grace) can take them. This can happen during a lifetime or at death.</li>
+      <li><strong>Haumai</strong> (ego) is the biggest obstacle to reaching mukti — it keeps us trapped in samsara.</li>
+      <li>Everything is according to God's <strong>hukam</strong> (divine will/command) — including Sach Khand. Sikhs have a responsibility to practice the Three Pillars and become gurmukh, which helps conquer haumai and maya.</li>
+    </ul>
+
+    <div class="sub-heading">How Do We Get There?</div>
+    <ul class="note-list">
+      <li>Become <strong>gurmukh</strong> (God-centered) through God's grace (Nadar) and living by the teachings of the gurus</li>
+      <li>Practice <strong>Nam Japna</strong> — continual meditation on God's name</li>
+      <li>Follow the teachings of the <strong>Guru Granth Sahib</strong></li>
+      <li>Practice <strong>Kirat Karni</strong> — earn a living honestly</li>
+      <li>Practice <strong>Vand de Chakna</strong> — share a portion of earnings with those in need</li>
+      <li>Practice <strong>Sewa</strong> — altruistic service to God and humanity, regardless of birth or gender</li>
+    </ul>
+  </div>
+
+  <!-- THREE PILLARS -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>🏛</span><h3>Three Pillars of Sikhism</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="term-def"><strong>Nam Japna</strong> — Remembrance/meditation on God's name. Includes both Nam Simran (silent, cross-legged meditation on God's name) and Nam Japna (repeating and focusing the mind on God's name, done aloud). This is the spiritual pillar.</div>
+    <div class="term-def"><strong>Kirat Karni</strong> — Earning an honest living from the sweat of one's brow. Work as a form of worship; honest labor is sacred. This is the ethical/economic pillar.</div>
+    <div class="term-def"><strong>Vand de Chakna</strong> — Sharing one's wealth with others; giving a portion to the community. Expressed through the langar (free community kitchen) and charitable giving. This is the social/communal pillar.</div>
+    <div class="highlight-box">
+      <strong>Note on Grace vs. Effort:</strong> Sikhism holds a tension between hukam (everything is God's will) and human responsibility. Sikhs are called to practice the Three Pillars and be gurmukh — doing so creates the conditions in which God's grace (Gurprasad/Nadar) can operate. Grace is essential; effort is the preparation.
+    </div>
+  </div>
+
+  <!-- SACRED TEXTS -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>📜</span><h3>Sacred Texts</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub-heading">Guru Granth Sahib (GGS) — The Primary Scripture</div>
+    <ul class="note-list">
+      <li>Originally called the <strong>Adi Granth</strong>; compiled by the 5th Guru Arjan. The 10th Guru Gobind Singh added the words of his father (9th Guru Tegh Bahadur) and declared the scripture the eternal guru — thus it became the <strong>Guru Granth Sahib</strong>.</li>
+      <li><strong>36 authors</strong> — includes hymns by women, Muslims, Hindus, and Kabir. Sikhism believes God may be found in other faiths.</li>
+      <li>Written in <strong>Gurmukhi script</strong> (Punjabi language). Translations are available; a translated reading is sometimes given after the Gurmukhi reading.</li>
+      <li>All sections have been set to music — all parts can be chanted/sung (<strong>kirtan</strong>) so everyone can understand.</li>
+      <li><strong>Prakash</strong> — the daily ritual of "waking up" the GGS every morning at the gurdwara.</li>
+      <li>Read daily at gurdwaras by a <strong>Granthi</strong> (reader/narrator — can be a woman).</li>
+      <li><strong>Gurbani</strong> — the divinely revealed words of God and gurus uttered by the six human gurus chosen by God, found in the GGS. The authority of the human gurus transferred to the book.</li>
+      <li><strong>Daily Hukamnama</strong> — "divine command/divine will": a segment of the GGS randomly chosen every day by the Granthi in Amritsar and broadcast to the worldwide Panth.</li>
+    </ul>
+
+    <div class="sub-heading">Secondary/Non-Canonical Texts (Important but NOT Sacred)</div>
+    <div class="term-def"><strong>Janam Sakhis</strong> — "Life evidences." Four books about the life of Guru Nanak containing miraculous acts and supernatural conversations. Sometimes contradict each other; may have been edited — "similar to the manipulation of the Gospels" (not all Sikhs agree with this characterization).</div>
+    <div class="term-def"><strong>Dasam Granth</strong> — A collection by the 10th Guru Gobind Singh, separate from the GGS. Contains prayers and baptism rites (Nitang Khalsa).</div>
+    <div class="term-def"><strong>Rehat Maryada (VERY IMPORTANT)</strong> — A code of conduct written 1925–1945 by a committee of knowledgeable Sikhs in Amritsar. Includes rules about gurdwaras and personal/communal obligations. Concept dates from the 10th Guru's time. Khalsa Sikhs obey and implement it.</div>
+    <div class="term-def"><strong>Dharam Yudh (Theory of War)</strong> — Military force may be justified if peaceful means to settle conflict have been exhausted. Attributed to the 10th Guru Gobind Singh. The religious/just-war doctrine of the Khalsa.</div>
+  </div>
+
+  <!-- RITUALS -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>🪔</span><h3>Rituals, Rites of Passage &amp; Daily Life</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub-heading">The Five Ks (Panj Kakars) — Khalsa Identity</div>
+    <p>The 5 Ks were instituted by the 10th Guru Gobind Singh when he founded the Khalsa in 1699. Khalsa Sikhs MUST wear them; all Sikhs are encouraged to.</p>
+    <div class="five-ks">
+      <div class="k-card"><div class="k-letter">K</div><div class="k-name">Keshi</div><div class="k-desc">Uncut hair — don't alter what Waheguru created</div></div>
+      <div class="k-card"><div class="k-letter">K</div><div class="k-name">Kangha</div><div class="k-desc">Wooden comb — keeping hair tidy and disciplined</div></div>
+      <div class="k-card"><div class="k-letter">K</div><div class="k-name">Kachera</div><div class="k-desc">Special cotton underwear — modesty and readiness</div></div>
+      <div class="k-card"><div class="k-letter">K</div><div class="k-name">Kara</div><div class="k-desc">Steel circle on wrist — unity, infinity of God</div></div>
+      <div class="k-card"><div class="k-letter">K</div><div class="k-name">Kirpan</div><div class="k-desc">Sword — defending the faith and justice</div></div>
+    </div>
+
+    <div class="sub-heading">Rites of Passage</div>
+    <div class="term-def"><strong>Nam Karan (Naming Ceremony):</strong> For mother and child at the gurdwara; no set time after birth. A page of the GGS is randomly opened and the child's name begins with the first letter of the first word on that page.</div>
+    <div class="term-def"><strong>Amrit Sanskar (Khalsa Initiation):</strong> Voluntary initiation into the Khalsa, introduced by the 10th Guru Gobind Singh in 1699. Done when an adherent is ready and understands the commitment. New names: women receive "Kaur" (princess), men receive "Singh" (lion) as middle names. Must wear the 5 Ks thereafter.</div>
+    <div class="term-def"><strong>Anand Karaj ("Blissful Union"):</strong> Sikh marriage ceremony at a gurdwara. Must be between a Sikh man and Sikh woman — both must be practicing Sikhs (not necessarily Khalsa). The couple walks around the GGS four times while the Lavan (wedding hymns) are sung.</div>
+    <div class="term-def"><strong>Death:</strong> Death is a natural process and God's will (hukam). Cremation preferred; ashes put into a river. "A soul is a drop of water and God is the sea." Widows may remarry.</div>
+
+    <div class="sub-heading">Daily Life &amp; Worship</div>
+    <ul class="note-list">
+      <li><strong>Isnan</strong> — Ritual ablutions (cleansing), usually done in the morning. Viewed as both physical and mental cleansing.</li>
+      <li><strong>Ardas</strong> — Daily standing 3-part prayer (sung). Done at gurdwara to open/close the GGS (morning, noon, night), and during life rituals (birth, amrit, wedding, death).</li>
+      <li><strong>No weekly holy day</strong> — Gurdwara services can be attended any day.</li>
+      <li><strong>Kirtan</strong> — Meditative singing of God's word (gurbani). Central to gurdwara worship.</li>
+      <li><strong>Diwan</strong> — Formal gurdwara worship service: bow before GGS, reading from GGS, Sikh history, kirtan, prayers, Ardas (standing prayer).</li>
+      <li><strong>Karah Prashad</strong> — Sacred sweet food (wheat, ghee, sugar) distributed during religious services as a blessing from God. NOT the same as the langar. Rude to refuse. Done during a religious service — it is a holy offering.</li>
+      <li><strong>Langar</strong> — Free communal meal available to anyone regardless of caste, gender, or religion. This is not a religious ritual but an expression of equality and Vand de Chakna.</li>
+      <li>Gurdwara protocol: ritual cleansing (ablutions), remove shoes, cover your head.</li>
+    </ul>
+
+    <div class="sub-heading">Festivals</div>
+    <div class="term-def"><strong>Vaisakhi</strong> — "New Year" celebration; the anniversary of the Khalsa being founded on Earth (1699). DIFFERENT from Hindu/Buddhist Vaisakhi.</div>
+    <div class="term-def"><strong>Diwali</strong> — Celebrates the 6th Guru Har Gobind's release from Mughal captivity. DIFFERENT from Hindu Diwali (return of Rama).</div>
+    <div class="term-def"><strong>Gurpurab</strong> — Commemorative days celebrating the births and deaths of gurus, especially: 1st Guru Nanak, 10th Guru Gobind Singh, and the martyrdoms of the 5th Guru Arjan and 9th Guru Tegh Bahadur.</div>
+  </div>
+
+  <!-- ETHICS -->
+  <div class="section-header" onclick="toggleNote(this)">
+    <span>⚖</span><h3>Ethics, Authority &amp; Social Issues</h3><span class="chevron">▼</span>
+  </div>
+  <div class="section-body">
+    <div class="sub-heading">Authority</div>
+    <ul class="note-list">
+      <li>Guru Gobind Singh declared: consult the <strong>GGS for spiritual matters</strong>; consult the <strong>Khalsa and Rehat Maryada for temporal matters</strong>.</li>
+      <li><strong>No priesthood or jurist</strong> — authority rests with the GGS, the Khalsa, and/or the Granthi (reader of the GGS).</li>
+      <li>Saints, martyrs (who died for the faith), holy men and holy women also carry moral weight.</li>
+    </ul>
+
+    <div class="sub-heading">Ethical Practice</div>
+    <ul class="note-list">
+      <li>Avoid the <strong>Five Vices</strong>: lust, covetousness, attachment, anger, pride.</li>
+      <li><strong>No legal code</strong> — consult the GGS, Rehat Maryada, and Khalsa for guides to Sikh behavior.</li>
+      <li><strong>Dietary:</strong> No kosher or halal meat. If eating meat, only <em>Jhatka</em> — killed with one single, powerful strike to the head. Many Sikhs encourage vegetarianism.</li>
+      <li><strong>Dharam Yudh</strong> — Theory of War: military force may be justified as a last resort, after all peaceful means are exhausted.</li>
+    </ul>
+
+    <div class="sub-heading">Gender &amp; Social Equality</div>
+    <ul class="note-list">
+      <li>The GGS and Rehat Maryada state equality in birth and gender — all gurdwara roles can be done by either sex.</li>
+      <li>Reality: Sikhism tends to be very patriarchal, especially at the Golden Temple and many gurdwaras.</li>
+      <li>3rd Guru Amar Das spoke against sati and purdah — Sikhism was progressive for its time.</li>
+      <li>Homosexuality is "not logical" to Sikh theology, but homosexual/transgender persons are "welcome and accepted" at gurdwaras and considered equal before God. Anand Karaj is generally not performed for same-sex couples despite the GGS not explicitly prohibiting it.</li>
+    </ul>
+
+    <div class="sub-heading">Cosmology</div>
+    <p>God (Akal Purakh — "Timeless Being") is the creator. The universe and everything that happens is according to His hukam (will). God is Nirguna (formless, one) yet immanent in creation.</p>
+  </div>
+</div>
+
+<!-- ══ TAB 3: COMPARISON CHARTS ══ -->
+<div id="charts" class="tab-content">
+  <div class="chart-tabs">
+    <button class="chart-tab-btn active" onclick="showChart('three-pillars',this)">Three Pillars &amp; Key Concepts</button>
+    <button class="chart-tab-btn" onclick="showChart('gurus-chart',this)">10 Gurus Overview</button>
+    <button class="chart-tab-btn" onclick="showChart('terms-chart',this)">Key Terms Reference</button>
+    <button class="chart-tab-btn" onclick="showChart('crossreligion',this)">Sikhism vs Other Traditions</button>
+    <button class="chart-tab-btn" onclick="showChart('festivals-chart',this)">Festivals — Don't Confuse!</button>
+  </div>
+
+  <div class="chart-panel active" id="three-pillars">
+    <h3>Three Pillars, Three Jewels &amp; Key Sikh Concepts</h3>
+    <table class="compare-table">
+      <thead><tr><th>Concept</th><th>Meaning</th><th>Expression / Practice</th></tr></thead>
+      <tbody>
+        <tr><td>Nam Japna</td><td>Remembrance/meditation on God's name</td><td>Nam Simran (silent meditation) + Nam Japna (aloud); kirtan; Ardas prayer</td></tr>
+        <tr><td>Kirat Karni</td><td>Earning an honest living</td><td>Work as worship; no exploitation; honest livelihood</td></tr>
+        <tr><td>Vand de Chakna</td><td>Sharing wealth with others</td><td>Langar (free kitchen), charitable giving, tithing a portion of income</td></tr>
+        <tr><td>Sewa / Seva</td><td>Altruistic service to anyone</td><td>Volunteering in the langar kitchen, gurdwara maintenance, community service</td></tr>
+        <tr><td>Gurmukh</td><td>God-centeredness</td><td>The goal — living by teachings of the gurus, conquering haumai</td></tr>
+        <tr><td>Manmukh</td><td>Ego-centeredness</td><td>The problem — following the five vices instead of God</td></tr>
+        <tr><td>Nadar</td><td>God's compassionate vision / grace</td><td>"In God's compassionate vision" — awareness that Waheguru exists and cares</td></tr>
+        <tr><td>Gurprasad</td><td>God's grace that breaks reincarnation</td><td>"By His grace you can break reincarnation" — essential for reaching Sach Khand</td></tr>
+        <tr><td>Hukam</td><td>God's divine will/command</td><td>All happens by hukam — Sach Khand, karma, creation itself</td></tr>
+        <tr><td>Mukti</td><td>Liberation</td><td>Jot enters Sach Khand — union with God; ends cycle of samsara</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-panel" id="gurus-chart">
+    <h3>The Ten Human Gurus — Quick Reference</h3>
+    <table class="compare-table">
+      <thead><tr><th>#</th><th>Name &amp; Dates</th><th>Key Contribution / Significance</th></tr></thead>
+      <tbody>
+        <tr><td>1st</td><td>Guru Nanak (1469–1538)</td><td>Founder; divine revelation; "No Muslim, no Hindu"; began langar; disciples = Sikhs</td></tr>
+        <tr><td>2nd</td><td>Guru Angad (d. 1552)</td><td>Popularized Gurmukhi script; formalized langar rules</td></tr>
+        <tr><td>3rd</td><td>Guru Amar Das (d. 1574)</td><td>Opposed sati (widow suicide) and purdah; social reform</td></tr>
+        <tr><td>4th</td><td>Guru Ram Das (d. ~1581)</td><td>Founded Golden Temple (Harmandir Sahib), Amritsar; gurship became hereditary</td></tr>
+        <tr><td>5th</td><td>Guru Arjan (d. 1606)</td><td>Compiled Adi Granth; finished Golden Temple; MARTYRED by Mughals</td></tr>
+        <tr><td>6th</td><td>Guru Har Gobind (d. 1644)</td><td>Armed warrior-saints; released from captivity (Sikh Diwali)</td></tr>
+        <tr><td>7th</td><td>Guru Har Rai</td><td>Eldest son betrayed Sikhs to Aurangzeb</td></tr>
+        <tr><td>8th</td><td>Guru Har Krishan</td><td>Died of smallpox before age 8</td></tr>
+        <tr><td>9th</td><td>Guru Tegh Bahadur (d. 1675)</td><td>Opposed forced Hindu conversions; MARTYRED by Aurangzeb</td></tr>
+        <tr><td>10th</td><td>Guru Gobind Singh (d. 1708)</td><td>Last human guru; founded Khalsa (1699); created GGS; killed by Mughal assassins</td></tr>
+        <tr><td>11th</td><td>Guru Granth Sahib</td><td>Eternal living guru — the sacred scripture. Sikhism = "religion of the book"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-panel" id="terms-chart">
+    <h3>Key Sikh Terms — Complete Reference</h3>
+    <table class="compare-table">
+      <thead><tr><th>Term</th><th>Meaning</th><th>IB Exam Note</th></tr></thead>
+      <tbody>
+        <tr><td>Nirguna</td><td>God as one and formless</td><td>Contrasts with Hindu deities who have form</td></tr>
+        <tr><td>Ik Onkar (ੴ)</td><td>The symbol "God is One"</td><td>Opens the Mul Mantra; Sikh's primary theological symbol</td></tr>
+        <tr><td>Waheguru</td><td>"Wonderful Lord" — God's name</td><td>Chanted in Nam Simran; not a personal deity with form</td></tr>
+        <tr><td>Bani / Shabad</td><td>God's word — Bani = spoken, Shabad = written</td><td>Contained in the GGS; gurbani = divinely revealed words</td></tr>
+        <tr><td>Guru</td><td>One who removes darkness and brings light</td><td>10 human gurus + GGS as 11th eternal guru</td></tr>
+        <tr><td>Jot</td><td>Divine spark / light — the soul</td><td>Passes to another being (samsara) until mukti achieved</td></tr>
+        <tr><td>Haumai</td><td>Ego-centeredness</td><td>The greatest obstacle to mukti</td></tr>
+        <tr><td>Maya</td><td>Delusion</td><td>Prevents realization of jot; keeps humans in manmukh state. Note: different from Hindu Maya (cosmic illusion)</td></tr>
+        <tr><td>Manmukh</td><td>Follower of the ego / five vices</td><td>The human condition; opposed to gurmukh</td></tr>
+        <tr><td>Gurmukh</td><td>God-centeredness; follower of the guru</td><td>The goal — achieved through grace and practice</td></tr>
+        <tr><td>Nadar</td><td>God's compassionate vision / grace</td><td>Awareness of Waheguru's compassionate presence</td></tr>
+        <tr><td>Gurprasad</td><td>God's grace that breaks the cycle of rebirth</td><td>"By His grace you can break reincarnation" — essential for Sach Khand</td></tr>
+        <tr><td>Mukti</td><td>Liberation</td><td>Jot enters Sach Khand; ends samsara</td></tr>
+        <tr><td>Sach Khand</td><td>Realm of Truth where God dwells</td><td>The 5th and final khand; the destination of the liberated jot</td></tr>
+        <tr><td>Hukam</td><td>God's divine will / command</td><td>All happens according to hukam; key cosmological concept</td></tr>
+        <tr><td>Panth</td><td>The worldwide Sikh community</td><td>Receives the daily Hukamnama from Amritsar</td></tr>
+        <tr><td>Sangat</td><td>Local Sikh community at a gurdwara</td><td>Consults on temporal matters after 10th Guru's death</td></tr>
+        <tr><td>Khalsa Panth</td><td>Those who have taken amrit initiation</td><td>Founded 1699 by 10th Guru Gobind Singh; wear 5 Ks</td></tr>
+        <tr><td>Sewa / Seva</td><td>Altruistic service given to anyone</td><td>A core expression of Vand de Chakna and gurmukh lifestyle</td></tr>
+        <tr><td>Langar</td><td>Free meal available to anyone</td><td>NOT a religious ritual — an expression of equality and sharing</td></tr>
+        <tr><td>Gurdwara</td><td>Any place where the GGS is in residence</td><td>The GGS is the 11th guru — wherever it is = sacred space</td></tr>
+        <tr><td>Kirtan</td><td>Meditative singing of God's word</td><td>All parts of GGS can be sung; central to gurdwara worship</td></tr>
+        <tr><td>Amrit Sanskar</td><td>Initiation into the Khalsa</td><td>Voluntary; new names; 5 Ks required after; founded 1699</td></tr>
+        <tr><td>Kirat Karni</td><td>Earning an honest living</td><td>One of Three Pillars; work as worship</td></tr>
+        <tr><td>Vand de Chakna</td><td>Sharing wealth with others</td><td>One of Three Pillars; expressed through langar and charity</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-panel" id="crossreligion">
+    <h3>Sikhism vs Sanatana Dharma vs Islam — Key Comparisons</h3>
+    <table class="compare-table">
+      <thead><tr><th>Dimension</th><th>Sikhism</th><th>Sanatana Dharma</th><th>Islam</th></tr></thead>
+      <tbody>
+        <tr><td>Nature of God</td><td>Nirguna — one, formless, beyond attributes</td><td>Brahman (formless ultimate) + many deities with form</td><td>Allah — one, transcendent, no form, no partners</td></tr>
+        <tr><td>Founder</td><td>Guru Nanak (1469–1538)</td><td>No single founder; eternal dharma</td><td>Prophet Muhammad (570–632 CE)</td></tr>
+        <tr><td>Sacred Text</td><td>Guru Granth Sahib (the living guru)</td><td>Vedas, Upanishads, Bhagavad Gita</td><td>The Qur'an</td></tr>
+        <tr><td>Caste</td><td>Rejected — all are equal before God; langar embodies this</td><td>Varna system — integral to dharma</td><td>No caste system; ummah (community of believers)</td></tr>
+        <tr><td>Liberation</td><td>Mukti — jot enters Sach Khand; union with God</td><td>Moksha — union of Atman with Brahman</td><td>Jannah (paradise) — reward from Allah</td></tr>
+        <tr><td>Role of Grace</td><td>Gurprasad/Nadar essential — human effort + divine grace</td><td>Bhakti (devotion) invites divine grace; karma operates independently</td><td>Allah's mercy essential; human submission + divine will</td></tr>
+        <tr><td>Priesthood</td><td>No priesthood; Granthi reads GGS but is not a priest</td><td>Brahmin priestly class; ritual specialists</td><td>No formal priesthood; Imam leads prayer but is not ordained</td></tr>
+        <tr><td>Diet</td><td>No kosher/halal; Jhatka if meat eaten; many vegetarian</td><td>Vegetarianism encouraged; no beef (cow sacred)</td><td>Halal only; no pork; ritual slaughter required</td></tr>
+        <tr><td>Gender Equality</td><td>GGS states equality; reality often patriarchal</td><td>Patriarchal; different dharma by gender/caste</td><td>Men and women equal before God; different social roles in tradition</td></tr>
+        <tr><td>Response to Other Faiths</td><td>Other faiths may contain truth; God may be found elsewhere; no pressure to convert</td><td>Many paths lead to the same ultimate (pluralistic)</td><td>Islam as the final and complete revelation; others invited to convert</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-panel" id="festivals-chart">
+    <h3>Festivals — Don't Confuse Across Religions!</h3>
+    <table class="compare-table">
+      <thead><tr><th>Festival</th><th>In Sikhism</th><th>In Other Traditions</th></tr></thead>
+      <tbody>
+        <tr><td>Diwali</td><td>Celebrates 6th Guru Har Gobind's release from Mughal captivity — Festival of Liberation</td><td>Sanatana Dharma: Return of Rama from exile; victory of light over darkness</td></tr>
+        <tr><td>Vaisakhi</td><td>Anniversary of the founding of the Khalsa in 1699 — the Sikh "New Year" / community celebration</td><td>Buddhism (Theravada): Wesak/Vaisakhi = birth/enlightenment/death of Buddha. Hinduism: harvest festival in Punjab</td></tr>
+        <tr><td>Gurpurab</td><td>Commemorates births &amp; deaths of gurus — esp. Guru Nanak, Guru Gobind Singh, and martyrdoms of Gurus Arjan &amp; Tegh Bahadur</td><td>Unique to Sikhism — no equivalent in other traditions</td></tr>
+        <tr><td>Hola Mohalla</td><td>Sikh martial arts festival; mock battles; Sikh answer to Holi — held day after Hindu Holi</td><td>Hindu Holi: festival of colors, spring, and the victory of Prahlad. Sikhism transformed it into a display of Khalsa strength</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ TAB 4: ESSAY OUTLINES ══ -->
+<div id="essays" class="tab-content">
+  <div class="ib-tip">
+    <strong>IB Paper 2 Tips:</strong> Always define your key terms, show evidence from the tradition, and acknowledge complexity (e.g. formal equality vs. actual practice on gender). For comparative questions, compare theme by theme. Sikhism is often compared to Islam (monotheism) and Sanatana Dharma (both originated in India).
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">1</div>
+      <h3>"Examine the role of grace (Gurprasad/Nadar) in Sikh soteriology."</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">Examine the role of grace in the Sikh understanding of liberation. [30]</div>
+      <div class="outline-section"><h4>Introduction</h4><ul>
+        <li>Define mukti (liberation), Gurprasad (grace that breaks samsara), Nadar (God's compassionate vision)</li>
+        <li>Thesis: Sikh soteriology holds a productive tension between human responsibility (Three Pillars) and divine grace (Gurprasad) — neither alone is sufficient</li>
+      </ul></div>
+      <div class="outline-section"><h4>The Human Problem — Why Grace Is Needed</h4><ul>
+        <li>Maya (delusion) and haumai (ego) trap the jot in samsara</li>
+        <li>Manmukh state: the five vices keep humans bound to rebirth</li>
+        <li>Five khands: humans can progress to the third khand independently; after that, only Gurprasad can carry them to Sach Khand</li>
+      </ul></div>
+      <div class="outline-section"><h4>Human Responsibility — The Three Pillars</h4><ul>
+        <li>Nam Japna, Kirat Karni, Vand de Chakna — not means of earning grace but preparations</li>
+        <li>Becoming gurmukh (God-centered): actively choosing God over ego through practice</li>
+        <li>Sewa: selfless service as an expression of the gurmukh orientation</li>
+      </ul></div>
+      <div class="outline-section"><h4>The Role of Grace — Gurprasad</h4><ul>
+        <li>Ultimately it is God's will (hukam) who reaches Sach Khand — not guaranteed by human effort alone</li>
+        <li>Nadar: God's compassionate vision is the "eye of God" turned toward humans</li>
+        <li>The Mul Mantra: "By Guru's Grace" — grace is built into the foundational theology</li>
+        <li>GGS as channel of grace: the living guru mediates divine blessings through gurbani, Hukamnama, kirtan</li>
+      </ul></div>
+      <div class="outline-section"><h4>Conclusion / Evaluation</h4><ul>
+        <li>Sikh soteriology avoids both pure works-righteousness and passive fatalism</li>
+        <li>Compare: Islamic tawakkul (trust in Allah after human effort) shows a similar tension; Hindu bhakti similarly invites grace through devotion</li>
+        <li>Evaluate: Does the emphasis on hukam undermine moral responsibility? Argue both sides</li>
+      </ul></div>
+      <div class="essay-tip">💡 The tension between hukam (all is God's will) and the Three Pillars (human effort matters) is the most philosophically interesting feature of Sikh theology. Examiners reward engagement with this tension.</div>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">2</div>
+      <h3>"Sikhism is simply a blend of Hinduism and Islam." Evaluate this claim.</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">"Sikhism is simply a blend of Hinduism and Islam." To what extent is this an accurate description of Sikhism? [30]</div>
+      <div class="outline-section"><h4>Introduction</h4><ul>
+        <li>Context: Sikhism emerged in 15th–16th c. Punjab amid Hindu-Muslim tension; Kabir's Bhakti movement sought synthesis</li>
+        <li>Thesis: While Sikhism shares vocabulary and concepts with both traditions, it represents an independent divine revelation — not a synthesis</li>
+      </ul></div>
+      <div class="outline-section"><h4>Evidence That Seems to Support the Claim</h4><ul>
+        <li>Monotheism (like Islam) — one formless God, no idols</li>
+        <li>Karma and samsara (like Sanatana Dharma) — rebirth determined by actions</li>
+        <li>Langar and social equality resemble Islamic ummah principles</li>
+        <li>Kabir's Bhakti movement was a direct precursor — Kabir himself a Muslim who worshipped with Hindus</li>
+        <li>GGS includes hymns by Muslims, Hindus, and Kabir — 36 authors</li>
+      </ul></div>
+      <div class="outline-section"><h4>Evidence Against — Why Sikhism Is Its Own Revelation</h4><ul>
+        <li>God's message to Guru Nanak: "There is no Muslim and there is no Hindu" — a rejection of both, not a synthesis</li>
+        <li>Rejection of caste (Hindu) AND of halal/ritual slaughter (Islamic)</li>
+        <li>No priesthood — rejects Brahmin monopoly (Hindu) and Islamic jurist traditions</li>
+        <li>The GGS as living guru — no equivalent in either Hinduism or Islam</li>
+        <li>The Khalsa: armed spiritual warriors — no precise equivalent in either tradition</li>
+        <li>Sikhism believes God may be found in OTHER faiths — a pluralistic openness neither Hinduism nor Islam fully shares</li>
+      </ul></div>
+      <div class="outline-section"><h4>Conclusion / Evaluation</h4><ul>
+        <li>The "synthesis" label is rejected by Sikhs as reductive — Guru Nanak received an independent revelation</li>
+        <li>Sikhism borrows vocabulary but reframes everything through the lens of Nirguna monotheism and gurmukh ethics</li>
+        <li>Just as Buddhism emerged from Sanatana Dharma but is not "a form of Hinduism," Sikhism is a distinct tradition</li>
+      </ul></div>
+      <div class="essay-tip">💡 This is a classic "evaluate the claim" question. Use evidence from both sides before clearly arguing Sikhism is its own tradition. Quote Guru Nanak's revelation directly.</div>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">3</div>
+      <h3>"Examine how the Guru Granth Sahib functions as a living guru in Sikhism."</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">Examine the authority and function of the Guru Granth Sahib in Sikh religious life. [30]</div>
+      <div class="outline-section"><h4>Introduction</h4><ul>
+        <li>Define: GGS as the 11th and eternal guru — "religion of the book"</li>
+        <li>Context: 10th Guru Gobind Singh transferred guruship to the GGS, ending the line of human gurus</li>
+        <li>Thesis: The GGS functions as a living, active guru — not merely a reference text — through daily ritual, community governance, and spiritual guidance</li>
+      </ul></div>
+      <div class="outline-section"><h4>Composition and Authority</h4><ul>
+        <li>36 authors; originally the Adi Granth; 10th Guru added 9th Guru's words → GGS</li>
+        <li>Gurbani: divinely revealed words — authority of human gurus transferred to the text</li>
+        <li>Written in Gurmukhi (Punjabi script); translated readings sometimes follow</li>
+        <li>Sikhism acknowledges God may be found in other faiths — hence diversity of authors (Muslims, Hindus, Kabir)</li>
+      </ul></div>
+      <div class="outline-section"><h4>The GGS as Active Guru — Daily Rituals</h4><ul>
+        <li>Prakash — "waking up" the GGS every morning: treated as a living person</li>
+        <li>Hukamnama — daily random reading broadcast worldwide: the guru speaks daily</li>
+        <li>Diwan — worship service centers on the GGS: bow, reading, kirtan, Ardas</li>
+        <li>Gurdwara = any place where the GGS resides: the guru's presence makes the space sacred</li>
+      </ul></div>
+      <div class="outline-section"><h4>Community Governance &amp; Rites of Passage</h4><ul>
+        <li>Nam Karan: child's name drawn from random GGS page — the guru names the child</li>
+        <li>Anand Karaj: couple walks around the GGS during wedding — the guru witnesses</li>
+        <li>Ardas — all major life events opened/closed with prayer before the GGS</li>
+        <li>Temporal authority: consult Khalsa and Rehat Maryada; spiritual authority: always the GGS</li>
+      </ul></div>
+      <div class="outline-section"><h4>Conclusion / Evaluation</h4><ul>
+        <li>The GGS is unique in world religions — a scripture treated with the reverence of a living monarch</li>
+        <li>Compare: Torah scrolls in Judaism (respected but not given living-guru status); Qur'an in Islam (divine word but not a guru figure)</li>
+        <li>Evaluate: Does the GGS fully replace human guidance? Note the Rehat Maryada and Khalsa still needed for practical governance</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">4</div>
+      <h3>"Examine how the Khalsa expresses core Sikh beliefs."</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">Examine how the Khalsa and the Five Ks express and reinforce core Sikh beliefs. [30]</div>
+      <div class="outline-section"><h4>Introduction</h4><ul>
+        <li>Define Khalsa (initiated Sikh warriors, founded 1699 by 10th Guru Gobind Singh) and Amrit Sanskar (initiation ceremony)</li>
+        <li>Thesis: The Khalsa and 5 Ks embody Sikh theology — equality, spiritual discipline, and the gurmukh ideal — in visible, communal form</li>
+      </ul></div>
+      <div class="outline-section"><h4>Historical Context</h4><ul>
+        <li>Founded 1699 in response to Mughal persecution; 6th Guru began armed warrior-saints</li>
+        <li>9th Guru martyred by Aurangzeb; 5th Guru martyred — the Khalsa is a response to injustice</li>
+        <li>10th Guru: Dharam Yudh (just war theory) — force justified as last resort</li>
+      </ul></div>
+      <div class="outline-section"><h4>The Five Ks as Theological Symbols</h4><ul>
+        <li>Keshi (uncut hair): accepting God's creation as-is; gurmukh submission to divine will</li>
+        <li>Kangha (wooden comb): discipline and order in spiritual life</li>
+        <li>Kachera (cotton underwear): modesty and moral readiness</li>
+        <li>Kara (steel wristlet): the circle of infinity — God's eternity; commitment</li>
+        <li>Kirpan (sword): willingness to defend justice and the faith</li>
+      </ul></div>
+      <div class="outline-section"><h4>Khalsa as Expression of Equality</h4><ul>
+        <li>New names: "Kaur" (princess) for women, "Singh" (lion) for men — abolishes caste surnames</li>
+        <li>All Khalsa equal before God and each other — the langar is open to all</li>
+        <li>Initiation is voluntary and based on readiness — not birth</li>
+      </ul></div>
+      <div class="outline-section"><h4>Conclusion / Evaluation</h4><ul>
+        <li>The Khalsa is a living embodiment of the gurmukh ideal — God-centered, disciplined, just, equal</li>
+        <li>Evaluate: Does the warrior tradition sit in tension with Sikh egalitarianism? Argue both</li>
+        <li>Compare: Buddhist Sangha (community as expression of Three Jewels) shows a parallel function in different form</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-num">5</div>
+      <h3>"Compare the Sikh and Sanatana Dharma understandings of karma and liberation."</h3>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="essay-q">Compare and contrast the Sikh and Sanatana Dharma understandings of karma and liberation. [30]</div>
+      <div class="outline-section"><h4>Introduction</h4><ul>
+        <li>Both traditions use karma and samsara; both seek liberation; both originated in India</li>
+        <li>Thesis: Despite shared vocabulary, Sikh and Hindu karma and liberation differ in key ways — particularly on caste, the role of grace, and the nature of God</li>
+      </ul></div>
+      <div class="outline-section"><h4>Karma — Similarities</h4><ul>
+        <li>Both: karma = moral actions shaping future rebirths; samsara = cycle of rebirth</li>
+        <li>Both: moral living (dharma/Three Pillars) generates favorable karma</li>
+      </ul></div>
+      <div class="outline-section"><h4>Karma — Differences</h4><ul>
+        <li>Sanatana Dharma: karma operates within the varna (caste) system — dharma is caste-specific duty</li>
+        <li>Sikhism: rejects caste entirely — all jots are equal; karma has no caste dimension</li>
+        <li>Sikhism: haumai (ego) is the primary karmic problem, not ritual impurity or wrong-caste action</li>
+      </ul></div>
+      <div class="outline-section"><h4>Liberation — Similarities</h4><ul>
+        <li>Both: liberation = escape from samsara; union with ultimate reality</li>
+        <li>Both: devotion and grace play a role (Hindu bhakti; Sikh Gurprasad)</li>
+      </ul></div>
+      <div class="outline-section"><h4>Liberation — Differences</h4><ul>
+        <li>Sanatana Dharma (moksha): Atman reunites with Brahman; three paths (Jnana, Bhakti, Karma Yoga)</li>
+        <li>Sikhism (mukti): jot enters Sach Khand — the realm where God is present; achieved through Gurprasad + Three Pillars</li>
+        <li>Sanatana Dharma allows many paths; Sikhism centers on the GGS and gurmukh living</li>
+        <li>Sikh liberation is more explicitly relational — God as Waheguru who sees (Nadar) and grants (Gurprasad)</li>
+      </ul></div>
+      <div class="outline-section"><h4>Conclusion / Evaluation</h4><ul>
+        <li>Sikhism shares the frame (karma/samsara) but fills it with radically egalitarian content</li>
+        <li>The caste-free, grace-centered Sikh vision of liberation is a deliberate critique of the Hindu system</li>
+        <li>Evaluate: Which tradition offers a more complete account of the human condition and its resolution?</li>
+      </ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAB 5: PRACTICE PAPERS ══ -->
+<div id="papers" class="tab-content">
+  <div class="ib-tip">
+    <strong>IB Format Reminder:</strong> Paper 1 = source analysis — always reference the source by letter. Paper 2 = extended essay — plan structure before writing. Use Sikh vocabulary precisely (GGS not "bible"; mukti not "heaven"; gurmukh not just "good person").
+  </div>
+
+  <div class="paper-section">
+    <div class="paper-section-header">
+      <h3>Practice Paper 1 — Source Analysis</h3>
+      <p>Sikhism · Answer all questions · Reference sources by letter</p>
+    </div>
+    <div class="paper-body">
+
+      <div class="source-box">
+        <div class="source-label">Source A — The Mul Mantra (Opening of the Guru Granth Sahib, Gurmukhi script — translated)</div>
+        <p>"One Universal Creator God. The Name is Truth. Creative Being Personified. No Fear. No Hatred. Image of the Timeless One. Beyond Birth, Self-Existence. By Guru's Grace — Repeat! True in the Primal Beginning. True throughout the Ages. True here and now. O Nanak, forever and ever True."</p>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Source B — Account of the Langar at the Golden Temple, Amritsar (adapted from a contemporary description)</div>
+        <p>"Every day, tens of thousands of people come to the Golden Temple and are fed in the langar — the communal kitchen. The meal is free to all who enter: Sikh and non-Sikh, rich and poor, high caste and low caste. Volunteers from all walks of life prepare and serve the food. All sit together on the floor in rows, regardless of status. There are no designated seats for the wealthy or the learned. The food — simple, wholesome, and vegetarian — is the same for everyone. This is not a religious ceremony. It is an act of service."</p>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">Question 1</span><span class="q-marks">3 marks</span>
+        <div class="q-text">According to Source A, what is the Sikh understanding of God? Identify at least three attributes mentioned.</div>
+        <div class="answer-toggle"><button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button></div>
+        <div class="model-answer">Source A presents God as: (1) One — "One Universal Creator God," affirming Sikh monotheism (Nirguna — one, formless); (2) Truthful — "The Name is Truth... True in the Primal Beginning... forever and ever True," making truth (Sat) a divine attribute; (3) Beyond fear and hatred — "No Fear. No Hatred," emphasizing God's transcendence above all human emotions; (4) Timeless — "Image of the Timeless One. Beyond Birth, Self-Existence," indicating God is eternal and self-sufficient; (5) Accessible through grace — "By Guru's Grace," introducing Gurprasad as the means of knowing God.</div>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">Question 2</span><span class="q-marks">5 marks</span>
+        <div class="q-text">Using Source B and your own knowledge, explain how the langar expresses core Sikh beliefs about equality and community.</div>
+        <div class="answer-toggle"><button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button></div>
+        <div class="model-answer"><strong>Model Answer:</strong> Source B describes the langar as a free communal kitchen at the Golden Temple where "Sikh and non-Sikh, rich and poor, high caste and low caste" are fed together, sitting on the floor in rows regardless of status. This powerfully expresses several core Sikh beliefs. First, the langar embodies <em>Vand de Chakna</em> (sharing one's wealth) — one of the Three Pillars of Sikhism established by Guru Nanak. By giving freely of food and labor, the community lives out this foundational teaching. Second, the equal seating (pangat — sitting in rows) directly challenges the Hindu caste system, which the early gurus explicitly rejected. The 3rd Guru Amar Das used the langar to require even emperors to sit with the poor before meeting him. Third, the volunteer service (sewa) in the kitchen exemplifies the gurmukh (God-centered) way of life — serving others as an act of worship. Source B notes the langar "is not a religious ceremony" but "an act of service" — and this is significant: the langar's equality is not ritual but practical, embodying Sikh theology in lived community reality. The Panth (worldwide Sikh community) is strengthened by this shared table, which erases social hierarchy in practice.</div>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">Question 3</span><span class="q-marks">5 marks</span>
+        <div class="q-text">Using Source A and your own knowledge, explain the significance of the Mul Mantra as a summary of Sikh theology. How does it relate to the Guru Granth Sahib's authority?</div>
+        <div class="answer-toggle"><button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button></div>
+        <div class="model-answer"><strong>Model Answer:</strong> The Mul Mantra (Seed Mantra) are the opening words of the Guru Granth Sahib (GGS) and are understood as both a summary of all Sikh theology and the basis of Sikh belief. Source A presents it as a compressed theological statement: God is One (Ik Onkar), Truth, beyond fear and hatred, timeless, and self-existent — accessible only "By Guru's Grace" (Gurprasad). Its theological significance is enormous. First, it establishes Nirguna monotheism: God is one and formless — no idols, no caste hierarchy, no intermediaries except the guru. Second, the phrase "By Guru's Grace" introduces Gurprasad at the very opening of the scripture — grace is not peripheral but foundational to Sikh soteriology. The jot (divine spark) can only enter Sach Khand (realm of Truth) through God's grace. Third, the Mul Mantra's position as the opening of the GGS reinforces the GGS's own authority. The GGS is the 11th and final guru — the living, eternal teacher. When the 10th Guru Gobind Singh passed guruship to the GGS before his death in 1708, he was not merely selecting a book; he was declaring that the divine words already contained within it (Gurbani — divinely revealed words) would continue to guide the Panth. The Mul Mantra is the first teaching the living guru speaks — and it speaks of grace.</div>
+      </div>
+
+      <div class="question-block">
+        <span class="q-label">Question 4</span><span class="q-marks">10 marks</span>
+        <div class="q-text">Using both sources and your own knowledge, evaluate how effectively Sikhism addresses the problem of social inequality.</div>
+        <div class="answer-toggle"><button class="reveal-btn" onclick="toggleAnswer(this)">Reveal Model Answer</button></div>
+        <div class="model-answer"><strong>Model Answer (Key Points):</strong><br><br>
+        <strong>Introduction:</strong> Sikhism emerged in 15th–16th century Punjab amid rigid Hindu caste hierarchy and Mughal power. Both sources reflect Sikhism's commitment to equality: Source A's Mul Mantra presents a God "No Fear, No Hatred" — a universal deity transcending social categories. Source B's langar demonstrates this equality in material form.<br><br>
+        <strong>Theological Basis of Equality:</strong> The Mul Mantra (Source A) establishes that God is the one Creator of all — if all are created by the same God, hierarchy is theologically indefensible. Guru Nanak declared "There is no Muslim and there is no Hindu" — rejecting the religious boundaries that structured inequality. The GGS has 36 authors including women, Muslims, Hindus, and Kabir — embodying the belief that God's truth is not the property of any caste or religion. Ik Onkar (God is One) means all humans share one divine origin.<br><br>
+        <strong>Practical Expressions:</strong> Source B shows the langar as a direct challenge to caste hierarchy — shared meals across all social boundaries. The 3rd Guru Amar Das required emperors to sit in pangat (rows) before meeting him. The Khalsa initiative abolished caste surnames: "Kaur" (princess) and "Singh" (lion) replaced caste-identifying names. Vand de Chakna (sharing wealth) and Sewa (selfless service) institutionalize egalitarian practice.<br><br>
+        <strong>Limitations and Tensions:</strong> The GGS and Rehat Maryada state gender equality; all gurdwara roles can be filled by either sex. Yet Source B's own description reflects that women are often disproportionately in service roles, and the Golden Temple is noted as particularly patriarchal in practice. The Anand Karaj is not performed for same-sex couples despite the GGS not explicitly prohibiting it. Conversion is not actively pushed — Sikhism respects other faiths, but this means social change beyond the Sikh community is limited.<br><br>
+        <strong>Conclusion:</strong> Sikhism offers one of world religion's most robust theological and practical frameworks for social equality. Its effectiveness is real — the langar has fed billions across centuries — but the gap between ideal and practice, particularly on gender, remains a live tension that Sikh communities continue to negotiate.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="paper-section">
+    <div class="paper-section-header">
+      <h3>Practice Paper 2 — Extended Essay Questions</h3>
+      <p>Choose one · Plan before writing · ~600–800 words · Use Sikh terminology precisely</p>
+    </div>
+    <div class="paper-body">
+      <div class="p2-question">
+        <strong>Question 1.</strong> "In Sikhism, human effort is more important than divine grace in achieving liberation." Evaluate this claim. <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Three Pillars (human effort), Gurprasad/Nadar (divine grace), hukam (God's will), 5 khands (humans reach 3rd on own; 4th–5th require grace), gurmukh vs. manmukh. Compare with Christian grace theology or Hindu bhakti yoga if doing cross-tradition question.</div>
+      </div>
+      <div class="p2-question">
+        <strong>Question 2.</strong> Examine the significance of the Ten Gurus in the development of Sikh identity and community. <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Nanak (revelation/founding), Angad (Gurmukhi script), Amar Das (social reform — anti-sati), Arjan (GGS compilation, martyrdom), Har Gobind (armed Khalsa, Diwali), Tegh Bahadur (martyrdom), Gobind Singh (Khalsa founding, transfer to GGS). Show how each guru contributed to the community's theological and political identity.</div>
+      </div>
+      <div class="p2-question">
+        <strong>Question 3.</strong> Compare and contrast the Sikh concept of Nirguna (formless God) with the Islamic concept of tawhid (divine unity). To what extent do these traditions share a common monotheistic vision? <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Both — one God, no idols, no intermediaries in prayer, creator of all. Differences — Islam: God speaks through Prophet/Qur'an; Sikhism: God speaks through Gurus/GGS (Gurbani). Islam: God transcendent and personal (Allah speaks to humans); Sikhism: God immanent in creation through hukam. Islam: strict prophetic revelation; Sikhism: God may be found in other faiths. No caste in Islam (ummah); no caste in Sikhism (langar/Khalsa).</div>
+      </div>
+      <div class="p2-question">
+        <strong>Question 4.</strong> "The Khalsa represents both the highest expression of Sikh ideals and a departure from Guru Nanak's original vision." Evaluate this claim. <span class="marks">[30]</span>
+        <div class="essay-prompt">Hints: Nanak's vision — peaceful spiritual community, nam japna, equality, rejection of caste/ritual. Khalsa — warrior saints, 5 Ks, armed defense, Dharam Yudh. Tension between pacifist spirituality and martial readiness. Argue: the Khalsa is a response to Mughal persecution (contextual) not a departure; OR argue: the militarization changed the character of the community. Use martyrdoms of 5th and 9th gurus as context.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(id,btn){document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
+function toggleNote(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('open');}
+function toggleEssay(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('open');}
+function showChart(id,btn){document.querySelectorAll('.chart-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.chart-tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
+function toggleAnswer(btn){const a=btn.closest('.answer-toggle').nextElementSibling;a.classList.toggle('open');btn.textContent=a.classList.contains('open')?'Hide Answer':'Reveal Model Answer';}
+
+const cards=[
+  {term:"Nirguna",hint:"The nature of God in Sikhism",def:"God as one and formless. The divine reality transcends human qualities, gender, and form. God (Waheguru) is beyond all attributes yet immanent in creation through hukam (divine will).",note:"Mul Mantra: 'One Universal Creator God... No Fear, No Hatred, Image of the Timeless One.' Contrasts with Hindu deities who have form."},
+  {term:"Ik Onkar (ੴ)",hint:"The foundational Sikh symbol",def:"The symbol representing 'God is One.' The opening of the Mul Mantra and the foundational statement of Sikh monotheism. Literally: Ik = one, Onkar = the sound/form of the divine.",note:"Appears at the beginning of the Guru Granth Sahib. Central to Sikh identity — visible on gurdwaras, clothing, and religious art."},
+  {term:"Bani / Shabad",hint:"Two forms of God's word",def:"God's word. Bani = usually spoken (oral transmission); Shabad = usually written. Together they refer to the divinely revealed communication of God through the gurus, collected in the Guru Granth Sahib.",note:"Gurbani = the divinely revealed words of God and gurus found in the GGS. All parts can be sung as kirtan."},
+  {term:"Nam Simran",hint:"Silent meditation practice",def:"The physical act of sitting cross-legged and meditating on God's name while being silent. A form of Nam Japna — the inner, contemplative dimension of remembering God.",note:"One of the key spiritual practices. Contrasts with Nam Japna which is done aloud. Both are expressions of the first Pillar of Sikhism."},
+  {term:"Nam Japna",hint:"The first Pillar of Sikhism",def:"Remembrance of God by repeating and focusing the mind on His name, done out loud. The first and primary Pillar of Sikhism — continual mindfulness of Waheguru.",note:"Includes both silent meditation (Nam Simran) and verbal repetition. 'Nam' = name (of God). Central to becoming gurmukh."},
+  {term:"Guru",hint:"One who dispels darkness",def:"One who takes away darkness (spiritual ignorance) and brings light (spiritual understanding). In Sikhism: the 10 human gurus chosen by God + the Guru Granth Sahib as the 11th eternal guru.",note:"Each guru received and transmitted Gurbani (God's word). The 10th Guru Gobind Singh transferred guruship permanently to the GGS in 1708."},
+  {term:"Nadar",hint:"God's compassionate gaze",def:"God's grace in the sense of His compassionate vision — 'in God's compassionate vision' that Waheguru (the wonderful Lord) exists and cares for creation. The awareness of divine care.",note:"Distinct from Gurprasad. Nadar = God's compassionate seeing; Gurprasad = grace that specifically breaks the cycle of reincarnation."},
+  {term:"Gurprasad",hint:"Grace that breaks samsara",def:"God's grace — specifically: 'by His grace you can break reincarnation.' The divine grace that allows the jot to enter Sach Khand. Cannot be earned; can be invited through gurmukh living.",note:"Humans can progress to the 3rd khand on their own effort; the 4th and 5th (Sach Khand) require Gurprasad. Featured in the Mul Mantra: 'By Guru's Grace.'"},
+  {term:"Haumai",hint:"The core human problem",def:"Ego-centeredness. The fundamental human condition of being focused on the self rather than God. Haumai is the biggest obstacle to reaching mukti — it keeps the jot trapped in samsara.",note:"Haumai is conquered by becoming gurmukh (God-centered) through the Three Pillars and God's grace. Opposite of gurmukh."},
+  {term:"Manmukh",hint:"The ego-follower",def:"Follower of the ego — a person focused on the baser emotions (the Five Vices: lust, covetousness, attachment, anger, pride). The manmukh condition is the human problem in Sikhism.",note:"Opposite of gurmukh. The manmukh remains trapped in haumai and maya, continuing in samsara."},
+  {term:"Gurmukh",hint:"The God-centered person",def:"God-centeredness — a person who is focused on God and lives by the teachings of the gurus. The ideal human state and the result of successfully practicing the Three Pillars and receiving Gurprasad.",note:"The goal of Sikh life. A gurmukh conquers haumai (ego) and maya (delusion) and moves toward mukti (liberation)."},
+  {term:"Vand de Chakna",hint:"The third Pillar",def:"To share one's wealth with others — the third Pillar of Sikhism. Giving a portion of one's earnings and resources to those in need and to the community. Expressed through the langar and charitable giving.",note:"Together with Nam Japna (spiritual practice) and Kirat Karni (honest work), these form the Three Pillars — the practical framework for gurmukh living."},
+  {term:"Sewa / Seva",hint:"Selfless service",def:"Altruistic service given to anyone — God and humanity — regardless of birth, caste, or gender. A core expression of the gurmukh lifestyle and the third Pillar (Vand de Chakna).",note:"Volunteering in the langar kitchen, gurdwara maintenance, community work. Sewa is seva in action — an act of worship through service."},
+  {term:"Langar",hint:"The free community meal",def:"A meal freely available to anyone, regardless of religion, caste, gender, or social status. Served at gurdwaras. An expression of Vand de Chakna and sewa — and a practical embodiment of Sikh equality.",note:"NOT a religious ceremony — it is an act of service and community. Distinct from Karah Prashad (holy sweet food given during a religious service). Founded by Guru Nanak."},
+  {term:"Panth",hint:"Global Sikh community",def:"The world-wide Sikh community — all Sikhs everywhere. Receives the daily Hukamnama broadcast from Amritsar. The Panth as a whole is consulted on temporal matters (with the Khalsa and Rehat Maryada).",note:"Panth = path/community. Khalsa Panth = specifically those who have taken Amrit initiation. Sangat = local community at a specific gurdwara."},
+  {term:"Khalsa Panth",hint:"The initiated Sikh warriors",def:"Those who have taken the Amrit initiation — baptized Sikhs who have undergone Amrit Sanskar, taken new names (Kaur/Singh), and committed to wearing the 5 Ks and living by the Rehat Maryada.",note:"Founded by the 10th Guru Gobind Singh in 1699. Voluntary — done when ready and understanding the commitment. Khalsa must wear 5 Ks; all Sikhs encouraged to."},
+  {term:"Amrit Sanskar",hint:"Khalsa initiation ceremony",def:"Initiation into the Khalsa. Introduced by the 10th Guru Gobind Singh in 1699. Voluntary; done when the adherent is spiritually ready. New names given: 'Kaur' (princess) for women, 'Singh' (lion) for men.",note:"After Amrit Sanskar, one must wear the 5 Ks (Panj Kakars). The Dasam Granth contains the baptism rites. Transforms the individual's public identity to reflect gurmukh commitment."},
+  {term:"Jot",hint:"The divine spark / soul",def:"The divine spark of light — the soul. Every living being has a jot created by God. Through maya and haumai, the jot is unrecognized. Liberation (mukti) = the jot entering Sach Khand.",note:"'A soul is a drop of water and God is the sea.' At death, the jot passes to another living being (samsara) unless mukti is achieved. The jot is what continues through rebirth."},
+  {term:"Mukti",hint:"Liberation — the goal",def:"Liberation — the spiritual goal of Sikhism. Achieved when the jot (divine spark) enters the Sach Khand (Realm of Truth) where God is present. Ends the cycle of samsara. Requires Gurprasad (divine grace).",note:"Reached through gurmukh living (Three Pillars) + Gurprasad. Humans can progress to the 3rd of 5 khands on their own; mukti in the Sach Khand (5th khand) requires God's grace."},
+  {term:"Maya",hint:"Delusion — not the same as Hindu Maya",def:"Delusion — the false perception that keeps the jot unrecognized and humans trapped in manmukh existence. Maya prevents the realization of one's divine nature and union with God.",note:"IB NOTE: Sikh Maya = delusion/ego-blindness. Hindu Maya = the cosmic illusion of the material world (Brahman's creative power). Related but different theological contexts."},
+  {term:"Gurdwara",hint:"Where the Guru resides",def:"Any place where the Guru Granth Sahib (the 11th and final guru) is in residence. The gurdwara is made sacred by the GGS's presence — it is the guru's home. The main place of Sikh worship and community life.",note:"'Gurdwara' = door/gateway of the guru. Protocol: ritual cleansing (ablutions), remove shoes, cover head. No GGS kept in homes — it remains in gurdwaras."},
+  {term:"Kirtan",hint:"Meditative singing of God's word",def:"Meditative singing/chanting of God's word (gurbani). All parts of the Guru Granth Sahib have been set to music and can be sung. Central to gurdwara worship (Diwan service).",note:"Kirtan is a form of Nam Japna — meditating on God's name through music. Anyone can perform kirtan; women are permitted. The music makes gurbani accessible to all."},
+  {term:"Kirat Karni",hint:"The second Pillar",def:"Earning an honest living from the sweat of one's brow. The second Pillar of Sikhism — honest labor as an act of worship. No exploitation; no fraudulent gain; work as a spiritual discipline.",note:"One of Three Pillars. Contrasts with the Brahmin ideal of not working (living on ritual fees) and with monastic traditions. Sikhism fully engages the world through honest work."},
+  {term:"Hukam",hint:"God's divine will",def:"God's divine will or command. Everything in the universe — including Sach Khand, karma, creation, and death — happens according to hukam. A key Sikh cosmological concept expressing God's sovereignty.",note:"Tension with human responsibility: Sikhs must practice the Three Pillars AND trust hukam. Daily Hukamnama (random GGS reading) = God's daily 'command/will' for the Panth."},
+  {term:"Mul Mantra",hint:"VERY IMPORTANT — Seed Mantra",def:"The opening words of the Guru Granth Sahib — understood as a summary of the entire GGS and the basis of Sikh theology. 'One Universal Creator God, The Name is Truth, Creative Being Personified, No Fear, No Hatred, Image of the Timeless One, Beyond Birth, Self-Existence, By Guru's Grace.'",note:"MEMORIZE THIS. Examiners use it as a source. Note: ends with 'By Guru's Grace' — Gurprasad is built into the foundational theology from word one."}
+];
+
+let currentCard=0, cardOrder=cards.map((_,i)=>i);
+function renderCard(){const c=cards[cardOrder[currentCard]];document.getElementById('cardTerm').textContent=c.term;document.getElementById('cardHint').textContent=c.hint;document.getElementById('cardDef').textContent=c.def;document.getElementById('cardNote').textContent=c.note;document.getElementById('counter').textContent=`${currentCard+1} / ${cards.length}`;document.getElementById('progressBar').style.width=`${((currentCard+1)/cards.length)*100}%`;document.getElementById('mainCard').classList.remove('flipped');}
+function flipCard(){document.getElementById('mainCard').classList.toggle('flipped');}
+function nextCard(){currentCard=(currentCard+1)%cardOrder.length;renderCard();}
+function prevCard(){currentCard=(currentCard-1+cardOrder.length)%cardOrder.length;renderCard();}
+function shuffleCards(){for(let i=cardOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[cardOrder[i],cardOrder[j]]=[cardOrder[j],cardOrder[i]];}currentCard=0;renderCard();}
+document.addEventListener('keydown',e=>{if(document.getElementById('flashcards').classList.contains('active')){if(e.key==='ArrowRight')nextCard();else if(e.key==='ArrowLeft')prevCard();else if(e.key===' '){e.preventDefault();flipCard();}}});
+renderCard();
+</script>
+</body>
+</html>

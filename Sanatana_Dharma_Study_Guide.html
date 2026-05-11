@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IB World Religions — Sanatana Dharma Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #7B1A1A;
+    --saffron: #D4731A;
+    --gold: #C9A227;
+    --ivory: #FDF6E3;
+    --parchment: #F5E6C8;
+    --charcoal: #2C1810;
+    --muted: #6B4F3A;
+    --accent: #E8813A;
+    --white: #FFFDF7;
+    --shadow: rgba(44,24,16,0.18);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Crimson Text', Georgia, serif;
+    background: var(--ivory);
+    color: var(--charcoal);
+    min-height: 100vh;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: linear-gradient(135deg, var(--crimson) 0%, #5A0E0E 60%, #3D0A0A 100%);
+    color: var(--ivory);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(201,162,39,0.07) 30px,
+      rgba(201,162,39,0.07) 32px
+    );
+    pointer-events: none;
+  }
+  .header-om {
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.9;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.1em;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    color: #FFF8E7;
+  }
+  header h1 span {
+    color: var(--gold);
+  }
+  header p {
+    margin-top: 0.6rem;
+    font-style: italic;
+    color: rgba(253,246,227,0.75);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .gold-bar {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--saffron), var(--gold), transparent);
+    margin-top: 1.5rem;
+    opacity: 0.7;
+  }
+
+  /* ===== SITE-WIDE NAV ===== */
+  .site-nav { background: #3D0A0A; padding: 0.5rem 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+  .site-nav a { color: rgba(232,129,58,0.85); text-decoration: none; font-family: 'Crimson Text', serif; font-size: 0.88rem; padding: 0.25rem 0.6rem; border-radius: 4px; transition: background 0.2s; }
+  .site-nav a:hover { background: rgba(255,255,255,0.12); }
+  .site-nav a.current { background: var(--accent); color: #3D0A0A; font-weight: 600; }
+  .site-nav .nav-label { color: rgba(201,162,39,0.6); font-size: 0.8rem; margin-right: 0.3rem; }
+
+  /* ===== NAV TABS ===== */
+  nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--parchment);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  nav button {
+    font-family: 'Crimson Text', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.9rem 1.5rem;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+    border-bottom: 3px solid transparent;
+  }
+  nav button:hover { color: var(--saffron); }
+  nav button.active {
+    color: var(--crimson);
+    border-bottom: 3px solid var(--crimson);
+    font-weight: 600;
+  }
+  nav button .nav-icon { margin-right: 0.4em; }
+
+  /* ===== MAIN CONTENT ===== */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--crimson);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .section-title span {
+    color: var(--saffron);
+    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 400;
+    display: block;
+    font-family: 'Crimson Text', serif;
+    margin-top: 0.2rem;
+  }
+
+  /* ===== FLASHCARDS ===== */
+  .flashcard-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .flashcard-controls button {
+    font-family: 'Crimson Text', serif;
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+    border: 2px solid var(--crimson);
+    background: transparent;
+    color: var(--crimson);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+  }
+  .flashcard-controls button:hover, .flashcard-controls button.active {
+    background: var(--crimson);
+    color: var(--ivory);
+  }
+  .flashcard-count {
+    color: var(--muted);
+    font-style: italic;
+    font-size: 1rem;
+    margin-left: auto;
+  }
+  .flashcard-arena {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .card-wrapper {
+    width: 100%;
+    max-width: 680px;
+    height: 260px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  .card-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  }
+  .card-wrapper.flipped .card-inner { transform: rotateY(180deg); }
+  .card-face {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+  .card-front {
+    background: linear-gradient(135deg, var(--crimson), #5A0E0E);
+    color: var(--ivory);
+    box-shadow: 0 8px 32px rgba(123,26,26,0.35);
+  }
+  .card-front .card-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-family: 'Crimson Text', serif;
+  }
+  .card-front .card-term {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #FFF8E7;
+    line-height: 1.2;
+  }
+  .card-front .card-hint {
+    margin-top: 1rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(253,246,227,0.6);
+  }
+  .card-back {
+    background: var(--parchment);
+    color: var(--charcoal);
+    transform: rotateY(180deg);
+    box-shadow: 0 8px 32px var(--shadow);
+    border: 2px solid var(--gold);
+  }
+  .card-back .card-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 0.8rem;
+    font-family: 'Crimson Text', serif;
+  }
+  .card-back .card-def {
+    font-size: 1.15rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+  .card-back .card-note {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--crimson);
+    border-top: 1px solid var(--gold);
+    padding-top: 0.6rem;
+    width: 100%;
+  }
+  .card-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .card-nav button {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--crimson);
+    background: var(--white);
+    color: var(--crimson);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-nav button:hover { background: var(--crimson); color: var(--ivory); }
+  .card-nav .card-progress {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--muted);
+    min-width: 80px;
+    text-align: center;
+  }
+  .all-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 0;
+  }
+  .mini-card {
+    background: var(--white);
+    border: 1.5px solid var(--parchment);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    border-left: 4px solid var(--crimson);
+    transition: box-shadow 0.2s;
+  }
+  .mini-card:hover { box-shadow: 0 4px 16px var(--shadow); }
+  .mini-card .term {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--crimson);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .mini-card .def { font-size: 0.95rem; color: var(--charcoal); line-height: 1.5; }
+  .mini-card .note { font-size: 0.82rem; font-style: italic; color: var(--saffron); margin-top: 0.3rem; }
+
+  /* ===== SUMMARY NOTES ===== */
+  .note-block {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1.5px solid var(--parchment);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(44,24,16,0.06);
+  }
+  .note-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--parchment), var(--white));
+    border-bottom: 1px solid transparent;
+    transition: background 0.2s;
+    user-select: none;
+  }
+  .note-header:hover { background: linear-gradient(90deg, #EDD9A3, var(--parchment)); }
+  .note-header.open { border-bottom: 1px solid var(--parchment); }
+  .note-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .note-header-icon {
+    width: 34px; height: 34px;
+    background: var(--crimson);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    color: var(--ivory);
+    flex-shrink: 0;
+  }
+  .note-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--crimson);
+    font-weight: 700;
+  }
+  .note-chevron {
+    font-size: 1rem;
+    color: var(--muted);
+    transition: transform 0.3s;
+  }
+  .note-header.open .note-chevron { transform: rotate(180deg); }
+  .note-body {
+    display: none;
+    padding: 1.5rem;
+  }
+  .note-body.open { display: block; }
+  .note-body p { margin-bottom: 0.8rem; font-size: 1rem; }
+  .note-body h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--saffron);
+    margin: 1.2rem 0 0.5rem;
+    border-left: 3px solid var(--gold);
+    padding-left: 0.6rem;
+  }
+  .note-body ul { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+  .note-body ul li { margin-bottom: 0.4rem; font-size: 1rem; }
+  .highlight {
+    background: linear-gradient(90deg, rgba(201,162,39,0.18), transparent);
+    border-left: 3px solid var(--gold);
+    padding: 0.6rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 0.8rem 0;
+    font-style: italic;
+  }
+  .star-note {
+    background: rgba(123,26,26,0.07);
+    border-left: 3px solid var(--crimson);
+    padding: 0.6rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 0.8rem 0;
+  }
+  .star-note::before { content: "★ "; color: var(--crimson); font-size: 0.9rem; }
+  .tag {
+    display: inline-block;
+    background: var(--crimson);
+    color: var(--ivory);
+    font-size: 0.75rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    margin-right: 0.3rem;
+    font-family: 'Crimson Text', serif;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+  }
+  .tag.gold { background: var(--gold); color: var(--charcoal); }
+  .tag.saffron { background: var(--saffron); color: var(--ivory); }
+
+  /* ===== COMPARISON CHARTS ===== */
+  .chart-tabs {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1.8rem;
+    flex-wrap: wrap;
+  }
+  .chart-tab-btn {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    border: 2px solid var(--parchment);
+    background: var(--white);
+    border-radius: 20px;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .chart-tab-btn:hover { border-color: var(--saffron); color: var(--saffron); }
+  .chart-tab-btn.active { background: var(--crimson); border-color: var(--crimson); color: var(--ivory); }
+  .chart-panel { display: none; }
+  .chart-panel.active { display: block; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.97rem;
+    box-shadow: 0 2px 12px var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  thead th {
+    background: var(--crimson);
+    color: var(--ivory);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.9rem 1.1rem;
+    text-align: left;
+    letter-spacing: 0.03em;
+  }
+  thead th:first-child { border-radius: 8px 0 0 0; }
+  thead th:last-child { border-radius: 0 8px 0 0; }
+  tbody tr:nth-child(even) { background: var(--parchment); }
+  tbody tr:nth-child(odd) { background: var(--white); }
+  tbody td {
+    padding: 0.75rem 1.1rem;
+    border-bottom: 1px solid rgba(245,230,200,0.8);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--crimson);
+    font-family: 'Playfair Display', serif;
+    white-space: nowrap;
+  }
+  .chart-note {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-top: 0.8rem;
+    padding: 0.5rem 1rem;
+    border-left: 3px solid var(--gold);
+    background: var(--parchment);
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ===== ESSAY OUTLINES ===== */
+  .essay-card {
+    background: var(--white);
+    border: 1.5px solid var(--parchment);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(44,24,16,0.06);
+  }
+  .essay-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    background: linear-gradient(90deg, rgba(123,26,26,0.06), var(--white));
+    border-bottom: 1px solid transparent;
+    user-select: none;
+    gap: 1rem;
+  }
+  .essay-header:hover { background: linear-gradient(90deg, rgba(123,26,26,0.1), var(--white)); }
+  .essay-header.open { border-bottom: 1px solid var(--parchment); }
+  .essay-q {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.4;
+    flex: 1;
+  }
+  .essay-q strong { color: var(--crimson); font-style: normal; }
+  .essay-body {
+    display: none;
+    padding: 1.5rem;
+  }
+  .essay-body.open { display: block; }
+  .outline-step {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    align-items: flex-start;
+  }
+  .step-num {
+    min-width: 36px; height: 36px;
+    background: var(--crimson);
+    color: var(--ivory);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .step-content h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--saffron);
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+  }
+  .step-content ul { padding-left: 1.3rem; }
+  .step-content ul li { margin-bottom: 0.3rem; font-size: 0.97rem; }
+  .key-terms-box {
+    background: var(--parchment);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    margin-top: 1rem;
+    font-size: 0.92rem;
+  }
+  .key-terms-box strong { color: var(--crimson); }
+
+  /* ===== PRACTICE PAPERS ===== */
+  .paper-selector {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .paper-btn {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--crimson);
+    background: transparent;
+    color: var(--crimson);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .paper-btn:hover, .paper-btn.active {
+    background: var(--crimson);
+    color: var(--ivory);
+  }
+  .paper-section { display: none; }
+  .paper-section.active { display: block; }
+  .paper-info {
+    background: linear-gradient(135deg, var(--parchment), var(--ivory));
+    border: 1.5px solid var(--gold);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.97rem;
+  }
+  .paper-info h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--crimson);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .paper-info ul { padding-left: 1.3rem; }
+  .paper-info ul li { margin-bottom: 0.3rem; }
+  .source-box {
+    background: var(--white);
+    border: 1.5px solid var(--parchment);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    position: relative;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .source-box::before {
+    content: 'SOURCE';
+    position: absolute;
+    top: -0.6rem;
+    left: 1.2rem;
+    background: var(--saffron);
+    color: var(--ivory);
+    font-size: 0.7rem;
+    font-family: 'Crimson Text', serif;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    padding: 0.1rem 0.6rem;
+    border-radius: 3px;
+  }
+  .question-block {
+    background: var(--white);
+    border-left: 4px solid var(--crimson);
+    border-radius: 0 8px 8px 0;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(44,24,16,0.05);
+  }
+  .q-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+  .q-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--crimson);
+    white-space: nowrap;
+  }
+  .q-marks {
+    background: var(--gold);
+    color: var(--charcoal);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 3px;
+    font-family: 'Crimson Text', serif;
+    white-space: nowrap;
+  }
+  .q-text { font-size: 1rem; color: var(--charcoal); line-height: 1.6; }
+  .answer-toggle {
+    margin-top: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .answer-toggle button {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border: 1.5px solid var(--parchment);
+    background: var(--parchment);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .answer-toggle button:hover { border-color: var(--saffron); color: var(--saffron); }
+  .model-answer {
+    display: none;
+    margin-top: 0.8rem;
+    background: rgba(201,162,39,0.08);
+    border: 1px solid rgba(201,162,39,0.3);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+  .model-answer.open { display: block; }
+  .model-answer strong { color: var(--crimson); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--parchment);
+    margin-top: 3rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.8rem; }
+    .card-front .card-term { font-size: 1.8rem; }
+    nav button { padding: 0.7rem 0.8rem; font-size: 0.9rem; }
+    main { padding: 1.5rem 1rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <span class="nav-label">IB World Religions:</span>
+  <a href="Sanatana_Dharma_Study_Guide.html" class="current">Sanatana Dharma</a>
+  <a href="Jainism_Study_Guide.html">Jainism</a>
+  <a href="Buddhism_Study_Guide.html">Buddhism</a>
+  <a href="Sikhism_Study_Guide.html">Sikhism</a>
+  <a href="Taoism_Study_Guide.html">Taoism</a>
+  <a href="Judaism_Study_Guide.html">Judaism</a>
+  <a href="Christianity_Study_Guide.html">Christianity</a>
+  <a href="Islam_Study_Guide.html">Islam</a>
+</nav>
+
+<header>
+  <div class="header-om">ॐ</div>
+  <h1>IB World Religions<br><span>Sanatana Dharma</span> Study Guide</h1>
+  <p>Comprehensive Exam Preparation · Paper 1 &amp; Paper 2</p>
+  <div class="gold-bar"></div>
+</header>
+
+<nav id="mainNav">
+  <button class="active" onclick="showTab('flashcards', this)"><span class="nav-icon">🃏</span>Flashcards</button>
+  <button onclick="showTab('notes', this)"><span class="nav-icon">📖</span>Summary Notes</button>
+  <button onclick="showTab('charts', this)"><span class="nav-icon">📊</span>Comparison Charts</button>
+  <button onclick="showTab('essays', this)"><span class="nav-icon">✍️</span>Essay Outlines</button>
+  <button onclick="showTab('papers', this)"><span class="nav-icon">📝</span>Practice Papers</button>
+</nav>
+
+<main>
+
+<!-- ==================== FLASHCARDS ==================== -->
+<div id="flashcards" class="tab-content active">
+  <div class="section-title">Key Terms Flashcards
+    <span>Click a card to reveal the definition · Use arrows to navigate</span>
+  </div>
+
+  <div class="flashcard-controls">
+    <button id="btnFlip" class="active" onclick="setMode('flip', this)">🃏 Flip Mode</button>
+    <button id="btnGrid" onclick="setMode('grid', this)">📋 All Terms</button>
+    <button onclick="shuffleCards()">🔀 Shuffle</button>
+    <span class="flashcard-count" id="cardCountDisplay">Card 1 of 23</span>
+  </div>
+
+  <!-- Flip Mode -->
+  <div id="flipMode" class="flashcard-arena">
+    <div class="card-wrapper" id="mainCard" onclick="flipCard()">
+      <div class="card-inner" id="cardInner">
+        <div class="card-face card-front">
+          <div class="card-label">Term — Click to reveal definition</div>
+          <div class="card-term" id="frontTerm">Sanatana</div>
+          <div class="card-hint" id="frontHint"></div>
+        </div>
+        <div class="card-face card-back">
+          <div class="card-label">Definition</div>
+          <div class="card-def" id="backDef">Eternal, everlasting</div>
+          <div class="card-note" id="backNote" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-nav">
+      <button onclick="prevCard()">←</button>
+      <div class="card-progress" id="cardProgress">1 / 23</div>
+      <button onclick="nextCard()">→</button>
+    </div>
+  </div>
+
+  <!-- Grid Mode -->
+  <div id="gridMode" style="display:none">
+    <div class="all-cards-grid" id="allCardsGrid"></div>
+  </div>
+</div>
+
+<!-- ==================== SUMMARY NOTES ==================== -->
+<div id="notes" class="tab-content">
+  <div class="section-title">Summary Notes
+    <span>Click any section to expand · All content from your notes</span>
+  </div>
+
+  <!-- 1. Key Info -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">★</div>
+        <h3>Essential Test Facts</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <div class="star-note">On the IB exam always write <strong>"Sanatana Dharma"</strong> — never "Hinduism." Sanatana means eternal/everlasting; Dharma means duty/law/way.</div>
+      <div class="star-note">Hinduism is <strong>henotheistic</strong>: belief in one supreme god, while accepting that other deities exist as manifestations of that single deity. It does NOT deny other gods.</div>
+      <div class="star-note">Sanatana Dharma is most likely the <strong>oldest and most complex</strong> of the world religions.</div>
+      <div class="star-note">Brahman = ultimate reality; Atman = individual soul/self. In the Upanishads, Atman and Brahman are ultimately <strong>identical</strong> — this is monism.</div>
+    </div>
+  </div>
+
+  <!-- 2. Origins -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">🏛</div>
+        <h3>Origins of Sanatana Dharma</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <h4>Pre-Aryan India (Dravidians / Harappans)</h4>
+      <ul>
+        <li>Most advanced ancient civilization, developed along the Indus River valley</li>
+        <li>Had a written language (still un-translated)</li>
+        <li>Dravidian yogic practices, gods, and rituals were absorbed into later Hinduism</li>
+      </ul>
+      <h4>The Coming of the Aryans</h4>
+      <ul>
+        <li>"Aryan" is Sanskrit for "noble ones" — began migrating from Iran into the Indus valley in the 2nd millennium BCE after the Harappan collapse</li>
+        <li>Aryan worship was polytheistic (like Greece/Rome): massive sacrifices at open-air altars, use of Soma (a hallucinogenic substance), and horse sacrifice</li>
+        <li>Due to intermingling of Aryans and Dravidians over centuries, it is difficult to separate which practices in the Vedas are Aryan vs. Dravidian in origin</li>
+      </ul>
+      <h4>The Caste System (Varna)</h4>
+      <ul>
+        <li>Aryans created <strong>varnas</strong> (social classes based originally on skin color)</li>
+        <li>From the Hymn to Purusha (primordial giant torn apart to create the world): <br>
+          • <strong>Mouth</strong> → Brahmins (priests, teachers — highest caste, most spiritually pure)<br>
+          • <strong>Arms</strong> → Kshatriyas (warrior elites, kings, royalty)<br>
+          • <strong>Legs</strong> → Vaishyas (commoners, merchants)<br>
+          • <strong>Feet</strong> → Shudras (servants)<br>
+          • <strong>Dalits</strong> (untouchables) — so impure they are outside the caste system
+        </li>
+        <li><strong>Jati</strong> = specific occupational sub-caste within a varna</li>
+        <li><strong>Sva-dharma</strong> = personal dharma determined by one's varna and jati</li>
+        <li><strong>Varnashramadharma</strong> = duties performed according to one's varna AND ashrama (stage of life)</li>
+        <li>The caste you are born into is based on karma from a past life — it is not about wealth in this life, but about job/spirituality</li>
+        <li>Mobility into higher castes can only happen by reincarnating into them — so perform your duties without attachment</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. Sacred Texts -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">📜</div>
+        <h3>Sacred Texts</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <h4><span class="tag">Shruti</span> "Revealed" — The Vedas</h4>
+      <p>The oldest sacred books of India; all later texts serve as commentary on them. Origin debated (pre-Aryan? 1500–400 BCE?). Emerged from oral tradition. Author unknown. 4 main books:</p>
+      <ul>
+        <li><strong>Rig-Veda</strong> (1st, most important): 1,000+ hymns to Aryan gods/mythology — "knowledge or lore"</li>
+        <li><strong>Yajur-Veda</strong> (2nd): knowledge of rites — material recited during sacrifices to the gods</li>
+        <li><strong>Sama-Veda</strong> (3rd): knowledge of chants — basic hymns chanted by priests during sacrifices</li>
+        <li><strong>Atharva-Veda</strong> (4th): home rituals, popular prayers, spells and incantations to ward off evil</li>
+      </ul>
+      <div class="star-note">In modern Hinduism, Vedic literature is held in highest regard. Almost all Hindus agree on its sacredness — but very few ever actually read them. Mainly for priests, not laypeople. Some say ALL knowledge of the universe is in the Vedas.</div>
+      <h4>The Upanishads (4th section of the Vedas — Shruti)</h4>
+      <ul>
+        <li>Means "sitting down in front (of a teacher)"</li>
+        <li>The philosophical basis of Hindu thought</li>
+        <li>200 texts, 1–50 pages each; 14 considered "principal Upanishads"; earliest from 9th century BCE</li>
+        <li>It is WITH the Upanishads that Hinduism shifts to <strong>ahimsa</strong> — ritual animal sacrifice ends</li>
+        <li>Development of Upanishads coincided with Buddhism and Jainism (mutual influence hard to discern)</li>
+        <li>Core teaching: <strong>Atman = Brahman</strong>. All existence is illusion (maya) arising from ignorance. The soul (Atman) inhabiting our world is only an expression of Brahman.</li>
+        <li>True knowledge of illusion leads to Moksha — unity with Brahman. Requires many lifetimes.</li>
+      </ul>
+      <h4><span class="tag saffron">Smriti</span> "Memorized" — The Bhagavad Gita</h4>
+      <ul>
+        <li>Best book to read to understand Sanatana Dharma; written 7th–9th century BCE</li>
+        <li>A chapter within the epic <strong>Mahabharata</strong>; not sacred/revealed but memorized/cultural</li>
+        <li>Four key features:<br>
+          1. Spells out religious and social/caste dharma<br>
+          2. Openness to multiple paths to Moksha (Jnana, Bhakti, Karma/Sva-dharma) — makes Hinduism the world's most tolerant religion<br>
+          3. Vishnu/Krishna as a god who loves and cares for humans<br>
+          4. A metaphor for the inner battle of the mind and heart
+        </li>
+      </ul>
+      <h4><span class="tag saffron">Smriti</span> The Law of Manu</h4>
+      <ul>
+        <li>Written by Brahmin priests between 300 BCE and 300 CE</li>
+        <li>Not much read — practiced as a cultural norm, passed down orally through generations</li>
+        <li>Explains the caste system and patriarchal nature of Hindu society</li>
+        <li>Establishes varna-specific roles and duties (dharma); contains roots of many modern Hindu traditions</li>
+        <li>Regulates women's roles: women should not make decisions independently, are for children and home, girls seen as financial liabilities (dowries)</li>
+        <li>Encouraged arranged (child) marriage, suttee/sati (widows burning alive on husband's funeral pyre)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4. Human Condition -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">🔄</div>
+        <h3>The Human Condition (Samsara, Karma, Moksha)</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <h4>What is the Human Condition?</h4>
+      <p>Hindus believe humans are caught in <strong>samsara</strong> — the endless cycle of life, death, and rebirth. The Atman is condemned to favorable or unfavorable reincarnation as a result of karma. Bad karma has a corrupting effect on the universe.</p>
+      <h4>Where Are We Going? (Eschatology)</h4>
+      <ul>
+        <li>To a favorable or unfavorable reincarnation after death (based on karma)</li>
+        <li>Or to <strong>Moksha</strong> — liberation from samsara entirely</li>
+      </ul>
+      <h4>4 Types of Karma</h4>
+      <ul>
+        <li><strong>Sanchita Karma</strong>: all actions and experiences from ALL past lives the Atman has endured</li>
+        <li><strong>Prarabdha Karma</strong>: the portion of Sanchita destined for THIS lifetime — shapes immediate and future experiences in the current life</li>
+        <li><strong>Kriyamana Karma</strong>: karma being generated RIGHT NOW in the present moment — shapes future karmic experiences</li>
+        <li><strong>Agami Karma</strong>: the karma that will be produced by future actions — the result of decisions made now that will shape future lives</li>
+      </ul>
+      <h4>How Do We Reach Moksha? (The 3 Paths)</h4>
+      <ul>
+        <li><strong>Bhakti Marga</strong>: Path of Devotion — devotion to a deity through worship, pilgrimage, prayer</li>
+        <li><strong>Jnana Marga</strong>: Path of Knowledge/Wisdom — philosophical study and meditation, understanding Atman=Brahman</li>
+        <li><strong>Karma Marga</strong>: Path of Ethical Action — performing one's sva-dharma (caste duties) without attachment</li>
+      </ul>
+      <p>→ Must end ALL karma to reach Moksha. Moksha = unity with Brahman. This is very difficult and requires many lifetimes of much study and no accumulation of new karma.</p>
+    </div>
+  </div>
+
+  <!-- 5. Ashramas -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">🌿</div>
+        <h3>Ashramas — Life Stages (Law of Manu)</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <div class="highlight">Note: These are generalizations per the Law of Manu. How strictly they are followed varies greatly by gender, caste, wealth, and location.</div>
+      <h4>Men's 4 Ashramas (Upper Caste: Brahmin & Kshatriya)</h4>
+      <ul>
+        <li><strong>1st — Brahmacarga (Student)</strong>: After receiving the sacred thread (Upanayana ceremony). Boy is completely devoted to his studies.</li>
+        <li><strong>2nd — Householder (Grihastha)</strong>: In his 20s he becomes financially independent, marries, has children, cares for parents. Not being a householder is considered very taboo.</li>
+        <li><strong>3rd — Forest Dweller (Vanaprastha)</strong>: After his children are grown, he begins to withdraw from life and focus on spirituality (if he chooses). May begin focusing on moksha.</li>
+        <li><strong>4th — Sannyasin (Renunciant/Sadhu)</strong>: Gives up everything, lives as a solitary beggar in orange robes, frequently found at pilgrimage sites. This is the only stage where one can accrue NO new karma and truly focus on attaining moksha.</li>
+      </ul>
+      <h4>Women's 3 Ashramas (All Castes)</h4>
+      <ul>
+        <li><strong>1st — Girlhood</strong>: Education is household-based (learning to run a home). May receive formal education depending on father/caste/wealth.</li>
+        <li><strong>2nd — Householder</strong>: Devotes herself to husband and children (especially male children). Girls are financial liabilities due to dowries — should be married off as soon as possible.</li>
+        <li><strong>3rd — Widowhood</strong>: Death of husband is blamed on her (bad karma). Wears white, shaves her head, cannot remarry. Vrindavan is a city in India "dedicated" to widows. Historically encouraged to commit sati.</li>
+      </ul>
+      <div class="star-note">Women have only 3 ashramas (no Sannyasin stage). Per the Law of Manu, women cannot attain Moksha directly.</div>
+    </div>
+  </div>
+
+  <!-- 6. Purusharthas & Three Debts -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">🎯</div>
+        <h3>Purusharthas (4 Goals of Life) &amp; Three Debts</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <h4>The 4 Purusharthas (Goals/Aims of Human Life)</h4>
+      <ul>
+        <li><strong>Artha</strong> — "What I need": Pursuit of material goods, wealth for family, community, and yourself</li>
+        <li><strong>Kama</strong> — "What I want": Enjoyment of pleasures and desires</li>
+        <li><strong>Dharma</strong> — "Why am I here?": Your duty according to caste — necessary for order in the world</li>
+        <li><strong>Moksha</strong> — "Who am I?": Giving up the other three; full awakening from maya; liberation</li>
+      </ul>
+      <h4>The Three Debts</h4>
+      <p>These help preserve harmony in society and with the natural world:</p>
+      <ul>
+        <li><strong>To the Gods</strong>: Repaid by performing good acts, showing kindness to people in need and all living creatures</li>
+        <li><strong>To the Sages</strong>: Repaid by studying sacred texts, gaining and passing on knowledge to the next generation. Performing sacrifices (e.g., volunteering time at a temple) helps repay this debt.</li>
+        <li><strong>To the Ancestors</strong>: Repaid by honoring the family reputation, carrying on the family by producing children</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7. Deities -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">🕉</div>
+        <h3>Deities — The Trimurti &amp; Beyond</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <div class="highlight">Remember: Hinduism is henotheistic. All devas and devis are "married" — meaning they are manifestations of one ultimate reality, not separate beings in a Western romantic sense.</div>
+      <h4>The Trimurti</h4>
+      <ul>
+        <li><strong>Brahma</strong> (Creator): Creator of the world. Receives the least attention — only one temple in India. No cult of devotees. Red with four bearded faces and four arms. Not mentioned in the Vedas.</li>
+        <li><strong>Vishnu</strong> (Preserver): Love, benevolence, forgiveness. Appears on Earth in various forms (avatars — usually Krishna or Lord Rama). The 10th avatar will occur at the end of the age to punish the wicked and reward the virtuous. Sects following Vishnu believe he is the ultimate reality. Worshipped at Varanasi. <br>⚠️ Hare Krishnas (ISKCON) devote themselves to Krishna — common in American cities, NOT mainstream in India. Beware of "cults" and false gurus disguised as Sanatana Dharma.</li>
+        <li><strong>Shiva</strong> (Destroyer): Death, destruction, disease, and reproduction. Not in Vedic literature — thought to have evolved from Rudra. Some sects (Shivaites) believe he is the ultimate reality. Worshipped at Varanasi.</li>
+      </ul>
+      <h4>The Divine Feminine — Shakti &amp; Devi</h4>
+      <ul>
+        <li><strong>Shakti</strong>: Divine feminine creative power</li>
+        <li><strong>Devi</strong>: The female goddess — can be depicted as all-loving and gentle, OR lustful and angry</li>
+        <li><strong>Shaktism</strong>: Devotion to the goddess — extremely common across all castes and genders</li>
+        <li>India as a land is considered a goddess — <strong>Bharat Mata</strong> (Mother India) — so pilgrimages (yatras) are very important; almost all of India is accessible as a holy site</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 8. Devotion & Practices -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">🪔</div>
+        <h3>Devotion, Practices &amp; Holy Days</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <h4>Common Forms of Bhakti (Devotion)</h4>
+      <ul>
+        <li><strong>Achamana</strong>: ritual purification</li>
+        <li><strong>Puja</strong>: worship/prayer (in the home or at a mandir/temple)</li>
+        <li><strong>Murtis</strong>: images of god used in worship</li>
+        <li><strong>Darshan</strong>: the state of seeing and being seen by the deity — the holiest form of encounter</li>
+        <li><strong>Yatra</strong>: pilgrimage (the ultimate form of darshan). Many believe if you die on pilgrimage/yatra at Varanasi you attain moksha automatically</li>
+        <li><strong>Puranas</strong>: mythology used in devotion</li>
+        <li>Community work, chanting, celebrating festivals</li>
+      </ul>
+      <h4>The Religious Experience (6 steps)</h4>
+      <ul>
+        <li>1. Fix mind on the glory of god (like a religious retreat)</li>
+        <li>2. Spiritual development → reading sacred text</li>
+        <li>3. Purification of pap (sin)</li>
+        <li>4. Guidance from holy people/guru</li>
+        <li>5. Perform rites and rituals</li>
+        <li>6. Pilgrimage as the ultimate form of darshan</li>
+      </ul>
+      <h4>Sansakras (Key Rituals)</h4>
+      <ul>
+        <li><strong>Upanayana</strong> (Thread Ceremony): For 3 upper castes (male only). Makes them "twice born." Brahmins age 7, Kshatriyas age 10, Vaishyas age 11.</li>
+        <li><strong>Weddings</strong>: Very large, elaborate, multi-day, expensive events. Arranged marriages still very common. "Non-traditional" weddings vary by location.</li>
+        <li><strong>Death</strong>: Immediate cremation to release the Atman. Suicide is very bad karma. Euthanasia/assisted suicide is up for debate.</li>
+      </ul>
+      <h4>Hindu Holy Holidays</h4>
+      <div class="star-note">Practiced quite differently between North and South India. Vary greatly by branch, caste, gender, status of god, and location.</div>
+      <ul>
+        <li><strong>Holi</strong> (Feb/March): Welcome spring, honor Krishna. Celebrates destruction of demons. Many caste/taboo restrictions set aside. Kama (pleasure) emphasized.</li>
+        <li><strong>Diwali</strong> (November): Festival of lights / Hindu New Year. Kali and Lakshmi honored. Devotees make pilgrimages to holy sites.</li>
+        <li><strong>Dasara/Navratri</strong>: Celebrates Shakti. Nine days in October to honor Durga and her victory over the Buffalo Demon.</li>
+      </ul>
+      <h4>Ashrams &amp; Gurus</h4>
+      <p>Ashrams are places to meditate/study — they also serve as homeless shelters for widows. The role of the guru is to study with students. Meditation, hatha yoga, and other practices are done at ashrams.</p>
+      <h4>Dietary Laws &amp; The Cow</h4>
+      <ul>
+        <li>There are NO mandatory dietary laws</li>
+        <li>Veganism is highly encouraged, especially for Brahmins — eating animals is considered bad karma</li>
+        <li>The cow is NOT worshipped. It is NOT a goddess. It is respected, honored, and adored — it represents Bharat Mata, the ultimate all-giving, caring mother</li>
+      </ul>
+    </div>
+  </div>
+
+</div><!-- end notes tab -->
+
+<!-- ==================== COMPARISON CHARTS ==================== -->
+<div id="charts" class="tab-content">
+  <div class="section-title">Comparison Charts
+    <span>Select a topic to view the comparison table</span>
+  </div>
+
+  <div class="chart-tabs">
+    <button class="chart-tab-btn active" onclick="showChart('trimurti', this)">The Trimurti</button>
+    <button class="chart-tab-btn" onclick="showChart('margas', this)">Three Paths to Moksha</button>
+    <button class="chart-tab-btn" onclick="showChart('texts', this)">Sacred Texts</button>
+    <button class="chart-tab-btn" onclick="showChart('varnas', this)">Varna System</button>
+    <button class="chart-tab-btn" onclick="showChart('ashramas', this)">Ashramas</button>
+    <button class="chart-tab-btn" onclick="showChart('karma', this)">4 Types of Karma</button>
+  </div>
+
+  <!-- Trimurti -->
+  <div id="chart-trimurti" class="chart-panel active">
+    <table>
+      <thead><tr><th>Deity</th><th>Role</th><th>Key Attributes</th><th>Sect / Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Brahma</td><td>Creator of the world</td><td>Red skin, four bearded faces, four arms. Not in the Vedas.</td><td>Fewest devotees — only one temple in India. No major cult.</td></tr>
+        <tr><td>Vishnu</td><td>Preserver / Sustainer</td><td>Love, benevolence, forgiveness. Appears in 10 avatars (Krishna, Rama). Worshipped at Varanasi.</td><td>Vaishnavism (followers = Vaishnavas). ISKCON (Hare Krishnas) are a subset — common in USA.</td></tr>
+        <tr><td>Shiva</td><td>Destroyer / Regenerator</td><td>Death, destruction, disease AND reproduction. Evolved from Vedic god Rudra. Worshipped at Varanasi.</td><td>Shaivism (followers = Shaivites). Some believe Shiva is the ultimate reality.</td></tr>
+        <tr><td>Devi / Shakti</td><td>Divine Feminine Power</td><td>Mother of all; depicted as loving (Lakshmi) or fierce (Kali, Durga). All devis are "married" to male deities = manifestations of one reality.</td><td>Shaktism (followers = Shaktas). Extremely popular across all castes and genders.</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">All these deities are manifestations of one ultimate Brahman — this is henotheism, NOT polytheism.</div>
+  </div>
+
+  <!-- Three Margas -->
+  <div id="chart-margas" class="chart-panel">
+    <table>
+      <thead><tr><th>Path (Marga)</th><th>Meaning</th><th>How It Works</th><th>Who Can Follow</th></tr></thead>
+      <tbody>
+        <tr><td>Bhakti Marga</td><td>Path of Devotion</td><td>Devotion to a deity through puja (worship), yatra (pilgrimage), darshan, celebrating holy days, chanting.</td><td>All castes and genders — the most accessible path. Very common.</td></tr>
+        <tr><td>Jnana Marga</td><td>Path of Knowledge / Wisdom</td><td>Philosophical study, meditation, understanding that Atman = Brahman, seeing through maya.</td><td>Primarily upper castes (Brahmins) who have time and education for study. Described in the Upanishads.</td></tr>
+        <tr><td>Karma Marga</td><td>Path of Ethical Action</td><td>Performing one's sva-dharma (caste duty) without attachment to results. Fulfilling varnashramadharma.</td><td>All castes — key message of the Bhagavad Gita.</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">The Bhagavad Gita teaches that all three paths are valid routes to Moksha — this openness makes Sanatana Dharma the world's most tolerant religion.</div>
+  </div>
+
+  <!-- Sacred Texts -->
+  <div id="chart-texts" class="chart-panel">
+    <table>
+      <thead><tr><th>Text</th><th>Category</th><th>Date / Author</th><th>Content &amp; Significance</th></tr></thead>
+      <tbody>
+        <tr><td>The Vedas (4 books)</td><td>Shruti (Revealed/Sacred)</td><td>1500–400 BCE? Oral tradition; author unknown</td><td>Oldest sacred books; all later texts are commentary. Rig-Veda (hymns), Yajur-Veda (rites), Sama-Veda (chants), Atharva-Veda (home rituals/spells). Held in highest regard but rarely read; mainly for priests.</td></tr>
+        <tr><td>The Upanishads</td><td>Shruti (IN the Vedas, 4th section)</td><td>From 9th century BCE; 14 principal texts</td><td>"Sitting down in front of a teacher." Philosophical basis of Hinduism. Teaches Atman = Brahman; all phenomenal existence is maya. Marks shift from ritual sacrifice to ahimsa. Basis of Hindu philosophy.</td></tr>
+        <tr><td>Bhagavad Gita</td><td>Smriti (Memorized; not sacred)</td><td>7th–9th century BCE; author unknown; chapter of the Mahabharata</td><td>Best intro to Sanatana Dharma. Spells out caste dharma. Teaches openness to Bhakti, Jnana, Karma paths. Vishnu/Krishna as a loving god. Metaphor for inner spiritual battle.</td></tr>
+        <tr><td>Law of Manu</td><td>Smriti (Memorized; not sacred)</td><td>300 BCE – 300 CE; written by Brahmin priests</td><td>Explains caste and patriarchal social order. Not read — practiced as cultural norm passed orally. Establishes varna duties, women's roles, marriage customs (including sati, child marriage).</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">Shruti = "heard/revealed" (divine origin); Smriti = "remembered/memorized" (human composed). The Upanishads are BOTH — they are Shruti (inside the Vedas) but are sometimes listed separately.</div>
+  </div>
+
+  <!-- Varnas -->
+  <div id="chart-varnas" class="chart-panel">
+    <table>
+      <thead><tr><th>Varna</th><th>Body of Purusha</th><th>Social Role</th><th>Dharma / Duties</th></tr></thead>
+      <tbody>
+        <tr><td>Brahmin</td><td>Mouth</td><td>Priests, teachers, spiritual leaders. Highest caste, most spiritually pure.</td><td>Study and teach the Vedas; perform rituals and sacrifices; guide others spiritually.</td></tr>
+        <tr><td>Kshatriya</td><td>Arms</td><td>Warrior elites, kings, royalty, administrators.</td><td>Protect the people and dharmic order; govern justly; defend the community.</td></tr>
+        <tr><td>Vaishya</td><td>Legs</td><td>Commoners, merchants, farmers, craftspeople.</td><td>Trade honestly; provide goods; contribute to economic welfare of society.</td></tr>
+        <tr><td>Shudra</td><td>Feet</td><td>Servants and laborers.</td><td>Serve the upper three varnas; perform tasks that support society.</td></tr>
+        <tr><td>Dalit (Untouchable)</td><td>Outside the system</td><td>Considered spiritually impure; outside the caste system entirely.</td><td>Historically assigned the most polluting tasks (waste removal, handling bodies, etc.).</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">The caste system is based on karma from past lives, not wealth in this life. Sva-dharma (personal dharma) is determined by varna + jati (job). Fulfilling your duties without attachment is the Karma Marga path to moksha.</div>
+  </div>
+
+  <!-- Ashramas -->
+  <div id="chart-ashramas" class="chart-panel">
+    <table>
+      <thead><tr><th>Stage</th><th>Men (Upper Caste)</th><th>Women</th></tr></thead>
+      <tbody>
+        <tr><td>1st</td><td><strong>Brahmacarga (Student)</strong>: After sacred thread ceremony. Completely devoted to study.</td><td><strong>Girlhood</strong>: Household education. May receive formal education depending on father/caste/wealth.</td></tr>
+        <tr><td>2nd</td><td><strong>Householder (Grihastha)</strong>: Financially independent in 20s; marries, has children, cares for parents. Not being a householder is taboo.</td><td><strong>Householder</strong>: Devotes herself to husband and children. Girls should be married off quickly due to dowry burden.</td></tr>
+        <tr><td>3rd</td><td><strong>Forest Dweller (Vanaprastha)</strong>: After children are grown; withdraws from worldly life; begins focusing on spirituality and moksha.</td><td><strong>Widowhood</strong>: Husband's death blamed on her. Wears white, shaves head, cannot remarry. Historically encouraged to commit sati.</td></tr>
+        <tr><td>4th</td><td><strong>Sannyasin / Sadhu</strong>: Renounces everything; lives as a solitary beggar in orange robes; the ONLY path to accumulate NO new karma and fully pursue moksha.</td><td><em>No 4th stage. Per the Law of Manu, women cannot attain Moksha directly.</em></td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">These are generalizations per the Law of Manu. How strictly followed varies greatly by caste, wealth, region, and personal choice. Women in modern Hinduism have significantly more autonomy.</div>
+  </div>
+
+  <!-- 4 Types of Karma -->
+  <div id="chart-karma" class="chart-panel">
+    <table>
+      <thead><tr><th>Type of Karma</th><th>Meaning</th><th>Time Frame</th></tr></thead>
+      <tbody>
+        <tr><td>Sanchita Karma</td><td>The total sum of ALL actions and experiences from every past life the Atman has ever endured — the entire karmic bank account.</td><td>Accumulated across all past lives</td></tr>
+        <tr><td>Prarabdha Karma</td><td>The portion of Sanchita karma that is "ripe" and destined to be experienced in THIS current lifetime. Cannot be avoided.</td><td>Current life (pre-determined portion)</td></tr>
+        <tr><td>Kriyamana Karma</td><td>The karma being created in the present moment by current actions and decisions — what you are doing right now that shapes your immediate future.</td><td>Present moment → near future</td></tr>
+        <tr><td>Agami Karma</td><td>The karma that will be produced by future intentions and actions — the seeds being planted now that will ripen in future lives.</td><td>Future lives</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">To reach Moksha, one must end ALL karma — especially stop accumulating new karma (Kriyamana/Agami). The Sannyasin stage and following the Margas are key to achieving this.</div>
+  </div>
+
+</div><!-- end charts tab -->
+
+<!-- ==================== ESSAY OUTLINES ==================== -->
+<div id="essays" class="tab-content">
+  <div class="section-title">Paper 2 Essay Outlines
+    <span>Click any question to expand the full outline · Click again to collapse</span>
+  </div>
+
+  <!-- Essay 1 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"<strong>Examine the role of karma</strong> in Sanatana Dharma and how it shapes the human condition."</div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="outline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Introduction — Define &amp; Frame</h4>
+          <ul>
+            <li>Define karma: the law of action — every action and thought has a consequence, "paid" in the next life</li>
+            <li>Note that karma is central to Sanatana Dharma's cosmology: it governs samsara (cycle of rebirth), social structure (varna/caste), and the path to moksha</li>
+            <li>Thesis: karma in Sanatana Dharma is not simply cause-and-effect but a comprehensive spiritual, social, and ethical framework</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Karma &amp; Samsara (Human Condition)</h4>
+          <ul>
+            <li>Hindus believe the Atman is condemned to samsara as a result of accumulated karma</li>
+            <li>Bad karma = unfavorable rebirth; good karma (punya) = favorable rebirth</li>
+            <li>Bad karma has a corrupting effect on the entire universe — not just the individual</li>
+            <li>Reference the 4 types: Sanchita, Prarabdha, Kriyamana, Agami</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Karma &amp; the Caste System</h4>
+          <ul>
+            <li>The varna (caste) one is born into reflects karma from past lives</li>
+            <li>Caste determines sva-dharma (personal duty) — fulfilling caste duties without attachment generates good karma (Karma Marga path)</li>
+            <li>Law of Manu: varna mobility only through reincarnation — perform duties without attachment</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Karma &amp; the Path to Moksha</h4>
+          <ul>
+            <li>Moksha requires ending ALL karma — Sanchita karma must be exhausted</li>
+            <li>Karma Marga: performing ethical actions without attachment to results reduces karmic accumulation</li>
+            <li>The Sannyasin stage is the only life stage where one can accrue NO new karma</li>
+            <li>Atman-Brahman unity (taught in Upanishads) is achieved when all karma is released</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Evaluation &amp; Conclusion</h4>
+          <ul>
+            <li>Evaluate: karma provides a comprehensive ethical, eschatological, and social framework</li>
+            <li>Critique: the doctrine can justify social inequality (caste) as deserved from past lives</li>
+            <li>Conclude: karma is arguably the most foundational concept in Sanatana Dharma, linking the human condition, social order, and ultimate liberation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-terms-box"><strong>Key Terms to Use:</strong> karma, Sanchita, Prarabdha, Kriyamana, Agami, samsara, moksha, Atman, Brahman, punya, pap, sva-dharma, varnashramadharma, Karma Marga, Sannyasin</div>
+    </div>
+  </div>
+
+  <!-- Essay 2 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"<strong>To what extent does the caste system</strong> reflect core beliefs of Sanatana Dharma?"</div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="outline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Introduction</h4>
+          <ul>
+            <li>Define varna (social classes based originally on skin color), jati (occupational sub-caste), sva-dharma</li>
+            <li>Contextualise: caste originates from the Hymn to Purusha (Aryan period) and is codified in the Law of Manu</li>
+            <li>Thesis: the caste system is deeply embedded in core Hindu beliefs (karma, dharma, samsara) but its modern practice is contested</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Caste &amp; Core Beliefs (YES, it reflects core beliefs)</h4>
+          <ul>
+            <li>Karma determines birth caste — caste is the spiritual result of past lives, not arbitrary social assignment</li>
+            <li>Dharma: each varna has specific sva-dharma; fulfilling these duties upholds cosmic order (rita)</li>
+            <li>Varnashramadharma: duties performed according to varna AND ashrama — a total framework for a righteous life</li>
+            <li>Bhagavad Gita endorses caste dharma as a valid path to Moksha (Karma Marga)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Complications &amp; Critiques (TO WHAT EXTENT)</h4>
+          <ul>
+            <li>The Upanishads teach Atman = Brahman — spiritually ALL souls are identical; caste is maya (illusion)</li>
+            <li>The Bhakti movement (Bhakti Marga) allows all castes to reach moksha through devotion — undermines caste hierarchy</li>
+            <li>Henotheism: all are manifestations of Brahman — suggests spiritual equality</li>
+            <li>The Dalit (untouchable) system is seen by many scholars as a social corruption, not a core spiritual teaching</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Conclusion</h4>
+          <ul>
+            <li>The caste system reflects core Hindu beliefs in karma, dharma, and duty to a significant degree</li>
+            <li>However, the Upanishadic and Bhakti traditions suggest that spiritual equality is equally fundamental</li>
+            <li>The tension between social hierarchy (Law of Manu) and spiritual equality (Upanishads) is unresolved</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-terms-box"><strong>Key Terms to Use:</strong> varna, jati, sva-dharma, varnashramadharma, karma, dharma, Atman, Brahman, maya, Dalit, Law of Manu, Hymn to Purusha, Bhakti Marga, Karma Marga</div>
+    </div>
+  </div>
+
+  <!-- Essay 3 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"<strong>Analyze the significance of sacred texts</strong> in the belief and practice of Sanatana Dharma."</div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="outline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Introduction</h4>
+          <ul>
+            <li>Distinguish Shruti (revealed/sacred) from Smriti (memorized/human-composed)</li>
+            <li>Name the key texts: Vedas, Upanishads, Bhagavad Gita, Law of Manu</li>
+            <li>Thesis: sacred texts shape Hindu beliefs at every level — cosmology, ethics, social order, and spiritual path</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>The Vedas — Foundation of Shruti</h4>
+          <ul>
+            <li>Oldest texts; 4 books: Rig, Yajur, Sama, Atharva Vedas</li>
+            <li>Almost universally regarded as sacred — but rarely read; mainly for priests</li>
+            <li>Established Aryan religious practices: sacrifice, hymns, rituals, Soma</li>
+            <li>"Some say all knowledge of the universe is in the Vedas"</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>The Upanishads — Philosophical Revolution</h4>
+          <ul>
+            <li>The 4th section of the Vedas — shift from ritual to philosophy</li>
+            <li>Introduced Atman = Brahman; maya; and the goal of Moksha</li>
+            <li>Marks end of animal sacrifice — introduction of ahimsa</li>
+            <li>Influenced and was influenced by Buddhism and Jainism (difficult to discern which way)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Bhagavad Gita — The People's Guide</h4>
+          <ul>
+            <li>Most accessible guide to Sanatana Dharma; from the epic Mahabharata (Smriti)</li>
+            <li>Teaches three valid paths to Moksha — makes Hinduism tolerant/inclusive</li>
+            <li>Vishnu/Krishna as a loving, caring deity — personal relationship with god</li>
+            <li>Inner spiritual battle metaphor resonates across generations</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Law of Manu — Social Prescription</h4>
+          <ul>
+            <li>Not "read" but lived — passed down orally and practiced as cultural norm</li>
+            <li>Shapes caste duties, gender roles, marriage practices, social structure</li>
+            <li>Contested in modern Hinduism — sati outlawed, women's rights expanded</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>Conclusion</h4>
+          <ul>
+            <li>Sacred texts shape belief (cosmology, eschatology) AND practice (ritual, caste, gender roles)</li>
+            <li>The tension between Shruti authority and Smriti practicality is ongoing</li>
+            <li>Most Hindus live by the Smriti texts culturally while revering Shruti spiritually</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-terms-box"><strong>Key Terms to Use:</strong> Shruti, Smriti, Vedas, Upanishads, Bhagavad Gita, Law of Manu, ahimsa, Atman, Brahman, maya, moksha, dharma, karma</div>
+    </div>
+  </div>
+
+  <!-- Essay 4 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"<strong>Discuss the role of women</strong> in Sanatana Dharma, with reference to both traditional teachings and practice."</div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="outline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Introduction</h4>
+          <ul>
+            <li>Women's roles in Sanatana Dharma are shaped by the Law of Manu, the ashramas, and the varna system</li>
+            <li>Thesis: traditional teachings restrict women significantly, but the divine feminine (Shakti/Devi) and some paths to moksha offer a counterbalancing spiritual status</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Restrictions — Law of Manu &amp; Ashramas</h4>
+          <ul>
+            <li>Women should never make decisions independently; should not seek independence from husband and children</li>
+            <li>Girls are financial liabilities (dowries) — should be married off as soon as possible</li>
+            <li>Only 3 ashramas (no Sannyasin stage); traditionally cannot attain moksha directly</li>
+            <li>Widowhood: husband's death blamed on wife; expected to commit sati historically; wears white, shaves head, cannot remarry</li>
+            <li>Vrindavan: city "dedicated" to widows</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Spiritual Elevation — Shakti &amp; Bhakti</h4>
+          <ul>
+            <li>The divine feminine (Shakti, Devi) is central to Hindu worship — Shaktism is extremely popular</li>
+            <li>India as Bharat Mata (Mother India) = land is itself a goddess</li>
+            <li>Bhakti Marga is open to ALL castes and genders — women CAN pursue moksha through devotion</li>
+            <li>Female deities (Lakshmi, Durga, Kali, Saraswati) are powerful and widely worshipped</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Modern Practice</h4>
+          <ul>
+            <li>Arranged marriages still common globally but sati outlawed in India</li>
+            <li>Women's rights have expanded significantly in modern India</li>
+            <li>How strictly ashramas are followed varies greatly by caste, wealth, region, and personal choice</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Conclusion</h4>
+          <ul>
+            <li>Traditional texts (Law of Manu) restrict women socially and spiritually</li>
+            <li>Yet the divine feminine is central and the Bhakti path offers women real spiritual agency</li>
+            <li>Tension between textual prescription and lived reality defines the discussion</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-terms-box"><strong>Key Terms to Use:</strong> Law of Manu, ashramas, sati, sva-dharma, Shakti, Devi, Bhakti Marga, moksha, Bharat Mata, pap, punya, Vrindavan, henotheism</div>
+    </div>
+  </div>
+
+  <!-- Essay 5 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"<strong>Examine how Sanatana Dharma addresses the question of ultimate liberation</strong> (moksha)."</div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="outline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Introduction</h4>
+          <ul>
+            <li>Define moksha: liberation from samsara, ending karma, unity with Brahman</li>
+            <li>Context: moksha is the 4th and ultimate Purushartha (aim of human life)</li>
+            <li>Thesis: Sanatana Dharma offers multiple paths to moksha, making liberation theoretically accessible to all</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>The Problem: Samsara &amp; Maya</h4>
+          <ul>
+            <li>The Atman is trapped in samsara — cycles of rebirth determined by karma</li>
+            <li>Maya (illusion) keeps us from perceiving Brahman — all we see, hear, touch is illusion</li>
+            <li>Ignorance of the true nature of reality (Atman = Brahman) perpetuates samsara</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>The Three Paths to Moksha</h4>
+          <ul>
+            <li><strong>Jnana Marga</strong>: True knowledge of illusion is realized — one becomes liberated from life and achieves unity with Brahman. Requires many lifetimes, much study, and generating no karma. Very difficult.</li>
+            <li><strong>Bhakti Marga</strong>: Devotion to a deity — through puja, yatra, darshan. Open to all. A pilgrimage death at Varanasi is believed to grant instant moksha.</li>
+            <li><strong>Karma Marga</strong>: Ethical action without attachment. Fulfilling sva-dharma without desire for fruit. Taught prominently in the Bhagavad Gita.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>The Sannyasin &amp; Ashramas</h4>
+          <ul>
+            <li>The 4th ashrama (Sannyasin/Sadhu) is the only life stage allowing no accumulation of new karma</li>
+            <li>Orange robes, solitary life, pilgrimage sites — giving to a Sadhu accrues good karma for the giver</li>
+            <li>Women (per Law of Manu) cannot reach the Sannyasin stage — debates about women's access to moksha</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Conclusion</h4>
+          <ul>
+            <li>Moksha is the ultimate goal of Sanatana Dharma — liberation from the illusion of maya into union with Brahman</li>
+            <li>Multiple paths reflect the tolerance and inclusivity of the tradition</li>
+            <li>Achieving moksha is extremely difficult and typically requires many lifetimes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-terms-box"><strong>Key Terms to Use:</strong> moksha, samsara, maya, Atman, Brahman, Jnana Marga, Bhakti Marga, Karma Marga, karma, Sannyasin, Sadhu, darshan, yatra, Varanasi, Upanishads, Purusharthas</div>
+    </div>
+  </div>
+
+</div><!-- end essays tab -->
+
+<!-- ==================== PRACTICE PAPERS ==================== -->
+<div id="papers" class="tab-content">
+  <div class="section-title">Practice Papers
+    <span>Simulated IB-style Paper 1 and Paper 2 questions</span>
+  </div>
+
+  <div class="paper-selector">
+    <button class="paper-btn active" onclick="showPaper('p1', this)">📄 Paper 1</button>
+    <button class="paper-btn" onclick="showPaper('p2', this)">📝 Paper 2</button>
+  </div>
+
+  <!-- PAPER 1 -->
+  <div id="paper-p1" class="paper-section active">
+    <div class="paper-info">
+      <h3>Paper 1 — Source-Based Analysis</h3>
+      <ul>
+        <li>You will be given a source (text, image, or description) related to a religion you have studied</li>
+        <li>Questions test your ability to identify, explain, and analyze religious concepts from the source</li>
+        <li>Question types: define, explain, analyze, evaluate — each with increasing marks</li>
+        <li>Always use correct religious terminology ("Sanatana Dharma" not "Hinduism")</li>
+      </ul>
+    </div>
+
+    <div class="source-box">
+      <p>"A young man leaves his family home at the instruction of his father. He is taken to the family Brahmin priest who performs a ceremony, and the boy is given a sacred thread to wear around his body. He is told he must now devote himself entirely to his studies under the guidance of a guru. He must observe celibacy, speak truthfully, and honour his teacher. He is no longer simply a child — he has become 'twice born.'"</p>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Q1(a)</span>
+        <span class="q-marks">[2 marks]</span>
+      </div>
+      <div class="q-text">Identify the ritual being described in the source and name the group for whom it is intended.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show model answer</button></div>
+      <div class="model-answer">The ritual described is the <strong>Upanayana</strong> (thread ceremony / sacred thread ceremony). It is intended for males of the three upper varnas (castes): <strong>Brahmins</strong> (age 7), <strong>Kshatriyas</strong> (age 10), and <strong>Vaishyas</strong> (age 11). The ritual marks the boy as "twice born" — born once physically, and a second time into his spiritual/religious life. It is a <strong>Sansakra</strong> (rite of passage).</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Q1(b)</span>
+        <span class="q-marks">[4 marks]</span>
+      </div>
+      <div class="q-text">Using the source and your own knowledge, explain what the term "twice born" means in Sanatana Dharma, and why this stage of life is significant.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show model answer</button></div>
+      <div class="model-answer">"Twice born" (<strong>dvija</strong>) refers to males of the three upper varnas who have undergone the Upanayana ceremony. The first birth is biological; the second birth is spiritual/religious — the boy is now initiated into his dharmic obligations and is eligible to study the Vedas and perform religious rites.<br><br>This stage is the <strong>1st ashrama</strong> (Brahmacarga — the student stage) as described in the Law of Manu. The boy must be completely devoted to his studies, observe celibacy, speak truthfully, and serve his guru. This stage is foundational because it establishes his <strong>sva-dharma</strong> (personal duty according to caste). It also links to the concept of <strong>varnashramadharma</strong> — duties performed according to one's varna AND stage of life. Without completing this stage properly, a man cannot fulfill his dharmic responsibilities in later life stages (householder, forest dweller, renunciant), making it critical for the eventual pursuit of <strong>moksha</strong>.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Q1(c)</span>
+        <span class="q-marks">[6 marks]</span>
+      </div>
+      <div class="q-text">Using the source and your own knowledge, analyze how the concept of dharma governs the life of a Hindu male according to Sanatana Dharma.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show model answer</button></div>
+      <div class="model-answer">Dharma in Sanatana Dharma means duty, law, and way — but it operates at multiple levels: cosmic order, social obligation, and personal spiritual responsibility.<br><br><strong>1. Varnashramadharma:</strong> The Law of Manu establishes that every male of the upper castes has duties defined by both his <em>varna</em> (social caste) and his <em>ashrama</em> (life stage). The source illustrates the 1st ashrama (Brahmacarga) where the boy's dharma is complete devotion to study under a guru.<br><br><strong>2. The 4 Ashramas:</strong> As a man progresses through life, his dharma changes: from student (celibacy, study) to householder (marriage, children, work) to forest dweller (withdrawal from worldly life) to sannyasin (full renunciation, pursuit of moksha). Each stage has specific duties that must be fulfilled.<br><br><strong>3. Karma &amp; Dharma:</strong> Fulfilling one's dharma generates good karma (punya); failing in it generates pap (sin/bad karma). This connects dharma directly to eschatology — how well one performs dharmic duties determines the quality of future rebirths or progress toward moksha.<br><br><strong>4. The Bhagavad Gita</strong> teaches that performing one's caste duty (sva-dharma) without attachment to results is itself a path to moksha (Karma Marga). This makes dharma not merely a social obligation but a spiritual practice.<br><br>In conclusion, dharma in Sanatana Dharma is a total framework governing a Hindu male's spiritual, social, and ethical life from birth to death.</div>
+    </div>
+
+    <hr style="border:none;border-top:1.5px solid var(--parchment);margin:2.5rem 0;">
+
+    <div class="source-box">
+      <p>"After many years of devoted study under her guru, the young woman came to understand that the world around her — the beauty of the temples, the festivals, the very gods she worshipped — were all expressions of a deeper, unchanging truth. She understood that her own soul was not separate from this ultimate reality. In that moment of understanding, she felt all desire and fear dissolve. This, she understood, was what the ancient teachers had pointed toward."</p>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Q2(a)</span>
+        <span class="q-marks">[2 marks]</span>
+      </div>
+      <div class="q-text">Identify the spiritual state being described in the source and name the Sanskrit term for it.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show model answer</button></div>
+      <div class="model-answer">The source describes <strong>moksha</strong> — liberation or release from samsara (the cycle of death and rebirth). It is also the realization that <strong>Atman = Brahman</strong> (the individual soul is identical to the ultimate reality). The woman's understanding that the world she sees is "expressions of a deeper, unchanging truth" refers to <strong>maya</strong> (illusion) dissolving. This spiritual insight is the goal of the <strong>Jnana Marga</strong> (path of knowledge/wisdom).</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Q2(b)</span>
+        <span class="q-marks">[4 marks]</span>
+      </div>
+      <div class="q-text">Using the source and your knowledge, explain the concept of maya in Sanatana Dharma and its relationship to the goal of liberation.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show model answer</button></div>
+      <div class="model-answer"><strong>Maya</strong> is the illusion — the illusory, created forms of the world that our senses (gunas) perceive. Everything we see, hear, and touch is maya; it is like a dream or an illusion that obscures the true nature of reality: Brahman.<br><br>In the <strong>Upanishads</strong>, the foundational philosophical texts of Sanatana Dharma, it is taught that all phenomenal existence is illusion arising from ignorance (avidya). The living soul (Atman) inhabiting our body is actually identical to Brahman (ultimate reality), but maya creates the appearance of separateness.<br><br><strong>Relationship to moksha:</strong> Liberation (moksha) can only be achieved when one sees through maya and realizes Atman = Brahman. This is what the source describes — the woman's realization that even the gods and festivals she worshipped were "expressions of a deeper, unchanging truth." Once this knowledge is achieved and all karma is exhausted, the Atman is "released" from samsara and merges with Brahman. This is the ultimate goal — the 4th Purushartha — of Sanatana Dharma.</div>
+    </div>
+  </div>
+
+  <!-- PAPER 2 -->
+  <div id="paper-p2" class="paper-section">
+    <div class="paper-info">
+      <h3>Paper 2 — Extended Essay Questions</h3>
+      <ul>
+        <li>Choose one question from a set of thematic options</li>
+        <li>Essays should be approximately 800–1,000 words (in the actual exam)</li>
+        <li>Must demonstrate: knowledge, understanding, analysis, evaluation, and use of religious terminology</li>
+        <li>Always write "Sanatana Dharma" — not "Hinduism"</li>
+        <li>Include specific examples (texts, rituals, beliefs) and evaluate multiple perspectives</li>
+      </ul>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Question 1</span>
+        <span class="q-marks">[30 marks]</span>
+      </div>
+      <div class="q-text">"In Sanatana Dharma, the caste system is a spiritual framework, not merely a social one." To what extent do you agree with this statement?</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show key points to address</button></div>
+      <div class="model-answer">
+        <strong>Agree (spiritual framework arguments):</strong><br>
+        • Varna originates from the Hymn to Purusha — a sacred cosmological myth; caste is rooted in divine creation<br>
+        • One's caste reflects karma from past lives — a deeply spiritual concept (not arbitrary social assignment)<br>
+        • Varnashramadharma links caste duty to spiritual progress; fulfilling sva-dharma is Karma Marga — a path to moksha<br>
+        • The Bhagavad Gita teaches that performing caste duty without attachment is spiritually liberating<br><br>
+        <strong>Disagree (critique/limitations):</strong><br>
+        • The Law of Manu was written by Brahmin priests — arguably a self-serving social document<br>
+        • The Upanishads teach Atman = Brahman — suggesting ALL souls are spiritually equal regardless of caste<br>
+        • Bhakti Marga allows ALL castes (and genders) access to moksha — undermining caste spiritual hierarchy<br>
+        • The Dalit system has no spiritual justification in the Vedas — it is a social corruption<br>
+        • Henotheism implies all people are manifestations of Brahman — spiritual equality<br><br>
+        <strong>Conclusion:</strong> Evaluate that caste has BOTH spiritual and social dimensions; the tradition itself is internally divided on whether caste is a spiritual necessity or a social norm shaped by karma.
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Question 2</span>
+        <span class="q-marks">[30 marks]</span>
+      </div>
+      <div class="q-text">"The Vedic texts are the most significant sacred writings for the beliefs and practices of Sanatana Dharma." How far do you agree?</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show key points to address</button></div>
+      <div class="model-answer">
+        <strong>Agree — significance of the Vedas:</strong><br>
+        • Oldest and most authoritative — Shruti (revealed); all other texts are commentary<br>
+        • Almost universally regarded as sacred by all Hindus; "all knowledge of the universe is in the Vedas"<br>
+        • Established foundational practices: ritual, sacrifice, cosmology, hymns to deities<br>
+        • The Upanishads (4th section of Vedas) provide the philosophical basis of Hindu thought: Atman=Brahman, maya, moksha<br><br>
+        <strong>Disagree — other texts may be more significant in practice:</strong><br>
+        • Vedas are mainly for priests — rarely read by laypeople; "mainly for priests not lay people"<br>
+        • Bhagavad Gita (Smriti) is described as the BEST book for understanding Sanatana Dharma — more widely known and loved<br>
+        • Law of Manu (Smriti) actually governs daily life, caste duties, gender roles, marriage — more practically significant<br>
+        • Upanishads (technically Vedic but often discussed separately) more philosophically influential than other Vedic hymns<br><br>
+        <strong>Nuanced conclusion:</strong> The Vedas are symbolically and spiritually supreme, but in lived practice the BG and Law of Manu may have greater day-to-day influence. The distinction between Shruti authority and Smriti practical application is key.
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Question 3</span>
+        <span class="q-marks">[30 marks]</span>
+      </div>
+      <div class="q-text">"Sanatana Dharma offers no single path to moksha, and this is both its greatest strength and its greatest weakness." Discuss.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show key points to address</button></div>
+      <div class="model-answer">
+        <strong>Strength of multiple paths:</strong><br>
+        • Bhakti Marga: accessible to ALL castes and genders through devotion — the most democratic path<br>
+        • Jnana Marga: for the philosophically inclined — deep study and meditation<br>
+        • Karma Marga: ethical action without attachment — a practical, everyday spiritual life<br>
+        • The BG's openness to all three paths makes Sanatana Dharma "the world's most tolerant religion"<br>
+        • Henotheism allows worship of many deities — people can connect to Brahman through whatever form resonates<br><br>
+        <strong>Weakness of multiple paths:</strong><br>
+        • Lack of doctrinal unity creates internal contradictions (e.g., caste hierarchy vs. spiritual equality)<br>
+        • Different castes and genders have unequal access to certain paths (Jnana mainly for upper castes; women excluded from Sannyasin stage)<br>
+        • Risk of syncretism and dilution — hard to define what Sanatana Dharma "is" given its diversity<br>
+        • "Cults" and false gurus can exploit this flexibility<br><br>
+        <strong>Conclusion:</strong> The flexibility of Sanatana Dharma is genuinely its most distinctive feature; evaluate whether it produces spiritual inclusivity or theological incoherence.
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Question 4</span>
+        <span class="q-marks">[30 marks]</span>
+      </div>
+      <div class="q-text">"The concept of dharma is the most important concept in Sanatana Dharma." Evaluate this claim with reference to other key concepts.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show key points to address</button></div>
+      <div class="model-answer">
+        <strong>Dharma IS the most important (agree):</strong><br>
+        • Dharma = duty, law, way — it underpins the entire social, cosmic, and spiritual order<br>
+        • Varnashramadharma governs how every person lives from birth to death<br>
+        • The 3rd Purushartha (Dharma) is essential for maintaining order in the world — without it, chaos<br>
+        • Even the paths to moksha are framed in terms of dharma: Karma Marga = performing dharmic duties; Jnana = understanding cosmic dharma; Bhakti = devotion as duty<br><br>
+        <strong>Other concepts may be more important:</strong><br>
+        • <strong>Karma</strong>: arguably the mechanism that drives everything — determines birth, life circumstances, and spiritual progress<br>
+        • <strong>Brahman/Atman</strong>: the ultimate theological reality — the entire purpose of spiritual life is realizing Atman=Brahman<br>
+        • <strong>Moksha</strong>: the ultimate goal — without the concept of liberation, dharma would have no ultimate purpose<br>
+        • <strong>Maya</strong>: the fundamental problem that dharma and karma are trying to address<br><br>
+        <strong>Conclusion:</strong> Dharma may be the most operational concept — governing daily life — but Brahman/Atman and moksha may be the most theologically fundamental. Argue that they are mutually dependent concepts rather than a hierarchy.
+      </div>
+    </div>
+
+  </div><!-- end paper 2 section -->
+</div><!-- end papers tab -->
+
+</main>
+
+<footer>
+  <p>IB World Religions Study Guide · Sanatana Dharma · Based on class notes from August–September 2025</p>
+  <p style="margin-top:0.3rem;">Remember: Always write <em>Sanatana Dharma</em>, not "Hinduism," on your IB exams. ★</p>
+</footer>
+
+<script>
+// ===== TAB NAVIGATION =====
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ===== FLASHCARD DATA =====
+const cards = [
+  { term: "Sanatana", hint: "★ Use 'Sanatana Dharma' on all IB tests", def: "Eternal, everlasting — as in Sanatana Dharma, the eternal way/duty. The preferred term for what is commonly called 'Hinduism.'", note: "★ Never write 'Hinduism' on IB tests — always write 'Sanatana Dharma'" },
+  { term: "Dharma", hint: "", def: "Duty, law, way. Also: religious or moral duty as determined by caste (varna), gender, and age (ashrama). Central to all of Sanatana Dharma.", note: "Dharma governs cosmic, social, AND personal life" },
+  { term: "Brahman", hint: "The ultimate reality", def: "Ultimate reality — the Hindu expression of monism (one single reality). Brahman is impersonal, infinite, and the source of all existence. Sometimes equated with Atman.", note: "Brahman ≠ Brahmin (the priest caste). Brahman = ultimate reality." },
+  { term: "Avatar", hint: "An incarnation of a god", def: "An incarnation (in the flesh) of a god. Vishnu's most famous avatars are Krishna and Lord Rama. The 10th avatar is yet to come.", note: "" },
+  { term: "Brahmin", hint: "The priestly class", def: "The highest priestly caste — the most spiritually pure. Created from the Mouth of Purusha. Duties: study/teach Vedas, perform rituals and sacrifices.", note: "Brahmin ≠ Brahman. Brahmin = person (priest). Brahman = ultimate reality." },
+  { term: "Trimurti", hint: "The three-in-one", def: "The divine triad: Brahma (Creator), Vishnu (Preserver), Shiva (Destroyer/Regenerator). Three expressions of one Brahman.", note: "" },
+  { term: "Murti", hint: "Sacred image", def: "The manifestation/image of a deity in a particular physical form. Murtis are used in puja (worship) in temples and homes.", note: "" },
+  { term: "Darshan", hint: "Seeing and being seen", def: "The sacred state of seeing and being seen by the deity. The highest form of spiritual encounter with a god — experienced at temples, through murtis, or on pilgrimage.", note: "A pilgrimage death at Varanasi is believed to grant instant moksha through darshan." },
+  { term: "Ahimsa", hint: "Non-violence", def: "Non-violence. A core ethical principle — introduced prominently through the Upanishads, which brought an end to animal sacrifice in Hindu ritual.", note: "The Upanishads mark the shift to ahimsa." },
+  { term: "Samsara", hint: "The cycle", def: "The cycle of life, death, and rebirth (redying). The Atman is caught in samsara as a result of karma. The goal of Sanatana Dharma is to escape samsara through moksha.", note: "" },
+  { term: "Maya", hint: "The grand illusion", def: "The illusory forms of the created world — delusion. Everything we see, hear, and touch is maya. True reality is Brahman, hidden behind the veil of maya.", note: "From the Upanishads: 'all we see, hear, and touch is maya — like a dream.'" },
+  { term: "Gunas", hint: "Qualities of the senses", def: "The qualities of the created world — the five senses and what they perceive. The gunas bind us to maya and keep us from perceiving Brahman.", note: "" },
+  { term: "Moksha", hint: "The ultimate goal", def: "Liberation — the ending of samsara. Achieved when all karma is exhausted and the Atman realizes its identity with Brahman. The 4th Purushartha and ultimate aim of life.", note: "Requires many lifetimes; very difficult to attain." },
+  { term: "Yoga / Marga", hint: "Path to liberation", def: "Yoga/Marga = the paths or ways to moksha. Three main paths: Bhakti (devotion), Jnana (knowledge), and Karma (ethical action).", note: "" },
+  { term: "Bhakti Marga", hint: "Path of devotion", def: "The path of devotion to a god. Expressed through puja (worship), yatra (pilgrimage), darshan, celebrating festivals. Open to ALL castes and genders.", note: "The most accessible and popular path to moksha." },
+  { term: "Jnana Marga", hint: "Path of knowledge", def: "The path of knowledge/wisdom. Philosophical study and meditation leading to the realization that Atman = Brahman. Described in the Upanishads. Primarily for upper castes.", note: "Requires many lifetimes of study and generates no new karma." },
+  { term: "Karma Marga", hint: "Path of ethical action", def: "The path of ethical actions — performing one's sva-dharma (caste duty) without attachment to results. Key message of the Bhagavad Gita.", note: "" },
+  { term: "Karma", hint: "The law of cause and effect", def: "The law of action: every action and thought has a consequence, 'paid' in the next life. 4 types: Sanchita (all past lives), Prarabdha (this life), Kriyamana (now), Agami (future).", note: "Bad karma corrupts the universe. Must end ALL karma to reach Moksha." },
+  { term: "Atman", hint: "The eternal self", def: "The self or soul — the individual spiritual essence. In the Upanishads, Atman is sometimes seen as identical with Brahman (ultimate reality). 'Atman = Brahman' is the core of Hindu philosophy.", note: "Atman transmigrates through samsara until moksha is achieved." },
+  { term: "Pap", hint: "Spiritual harm", def: "Sin — anything that causes mental, spiritual, or physical harm to other beings or ourselves. Generates bad karma and pulls one further from moksha.", note: "Opposite of punya." },
+  { term: "Punya", hint: "Spiritual merit", def: "Holiness, spiritual excellence, good deeds. Generates positive karma. Acts of kindness, devotion, service, and ritual purity all accumulate punya.", note: "Opposite of pap." },
+  { term: "Shakti", hint: "Divine feminine power", def: "Divine feminine creative power. The feminine aspect of the divine. Shakti is expressed through goddesses like Devi, Durga, Kali, and Lakshmi.", note: "Shaktism = devotion to the goddess; extremely popular across all castes and genders." },
+  { term: "Henotheism", hint: "One + many", def: "Belief in one supreme god while accepting the possible existence of other deities. All other gods/goddesses are understood as manifestations of the ONE ultimate Brahman.", note: "★ Sanatana Dharma is henotheistic, NOT polytheistic. This is key for the IB exam." }
+];
+
+let currentCard = 0;
+let cardOrder = cards.map((_, i) => i);
+
+function renderCard() {
+  const idx = cardOrder[currentCard];
+  const card = cards[idx];
+  document.getElementById('frontTerm').textContent = card.term;
+  document.getElementById('frontHint').textContent = card.hint;
+  document.getElementById('backDef').textContent = card.def;
+  const noteEl = document.getElementById('backNote');
+  if (card.note) {
+    noteEl.textContent = card.note;
+    noteEl.style.display = 'block';
+  } else {
+    noteEl.style.display = 'none';
+  }
+  document.getElementById('cardProgress').textContent = `${currentCard + 1} / ${cardOrder.length}`;
+  document.getElementById('cardCountDisplay').textContent = `Card ${currentCard + 1} of ${cardOrder.length}`;
+  // reset flip
+  document.getElementById('mainCard').classList.remove('flipped');
+}
+
+function flipCard() {
+  document.getElementById('mainCard').classList.toggle('flipped');
+}
+function nextCard() {
+  currentCard = (currentCard + 1) % cardOrder.length;
+  renderCard();
+}
+function prevCard() {
+  currentCard = (currentCard - 1 + cardOrder.length) % cardOrder.length;
+  renderCard();
+}
+function shuffleCards() {
+  for (let i = cardOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cardOrder[i], cardOrder[j]] = [cardOrder[j], cardOrder[i]];
+  }
+  currentCard = 0;
+  renderCard();
+}
+
+// Build grid mode
+function buildGrid() {
+  const grid = document.getElementById('allCardsGrid');
+  grid.innerHTML = '';
+  cards.forEach(card => {
+    const el = document.createElement('div');
+    el.className = 'mini-card';
+    el.innerHTML = `<div class="term">${card.term}</div><div class="def">${card.def}</div>${card.note ? `<div class="note">${card.note}</div>` : ''}`;
+    grid.appendChild(el);
+  });
+}
+
+function setMode(mode, btn) {
+  document.querySelectorAll('.flashcard-controls button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (mode === 'flip') {
+    document.getElementById('flipMode').style.display = 'flex';
+    document.getElementById('gridMode').style.display = 'none';
+    document.getElementById('cardCountDisplay').style.display = 'inline';
+  } else {
+    document.getElementById('flipMode').style.display = 'none';
+    document.getElementById('gridMode').style.display = 'block';
+    document.getElementById('cardCountDisplay').style.display = 'none';
+    buildGrid();
+  }
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  const flashcardTab = document.getElementById('flashcards');
+  if (!flashcardTab.classList.contains('active')) return;
+  if (document.getElementById('flipMode').style.display === 'none') return;
+  if (e.key === 'ArrowRight') nextCard();
+  if (e.key === 'ArrowLeft') prevCard();
+  if (e.key === ' ') { e.preventDefault(); flipCard(); }
+});
+
+// ===== COLLAPSIBLE NOTES =====
+function toggleNote(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// ===== ESSAY TOGGLES =====
+function toggleEssay(header) {
+  header.classList.toggle('open');
+  const body = header.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+// ===== CHART PANELS =====
+function showChart(id, btn) {
+  document.querySelectorAll('.chart-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.chart-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('chart-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===== PAPER PANELS =====
+function showPaper(id, btn) {
+  document.querySelectorAll('.paper-section').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.paper-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('paper-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===== MODEL ANSWERS =====
+function toggleAnswer(btn) {
+  const answer = btn.closest('.answer-toggle').nextElementSibling;
+  answer.classList.toggle('open');
+  btn.textContent = answer.classList.contains('open') ? 'Hide answer' : 'Show model answer';
+}
+
+// Init
+renderCard();
+</script>
+</body>
+</html>

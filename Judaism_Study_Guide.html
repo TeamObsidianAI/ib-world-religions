@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judaism – IB World Religions Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1a3a6e;
+  --primary-dark: #0f2347;
+  --primary-light: #2a5298;
+  --accent: #c9a84c;
+  --accent-light: #f0d080;
+  --accent-dark: #a07830;
+  --bg: #f5f3ee;
+  --surface: #ffffff;
+  --surface2: #eef1f8;
+  --text: #1a1a2e;
+  --text-light: #4a4a6a;
+  --border: #c5cfe8;
+  --shadow: rgba(26,58,110,0.13);
+  --danger: #8b1a1a;
+  --success: #1a5c2e;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Crimson Text', Georgia, serif; background: var(--bg); color: var(--text); font-size: 1.05rem; line-height: 1.65; }
+
+/* ── NAV BAR ── */
+.site-nav { background: var(--primary-dark); padding: 0.5rem 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.site-nav a { color: #c5cfe8; text-decoration: none; font-family: 'Crimson Text', serif; font-size: 0.88rem; padding: 0.25rem 0.6rem; border-radius: 4px; transition: background 0.2s; }
+.site-nav a:hover { background: rgba(255,255,255,0.12); }
+.site-nav a.current { background: var(--accent); color: var(--primary-dark); font-weight: 600; }
+.site-nav .nav-label { color: #8899bb; font-size: 0.8rem; margin-right: 0.3rem; }
+
+/* ── HEADER ── */
+header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 100%); color: white; padding: 2.5rem 1.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+header::before { content: '✡'; position: absolute; right: 5%; top: 50%; transform: translateY(-50%); font-size: 8rem; opacity: 0.07; }
+header::after { content: '✡'; position: absolute; left: 5%; top: 50%; transform: translateY(-50%); font-size: 8rem; opacity: 0.07; }
+header h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; letter-spacing: 0.03em; margin-bottom: 0.3rem; }
+header p { color: var(--accent-light); font-style: italic; font-size: 1.05rem; }
+header .subtitle { margin-top: 0.4rem; color: #aabbd8; font-size: 0.92rem; }
+
+/* ── TABS ── */
+.tab-bar { display: flex; background: var(--primary); position: sticky; top: 0; z-index: 100; overflow-x: auto; box-shadow: 0 2px 8px var(--shadow); }
+.tab-btn { flex: 1; min-width: 110px; padding: 0.85rem 0.5rem; background: none; border: none; color: #aabbd8; font-family: 'Playfair Display', serif; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; border-bottom: 3px solid transparent; white-space: nowrap; }
+.tab-btn:hover { color: white; background: rgba(255,255,255,0.08); }
+.tab-btn.active { color: var(--accent-light); border-bottom-color: var(--accent); background: rgba(255,255,255,0.06); }
+
+/* ── CONTENT PANELS ── */
+.tab-panel { display: none; max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem; }
+.tab-panel.active { display: block; }
+
+/* ── FLASHCARDS ── */
+.card-controls { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.2rem; }
+.card-controls button { padding: 0.45rem 1.1rem; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: 6px; font-family: 'Crimson Text', serif; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.card-controls button:hover { background: var(--primary); color: white; }
+.progress-bar { height: 5px; background: var(--border); border-radius: 3px; margin-bottom: 1rem; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 3px; transition: width 0.4s; }
+.card-counter { text-align: center; color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; }
+.flashcard-scene { perspective: 1000px; max-width: 680px; margin: 0 auto 1.2rem; }
+.flashcard { width: 100%; min-height: 240px; position: relative; transform-style: preserve-3d; transition: transform 0.55s; cursor: pointer; }
+.flashcard.flipped { transform: rotateY(180deg); }
+.card-face { position: absolute; width: 100%; min-height: 240px; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 14px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 6px 24px var(--shadow); }
+.card-front { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; }
+.card-front .card-hint { font-size: 0.78rem; color: var(--accent-light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.8rem; }
+.card-front .card-term { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 0.5rem; }
+.card-front .card-hint2 { font-size: 0.85rem; color: #aabbd8; font-style: italic; }
+.card-back { background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%); color: var(--text); transform: rotateY(180deg); border: 2px solid var(--border); }
+.card-back .card-def { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; line-height: 1.5; }
+.card-back .card-note { font-size: 0.88rem; color: var(--text-light); font-style: italic; border-top: 1px solid var(--border); padding-top: 0.6rem; margin-top: 0.4rem; }
+.flip-hint { text-align: center; color: var(--text-light); font-size: 0.85rem; margin-bottom: 0.5rem; }
+.nav-btns { display: flex; justify-content: center; gap: 1rem; }
+.nav-btns button { padding: 0.55rem 1.8rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-family: 'Crimson Text', serif; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+.nav-btns button:hover { background: var(--primary-light); }
+
+/* ── NOTES ── */
+.section-intro { background: var(--surface2); border-left: 4px solid var(--accent); padding: 0.9rem 1.2rem; border-radius: 0 8px 8px 0; margin-bottom: 1.5rem; font-style: italic; color: var(--text-light); }
+.note-header { background: var(--primary); color: white; padding: 0.9rem 1.2rem; border-radius: 10px 10px 0 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-top: 1rem; transition: background 0.2s; user-select: none; }
+.note-header:hover { background: var(--primary-light); }
+.note-header::after { content: '▼'; font-size: 0.8rem; transition: transform 0.3s; }
+.note-header.open::after { transform: rotate(180deg); }
+.note-body { display: none; background: var(--surface); border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; padding: 1.2rem 1.4rem; margin-bottom: 0.3rem; }
+.note-body.open { display: block; }
+.note-body h4 { color: var(--primary); font-family: 'Playfair Display', serif; margin: 1rem 0 0.4rem; font-size: 1rem; }
+.note-body h4:first-child { margin-top: 0; }
+.note-body ul { padding-left: 1.4rem; }
+.note-body ul li { margin-bottom: 0.35rem; }
+.note-body p { margin-bottom: 0.6rem; }
+.note-body strong { color: var(--primary-dark); }
+.ib-tip { background: #fff8e1; border: 1.5px solid var(--accent); border-radius: 8px; padding: 0.7rem 1rem; margin: 0.8rem 0; }
+.ib-tip .tip-label { font-weight: 700; color: var(--accent-dark); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.ib-tip p { margin: 0.3rem 0 0; font-size: 0.95rem; }
+.term-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.7rem; margin: 0.8rem 0; }
+.term-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.9rem; }
+.term-card .tc-term { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
+.term-card .tc-def { font-size: 0.88rem; color: var(--text-light); margin-top: 0.2rem; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.8rem 0; }
+.denom-card { background: var(--surface2); border-left: 4px solid var(--primary); border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; }
+.denom-card h5 { color: var(--primary); font-family: 'Playfair Display', serif; margin-bottom: 0.4rem; }
+.timeline-row { display: flex; gap: 1rem; margin-bottom: 0.8rem; align-items: flex-start; }
+.timeline-date { background: var(--primary); color: var(--accent-light); padding: 0.3rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.88rem; white-space: nowrap; min-width: 90px; text-align: center; }
+.timeline-text { flex: 1; font-size: 0.95rem; }
+.festival-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.7rem; margin: 0.8rem 0; }
+.festival-card { background: linear-gradient(135deg, var(--surface2), white); border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1rem; }
+.festival-card .fc-name { font-weight: 700; color: var(--primary); font-family: 'Playfair Display', serif; font-size: 1rem; }
+.festival-card .fc-detail { font-size: 0.88rem; color: var(--text-light); margin-top: 0.25rem; }
+
+/* ── CHARTS ── */
+.chart-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+.chart-tab { padding: 0.4rem 1rem; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: 20px; font-family: 'Crimson Text', serif; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+.chart-tab.active, .chart-tab:hover { background: var(--primary); color: white; }
+.chart-panel { display: none; }
+.chart-panel.active { display: block; }
+.chart-panel h3 { font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 1rem; }
+.comp-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.comp-table th { background: var(--primary); color: white; padding: 0.65rem 0.8rem; text-align: left; font-family: 'Playfair Display', serif; font-weight: 600; }
+.comp-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.comp-table tr:nth-child(even) td { background: var(--surface2); }
+.comp-table tr:hover td { background: #e8edf8; }
+.comp-table .category { font-weight: 700; color: var(--primary-dark); background: #dde4f5 !important; }
+.highlight { background: #fff8d6 !important; }
+
+/* ── ESSAYS ── */
+.essay-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 12px; margin-bottom: 1.2rem; overflow: hidden; }
+.essay-header { background: var(--primary); color: white; padding: 0.9rem 1.2rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Playfair Display', serif; }
+.essay-header:hover { background: var(--primary-light); }
+.essay-header .essay-q { flex: 1; }
+.essay-header .essay-toggle { font-size: 0.85rem; color: var(--accent-light); white-space: nowrap; margin-left: 1rem; }
+.essay-body { display: none; padding: 1.2rem 1.4rem; }
+.essay-body.open { display: block; }
+.essay-body h4 { color: var(--primary); font-family: 'Playfair Display', serif; margin: 0.9rem 0 0.3rem; font-size: 1rem; }
+.essay-body h4:first-child { margin-top: 0; }
+.essay-body ul { padding-left: 1.4rem; }
+.essay-body ul li { margin-bottom: 0.3rem; font-size: 0.95rem; }
+.essay-body p { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.essay-marks { display: inline-block; background: var(--accent); color: var(--primary-dark); border-radius: 4px; padding: 0.1rem 0.5rem; font-size: 0.8rem; font-weight: 700; margin-left: 0.5rem; }
+
+/* ── PRACTICE PAPERS ── */
+.paper-section { margin-bottom: 2rem; }
+.paper-section h3 { font-family: 'Playfair Display', serif; color: var(--primary-dark); border-bottom: 2px solid var(--accent); padding-bottom: 0.4rem; margin-bottom: 1rem; }
+.source-box { background: #f0f3fb; border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.2rem; margin-bottom: 1rem; font-size: 0.93rem; }
+.source-box .source-label { font-weight: 700; color: var(--primary); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+.source-box p { font-style: italic; margin-bottom: 0.4rem; }
+.source-box .source-attr { font-style: normal; font-size: 0.85rem; color: var(--text-light); }
+.question-block { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 0.9rem; }
+.question-block p { font-weight: 600; margin-bottom: 0.6rem; }
+.answer-toggle { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.5rem; }
+.answer-toggle button { padding: 0.35rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; font-family: 'Crimson Text', serif; font-size: 0.88rem; cursor: pointer; transition: background 0.2s; }
+.answer-toggle button:hover { background: var(--primary-light); }
+.answer-toggle .marks { color: var(--text-light); font-size: 0.88rem; }
+.model-answer { display: none; background: #f0f5e8; border: 1px solid #c5d8a0; border-radius: 6px; padding: 0.9rem 1.1rem; margin-top: 0.7rem; font-size: 0.92rem; }
+.model-answer.open { display: block; }
+.model-answer h5 { color: var(--success); font-family: 'Playfair Display', serif; margin-bottom: 0.4rem; font-size: 0.92rem; }
+.model-answer ul { padding-left: 1.3rem; }
+.model-answer ul li { margin-bottom: 0.3rem; }
+.essay-prompt { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 0.9rem; }
+.essay-prompt .ep-q { font-weight: 700; font-family: 'Playfair Display', serif; color: var(--primary-dark); margin-bottom: 0.5rem; }
+.essay-prompt .ep-hint { font-size: 0.9rem; color: var(--text-light); font-style: italic; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.7rem; }
+  .two-col { grid-template-columns: 1fr; }
+  .tab-btn { font-size: 0.8rem; min-width: 80px; padding: 0.7rem 0.3rem; }
+  .term-grid { grid-template-columns: 1fr 1fr; }
+  .festival-grid { grid-template-columns: 1fr; }
+  header::before, header::after { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <span class="nav-label">IB World Religions:</span>
+  <a href="Sanatana_Dharma_Study_Guide.html">Sanatana Dharma</a>
+  <a href="Jainism_Study_Guide.html">Jainism</a>
+  <a href="Buddhism_Study_Guide.html">Buddhism</a>
+  <a href="Sikhism_Study_Guide.html">Sikhism</a>
+  <a href="Taoism_Study_Guide.html">Taoism</a>
+  <a href="Judaism_Study_Guide.html" class="current">Judaism</a>
+  <a href="Christianity_Study_Guide.html">Christianity</a>
+  <a href="Islam_Study_Guide.html">Islam</a>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <h1>Judaism</h1>
+  <p>"Hear, O Israel: the Lord is our God, the Lord is One." — Shema (Deuteronomy 6:4)</p>
+  <div class="subtitle">IB World Religions · Paper 1 &amp; Paper 2 Study Guide</div>
+</header>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('flashcards')">✦ Flashcards</button>
+  <button class="tab-btn" onclick="showTab('notes')">📜 Summary Notes</button>
+  <button class="tab-btn" onclick="showTab('charts')">⚖ Comparison Charts</button>
+  <button class="tab-btn" onclick="showTab('essays')">✍ Essay Outlines</button>
+  <button class="tab-btn" onclick="showTab('papers')">📋 Practice Papers</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 1 · FLASHCARDS                                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-flashcards" class="tab-panel active">
+  <div class="card-controls">
+    <button onclick="shuffleCards()">🔀 Shuffle</button>
+    <button onclick="resetCards()">↺ Reset</button>
+    <button onclick="prevCard()">◀ Prev</button>
+    <button onclick="nextCard()">▶ Next</button>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="card-counter" id="cardCounter"></div>
+  <div class="flashcard-scene">
+    <div class="flashcard" id="mainCard" onclick="flipCard()">
+      <div class="card-face card-front">
+        <div class="card-hint" id="cardHint"></div>
+        <div class="card-term" id="cardTerm"></div>
+        <div class="card-hint2" id="cardHint2">Click to reveal definition</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="card-def" id="cardDef"></div>
+        <div class="card-note" id="cardNote"></div>
+      </div>
+    </div>
+  </div>
+  <p class="flip-hint">Click card to flip · Arrow keys to navigate · Space to flip</p>
+  <div class="nav-btns">
+    <button onclick="prevCard()">◀ Previous</button>
+    <button onclick="nextCard()">Next ▶</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 2 · SUMMARY NOTES                                 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-notes" class="tab-panel">
+  <p class="section-intro">Click any section to expand it. Key IB distinctions are highlighted in gold tip boxes.</p>
+
+  <!-- CORE BELIEFS -->
+  <div class="note-header" onclick="toggleNote(this)">Core Beliefs &amp; Key Terms</div>
+  <div class="note-body">
+    <h4>The Shema — Most Important Prayer</h4>
+    <p><strong>"Shema Yisrael, Adonai Eloheinu, Adonai Echad"</strong> — "Hear, O Israel: the Lord is our God, the Lord is One." (Deuteronomy 6:4). This is the central declaration of Jewish faith — absolute monotheism.</p>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Tip</div><p>The Shema is Judaism's most important prayer — not a commandment ritual, but a declaration of identity and belief. Know this for Paper 2.</p></div>
+
+    <h4>Key Terms Grid</h4>
+    <div class="term-grid">
+      <div class="term-card"><div class="tc-term">Brit (ברית)</div><div class="tc-def">Covenant — binding agreement between God and the Jewish people</div></div>
+      <div class="term-card"><div class="tc-term">Mitzvah / Mitzvot</div><div class="tc-def">Commandment(s); also used loosely for "good deed." 613 total in the Torah</div></div>
+      <div class="term-card"><div class="tc-term">Halakhah</div><div class="tc-def">Jewish religious law governing daily life</div></div>
+      <div class="term-card"><div class="tc-term">Mashiach (Messiah)</div><div class="tc-def">Anointed one — future leader who will bring age of peace; NOT yet come in Judaism (contrast Christianity)</div></div>
+      <div class="term-card"><div class="tc-term">Israel</div><div class="tc-def">Three meanings: people, land, and modern state — know which context applies</div></div>
+      <div class="term-card"><div class="tc-term">Kedushah</div><div class="tc-def">Holiness — key goal of Jewish life through observance of Halakhah</div></div>
+      <div class="term-card"><div class="tc-term">Teshuvah</div><div class="tc-def">Repentance / turning back to God — central to Yom Kippur</div></div>
+      <div class="term-card"><div class="tc-term">Shekinah</div><div class="tc-def">God's divine presence/indwelling; feminine grammatical form — God is present with the people</div></div>
+      <div class="term-card"><div class="tc-term">Tikkun Olam</div><div class="tc-def">"Repair the world" — ethical obligation; expressed through Tzedakah (charity/justice)</div></div>
+      <div class="term-card"><div class="tc-term">Gemilut Chasadim</div><div class="tc-def">Acts of loving kindness — unprompted generosity</div></div>
+      <div class="term-card"><div class="tc-term">Yetzer ha-ra</div><div class="tc-def">Evil inclination — humans naturally drawn toward selfish acts</div></div>
+      <div class="term-card"><div class="tc-term">Yetzer ha-tov</div><div class="tc-def">Good inclination — pulls humans toward righteous acts</div></div>
+      <div class="term-card"><div class="tc-term">Olam ha-ba</div><div class="tc-def">The World to Come — afterlife/messianic age; not as defined as Christian Heaven</div></div>
+      <div class="term-card"><div class="tc-term">TaNakh</div><div class="tc-def">Hebrew Bible: Torah + Nevi'im + Ketuvim</div></div>
+      <div class="term-card"><div class="tc-term">Talmud</div><div class="tc-def">Oral Torah: Mishna + Gemara; finalised ~500 CE; the "fence" around the Torah "house"</div></div>
+    </div>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Tip — Shekinah</div><p>Shekinah is the <em>feminine</em> grammatical form of God's presence in Hebrew — this does NOT mean Judaism believes in a female God. It represents God dwelling <em>among</em> the people. IB examiners love testing this nuance.</p></div>
+  </div>
+
+  <!-- HUMAN CONDITION -->
+  <div class="note-header" onclick="toggleNote(this)">Human Condition &amp; the Purpose of Life</div>
+  <div class="note-body">
+    <h4>Created in God's Image (B'tzelem Elohim)</h4>
+    <p>Humans are created in the image of God (Genesis 1:27). This gives every human inherent dignity. It also means humans have <strong>free will</strong> — the constant choice between yetzer ha-ra and yetzer ha-tov.</p>
+
+    <h4>The Constant Struggle</h4>
+    <p>Unlike Christianity, Judaism does not have the concept of original sin as a permanent stain. Instead, humans are born morally neutral and must continuously choose between good and evil inclinations. Life is a battleground of moral choices.</p>
+
+    <h4>Goal of Life</h4>
+    <ul>
+      <li>Live as a member of the House of Israel (the Jewish community/covenant people)</li>
+      <li>Observe the 613 mitzvot of the covenant</li>
+      <li>Pursue Tikkun Olam — repair and improve the world</li>
+      <li>Bring about the Messianic age of peace and justice</li>
+    </ul>
+
+    <div class="ib-tip"><div class="tip-label">⚠ IB Critical Distinction</div><p>Judaism emphasises <strong>this-world observance</strong> over concern about the hereafter. Olam ha-ba exists but is vague. Compare to Christianity (Heaven/Hell very defined) and Buddhism (reincarnation cycle). IB Paper 2 comparative questions test this directly.</p></div>
+
+    <h4>Chosen People — House of Israel</h4>
+    <p>Jews believe they are "chosen" not in a supremacist sense, but as bearers of a <em>covenant responsibility</em> — entrusted with God's Torah to be a "light unto the nations." It is a burden of obligation, not superiority.</p>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="note-header" onclick="toggleNote(this)">Historical Development</div>
+  <div class="note-body">
+    <div class="timeline-row"><div class="timeline-date">~1800 BCE</div><div class="timeline-text"><strong>Abraham</strong> — first patriarch; covenant with God. Isaac → Jacob → 12 sons (12 tribes of Israel)</div></div>
+    <div class="timeline-row"><div class="timeline-date">~1300 BCE</div><div class="timeline-text"><strong>Moses and the Exodus</strong> — liberation from Egypt; Passover. Revelation at Mt. Sinai — Ten Commandments, Torah codified</div></div>
+    <div class="timeline-row"><div class="timeline-date">Post-Sinai</div><div class="timeline-text">Ark of the Covenant; Joshua conquers Canaan; period of Judges</div></div>
+    <div class="timeline-row"><div class="timeline-date">~1000 BCE</div><div class="timeline-text"><strong>Hebrew Monarchy</strong> — King David unites kingdom; King Solomon builds <strong>First Temple</strong> in Jerusalem (~825 BCE)</div></div>
+    <div class="timeline-row"><div class="timeline-date">800–700 BCE</div><div class="timeline-text"><strong>Prophetic Movement</strong> — Amos, Hosea, Isaiah, Micah emphasize ethics over ritual</div></div>
+    <div class="timeline-row"><div class="timeline-date">586 BCE</div><div class="timeline-text"><strong>Babylonians destroy First Temple</strong> — Jews exiled to Babylon; major theological crisis: How can God be exiled?</div></div>
+    <div class="timeline-row"><div class="timeline-date">538 BCE</div><div class="timeline-text"><strong>Cyrus the Great</strong> (Persian) frees Jews; Second Temple built. <em>Exile forces theology to evolve</em>: God is mobile, God is universal (not just a tribal deity)</div></div>
+    <div class="timeline-row"><div class="timeline-date">~450 BCE</div><div class="timeline-text"><strong>Ezra</strong> canonises scripture in Babylon; Torah given official authority</div></div>
+    <div class="timeline-row"><div class="timeline-date">70 CE</div><div class="timeline-text"><strong>Romans destroy Second Temple</strong> — animal sacrifice ends permanently; synagogue replaces Temple; Rabbinic Judaism emerges</div></div>
+    <div class="timeline-row"><div class="timeline-date">~500 CE</div><div class="timeline-text"><strong>Talmud finalised</strong> — Babylonian Talmud becomes the authoritative version</div></div>
+    <div class="timeline-row"><div class="timeline-date">1135–1204</div><div class="timeline-text"><strong>Maimonides</strong> (Rambam) — greatest medieval philosopher; 13 Principles of Faith; Mishneh Torah codification</div></div>
+    <div class="timeline-row"><div class="timeline-date">Medieval</div><div class="timeline-text"><strong>Kabbalah / Zohar</strong> — Jewish mysticism; esoteric interpretation of Torah</div></div>
+    <div class="timeline-row"><div class="timeline-date">1800s</div><div class="timeline-text"><strong>Haskalah</strong> (Jewish Enlightenment) → Reform Judaism emerges in Germany/Western Europe</div></div>
+    <div class="timeline-row"><div class="timeline-date">Modern</div><div class="timeline-text">~14 million Jews worldwide; Holocaust (Shoah) major defining modern event; State of Israel founded 1948</div></div>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key Point — Exile &amp; Theological Evolution</div><p>The destruction of the First Temple (586 BCE) forced Judaism to evolve: God cannot be limited to a place. The synagogue replaces the Temple, the rabbi replaces the priest, prayer replaces sacrifice. This is huge for understanding Rabbinic Judaism.</p></div>
+  </div>
+
+  <!-- SACRED TEXTS -->
+  <div class="note-header" onclick="toggleNote(this)">Sacred Texts</div>
+  <div class="note-body">
+    <h4>TaNakh — The Hebrew Bible</h4>
+    <p><strong>T</strong>orah (תורה) + <strong>N</strong>evi'im (נביאים) + <strong>K</strong>etuvim (כתובים)</p>
+    <ul>
+      <li><strong>Torah</strong> — Five Books of Moses (Genesis, Exodus, Leviticus, Numbers, Deuteronomy). THE most sacred text. Contains the 613 mitzvot.</li>
+      <li><strong>Nevi'im</strong> (Prophets) — Joshua, Judges, Isaiah, Jeremiah, Amos, etc.</li>
+      <li><strong>Ketuvim</strong> (Writings) — Psalms, Proverbs, Job, Ecclesiastes, Ruth, Esther, etc.</li>
+    </ul>
+
+    <h4>Talmud — Oral Torah</h4>
+    <p>The Talmud = <strong>Mishna</strong> (oral law compiled ~200 CE by Rabbi Judah ha-Nasi) + <strong>Gemara</strong> (rabbinic commentary on the Mishna). Two versions: <strong>Jerusalem Talmud</strong> and <strong>Babylonian Talmud</strong> (Babylonian is the authoritative one, finalised ~500 CE).</p>
+    <div class="ib-tip"><div class="tip-label">⚠ Key Metaphor to Remember</div><p>"Torah is the <strong>house</strong>; Talmud is the <strong>fence</strong> around the house." — The Talmud protects the Torah by creating boundaries around biblical law so you don't accidentally break it. This metaphor could appear in Paper 1 source analysis.</p></div>
+
+    <h4>Shulchan Aruch</h4>
+    <p>Compiled by Joseph Karo (1565 CE) — practical guide/code for following Halakhah based on the Talmud. Still used in Orthodox communities today.</p>
+
+    <h4>Authority Hierarchy</h4>
+    <p>Torah → Talmud → Shulchan Aruch → Responsa literature (rabbinic rulings on new questions)</p>
+  </div>
+
+  <!-- DENOMINATIONS -->
+  <div class="note-header" onclick="toggleNote(this)">Denominations &amp; Diversity</div>
+  <div class="note-body">
+    <div class="two-col">
+      <div class="denom-card">
+        <h5>Orthodox</h5>
+        <ul>
+          <li>All 613 mitzvot binding</li>
+          <li>Separate men/women worship (mechitza)</li>
+          <li>Only synagogue (not "Temple")</li>
+          <li>No electricity on Shabbat</li>
+          <li>No Bat Mitzvah (traditionally)</li>
+          <li>Does not accept homosexuality</li>
+          <li>Strict Kashrut</li>
+          <li>"Who is a Jew?" — through mother only</li>
+        </ul>
+      </div>
+      <div class="denom-card">
+        <h5>Reform (Liberal)</h5>
+        <ul>
+          <li>Haskalah (Enlightenment) 1800s — Germany</li>
+          <li>Ethical mitzvot binding; ritual optional</li>
+          <li>Use the term "Temple" (not just synagogue)</li>
+          <li>Accepts Bat Mitzvah, women rabbis</li>
+          <li>Accepts homosexuality</li>
+          <li>"Who is a Jew?" — mother OR father</li>
+          <li>Services partly in vernacular</li>
+        </ul>
+      </div>
+      <div class="denom-card">
+        <h5>Conservative</h5>
+        <ul>
+          <li>Middle ground between Orthodox and Reform</li>
+          <li>Halakhah binding but open to reinterpretation</li>
+          <li>Accepts Bat Mitzvah, women rabbis (more recently)</li>
+          <li>Stricter than Reform on ritual observance</li>
+        </ul>
+      </div>
+      <div class="denom-card">
+        <h5>Humanistic / Reconstructionist</h5>
+        <ul>
+          <li>Focus on social issues and cultural identity</li>
+          <li>Opposed to 613 laws as literally binding</li>
+          <li>Judaism as culture/civilization, not just religion</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Ethnic Communities</h4>
+    <ul>
+      <li><strong>Sephardim</strong> — Spanish &amp; Portuguese Jews; expelled 1492; speak/spoke <em>Ladino</em> (Judeo-Spanish); settled N. Africa, Middle East, Americas</li>
+      <li><strong>Ashkenazi</strong> — Eastern European &amp; German Jews; speak/spoke <em>Yiddish</em> (Judeo-German); majority of world Jewry today</li>
+    </ul>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Tip — Who Is a Jew?</div><p>Judaism is simultaneously an ethnicity, religion, culture, and nation. "Who is a Jew?" is genuinely contested — Orthodox says maternal descent only; Reform says either parent. Conversion is possible but discouraged — must ask a rabbi 3 times, take ~1 year (Orthodox), and requires Mikvah (ritual bath) + Beit Din (rabbinic court). This complexity is unique among world religions.</p></div>
+  </div>
+
+  <!-- DIASPORA & INSTITUTIONS -->
+  <div class="note-header" onclick="toggleNote(this)">The Diaspora &amp; Key Institutions</div>
+  <div class="note-body">
+    <h4>Diaspora</h4>
+    <p>After 70 CE (Roman destruction of the Temple), Jews dispersed across the world. The synagogue became the centre of Jewish communal life everywhere — worship, study, community gathering.</p>
+
+    <h4>The Synagogue</h4>
+    <ul>
+      <li>Local centre of Jewish life — prayer, study, community</li>
+      <li><strong>Minyan</strong> — quorum of 10 adult males required for communal prayer (Orthodox); some denominations count women too</li>
+      <li>Contains the Ark (Aron Kodesh) holding Torah scrolls</li>
+      <li>The Torah scroll is written by hand — sacred object</li>
+    </ul>
+
+    <h4>Key Roles</h4>
+    <ul>
+      <li><strong>Rabbi</strong> — interpreter of Torah and Talmud; teacher and community leader (NOT a priest — there are no priests after 70 CE)</li>
+      <li><strong>Cantor / Chazzan</strong> — leads musical/sung portions of worship</li>
+    </ul>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Tip — Rabbi vs. Priest</div><p>After the destruction of the Temple (70 CE), the priestly class (Kohanim) lost their primary function (animal sacrifice). The <strong>Rabbi</strong> — a scholar and teacher — replaced the priest as community leader. This is a key shift in Jewish history.</p></div>
+  </div>
+
+  <!-- RITUALS AND LIFECYCLE -->
+  <div class="note-header" onclick="toggleNote(this)">Rituals &amp; Lifecycle Events</div>
+  <div class="note-body">
+    <h4>Birth</h4>
+    <p><strong>Brit Milah</strong> — circumcision on the 8th day for boys; sign of the Abrahamic covenant. Girls: naming ceremony (Simchat Bat in some traditions).</p>
+
+    <h4>Coming of Age</h4>
+    <p><strong>Bar Mitzvah</strong> (boys, age 13) / <strong>Bat Mitzvah</strong> (girls, age 12–13 in non-Orthodox denominations) — "Son/Daughter of the Commandment." Child takes on full responsibility for mitzvot. Reads from the Torah scroll in synagogue.</p>
+
+    <h4>Marriage</h4>
+    <ul>
+      <li><strong>Ketubah</strong> — Jewish marriage contract outlining husband's obligations</li>
+      <li><strong>Chuppah</strong> — wedding canopy; symbolises new home</li>
+      <li>Seven blessings recited (Sheva Brachot)</li>
+      <li>Breaking of a glass — remembrance of Temple destruction</li>
+    </ul>
+
+    <h4>Divorce</h4>
+    <p><strong>Get</strong> — Jewish bill of divorce; must be issued by the husband (Orthodox). A woman without a Get is an <em>agunah</em> (chained woman) — a modern controversy in Orthodox communities.</p>
+
+    <h4>Death &amp; Mourning</h4>
+    <ul>
+      <li>Body washed and prepared (Tahara); buried quickly (within 24 hours if possible)</li>
+      <li>No cremation in Orthodox tradition (body must return to earth)</li>
+      <li><strong>Shiva</strong> — 7-day mourning period at home; community brings food</li>
+      <li><strong>Yahrzeit</strong> (Ashkenazi) / <strong>Meldado</strong> (Sephardic) — anniversary candle lit on death anniversary</li>
+      <li>Kaddish prayer recited by mourners (does not mention death — praises God)</li>
+    </ul>
+  </div>
+
+  <!-- FESTIVALS -->
+  <div class="note-header" onclick="toggleNote(this)">Festivals &amp; Sacred Time</div>
+  <div class="note-body">
+    <div class="festival-grid">
+      <div class="festival-card">
+        <div class="fc-name">Shabbat</div>
+        <div class="fc-detail"><strong>Most important observance.</strong> Friday sunset to Saturday nightfall. Commanded in the 10 Commandments (Exodus 20). Rest from all creative work; candle lighting, Kiddush, synagogue, family meal.</div>
+      </div>
+      <div class="festival-card">
+        <div class="fc-name">Rosh Hashanah</div>
+        <div class="fc-detail">Jewish New Year. Month of Tishre (Sept/Oct). Shofar blown; apples and honey; Book of Life opened. 10 days of repentance begin.</div>
+      </div>
+      <div class="festival-card">
+        <div class="fc-name">Yom Kippur</div>
+        <div class="fc-detail"><strong>Holiest day.</strong> Day of Atonement. 25-hour fast. No food, drink, bathing, leather shoes, marital relations. Book of Life sealed. Synagogue all day. Kol Nidre service.</div>
+      </div>
+      <div class="festival-card">
+        <div class="fc-name">Sukkot</div>
+        <div class="fc-detail">Feast of Booths/Tabernacles. 7 days. Temporary outdoor huts (sukkah) — commemorates 40 years wandering in the desert. Four species: lulav, etrog, hadassim, aravot.</div>
+      </div>
+      <div class="festival-card">
+        <div class="fc-name">Simchat Torah</div>
+        <div class="fc-detail">Immediately after Sukkot. Joyful celebration completing and restarting the annual Torah reading cycle. Torah scrolls paraded around synagogue.</div>
+      </div>
+      <div class="festival-card">
+        <div class="fc-name">Chanukah</div>
+        <div class="fc-detail"><strong>MINOR festival</strong> (not in Torah). 8-day Feast of Lights. Celebrates rededication of Second Temple (165 BCE) after Maccabean revolt. Menorah/Chanukiyah lit. Latkes, dreidel.</div>
+      </div>
+      <div class="festival-card">
+        <div class="fc-name">Purim</div>
+        <div class="fc-detail">Feast of Lots. Celebrates Queen Esther saving Jews from Haman in Persia (Book of Esther). Costumes, noisemakers (graggers), Megillah reading, gifts of food.</div>
+      </div>
+      <div class="festival-card">
+        <div class="fc-name">Pesach (Passover)</div>
+        <div class="fc-detail">8 days (7 in Israel/Reform). Commemorates Exodus from Egypt. Seder meal: Haggadah read, 4 cups of wine, bitter herbs, matzah (unleavened bread). No chametz (leaven).</div>
+      </div>
+    </div>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Critical Point — Chanukah</div><p>Chanukah is culturally prominent because it coincides with Christmas in Western culture — but it is a <strong>minor festival</strong> NOT commanded in the Torah. Never rank it as important as Yom Kippur or Shabbat in an IB answer. Examiner trap!</p></div>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Tip — Shabbat</div><p>Shabbat is the MOST IMPORTANT observance because it is one of the Ten Commandments ("Remember the Sabbath day and keep it holy"). It happens every week, unlike annual festivals. Paper 2 often asks about the relationship between ritual and identity — Shabbat is the perfect example.</p></div>
+  </div>
+
+  <!-- KASHRUT -->
+  <div class="note-header" onclick="toggleNote(this)">Kashrut — Dietary Laws</div>
+  <div class="note-body">
+    <h4>Kosher Principles</h4>
+    <ul>
+      <li><strong>No pork</strong> (pig is not a kosher animal — must have split hooves AND chew cud)</li>
+      <li><strong>No mixing dairy and meat</strong> — two separate sets of dishes, utensils, and cookware</li>
+      <li>Wait between eating meat and dairy (varies: 1–6 hours by denomination/custom)</li>
+      <li><strong>Seafood</strong> — only fish with fins AND scales (no shellfish, shrimp, crab)</li>
+      <li><strong>Kosher certification</strong> (hechsher) required on packaged goods</li>
+      <li>Animals must be slaughtered according to shechita (humane, swift cut; draining of blood)</li>
+    </ul>
+    <h4>Significance</h4>
+    <p>Kashrut creates daily mindfulness of Jewish identity; it marks Jews as distinct. It is also an act of Kedushah (holiness). Non-observance of Kashrut is a key marker between Orthodox and Reform Jews.</p>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Tip</div><p>Reform Judaism generally does not require Kashrut observance (it is a ritual, not ethical, mitzvah). For IB essays on denominations, Kashrut is an excellent specific example of where Orthodox and Reform diverge.</p></div>
+  </div>
+
+  <!-- ESCHATOLOGY -->
+  <div class="note-header" onclick="toggleNote(this)">Eschatology &amp; Ethics</div>
+  <div class="note-body">
+    <h4>Eschatology — The End of Things</h4>
+    <ul>
+      <li>No concrete Heaven/Hell (contrast Christianity and Islam)</li>
+      <li><strong>Olam ha-ba</strong> — "World to Come" — vague; encompasses both the afterlife and the Messianic Age</li>
+      <li><strong>Mashiach</strong> (Messiah) — a human leader (not divine) who will bring world peace, rebuild the Temple, and gather all Jews to Israel. Orthodox: still to come. Liberal streams: de-emphasise personal Messiah; focus on messianic era.</li>
+      <li>Reincarnation is an accepted belief in Kabbalistic tradition</li>
+      <li><strong>Focus is THIS life</strong> — moral action, Tikkun Olam, study</li>
+    </ul>
+
+    <h4>Ethics — The 613 Mitzvot</h4>
+    <ul>
+      <li>248 positive ("thou shalt") + 365 negative ("thou shalt not") = 613 total</li>
+      <li>Ethical mitzvot are binding in ALL denominations</li>
+      <li>Ritual mitzvot (dietary, dress, purity) — binding in Orthodox; optional in Reform</li>
+      <li><strong>Pikuach Nefesh</strong> — saving a life overrides ALL other commandments except three (murder, sexual immorality, idolatry). Any mitzvah can be broken to save a life.</li>
+      <li>Tzedakah (charity/justice) — not optional; commanded giving of at least 10% of income</li>
+    </ul>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key Concept — Pikuach Nefesh</div><p>The principle that saving a human life overrides almost any other Jewish law is fundamental to Jewish ethics. A doctor may work on Shabbat to save a life. This is a beautiful example of how Halakhah is applied dynamically — IB Paper 2 loves this for ethics questions.</p></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 3 · COMPARISON CHARTS                             -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-charts" class="tab-panel">
+  <div class="chart-tabs">
+    <button class="chart-tab active" onclick="showChart('c1')">TaNakh Structure</button>
+    <button class="chart-tab" onclick="showChart('c2')">Orthodox vs Reform vs Conservative</button>
+    <button class="chart-tab" onclick="showChart('c3')">Jewish Festivals</button>
+    <button class="chart-tab" onclick="showChart('c4')">Judaism vs Other Traditions</button>
+    <button class="chart-tab" onclick="showChart('c5')">"Don't Confuse" Guide</button>
+  </div>
+
+  <!-- CHART 1: TaNakh -->
+  <div id="chart-c1" class="chart-panel active">
+    <h3>Structure of the TaNakh &amp; Sacred Texts</h3>
+    <table class="comp-table">
+      <tr><th>Text</th><th>Hebrew Name</th><th>Contents</th><th>Status / Notes</th></tr>
+      <tr><td class="category" colspan="4">TaNakh (Hebrew Bible)</td></tr>
+      <tr><td><strong>Torah</strong></td><td>תורה</td><td>Genesis, Exodus, Leviticus, Numbers, Deuteronomy (5 Books of Moses)</td><td class="highlight">Most sacred; read aloud in synagogue each Shabbat on annual cycle; contains the 613 mitzvot</td></tr>
+      <tr><td><strong>Nevi'im</strong> (Prophets)</td><td>נביאים</td><td>Joshua, Judges, Samuel, Kings, Isaiah, Jeremiah, Ezekiel, 12 minor prophets</td><td>Prophetic literature; social justice emphasis (Amos, Micah, Isaiah)</td></tr>
+      <tr><td><strong>Ketuvim</strong> (Writings)</td><td>כתובים</td><td>Psalms, Proverbs, Job, Song of Songs, Ruth, Lamentations, Ecclesiastes, Esther, Daniel, Ezra-Nehemiah, Chronicles</td><td>Poetry, wisdom, history, apocalyptic</td></tr>
+      <tr><td class="category" colspan="4">Oral Torah / Rabbinic Texts</td></tr>
+      <tr><td><strong>Mishna</strong></td><td>משנה</td><td>Oral law compiled by Rabbi Judah ha-Nasi (~200 CE); 6 orders covering all areas of Jewish life</td><td>First part of Talmud; "repetition" in Hebrew</td></tr>
+      <tr><td><strong>Gemara</strong></td><td>גמרא</td><td>Rabbinic discussion and commentary on the Mishna</td><td>Compiled in two versions: Jerusalem (~400 CE) &amp; Babylonian (~500 CE)</td></tr>
+      <tr><td><strong>Talmud</strong></td><td>תלמוד</td><td>Mishna + Gemara combined</td><td class="highlight">The "fence around the Torah." Babylonian Talmud = authoritative version</td></tr>
+      <tr><td><strong>Shulchan Aruch</strong></td><td>שולחן ערוך</td><td>Practical code of Jewish law by Joseph Karo (1565 CE)</td><td>The "Set Table" — practical guide to Halakhah; still used in Orthodoxy</td></tr>
+      <tr><td><strong>Zohar</strong></td><td>זוהר</td><td>Primary text of Kabbalah (Jewish mysticism), written/compiled ~13th century</td><td>Esoteric; not authoritative for mainstream Judaism but influential in Hasidism</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 2: Denominations -->
+  <div id="chart-c2" class="chart-panel">
+    <h3>Orthodox vs Reform vs Conservative Judaism</h3>
+    <table class="comp-table">
+      <tr><th>Aspect</th><th>Orthodox</th><th>Conservative</th><th>Reform (Liberal)</th></tr>
+      <tr><td class="category" colspan="4">Authority &amp; Law</td></tr>
+      <tr><td><strong>Torah authority</strong></td><td>Divinely revealed; literally binding</td><td>Divinely inspired; historically developing</td><td>Human document with divine inspiration; evolving</td></tr>
+      <tr><td><strong>613 mitzvot</strong></td><td>All binding</td><td>All in principle; some reinterpreted</td><td>Ethical binding; ritual optional</td></tr>
+      <tr><td><strong>Halakhah</strong></td><td>Strictly observed</td><td>Binding but open to change</td><td>Guidance, not law</td></tr>
+      <tr><td class="category" colspan="4">Worship Practice</td></tr>
+      <tr><td><strong>Synagogue</strong></td><td>"Synagogue" only</td><td>"Synagogue"</td><td>Often called "Temple"</td></tr>
+      <tr><td><strong>Language</strong></td><td>Hebrew only</td><td>Mostly Hebrew</td><td>Hebrew + vernacular</td></tr>
+      <tr><td><strong>Gender separation</strong></td><td>Yes — mechitza divides men/women</td><td>Mostly mixed seating</td><td>Mixed seating</td></tr>
+      <tr><td><strong>Women rabbis</strong></td><td>No</td><td>Yes (since 1985)</td><td>Yes (since 1972)</td></tr>
+      <tr><td class="category" colspan="4">Life &amp; Identity</td></tr>
+      <tr><td><strong>Bat Mitzvah</strong></td><td>No (traditionally)</td><td>Yes</td><td>Yes — full equality with Bar Mitzvah</td></tr>
+      <tr><td><strong>Kashrut</strong></td><td>Strictly observed</td><td>Observed; some leniency</td><td>Not required</td></tr>
+      <tr><td><strong>Who is a Jew?</strong></td><td>Maternal descent only</td><td>Maternal descent; some flexibility</td><td class="highlight">Mother OR father</td></tr>
+      <tr><td><strong>Homosexuality</strong></td><td>Not accepted</td><td>Varied; more accepting since 2006</td><td>Fully accepted</td></tr>
+      <tr><td><strong>Interfaith marriage</strong></td><td>Not accepted</td><td>Discouraged</td><td>Generally accepted</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 3: Festivals -->
+  <div id="chart-c3" class="chart-panel">
+    <h3>Jewish Festivals — Importance &amp; Features</h3>
+    <table class="comp-table">
+      <tr><th>Festival</th><th>Time / Season</th><th>What It Commemorates</th><th>Key Practices</th><th>IB Importance</th></tr>
+      <tr><td><strong>Shabbat</strong></td><td>Weekly — Fri sunset to Sat night</td><td>Creation (God rested); Exodus (freedom from slavery)</td><td>Candle lighting, Kiddush, synagogue, rest, family</td><td class="highlight">MOST IMPORTANT — in 10 Commandments. Happens every week.</td></tr>
+      <tr><td><strong>Rosh Hashanah</strong></td><td>1–2 Tishre (Sept/Oct)</td><td>New Year; God judges humanity</td><td>Shofar, apples &amp; honey, synagogue, Book of Life</td><td>Begins 10 Days of Awe ending at Yom Kippur</td></tr>
+      <tr><td><strong>Yom Kippur</strong></td><td>10 Tishre</td><td>Day of Atonement</td><td>25-hour fast; synagogue all day; Kol Nidre; Teshuvah</td><td class="highlight">Holiest day of the Jewish year</td></tr>
+      <tr><td><strong>Sukkot</strong></td><td>15–21 Tishre</td><td>40 years in the wilderness (Exodus)</td><td>Build sukkah booth; four species (lulav, etrog)</td><td>Commanded in Torah; agricultural &amp; historical</td></tr>
+      <tr><td><strong>Pesach (Passover)</strong></td><td>Nisan (March/April); 8 days</td><td>Exodus from Egypt</td><td>Seder meal; Haggadah; matzah; no chametz</td><td>Central to Jewish identity — freedom narrative</td></tr>
+      <tr><td><strong>Shavuot</strong></td><td>6 Sivan (50 days after Pesach)</td><td>Receiving Torah at Sinai; first fruits</td><td>All-night Torah study; dairy foods</td><td>Completes the Exodus narrative</td></tr>
+      <tr><td><strong>Chanukah</strong></td><td>25 Kislev (Dec); 8 days</td><td>Maccabean victory; Temple rededication (165 BCE)</td><td>Chanukiyah lighting; latkes; dreidel; gifts</td><td class="highlight">MINOR — not in Torah. Do NOT rank it highly in essays!</td></tr>
+      <tr><td><strong>Purim</strong></td><td>14 Adar (Feb/March)</td><td>Queen Esther saves Jews from Haman (Persia)</td><td>Megillah reading; costumes; graggers; gifts of food</td><td>From Ketuvim (Book of Esther); joyful and festive</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 4: Cross-religion -->
+  <div id="chart-c4" class="chart-panel">
+    <h3>Judaism Compared with Other Traditions</h3>
+    <table class="comp-table">
+      <tr><th>Aspect</th><th>Judaism</th><th>Christianity</th><th>Islam</th><th>Sikhism</th></tr>
+      <tr><td><strong>God</strong></td><td>One God (Yahweh); transcendent &amp; personal; no Trinity</td><td>Trinitarian God: Father, Son, Holy Spirit</td><td>One God (Allah); absolute monotheism; no Trinity</td><td>One formless God (Waheguru); Ik Onkar</td></tr>
+      <tr><td><strong>Sacred Text</strong></td><td>TaNakh (Bible) + Talmud</td><td>Old + New Testament</td><td>Qur'an + Hadith</td><td>Guru Granth Sahib</td></tr>
+      <tr><td><strong>Afterlife</strong></td><td>Olam ha-ba (vague); focus on THIS life</td><td>Heaven &amp; Hell (defined); resurrection</td><td>Jannah (Heaven) &amp; Jahannam (Hell); very defined</td><td>Reincarnation until merger with Waheguru (Mukti)</td></tr>
+      <tr><td><strong>Messiah</strong></td><td>Mashiach still to come — human leader</td><td>Jesus IS the Messiah; already came, will return</td><td>Jesus a prophet, not Messiah; Mahdi still to come</td><td>No messianic figure; focus on Guru's word</td></tr>
+      <tr><td><strong>Salvation/Liberation</strong></td><td>Teshuvah + living by Torah; Tikkun Olam</td><td>Faith in Jesus Christ; grace</td><td>Following Five Pillars; submission to Allah's will</td><td>Overcoming Haumai (ego); Naam Japna</td></tr>
+      <tr><td><strong>Dietary Laws</strong></td><td>Kashrut — no pork, shellfish; no meat+dairy</td><td>Generally no dietary restrictions (except some denominations)</td><td>Halal — no pork, no alcohol; ritual slaughter</td><td>No beef (revere the cow); many Sikhs vegetarian; no halal meat</td></tr>
+      <tr><td><strong>Founder</strong></td><td>Abraham (patriarch); Moses (lawgiver)</td><td>Jesus of Nazareth</td><td>Prophet Muhammad</td><td>Guru Nanak (1469–1539)</td></tr>
+      <tr><td><strong>Place of Worship</strong></td><td>Synagogue</td><td>Church / Cathedral</td><td>Mosque</td><td>Gurdwara</td></tr>
+      <tr><td><strong>This Life vs. Afterlife</strong></td><td class="highlight">Strong focus on THIS life — Tikkun Olam</td><td>Afterlife is primary goal (salvation)</td><td>This life is a test for the afterlife</td><td>Reincarnation; liberation from cycle</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 5: Don't Confuse -->
+  <div id="chart-c5" class="chart-panel">
+    <h3>"Don't Confuse" — Common IB Mistakes</h3>
+    <table class="comp-table">
+      <tr><th>Concept</th><th>What It IS</th><th>What It Is NOT / Common Mistake</th></tr>
+      <tr><td><strong>Chanukah</strong></td><td>A MINOR festival (post-biblical origin, 165 BCE); 8 days of lights</td><td>NOT a major festival. NOT commanded in the Torah. Its cultural prominence in Western countries (Christmas season) makes students overrate its religious importance.</td></tr>
+      <tr><td><strong>Talmud</strong></td><td>The "fence" protecting the Torah "house" — Oral Torah; Mishna + Gemara</td><td>NOT the same as the Torah. NOT equal in authority to the Torah. NOT the bible.</td></tr>
+      <tr><td><strong>Mashiach</strong></td><td>A future human leader who will bring world peace — NOT yet come</td><td>NOT divine. NOT Jesus (that's the Christian claim). NOT supernatural in the Jewish understanding.</td></tr>
+      <tr><td><strong>Shekinah</strong></td><td>God's feminine-gendered presence/indwelling among the people</td><td>NOT a female goddess. NOT a separate deity. The feminine grammar reflects presence, not gender theology.</td></tr>
+      <tr><td><strong>Shabbat</strong></td><td>The MOST IMPORTANT Jewish observance; commanded in the Ten Commandments</td><td>Not "just a weekly day off." The most observed ritual in Jewish life across all denominations.</td></tr>
+      <tr><td><strong>Rabbi</strong></td><td>Teacher and interpreter of Torah; community leader</td><td>NOT a priest. NOT an intermediary with God. NOT the same as a Christian minister or Muslim imam (though similar role).</td></tr>
+      <tr><td><strong>Kashrut</strong></td><td>A set of dietary laws derived from the Torah</td><td>NOT just "no pork." Includes no mixing meat and dairy, kosher slaughter, kosher certification on all processed foods.</td></tr>
+      <tr><td><strong>Tzedakah</strong></td><td>Commanded charity / justice — an obligation, not optional generosity</td><td>NOT optional. NOT like Christian charity. Root word is "tzedek" (justice) — it is a justice act, not a philanthropic choice.</td></tr>
+      <tr><td><strong>Chosen People</strong></td><td>Covenant responsibility — bearing the Torah to be "a light unto the nations"</td><td>NOT ethnic supremacy. It is a burden of moral obligation, not a claim to superiority.</td></tr>
+      <tr><td><strong>Israel</strong></td><td>Can mean: (1) the people/nation, (2) the biblical land, (3) the modern state</td><td>Context matters enormously. "House of Israel" = the covenantal community of Jews, not necessarily the modern state.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 4 · ESSAY OUTLINES                                -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-essays" class="tab-panel">
+  <p class="section-intro">Click an essay to expand the full outline. These cover the most likely IB Paper 2 extended essay themes for Judaism.</p>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">Discuss the role of the Brit (covenant) in shaping Jewish identity and practice. <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>The Brit (covenant) is the foundational relationship between God and the Jewish people — it defines who Jews are, what they must do, and why it matters. Everything in Judaism flows from this covenantal relationship.</p>
+      <h4>Introduction Points</h4>
+      <ul>
+        <li>Define Brit: a binding mutual agreement — God promises land, descendants, protection; Jews promise loyalty and observance of Torah</li>
+        <li>First established with Abraham (~1800 BCE); confirmed with Moses at Sinai (~1300 BCE)</li>
+        <li>The 613 mitzvot are the terms of the covenant</li>
+      </ul>
+      <h4>Body — Three Areas of Impact</h4>
+      <ul>
+        <li><strong>Identity:</strong> Being Jewish = being part of the covenant community (House of Israel). The covenant applies to all generations — not just those at Sinai. "Chosen People" is covenantal responsibility, not supremacy.</li>
+        <li><strong>Practice:</strong> Every mitzvah is a covenant act — Shabbat, Kashrut, Brit Milah (circumcision = physical sign of covenant), Bar/Bat Mitzvah (taking on covenant obligations)</li>
+        <li><strong>Moral life:</strong> Tikkun Olam and Tzedakah as covenant obligations — repairing the world is part of the covenant deal. Teshuvah restores the covenant when broken.</li>
+      </ul>
+      <h4>Denominations Angle</h4>
+      <ul>
+        <li>Orthodox: covenant is unchanging and demands full 613-mitzvot observance</li>
+        <li>Reform: covenant is ethical at core; ritual expressions may evolve</li>
+        <li>Both agree the covenant is foundational — they disagree on what it requires</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>The Brit is not just a historical event — it is the living relationship that animates Jewish life. Every ritual, every ethical act, and every expression of identity is a covenant act. The Brit is what makes Judaism uniquely about collective responsibility before God.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">To what extent does Tikkun Olam reflect the ethical priorities of Judaism? <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>Tikkun Olam ("repair the world") represents Judaism's this-worldly ethical focus — that God's purpose is not served by escaping the world but by actively improving it.</p>
+      <h4>Introduction Points</h4>
+      <ul>
+        <li>Define Tikkun Olam: the ethical obligation to repair/improve the world through acts of justice (Tzedakah) and loving kindness (Gemilut Chasadim)</li>
+        <li>Rooted in the covenant: humans are co-creators with God in perfecting creation</li>
+        <li>Contrast with world-renouncing traditions (e.g., Buddhist withdrawal from samsara)</li>
+      </ul>
+      <h4>Body</h4>
+      <ul>
+        <li><strong>This-world focus:</strong> Judaism is explicitly this-worldly. Olam ha-ba exists but is vague — Tikkun Olam is the here-and-now ethical imperative</li>
+        <li><strong>Tzedakah:</strong> Not optional charity — the Hebrew root is "justice." Giving 10% (ma'aser) is commanded. Tikkun Olam = justice work, not just charity</li>
+        <li><strong>Pikuach Nefesh:</strong> Saving a life overrides all other commandments — the supreme ethical principle. Life is sacred (B'tzelem Elohim — created in God's image)</li>
+        <li><strong>Prophetic tradition:</strong> Amos, Isaiah, Micah — God demands justice, not ritual. "Let justice roll like waters" (Amos 5:24). Prophets established ethics as primary</li>
+        <li><strong>Modern application:</strong> Reform Judaism especially emphasises Tikkun Olam — social justice movements (civil rights, environmentalism, poverty)</li>
+      </ul>
+      <h4>Counter-argument</h4>
+      <ul>
+        <li>Orthodox Judaism argues ritual observance (Kashrut, Shabbat, purity laws) is EQUALLY important — not just ethics. The 613 mitzvot include ritual as well as ethical</li>
+        <li>Some argue "Tikkun Olam" has been secularised — it originally referred to mystical restoration in Kabbalah, not social justice</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>Tikkun Olam reflects a core Jewish conviction: faith is measured by action in the world. While Orthodox Judaism insists ritual is equally essential, across denominations, ethics and justice are non-negotiable covenant obligations. Judaism's this-worldly focus sets it apart from traditions centred on escape from or transcendence of the world.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">How has the authority of the Torah shaped Jewish belief and practice across different denominations? <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>The Torah is the uncontested centre of Jewish authority, but denominations differ profoundly on what that authority means and how it applies — this disagreement is the engine of Jewish denominational diversity.</p>
+      <h4>Introduction Points</h4>
+      <ul>
+        <li>Torah = Five Books of Moses; contains the 613 mitzvot; most sacred text in Judaism</li>
+        <li>"Torah is the house; Talmud is the fence" — the protective role of rabbinic literature</li>
+        <li>The question is not WHETHER Torah is authoritative, but HOW it is authoritative</li>
+      </ul>
+      <h4>Body — Denominational Views</h4>
+      <ul>
+        <li><strong>Orthodox:</strong> Torah was literally revealed by God at Sinai — the "divine dictation" view. Every word is authoritative. All 613 mitzvot binding. Halakhah is law, not guidance.</li>
+        <li><strong>Conservative:</strong> Torah is divinely inspired but transmitted through human agency. Halakhah evolves but remains binding. Historical criticism acceptable.</li>
+        <li><strong>Reform:</strong> Torah is the product of human beings seeking God — inspired, not dictated. Ethical commandments binding; ritual commandments are meaningful choices, not obligations. Torah must be reinterpreted for every generation.</li>
+        <li><strong>Talmud as mediator:</strong> The Talmud shows that Torah has always been interpreted — the rabbis were constantly debating and reinterpreting. Even Orthodox Judaism is a tradition of interpretation.</li>
+      </ul>
+      <h4>Practical Consequences</h4>
+      <ul>
+        <li>Shabbat, Kashrut, family purity laws — observed strictly by Orthodox; modified or optional in Reform</li>
+        <li>Women's roles — Torah has no female rabbis; but its interpretation allows for it in liberal denominations</li>
+        <li>"Who is a Jew?" — divergent answers based on different readings of Torah and rabbinic tradition</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>The Torah's authority is absolute in principle across Judaism — but its meaning is hotly contested. From Orthodox to Reform, the spectrum of interpretation reflects centuries of rabbinic tradition wrestling with what God truly requires. This is not weakness but a strength: Judaism is a living, debating tradition.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">Compare the understanding of life after death in Judaism and one other religion you have studied. <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>Judaism's eschatology is notably this-worldly and vague compared to Christianity's defined Heaven and Hell — this reflects Judaism's covenant focus on present action rather than future reward.</p>
+      <h4>Judaism — Eschatology</h4>
+      <ul>
+        <li>No concrete Heaven/Hell; Olam ha-ba (World to Come) is intentionally vague in scripture</li>
+        <li>Mashiach — a human leader bringing a messianic AGE of peace, not an apocalyptic end</li>
+        <li>Reincarnation accepted in Kabbalistic tradition (gilgul neshamot)</li>
+        <li>Focus is firmly on THIS life: Tikkun Olam, observance of Torah, Teshuvah</li>
+        <li>The rabbis said: "Better one hour of repentance and good deeds in this world than all the life of the world to come"</li>
+      </ul>
+      <h4>Sikhism — Eschatology (comparison example)</h4>
+      <ul>
+        <li>Reincarnation cycle (samsara) until Mukti (liberation) — merger with Waheguru</li>
+        <li>Karma determines next rebirth; no Heaven/Hell as permanent states</li>
+        <li>Liberation through Naam Japna, Kirat Karni, Vand Chakna</li>
+        <li>Sikhism also focuses on THIS life — serving God through seva (selfless service)</li>
+      </ul>
+      <h4>Key Similarities</h4>
+      <ul>
+        <li>Both traditions focus more on THIS-WORLD action than hereafter</li>
+        <li>Both emphasise community service and ethical living as the path</li>
+        <li>Both have vague/non-punitive afterlife concepts compared to Christianity/Islam</li>
+      </ul>
+      <h4>Key Differences</h4>
+      <ul>
+        <li>Judaism: one life; no reincarnation (mainstream); Messiah brings historic peace age</li>
+        <li>Sikhism: multiple lives in reincarnation cycle; liberation = mystical union with God</li>
+        <li>Judaism: covenantal; Sikhism: devotional/meditational</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>Both Judaism and Sikhism are remarkable for their this-worldly focus — in contrast to the highly defined reward/punishment eschatologies of Christianity and Islam. However, Judaism's covenant framework makes eschatology secondary to faithful living in community, while Sikhism frames life as a spiritual journey toward divine union.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"Judaism is a religion defined by practice rather than belief." How far do you agree? <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>Unlike Christianity (centred on doctrine/belief in Jesus) or Islam (centred on the five pillars of faith and action), Judaism is unusually practice-centred — "orthopraxis" over "orthodoxy." But belief is not absent; it is embedded within practice.</p>
+      <h4>Evidence FOR (practice-centred)</h4>
+      <ul>
+        <li>613 mitzvot govern every area of daily life — what you eat, when you rest, how you dress, how you pray</li>
+        <li>Shabbat is observed regardless of theological nuance — it is a DOING, not just a believing</li>
+        <li>Kashrut is embodied practice — every meal is a religious act</li>
+        <li>Bar/Bat Mitzvah = taking ON commandments (mitzvot = doing), not a profession of faith</li>
+        <li>Humanistic Jews are atheists who still practice Jewish culture — you can be Jewish without belief</li>
+        <li>Rabbinic tradition: debating HOW to observe is more developed than debating WHAT to believe</li>
+      </ul>
+      <h4>Evidence AGAINST (belief matters too)</h4>
+      <ul>
+        <li>The Shema is a belief declaration: "The Lord is One" — radical monotheism IS a doctrinal position</li>
+        <li>Maimonides' 13 Principles of Faith include belief in God, Torah, Messiah, resurrection</li>
+        <li>Teshuvah requires genuine inner turning — not just external performance</li>
+        <li>The covenant is relational — it requires faith as well as action</li>
+      </ul>
+      <h4>Nuanced Conclusion</h4>
+      <p>Judaism is best understood as orthoprax (right practice) rather than orthodox (right belief) in its emphasis — but practice IS belief. Every act of Kashrut, every Shabbat candle, every Tzedakah payment enacts a theology. In Judaism, believing through doing is the norm. The statement is largely accurate, but overstated — practice and belief are inseparable in Jewish life.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 5 · PRACTICE PAPERS                               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-papers" class="tab-panel">
+
+  <!-- PAPER 1 -->
+  <div class="paper-section">
+    <h3>📄 Paper 1 — Source Analysis (Judaism)</h3>
+    <p style="color:var(--text-light);font-size:0.93rem;margin-bottom:1rem;">Read the sources carefully. Answer all questions. Refer to the sources in your answers.</p>
+
+    <div class="source-box">
+      <div class="source-label">Source A — Primary Text</div>
+      <p>"Hear, O Israel: The Lord our God, the Lord is one. Love the Lord your God with all your heart and with all your soul and with all your strength. These commandments that I give you today are to be on your hearts. Impress them on your children. Talk about them when you sit at home and when you walk along the road, when you lie down and when you get up. Tie them as symbols on your hands and bind them on your foreheads. Write them on the doorframes of your houses and on your gates."</p>
+      <div class="source-attr">Deuteronomy 6:4–9 (The Shema and V'ahavta) — Torah, written c. 7th–5th century BCE</div>
+    </div>
+
+    <div class="source-box">
+      <div class="source-label">Source B — Scholarly Commentary</div>
+      <p>"Judaism is fundamentally a religion of deed, not creed. The 613 commandments bind the Jew to a covenant relationship with God that is enacted through every dimension of daily life — what one eats, how one rests, how one treats the stranger. Belief without action is, in the Jewish tradition, meaningless. The Shema is not merely an assertion; it is a summons to total, embodied commitment. To bind the words upon one's hands and head is to make belief physical, observable, and communal."</p>
+      <div class="source-attr">Dr. Rachel Adler, Jewish Studies scholar, "Engendering Judaism," 1998</div>
+    </div>
+
+    <div class="question-block">
+      <p>1a. According to Source A, identify THREE ways the commandments should be transmitted and observed. <span style="color:var(--text-light);font-size:0.88rem;">[3 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">3 marks — 1 per valid point</span></div>
+      <div class="model-answer">
+        <h5>Model Answer:</h5>
+        <ul>
+          <li>They should be on your heart (internal/personal observance)</li>
+          <li>Taught to children (transmission to next generation)</li>
+          <li>Tied on the hands and bound on the forehead (worn physically — tefillin)</li>
+          <li>Written on doorframes (mezuzah — physical marker of Jewish home)</li>
+          <li>Talked about at home, walking, lying down, getting up (constant, pervasive observance)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <p>1b. Analyse how Source A reflects the Jewish understanding of the covenant (Brit). <span style="color:var(--text-light);font-size:0.88rem;">[5 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">5 marks — analysis required</span></div>
+      <div class="model-answer">
+        <h5>Model Answer:</h5>
+        <ul>
+          <li><strong>Obligation:</strong> The commandments are presented as requirements, not suggestions — "these commandments I give you today are to be on your hearts." The covenant demands total commitment.</li>
+          <li><strong>Relationship:</strong> The Shema begins by naming the relationship — "The Lord OUR God" — emphasising the communal, covenantal dimension. This is not a personal individual contract but a communal one (addressed to "Israel").</li>
+          <li><strong>Embodied covenant:</strong> The requirement to tie commandments on hands and head (tefillin) and write them on doorframes (mezuzah) shows that the covenant is enacted physically — it is not merely internal belief.</li>
+          <li><strong>Generational transmission:</strong> "Impress them on your children" — the covenant extends across generations. Each generation renews and continues the covenantal relationship established at Sinai.</li>
+          <li><strong>Total commitment:</strong> "All your heart, soul, and strength" — the covenant demands every dimension of self, not partial allegiance.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <p>1c. Using Sources A and B and your own knowledge, evaluate the claim that Judaism is "a religion of deed, not creed." <span style="color:var(--text-light);font-size:0.88rem;">[5 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">5 marks — evaluation + own knowledge</span></div>
+      <div class="model-answer">
+        <h5>Model Answer:</h5>
+        <ul>
+          <li><strong>Supporting evidence (Sources):</strong> Source B explicitly argues Judaism is about "deed not creed" — 613 mitzvot govern daily life. Source A shows commandments made physical (tefillin, mezuzah) — belief is enacted through action.</li>
+          <li><strong>Supporting evidence (own knowledge):</strong> Kashrut, Shabbat, Brit Milah — all bodily, enacted practices. Bar/Bat Mitzvah = taking on commandments (doing). Humanistic Jews are non-believing but practice Jewish culture — suggesting practice can exist without creed.</li>
+          <li><strong>Counter-evidence:</strong> The Shema IS a creedal statement — "The Lord is One" is a doctrinal claim of absolute monotheism. Maimonides' 13 Principles of Faith include belief in God's unity, Moses' prophecy, the resurrection of the dead. Teshuvah requires inner conviction, not just external action.</li>
+          <li><strong>Nuanced evaluation:</strong> The claim is largely accurate in emphasis — Judaism is unusually practice-centred compared to Christianity. But practice and belief are inseparable in Jewish thought; every act embodies a theology. Source B's Dr. Adler acknowledges this: making belief "physical" means belief is present, just embodied differently.</li>
+          <li><strong>Conclusion:</strong> Judaism prioritises orthopraxis (right practice) over orthodoxy (right belief), but this does not mean belief is absent — it is enacted through practice. The dichotomy is false; deed IS creed in Judaism.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <p>1d. Using Sources A and B and your own knowledge, discuss the significance of sacred texts in shaping Jewish religious identity. <span style="color:var(--text-light);font-size:0.88rem;">[10 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">10 marks — extended response</span></div>
+      <div class="model-answer">
+        <h5>Model Answer — Key Points to Include:</h5>
+        <ul>
+          <li><strong>Torah as foundation of identity:</strong> The TaNakh — especially the Torah — is the constitution of Jewish life. Identity is shaped by the covenant narrative: Abraham, Exodus, Sinai. Being Jewish means being part of this story.</li>
+          <li><strong>The Shema as identity marker:</strong> Source A — recited twice daily, at bedtime, and upon death — the Shema is THE core identity declaration. "Hear, O Israel" addresses the community collectively; "The Lord is One" defines the monotheistic commitment that makes Jews distinct.</li>
+          <li><strong>Talmud and living identity:</strong> The Talmud (Mishna + Gemara) shows that Jewish identity is dynamic — it is a community of interpreters, always debating how to apply the Torah. The "fence around the Torah" keeps identity intact across centuries and geographies of the Diaspora.</li>
+          <li><strong>Denominations and text:</strong> How denominations relate to the Torah defines their identity. Orthodox: divinely revealed, unchanging. Reform: humanly written, evolving. The same text produces different communities — showing text is a living identity-shaping force, not a fixed object.</li>
+          <li><strong>Diaspora and text:</strong> After 70 CE, Jews had no Temple and no land — but they carried the Torah. The text BECAME the homeland. This is crucial: Jewish identity survived 2,000 years of exile because of textual transmission.</li>
+          <li><strong>Physical texts as identity:</strong> Torah scrolls are handwritten with specific requirements; they are dressed, carried in procession (Simchat Torah). The text is itself a sacred object — kissed, undressed before reading. Physical relationship with the text is part of identity.</li>
+          <li><strong>Source B's point:</strong> Sacred text shapes identity by requiring embodied response — tefillin, mezuzah, Kashrut — the text literally gets written on bodies and homes. Identity is carved out of daily life by textual commandment.</li>
+          <li><strong>Conclusion:</strong> Sacred texts are the spine of Jewish identity — they provide narrative (who we are), law (what we do), and community (who we are with). The Torah has kept Jewish identity intact across millennia of persecution, diaspora, and change — a remarkable feat that no other institution could have achieved.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAPER 2 -->
+  <div class="paper-section">
+    <h3>✍ Paper 2 — Extended Essay Prompts (Judaism)</h3>
+    <p style="color:var(--text-light);font-size:0.93rem;margin-bottom:1rem;">Choose ONE question. Write a structured essay of approximately 800–1000 words. Draw on specific examples and religious terminology.</p>
+
+    <div class="essay-prompt">
+      <div class="ep-q">1. "The covenant (Brit) is the single most important concept for understanding Judaism." To what extent do you agree with this view?</div>
+      <div class="ep-hint">Hint: Define Brit; show how it underlies identity, practice (613 mitzvot), ethics (Tikkun Olam), and community. Counter-argue: is the Torah itself more foundational? Is God's oneness (monotheism) more central? Reach a nuanced conclusion.</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">2. Compare the role of sacred texts in shaping religious practice in Judaism and one other religion you have studied.</div>
+      <div class="ep-hint">Hint: Use TaNakh + Talmud for Judaism. Compare with Guru Granth Sahib (Sikhism) or the Qur'an (Islam). Look at: authority, role in worship, relationship between text and community, interpretation traditions. Always use specific examples from both religions.</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">3. Examine how the destruction of the Jerusalem Temple in 70 CE transformed Jewish religious practice and belief.</div>
+      <div class="ep-hint">Hint: Before 70 CE — animal sacrifice, Temple, priests (Kohanim). After 70 CE — Synagogue replaces Temple; prayer replaces sacrifice; Rabbi replaces priest. Exile forces God-concept to become universal (God is not limited to a place). This is the birth of Rabbinic Judaism.</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">4. "Judaism's diversity — from Orthodox to Reform — reveals that there is no single Judaism." Discuss.</div>
+      <div class="ep-hint">Hint: Show real differences: Kashrut, Shabbat, women's roles, "who is a Jew," Torah authority. But identify what all share: TaNakh, covenant narrative, monotheism, Shema, ethical mitzvot. Argue for unity within diversity — or conclude genuine fragmentation. Avoid oversimplification.</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">5. Discuss the significance of Shabbat and the Jewish festival calendar for maintaining Jewish identity in the Diaspora.</div>
+      <div class="ep-hint">Hint: Diaspora = Jews dispersed without a homeland or Temple. How does time (Shabbat, annual cycle of festivals) create community and identity across geography? Use specific festivals: Pesach (national memory of Exodus), Yom Kippur (moral community), Shabbat (covenant in time). Reference the idea of "a palace in time" (Abraham Joshua Heschel on Shabbat).</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ JAVASCRIPT ══ -->
+<script>
+// ── TAB NAVIGATION
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ── FLASHCARDS
+const cards = [
+  { term: "Shema", hint: "Most Important Prayer", def: "\"Hear, O Israel: the Lord is our God, the Lord is One\" (Deut 6:4) — the central declaration of Jewish faith and monotheism.", note: "Recited twice daily, at bedtime, and upon death. THE most important prayer — know it for IB." },
+  { term: "Brit (ברית)", hint: "Covenant", def: "The binding covenant/agreement between God and the Jewish people. God promises land, descendants, protection; Jews promise loyalty and observance of Torah.", note: "First with Abraham (~1800 BCE), reaffirmed with Moses at Sinai (~1300 BCE)." },
+  { term: "Torah", hint: "Sacred Text", def: "The Five Books of Moses (Genesis–Deuteronomy). The most sacred text in Judaism. Contains the 613 mitzvot. The 'house' in the Torah/Talmud metaphor.", note: "Torah = house; Talmud = fence around the house." },
+  { term: "Talmud", hint: "Oral Torah", def: "Mishna + Gemara; the 'fence' around the Torah house. Finalized ~500 CE. Two versions: Jerusalem Talmud and Babylonian Talmud (authoritative).", note: "IB: Do not confuse Talmud with Torah — the Talmud is rabbinic commentary, not the Bible itself." },
+  { term: "Mitzvot (מצוות)", hint: "Commandments", def: "The 613 commandments of the Torah — 248 positive ('you shall') + 365 negative ('you shall not'). Used loosely to mean 'good deeds.'", note: "Ethical mitzvot binding in all denominations; ritual mitzvot (Kashrut, dress) binding in Orthodox only." },
+  { term: "Halakhah", hint: "Jewish Law", def: "The body of Jewish religious law governing all aspects of daily life — from prayer to diet to business ethics.", note: "From the Hebrew root 'to walk' — it is the path you walk through life." },
+  { term: "Tikkun Olam", hint: "Ethics", def: "'Repair the world' — the ethical obligation to improve the world through acts of justice (Tzedakah) and loving kindness (Gemilut Chasadim).", note: "Central to Reform Judaism's social justice focus. Reflects Judaism's this-worldly orientation." },
+  { term: "Mashiach", hint: "Messianic Concept", def: "The 'Anointed One' — a future human leader (not divine) who will bring an age of world peace, rebuild the Temple, and gather Jews to Israel.", note: "IB: Not yet come in Judaism. NOT divine. NOT Jesus (Christian claim). A human political-spiritual leader." },
+  { term: "Shekinah", hint: "Divine Presence", def: "God's divine presence/indwelling among the people. Feminine grammatical form in Hebrew. Signifies God's closeness and presence with the Jewish community.", note: "NOT a female goddess — the feminine grammar reflects presence and immanence, not gender theology." },
+  { term: "Teshuvah", hint: "Repentance", def: "'Return' — repentance and turning back to God. Central concept of the High Holy Days (Rosh Hashanah–Yom Kippur). Requires genuine inner change, not just ritual act.", note: "The 10 Days of Awe between Rosh Hashanah and Yom Kippur are devoted to Teshuvah." },
+  { term: "Yom Kippur", hint: "Holiest Day", def: "The Day of Atonement — holiest day of the Jewish year. 25-hour fast; synagogue all day; Book of Life sealed. Atonement through Teshuvah (repentance).", note: "IB: This is the holiest day — not Chanukah, not Pesach. Know this clearly." },
+  { term: "Shabbat", hint: "Most Important Observance", def: "The Sabbath — from Friday sunset to Saturday nightfall. Commanded in the Ten Commandments (Exodus 20). Rest from all creative work; candle lighting, Kiddush, synagogue, family.", note: "MOST IMPORTANT weekly observance — because it is in the 10 Commandments. Happens every week." },
+  { term: "Chanukah", hint: "Festival — MINOR", def: "The 8-day Feast of Lights — celebrates rededication of the Second Temple (165 BCE) after the Maccabean revolt. Chanukiyah lit each night.", note: "IB TRAP: Chanukah is a MINOR festival — NOT commanded in the Torah. Do not rank it highly in essays!" },
+  { term: "Pesach (Passover)", hint: "Festival", def: "8-day festival commemorating the Exodus from Egypt. Seder meal includes Haggadah reading, 4 cups of wine, matzah, bitter herbs. No chametz (leavened bread) in the house.", note: "Central to Jewish identity — the freedom narrative is foundational to covenantal theology." },
+  { term: "Kashrut", hint: "Dietary Laws", def: "Jewish dietary laws: no pork; no mixing meat and dairy (two sets of dishes); only fish with fins AND scales; kosher slaughter (shechita); kosher certification.", note: "Embodied daily practice — every meal is a religious act. Strict in Orthodox; optional in Reform." },
+  { term: "TaNakh", hint: "Hebrew Bible", def: "Torah (Five Books of Moses) + Nevi'im (Prophets) + Ketuvim (Writings). The complete Hebrew Bible. The most sacred collection in Judaism.", note: "The acronym T-N-K: Torah, Nevi'im, Ketuvim — the three sections of the Hebrew Bible." },
+  { term: "Brit Milah", hint: "Lifecycle Ritual", def: "Circumcision ceremony on the 8th day after birth — the physical sign of the Abrahamic covenant. The baby boy enters the covenant of Abraham.", note: "The most ancient Jewish ritual — required for males to be fully part of the covenant community." },
+  { term: "Bar / Bat Mitzvah", hint: "Coming of Age", def: "Bar Mitzvah (boys, age 13) / Bat Mitzvah (girls, 12–13 in non-Orthodox) — 'Son/Daughter of the Commandment.' Child takes full responsibility for observing mitzvot.", note: "Orthodox: no Bat Mitzvah traditionally. Reform: full equality. Good denomination contrast example for IB." },
+  { term: "Olam ha-ba", hint: "Afterlife Concept", def: "'World to Come' — the Jewish afterlife/messianic age. Intentionally vague in scripture. No concrete Heaven or Hell in mainstream Jewish theology.", note: "IB: Judaism focuses on THIS life (Tikkun Olam). Compare to Christianity's defined Heaven/Hell." },
+  { term: "Pikuach Nefesh", hint: "Ethics", def: "The principle that saving a human life overrides almost any other Jewish commandment. A doctor may work on Shabbat to save a life. Life is supremely sacred (B'tzelem Elohim).", note: "Three exceptions: cannot kill, commit sexual immorality, or worship idols even to save one's own life." },
+  { term: "Diaspora", hint: "Historical Concept", def: "The dispersal of Jews across the world — beginning with the Babylonian Exile (586 BCE) and greatly accelerated by the Roman destruction of the Temple (70 CE).", note: "The synagogue replaced the Temple; the Rabbi replaced the priest; prayer replaced sacrifice — all because of Diaspora." },
+  { term: "Rosh Hashanah", hint: "Festival", def: "Jewish New Year — 1st of Tishre (Sept/Oct). Shofar blown; apples and honey for a sweet new year. Book of Life opened. Begins 10 Days of Awe.", note: "Connects directly to Yom Kippur — 10 days of repentance between them." },
+  { term: "Sephardim vs. Ashkenazi", hint: "Jewish Communities", def: "Sephardim: Spanish/Portuguese Jews (expelled 1492); speak Ladino. Ashkenazi: Eastern European/German Jews; speak Yiddish. Two main Jewish ethnic communities.", note: "IB: Useful for showing Judaism's cultural diversity within shared religion." }
+];
+
+let currentCard = 0;
+let cardOrder = cards.map((_, i) => i);
+
+function renderCard() {
+  const c = cards[cardOrder[currentCard]];
+  document.getElementById('cardHint').textContent = c.hint;
+  document.getElementById('cardTerm').textContent = c.term;
+  document.getElementById('cardDef').textContent = c.def;
+  document.getElementById('cardNote').textContent = c.note;
+  document.getElementById('mainCard').classList.remove('flipped');
+  document.getElementById('cardCounter').textContent = `Card ${currentCard + 1} of ${cards.length}`;
+  document.getElementById('progressFill').style.width = ((currentCard + 1) / cards.length * 100) + '%';
+}
+
+function flipCard() { document.getElementById('mainCard').classList.toggle('flipped'); }
+function nextCard() { currentCard = (currentCard + 1) % cardOrder.length; renderCard(); }
+function prevCard() { currentCard = (currentCard - 1 + cardOrder.length) % cardOrder.length; renderCard(); }
+function resetCards() { currentCard = 0; cardOrder = cards.map((_, i) => i); renderCard(); }
+function shuffleCards() {
+  for (let i = cardOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cardOrder[i], cardOrder[j]] = [cardOrder[j], cardOrder[i]];
+  }
+  currentCard = 0;
+  renderCard();
+}
+
+document.addEventListener('keydown', e => {
+  const active = document.getElementById('tab-flashcards');
+  if (!active.classList.contains('active')) return;
+  if (e.key === 'ArrowRight') nextCard();
+  else if (e.key === 'ArrowLeft') prevCard();
+  else if (e.key === ' ') { e.preventDefault(); flipCard(); }
+});
+
+renderCard();
+
+// ── NOTES
+function toggleNote(h) {
+  h.classList.toggle('open');
+  h.nextElementSibling.classList.toggle('open');
+}
+
+// ── CHARTS
+function showChart(id) {
+  document.querySelectorAll('.chart-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.chart-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('chart-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ── ESSAYS
+function toggleEssay(h) {
+  const body = h.nextElementSibling;
+  const toggle = h.querySelector('.essay-toggle');
+  body.classList.toggle('open');
+  toggle.textContent = body.classList.contains('open') ? 'Collapse ▲' : 'Expand ▼';
+}
+
+// ── ANSWERS
+function toggleAnswer(btn) {
+  const answer = btn.closest('.answer-toggle').nextElementSibling;
+  answer.classList.toggle('open');
+  btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Model Answer';
+}
+</script>
+</body>
+</html>

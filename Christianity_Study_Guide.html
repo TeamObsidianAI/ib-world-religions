@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christianity – IB World Religions Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #3a1a5c;
+  --primary-dark: #250f3d;
+  --primary-light: #5c3080;
+  --accent: #c9a84c;
+  --accent-light: #f0d880;
+  --accent-dark: #9a7820;
+  --bg: #f7f5f0;
+  --surface: #ffffff;
+  --surface2: #f0ebf8;
+  --text: #1a1020;
+  --text-light: #5a4a70;
+  --border: #d0c0e8;
+  --shadow: rgba(58,26,92,0.13);
+  --danger: #8b1a1a;
+  --success: #1a5c2e;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Crimson Text', Georgia, serif; background: var(--bg); color: var(--text); font-size: 1.05rem; line-height: 1.65; }
+
+/* ── NAV BAR ── */
+.site-nav { background: var(--primary-dark); padding: 0.5rem 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.site-nav a { color: #c0b0d8; text-decoration: none; font-family: 'Crimson Text', serif; font-size: 0.88rem; padding: 0.25rem 0.6rem; border-radius: 4px; transition: background 0.2s; }
+.site-nav a:hover { background: rgba(255,255,255,0.12); }
+.site-nav a.current { background: var(--accent); color: var(--primary-dark); font-weight: 600; }
+.site-nav .nav-label { color: #8878a8; font-size: 0.8rem; margin-right: 0.3rem; }
+
+/* ── HEADER ── */
+header { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 100%); color: white; padding: 2.5rem 1.5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+header::before { content: '✝'; position: absolute; right: 5%; top: 50%; transform: translateY(-50%); font-size: 9rem; opacity: 0.07; }
+header::after { content: '✝'; position: absolute; left: 5%; top: 50%; transform: translateY(-50%); font-size: 9rem; opacity: 0.07; }
+header h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; letter-spacing: 0.03em; margin-bottom: 0.3rem; }
+header p { color: var(--accent-light); font-style: italic; font-size: 1.05rem; }
+header .subtitle { margin-top: 0.4rem; color: #b0a0cc; font-size: 0.92rem; }
+
+/* ── TABS ── */
+.tab-bar { display: flex; background: var(--primary); position: sticky; top: 0; z-index: 100; overflow-x: auto; box-shadow: 0 2px 8px var(--shadow); }
+.tab-btn { flex: 1; min-width: 110px; padding: 0.85rem 0.5rem; background: none; border: none; color: #b0a0cc; font-family: 'Playfair Display', serif; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; border-bottom: 3px solid transparent; white-space: nowrap; }
+.tab-btn:hover { color: white; background: rgba(255,255,255,0.08); }
+.tab-btn.active { color: var(--accent-light); border-bottom-color: var(--accent); background: rgba(255,255,255,0.06); }
+
+/* ── CONTENT PANELS ── */
+.tab-panel { display: none; max-width: 900px; margin: 0 auto; padding: 2rem 1.2rem; }
+.tab-panel.active { display: block; }
+
+/* ── FLASHCARDS ── */
+.card-controls { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: center; margin-bottom: 1.2rem; }
+.card-controls button { padding: 0.45rem 1.1rem; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: 6px; font-family: 'Crimson Text', serif; font-size: 0.95rem; cursor: pointer; transition: all 0.2s; }
+.card-controls button:hover { background: var(--primary); color: white; }
+.progress-bar { height: 5px; background: var(--border); border-radius: 3px; margin-bottom: 1rem; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 3px; transition: width 0.4s; }
+.card-counter { text-align: center; color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem; }
+.flashcard-scene { perspective: 1000px; max-width: 680px; margin: 0 auto 1.2rem; }
+.flashcard { width: 100%; min-height: 240px; position: relative; transform-style: preserve-3d; transition: transform 0.55s; cursor: pointer; }
+.flashcard.flipped { transform: rotateY(180deg); }
+.card-face { position: absolute; width: 100%; min-height: 240px; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 14px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 6px 24px var(--shadow); }
+.card-front { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%); color: white; }
+.card-front .card-hint { font-size: 0.78rem; color: var(--accent-light); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.8rem; }
+.card-front .card-term { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 0.5rem; }
+.card-front .card-hint2 { font-size: 0.85rem; color: #b0a0cc; font-style: italic; }
+.card-back { background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%); color: var(--text); transform: rotateY(180deg); border: 2px solid var(--border); }
+.card-back .card-def { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; line-height: 1.5; }
+.card-back .card-note { font-size: 0.88rem; color: var(--text-light); font-style: italic; border-top: 1px solid var(--border); padding-top: 0.6rem; margin-top: 0.4rem; }
+.flip-hint { text-align: center; color: var(--text-light); font-size: 0.85rem; margin-bottom: 0.5rem; }
+.nav-btns { display: flex; justify-content: center; gap: 1rem; }
+.nav-btns button { padding: 0.55rem 1.8rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-family: 'Crimson Text', serif; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+.nav-btns button:hover { background: var(--primary-light); }
+
+/* ── NOTES ── */
+.section-intro { background: var(--surface2); border-left: 4px solid var(--accent); padding: 0.9rem 1.2rem; border-radius: 0 8px 8px 0; margin-bottom: 1.5rem; font-style: italic; color: var(--text-light); }
+.note-header { background: var(--primary); color: white; padding: 0.9rem 1.2rem; border-radius: 10px 10px 0 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-top: 1rem; transition: background 0.2s; user-select: none; }
+.note-header:hover { background: var(--primary-light); }
+.note-header::after { content: '▼'; font-size: 0.8rem; transition: transform 0.3s; }
+.note-header.open::after { transform: rotate(180deg); }
+.note-body { display: none; background: var(--surface); border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; padding: 1.2rem 1.4rem; margin-bottom: 0.3rem; }
+.note-body.open { display: block; }
+.note-body h4 { color: var(--primary); font-family: 'Playfair Display', serif; margin: 1rem 0 0.4rem; font-size: 1rem; }
+.note-body h4:first-child { margin-top: 0; }
+.note-body ul { padding-left: 1.4rem; }
+.note-body ul li { margin-bottom: 0.35rem; }
+.note-body p { margin-bottom: 0.6rem; }
+.note-body strong { color: var(--primary-dark); }
+.ib-tip { background: #fff8e1; border: 1.5px solid var(--accent); border-radius: 8px; padding: 0.7rem 1rem; margin: 0.8rem 0; }
+.ib-tip .tip-label { font-weight: 700; color: var(--accent-dark); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.ib-tip p { margin: 0.3rem 0 0; font-size: 0.95rem; }
+.term-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.7rem; margin: 0.8rem 0; }
+.term-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.9rem; }
+.term-card .tc-term { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
+.term-card .tc-def { font-size: 0.88rem; color: var(--text-light); margin-top: 0.2rem; }
+.timeline-row { display: flex; gap: 1rem; margin-bottom: 0.8rem; align-items: flex-start; }
+.timeline-date { background: var(--primary); color: var(--accent-light); padding: 0.3rem 0.6rem; border-radius: 6px; font-weight: 700; font-size: 0.88rem; white-space: nowrap; min-width: 90px; text-align: center; }
+.timeline-text { flex: 1; font-size: 0.95rem; }
+.sacrament-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.8rem; margin: 0.8rem 0; }
+.sacrament-card { background: linear-gradient(135deg, var(--surface2), white); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: 0 10px 10px 0; padding: 0.9rem 1rem; }
+.sacrament-card .sc-num { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-dark); font-weight: 700; }
+.sacrament-card .sc-name { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1rem; margin: 0.2rem 0; }
+.sacrament-card .sc-detail { font-size: 0.88rem; color: var(--text-light); }
+.denom-card { background: var(--surface2); border-left: 4px solid var(--primary); border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin-bottom: 0.8rem; }
+.denom-card h5 { color: var(--primary); font-family: 'Playfair Display', serif; margin-bottom: 0.4rem; }
+.holy-day-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.7rem; margin: 0.8rem 0; }
+.holy-day-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1rem; border-top: 3px solid var(--primary); }
+.holy-day-card .hd-name { font-weight: 700; color: var(--primary); font-family: 'Playfair Display', serif; font-size: 1rem; }
+.holy-day-card .hd-detail { font-size: 0.88rem; color: var(--text-light); margin-top: 0.25rem; }
+.hierarchy-list { display: flex; flex-direction: column; gap: 0.4rem; margin: 0.8rem 0; }
+.hierarchy-row { display: flex; align-items: center; gap: 0.8rem; padding: 0.5rem 1rem; border-radius: 6px; background: var(--surface2); border-left: 3px solid var(--primary); }
+.hierarchy-row .hr-title { font-weight: 700; color: var(--primary); min-width: 120px; }
+.hierarchy-row .hr-detail { font-size: 0.9rem; color: var(--text-light); }
+.hierarchy-row.top { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; }
+.hierarchy-row.top .hr-title, .hierarchy-row.top .hr-detail { color: white; }
+
+/* ── CHARTS ── */
+.chart-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+.chart-tab { padding: 0.4rem 1rem; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: 20px; font-family: 'Crimson Text', serif; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; }
+.chart-tab.active, .chart-tab:hover { background: var(--primary); color: white; }
+.chart-panel { display: none; }
+.chart-panel.active { display: block; }
+.chart-panel h3 { font-family: 'Playfair Display', serif; color: var(--primary); margin-bottom: 1rem; }
+.comp-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.comp-table th { background: var(--primary); color: white; padding: 0.65rem 0.8rem; text-align: left; font-family: 'Playfair Display', serif; font-weight: 600; }
+.comp-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.comp-table tr:nth-child(even) td { background: var(--surface2); }
+.comp-table tr:hover td { background: #e8d8f8; }
+.comp-table .category { font-weight: 700; color: var(--primary-dark); background: #ddd0f0 !important; }
+.highlight { background: #fff8d6 !important; }
+
+/* ── ESSAYS ── */
+.essay-card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 12px; margin-bottom: 1.2rem; overflow: hidden; }
+.essay-header { background: var(--primary); color: white; padding: 0.9rem 1.2rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Playfair Display', serif; }
+.essay-header:hover { background: var(--primary-light); }
+.essay-header .essay-q { flex: 1; }
+.essay-header .essay-toggle { font-size: 0.85rem; color: var(--accent-light); white-space: nowrap; margin-left: 1rem; }
+.essay-body { display: none; padding: 1.2rem 1.4rem; }
+.essay-body.open { display: block; }
+.essay-body h4 { color: var(--primary); font-family: 'Playfair Display', serif; margin: 0.9rem 0 0.3rem; font-size: 1rem; }
+.essay-body h4:first-child { margin-top: 0; }
+.essay-body ul { padding-left: 1.4rem; }
+.essay-body ul li { margin-bottom: 0.3rem; font-size: 0.95rem; }
+.essay-body p { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.essay-marks { display: inline-block; background: var(--accent); color: var(--primary-dark); border-radius: 4px; padding: 0.1rem 0.5rem; font-size: 0.8rem; font-weight: 700; margin-left: 0.5rem; }
+
+/* ── PRACTICE PAPERS ── */
+.paper-section { margin-bottom: 2rem; }
+.paper-section h3 { font-family: 'Playfair Display', serif; color: var(--primary-dark); border-bottom: 2px solid var(--accent); padding-bottom: 0.4rem; margin-bottom: 1rem; }
+.source-box { background: #f3eff8; border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.2rem; margin-bottom: 1rem; font-size: 0.93rem; }
+.source-box .source-label { font-weight: 700; color: var(--primary); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+.source-box p { font-style: italic; margin-bottom: 0.4rem; }
+.source-box .source-attr { font-style: normal; font-size: 0.85rem; color: var(--text-light); }
+.question-block { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 0.9rem; }
+.question-block p { font-weight: 600; margin-bottom: 0.6rem; }
+.answer-toggle { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.5rem; }
+.answer-toggle button { padding: 0.35rem 1rem; background: var(--primary); color: white; border: none; border-radius: 6px; font-family: 'Crimson Text', serif; font-size: 0.88rem; cursor: pointer; transition: background 0.2s; }
+.answer-toggle button:hover { background: var(--primary-light); }
+.answer-toggle .marks { color: var(--text-light); font-size: 0.88rem; }
+.model-answer { display: none; background: #f0f5e8; border: 1px solid #c5d8a0; border-radius: 6px; padding: 0.9rem 1.1rem; margin-top: 0.7rem; font-size: 0.92rem; }
+.model-answer.open { display: block; }
+.model-answer h5 { color: var(--success); font-family: 'Playfair Display', serif; margin-bottom: 0.4rem; font-size: 0.92rem; }
+.model-answer ul { padding-left: 1.3rem; }
+.model-answer ul li { margin-bottom: 0.3rem; }
+.essay-prompt { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 0.9rem; }
+.essay-prompt .ep-q { font-weight: 700; font-family: 'Playfair Display', serif; color: var(--primary-dark); margin-bottom: 0.5rem; }
+.essay-prompt .ep-hint { font-size: 0.9rem; color: var(--text-light); font-style: italic; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.7rem; }
+  .tab-btn { font-size: 0.8rem; min-width: 80px; padding: 0.7rem 0.3rem; }
+  .term-grid { grid-template-columns: 1fr 1fr; }
+  .sacrament-grid { grid-template-columns: 1fr; }
+  .holy-day-grid { grid-template-columns: 1fr; }
+  header::before, header::after { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <span class="nav-label">IB World Religions:</span>
+  <a href="Sanatana_Dharma_Study_Guide.html">Sanatana Dharma</a>
+  <a href="Jainism_Study_Guide.html">Jainism</a>
+  <a href="Buddhism_Study_Guide.html">Buddhism</a>
+  <a href="Sikhism_Study_Guide.html">Sikhism</a>
+  <a href="Taoism_Study_Guide.html">Taoism</a>
+  <a href="Judaism_Study_Guide.html">Judaism</a>
+  <a href="Christianity_Study_Guide.html" class="current">Christianity</a>
+  <a href="Islam_Study_Guide.html">Islam</a>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <h1>Christianity</h1>
+  <p>"For God so loved the world that he gave his one and only Son." — John 3:16</p>
+  <div class="subtitle">IB World Religions · Paper 1 &amp; Paper 2 Study Guide</div>
+</header>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showTab('flashcards')">✦ Flashcards</button>
+  <button class="tab-btn" onclick="showTab('notes')">📜 Summary Notes</button>
+  <button class="tab-btn" onclick="showTab('charts')">⚖ Comparison Charts</button>
+  <button class="tab-btn" onclick="showTab('essays')">✍ Essay Outlines</button>
+  <button class="tab-btn" onclick="showTab('papers')">📋 Practice Papers</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 1 · FLASHCARDS                                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-flashcards" class="tab-panel active">
+  <div class="card-controls">
+    <button onclick="shuffleCards()">🔀 Shuffle</button>
+    <button onclick="resetCards()">↺ Reset</button>
+    <button onclick="prevCard()">◀ Prev</button>
+    <button onclick="nextCard()">▶ Next</button>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="card-counter" id="cardCounter"></div>
+  <div class="flashcard-scene">
+    <div class="flashcard" id="mainCard" onclick="flipCard()">
+      <div class="card-face card-front">
+        <div class="card-hint" id="cardHint"></div>
+        <div class="card-term" id="cardTerm"></div>
+        <div class="card-hint2" id="cardHint2">Click to reveal definition</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="card-def" id="cardDef"></div>
+        <div class="card-note" id="cardNote"></div>
+      </div>
+    </div>
+  </div>
+  <p class="flip-hint">Click card to flip · Arrow keys to navigate · Space to flip</p>
+  <div class="nav-btns">
+    <button onclick="prevCard()">◀ Previous</button>
+    <button onclick="nextCard()">Next ▶</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 2 · SUMMARY NOTES                                 -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-notes" class="tab-panel">
+  <p class="section-intro">Click any section to expand. IB-critical distinctions are highlighted in gold tip boxes. Covers key terms, human condition, history, Catholicism, Eastern Orthodox, sacred texts, doctrines, and ethics.</p>
+
+  <!-- KEY TERMS -->
+  <div class="note-header" onclick="toggleNote(this)">Core Key Terms (15 Definitions)</div>
+  <div class="note-body">
+    <div class="term-grid">
+      <div class="term-card"><div class="tc-term">Trinity</div><div class="tc-def">The three-fold nature of God as Father, Son (Jesus Christ), and Holy Spirit — a Christian form of monotheism</div></div>
+      <div class="term-card"><div class="tc-term">Incarnation</div><div class="tc-def">Jesus Christ as God in the flesh — God becoming human</div></div>
+      <div class="term-card"><div class="tc-term">Church</div><div class="tc-def">The whole community of Christians and individual congregations who worship Jesus Christ</div></div>
+      <div class="term-card"><div class="tc-term">Salvation</div><div class="tc-def">All believers will be saved and live in God's presence through Jesus Christ</div></div>
+      <div class="term-card"><div class="tc-term">Kingdom of God</div><div class="tc-def">Both an earthly and heavenly closeness to God through Jesus Christ — present and future</div></div>
+      <div class="term-card"><div class="tc-term">Atonement</div><div class="tc-def">Reconciliation between God and humanity through Jesus Christ — his death on the cross "atones" for sin</div></div>
+      <div class="term-card"><div class="tc-term">Resurrection</div><div class="tc-def">Jesus Christ's rise from the dead (literal and figurative) and that of believers — THE unifying factor of all Christian sects</div></div>
+      <div class="term-card"><div class="tc-term">Sin</div><div class="tc-def">Act(s) of rebellion against the will of God/Jesus Christ. Original Sin = the Fall of Adam and Eve</div></div>
+      <div class="term-card"><div class="tc-term">Redemption</div><div class="tc-def">Jesus Christ as redeemer through his death on the cross — deliverance from Sin</div></div>
+      <div class="term-card"><div class="tc-term">Repentance</div><div class="tc-def">Recognition of the need to be saved from sin by God's love through Jesus Christ</div></div>
+      <div class="term-card"><div class="tc-term">Reconciliation</div><div class="tc-def">Salvation as a result of atonement through Jesus; reconciliation of Original Sin (Adam and Eve disobeying God)</div></div>
+      <div class="term-card"><div class="tc-term">Grace</div><div class="tc-def">God's love for humanity and the means to salvation through faith in Jesus Christ — a gift, not earned</div></div>
+      <div class="term-card"><div class="tc-term">Logos</div><div class="tc-def">The Word of God incarnate (in the flesh) as Jesus Christ — usually shown in red or blue in the New Testament</div></div>
+      <div class="term-card"><div class="tc-term">Agape</div><div class="tc-def">The love of God (as Jesus Christ) for humanity: his teachings, miracles, willingness to sacrifice, acceptance for everyone</div></div>
+      <div class="term-card"><div class="tc-term">Sacrament</div><div class="tc-def">Protestant: outward sign of a blessing from God. Catholic/Orthodox: actual presence of God/Jesus Christ. Includes baptism, Eucharist, marriage</div></div>
+    </div>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — Resurrection</div><p>The Resurrection of Jesus is the ONE thing that unites ALL Christian sects — Catholic, Orthodox, and Protestant all agree on this. It is the non-negotiable core of Christian belief. Know this for comparison questions.</p></div>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — Sacrament Definition Varies</div><p>Protestants: a sacrament is a <em>sign</em> of God's presence. Catholics/Orthodox: a sacrament IS God's actual presence. This is a major theological divide with real practical consequences (especially around the Eucharist — transubstantiation vs. memorial).</p></div>
+  </div>
+
+  <!-- HUMAN CONDITION -->
+  <div class="note-header" onclick="toggleNote(this)">Human Condition</div>
+  <div class="note-body">
+    <h4>1. What is the Human Condition?</h4>
+    <p>God created humankind in God's own image. God gave humans <strong>free will</strong>, but through disobedience (Original Sin) humans became separated from God. This is expressed in the Bible through the story of Adam and Eve and the Fall (Genesis). God provided a means for humanity's salvation through Jesus Christ.</p>
+    <div class="ib-tip"><div class="tip-label">⚠ Compare with Judaism</div><p>Both Judaism and Christianity start with humans made in God's image (B'tzelem Elohim / Imago Dei). But Christianity adds Original Sin as a permanent stain requiring a divine savior. Judaism does not have this concept — humans are born morally neutral and choose. This is a key IB comparison point.</p></div>
+
+    <h4>2. Where Are We Going?</h4>
+    <ul>
+      <li><strong>Heaven</strong> — eternal union with God; accepted by ALL Christian sects</li>
+      <li><strong>Purgatory</strong> — a place between Heaven and Hell; a Catholic belief; NOT accepted by all Christians (Protestants reject it, Orthodox have similar concept but different theology)</li>
+      <li><strong>Hell</strong> — separation from God; accepted by all Christian sects (sometimes literal, sometimes more figurative depending on the believer)</li>
+    </ul>
+
+    <h4>3. How Do We Get There?</h4>
+    <ul>
+      <li>Believing in the presence of God as Father, Son, and Holy Spirit (the Trinity)</li>
+      <li>Believing in Jesus Christ as Saviour</li>
+      <li>Living by the teachings of Jesus Christ</li>
+      <li>Participating in the sacraments as appropriate to your denomination</li>
+    </ul>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Tip — Purgatory</div><p>Purgatory is a CATHOLIC-ONLY concept (a place for the not-yet-perfect to be purified before Heaven). Protestant Christianity outright rejects it. Eastern Orthodox have a similar but different concept. Never say "all Christians believe in purgatory" — examiner trap!</p></div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="note-header" onclick="toggleNote(this)">Historical Development</div>
+  <div class="note-body">
+    <div class="timeline-row"><div class="timeline-date">~50 CE</div><div class="timeline-text">Christianity begins as a <strong>Jewish sect</strong> (origins sometimes dated pre-Jesus — see the Essenes). <strong>Saul of Tarsus</strong> (d. ~65 CE), a Jew who had a vision of Jesus, converts and changes his name to <strong>Paul</strong>. He spreads Christianity throughout the Mediterranean. Who is the founder? Complicated question.</div></div>
+    <div class="timeline-row"><div class="timeline-date">100–200 CE</div><div class="timeline-text"><strong>Ignatius of Antioch</strong> and <strong>Polycarp of Smyrna</strong> use Paul's teachings to spread Christianity. <strong>Marcion</strong> develops stereotype of vengeful OT God vs. loving NT God. Obsession with <em>severe</em> asceticism (no sex/food, less body = more spirit). <strong>Irenaeus</strong>: writes in favour of 4 Gospels; establishes creed; creates apostolic succession; establishes origins of Roman Church (later Catholics); declines Gnosticism.</div></div>
+    <div class="timeline-row"><div class="timeline-date">~250 CE</div><div class="timeline-text">Christianity is now <strong>independent from Judaism</strong> but practised very differently across the Mediterranean (status of Mary, women, prayer, gnosticism, Arians, Nestorians).</div></div>
+    <div class="timeline-row"><div class="timeline-date">313 CE</div><div class="timeline-text"><strong>Edict of Milan</strong> (Emperor Constantine) — mandates kind treatment of Christians. Note: St. Helena (Constantine's mother) is the actual driving force. Christianity is tolerated but not yet official.</div></div>
+    <div class="timeline-row"><div class="timeline-date">325 CE</div><div class="timeline-text"><strong>1st Council of Nicaea</strong> — nature of Christ, baptism, kneeling, separating Easter from Passover (not all decided here). Defines orthodoxy and heresy.</div></div>
+    <div class="timeline-row"><div class="timeline-date">331–363 CE</div><div class="timeline-text"><strong>Emperor Julian the Apostate</strong> — reverses Edict of Milan; reinstates paganism; tells Jews they can rebuild the Temple (they didn't).</div></div>
+    <div class="timeline-row"><div class="timeline-date">380 CE</div><div class="timeline-text"><strong>Emperor Theodosius I</strong> proclaims Christianity the official religion of the Roman Empire. Ends the ancient Olympics; removes depictions of nudity in art.</div></div>
+    <div class="timeline-row"><div class="timeline-date">451 CE</div><div class="timeline-text"><strong>Council of Chalcedon</strong> — defines the nature of Jesus: is he human OR divine? Answer: <strong>BOTH</strong> — fully human and fully divine. This becomes official Christian doctrine.</div></div>
+    <div class="timeline-row"><div class="timeline-date">400–1600 CE</div><div class="timeline-text">Christianity spreads through Europe — conversion from paganism is often <strong>forced</strong> (Clovis, Charlemagne). Pagan traditions absorbed into Christian holidays: trees, lights, Santa, Easter eggs, December birthday. "Final" canonization of the Holy Bible (OT and NT) ~1400–1600 CE.</div></div>
+    <div class="timeline-row"><div class="timeline-date">1054 CE</div><div class="timeline-text"><strong>The Great Schism</strong> — The Pope (Rome/West) and the Patriarch (Constantinople/East) argue over doctrine (prayers, beard length, communion ingredients) — but really it was about <strong>political power</strong> (Pope vs. Caesaropapist). Both parties mutually excommunicated each other. Result: <strong>Roman Catholic Church</strong> + <strong>Eastern Orthodox Church</strong>. Both claim to be the "true faith" and the "original."</div></div>
+    <div class="timeline-row"><div class="timeline-date">1517 CE</div><div class="timeline-text"><strong>Protestant Reformation</strong> — Martin Luther breaks the control of the RCC and permanently fragments Western Christianity. Within 100 years there are numerous Protestant sects.</div></div>
+    <div class="timeline-row"><div class="timeline-date">Post-1500</div><div class="timeline-text">Christianity becomes a <strong>world religion</strong> — spread to the Americas by the Spanish and Portuguese (Catholic) and British (Protestant). Christianity gains fewer converts in Africa (Islam dominant) and Asia. Becomes a world religion partly through higher literacy and colonial mission.</div></div>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — What Do ALL Christians Share?</div><p>Despite all the splits, ALL Christian branches share: (1) Death and Resurrection of Jesus Christ; (2) The Trinity (Father, Son, Holy Spirit); (3) Jesus as saviour. What they do NOT all share: specific sacramental practice, the number/nature of sacraments, purgatory, the Pope's authority, etc. Note: baptism is NOT universal in exact form — it varies.</p></div>
+  </div>
+
+  <!-- CATHOLICISM -->
+  <div class="note-header" onclick="toggleNote(this)">Catholicism — Rituals, Sacraments &amp; Worship</div>
+  <div class="note-body">
+    <p><em>All Catholics are Christians, but not all Christians are Catholics.</em></p>
+
+    <h4>The Seven Sacraments (all very important, in order)</h4>
+    <div class="sacrament-grid">
+      <div class="sacrament-card">
+        <div class="sc-num">Sacrament 1 — Most Important</div>
+        <div class="sc-name">Infant Baptism</div>
+        <div class="sc-detail">Cleanses the baby of Original Sin. The most important sacrament — you cannot receive the others without it.</div>
+      </div>
+      <div class="sacrament-card">
+        <div class="sc-num">Sacrament 2</div>
+        <div class="sc-name">First Communion</div>
+        <div class="sc-detail">Age ~7/8. First time to confess sins to a priest and receive the Eucharist. Commemorates the Last Supper. Transubstantiation: bread and wine become the actual body and blood of Jesus. Eucharist is ONLY for baptized Catholics.</div>
+      </div>
+      <div class="sacrament-card">
+        <div class="sc-num">Sacrament 3</div>
+        <div class="sc-name">Confirmation</div>
+        <div class="sc-detail">Age ~13/14. Strengthens the power of baptism and gives the gift of the Holy Spirit.</div>
+      </div>
+      <div class="sacrament-card">
+        <div class="sc-num">Sacrament 4</div>
+        <div class="sc-name">Penance / Reconciliation (Confession)</div>
+        <div class="sc-detail">Obtaining pardon from God through a priest for sins the sinner is remorseful about. Allows return to full participation in the Eucharist.</div>
+      </div>
+      <div class="sacrament-card">
+        <div class="sc-num">Sacrament 5</div>
+        <div class="sc-name">Marriage</div>
+        <div class="sc-detail">Male and female only. Must be in a church. One partner does not have to be Catholic. If a married man from another religion converts, he does not have to divorce to become a Catholic priest.</div>
+      </div>
+      <div class="sacrament-card">
+        <div class="sc-num">Sacrament 6</div>
+        <div class="sc-name">Holy Orders</div>
+        <div class="sc-detail">Becoming a nun, sister, or priest. Requires celibacy of both genders. Women CANNOT be priests. If a married man decides to become a priest (from another tradition converting), he may not have to divorce.</div>
+      </div>
+      <div class="sacrament-card">
+        <div class="sc-num">Sacrament 7</div>
+        <div class="sc-name">Anointing of the Sick / Last Rites</div>
+        <div class="sc-detail">Gives comfort to the dying or very sick. Includes last confession. Can be held more than once (in case you recover and don't die).</div>
+      </div>
+    </div>
+
+    <h4>Catholic Worship</h4>
+    <ul>
+      <li>Public worship in a church is "required" — either at a <strong>Saturday afternoon service (after 4pm) or on a Sunday</strong></li>
+      <li>Confession before taking communion; no eating an hour before. Weekly confession is NOT required.</li>
+      <li>A service can technically be held wherever there is a <strong>tabernacle</strong> (the box holding the Eucharist, with a lit candle beside it)</li>
+      <li>Catholic mass is consistent worldwide in Bible readings, message, and order of service</li>
+      <li>Prayer groups: meet in homes or church; focus on the <strong>Rosary</strong> (prayer beads dedicated to Mary) or Bible readings</li>
+      <li>Silent retreats encouraged several times a year (3–5 days)</li>
+      <li><strong>Pilgrimages</strong>: to the Vatican, Israel, sites of miracles, graves of saints</li>
+    </ul>
+
+    <h4>The Process of Becoming a Saint</h4>
+    <ul>
+      <li>Step 1: Wait 5 years after death (usually)</li>
+      <li>Step 2: Become a "Servant of God"</li>
+      <li>Step 3: Show proof of a life of "heroic virtue"</li>
+      <li>Step 4: Verified miracles</li>
+      <li>Step 5: Canonisation by the Pope</li>
+    </ul>
+    <p>A saint is a person who tried to be a "perfect" Jesus-like Christian. Saints are prayed <em>through</em> for help (e.g. finding lost things, help during struggles). Each saint has a feast day and speciality.</p>
+
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key — Transubstantiation</div><p>Transubstantiation is the Catholic doctrine that the bread and wine of the Eucharist <em>actually become</em> the body and blood of Jesus Christ — not symbolically. This is one of the biggest divides between Catholic and Protestant Christianity. Protestants view it as a memorial meal. Know this distinction for IB essays on sacraments.</p></div>
+  </div>
+
+  <!-- LITURGICAL YEAR -->
+  <div class="note-header" onclick="toggleNote(this)">Catholic Liturgical Year &amp; Holy Days</div>
+  <div class="note-body">
+    <div class="holy-day-grid">
+      <div class="holy-day-card">
+        <div class="hd-name">Advent</div>
+        <div class="hd-detail">Preparing for the birth of Jesus. Lasts one month leading up to Christmas. Four Sundays of Advent.</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Christmas</div>
+        <div class="hd-detail">Celebrates the birth of Jesus on December 25. Note: pagan traditions (trees, lights, gift-giving) were absorbed into this celebration.</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Epiphany / 3 Kings Day</div>
+        <div class="hd-detail">January 6 — 12 days after Christmas. The 3 Magi visit baby Jesus. <strong>Not as important in Catholicism</strong>, but VERY important in Eastern Orthodoxy (Greek boys dive for a cross).</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Lent</div>
+        <div class="hd-detail">Begins on Ash Wednesday (February). 40-day spiritual preparation for Easter. Give up a vice and replace it with something spiritual. No meat on Fridays.</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Good Friday</div>
+        <div class="hd-detail">The day Jesus is crucified. Go to church; do the Stations of the Cross (re-live Jesus' last day); restricted eating. Somber observance.</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Easter Sunday</div>
+        <div class="hd-detail">Date varies (March/April). Celebrates Jesus' resurrection from the dead. THE most important Christian holiday — the Resurrection is the core of faith.</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Pentecost</div>
+        <div class="hd-detail">50 days after Easter. Celebrates Jesus giving the Holy Spirit to the Apostles. The "birthday" of the Church.</div>
+      </div>
+      <div class="holy-day-card">
+        <div class="hd-name">Saint / Feast Days</div>
+        <div class="hd-detail">Happen daily — thousands of saints, each with a feast day. Celebrated differently worldwide based on culture and personal devotion.</div>
+      </div>
+    </div>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Tip — Easter vs. Christmas</div><p>For Christians, <strong>Easter is theologically the most important</strong> holiday (the Resurrection is the core of faith) — not Christmas. Christmas is culturally dominant in Western countries, but Christmas without Easter is theologically meaningless in Christianity. IB examiners may test this distinction.</p></div>
+  </div>
+
+  <!-- CATHOLIC AUTHORITY & ETHICS -->
+  <div class="note-header" onclick="toggleNote(this)">Catholic Authority, Sacred Texts &amp; Ethics</div>
+  <div class="note-body">
+    <h4>Authority Hierarchy</h4>
+    <div class="hierarchy-list">
+      <div class="hierarchy-row top"><div class="hr-title">God</div><div class="hr-detail">Ultimate authority</div></div>
+      <div class="hierarchy-row"><div class="hr-title">Pope (1)</div><div class="hr-detail">Head of the Roman Catholic Church; based in the Vatican</div></div>
+      <div class="hierarchy-row"><div class="hr-title">Cardinal (~250)</div><div class="hr-detail">Elect the Pope; senior Church leaders</div></div>
+      <div class="hierarchy-row"><div class="hr-title">Archbishop (~40 US / ~250 globally)</div><div class="hr-detail">Oversees an Archdiocese</div></div>
+      <div class="hierarchy-row"><div class="hr-title">Bishop (~5k)</div><div class="hr-detail">Administers a Diocese (~2,400 worldwide)</div></div>
+      <div class="hierarchy-row"><div class="hr-title">Priest (~440k)</div><div class="hr-detail">Serves local parishes; few advance beyond this level</div></div>
+      <div class="hierarchy-row"><div class="hr-title">Deacon</div><div class="hr-detail">Assists priests at the local church</div></div>
+      <div class="hierarchy-row"><div class="hr-title">Laity (1.4 billion)</div><div class="hr-detail">Non-clergy Catholics — the base of the Church</div></div>
+    </div>
+
+    <h4>Sacred Texts</h4>
+    <ul>
+      <li><strong>Old and New Testament</strong> — most sacred; Catholics have their own version</li>
+      <li>Written in Greek, Latin, and/or local languages</li>
+      <li><strong>Interpretation of scripture is from the Church, not personal thoughts</strong> — the Church interprets for you (that's the Protestant approach: personal interpretation)</li>
+      <li>Reading of scripture was largely forbidden 12th–16th centuries; sometimes punished by death</li>
+      <li><strong>Writings of Popes and/or saints</strong> — very important secondary authority</li>
+      <li><strong>Catechism of the Catholic Church</strong> — manual of religious instruction (like the Sikh Rehat Maryada)</li>
+      <li><strong>The Apocrypha</strong> — holy texts not always canonized but considered important Christian works; often ignored by Catholics but exist</li>
+    </ul>
+
+    <h4>Core Catholic Doctrines/Beliefs</h4>
+    <ul>
+      <li>The Trinity; Incarnation; Resurrection; Ascension into Heaven</li>
+      <li>Apostles' Creed and Nicene Creed</li>
+      <li>Original Sin; Satan; Eternal Life</li>
+      <li>Virgin Mary — Immaculate Conception (Mary born without Original Sin) and Virgin Birth of Jesus</li>
+      <li>A lot of "mysteries" — aspects of faith that exceed rational understanding</li>
+      <li>Cosmology: Genesis, Adam and Eve</li>
+      <li>Eschatology: 2nd Coming of Christ, Apocalypse, Final Judgement, Purgatory, Heaven, Hell</li>
+    </ul>
+
+    <h4>Ethical/Legal Issues (Catholic)</h4>
+    <ul>
+      <li><strong>Absolutely no:</strong> euthanasia, embryo research, stem cell testing, IVF, abortion, birth control (natural family planning is OK)</li>
+      <li>No homosexual acts or gay marriage ("hate the sin, love the sinner")</li>
+      <li>No sex / living together before marriage</li>
+      <li>Divorce highly discouraged — must receive an <strong>annulment</strong> (the Catholic "Get") from the Vatican to remarry in the Church</li>
+      <li>Any marriage not performed by a priest in a church is not considered a valid marriage</li>
+    </ul>
+    <div class="ib-tip"><div class="tip-label">⚠ IB Tip — Annulment vs. Divorce</div><p>Catholics do not "get divorced" in the Church — they receive an <strong>annulment</strong>, which declares the marriage was never valid. Compare to the Jewish <em>Get</em>. Both traditions treat marriage as deeply sacred and make dissolution very difficult — good IB comparison point.</p></div>
+  </div>
+
+  <!-- EASTERN ORTHODOX -->
+  <div class="note-header" onclick="toggleNote(this)">Eastern Orthodox Christianity</div>
+  <div class="note-body">
+    <p>Eastern Orthodox includes Greek, Russian, Ukrainian, and other regional varieties. They vary by language but can attend each other's churches. Regional Patriarchs (not a Pope) lead each national church.</p>
+
+    <h4>Orthodox Sacraments (7 — equally important as Catholic)</h4>
+    <ul>
+      <li><strong>1. Baptism</strong> — infant; cleanses Original Sin</li>
+      <li><strong>2. Chrismation</strong> (★ KEY DIFFERENCE) — like Catholic Confirmation, but done immediately <em>after or at the same time as</em> Baptism (not age 13–14 as in Catholicism). Babies are chrismated!</li>
+      <li><strong>3. Communion</strong> — starts VERY young (must confess before communion). Non-baptized must leave the church before communion.</li>
+      <li><strong>4. Holy Orders</strong> — priests CAN marry (unlike Catholic); monks CANNOT — they are celibate. Patriarchs are celibate monks.</li>
+      <li><strong>5. Penance/Confession</strong> — more optional than in Catholicism; not a sin if you don't do it.</li>
+      <li><strong>6. Marriage/Divorce</strong> — no annulment needed (unlike Catholicism)</li>
+      <li><strong>7. Anointing of the Sick</strong></li>
+    </ul>
+
+    <h4>Orthodox Worship</h4>
+    <ul>
+      <li><strong>HEAVY use of icons</strong> (imagery of saints, Mary, Jesus) — icons are venerated but not worshipped</li>
+      <li>Similar to a Catholic service (communion) but <strong>no musical instruments</strong> — only singing and chanting</li>
+      <li>Often stand through the <strong>entire service</strong> (no sitting, no seats) — can be 2 hours</li>
+      <li>Non-baptized are supposed to leave before communion/Eucharist</li>
+      <li>Pilgrimages to monasteries for retreats</li>
+    </ul>
+
+    <h4>Orthodox Holy Days</h4>
+    <ul>
+      <li>Complicated — different calendars (Julian vs. Gregorian). Christmas sometimes celebrated on <strong>January 7</strong></li>
+      <li><strong>Epiphany (Jan 6) is VERY important</strong> — Greek boys dive for a cross in the water. Far more important than in Catholicism.</li>
+      <li>Easter is usually <strong>2 weeks after</strong> the Catholic/Protestant date</li>
+      <li><strong>Lent</strong> — follow a vegan diet for the WHOLE period (stricter than Catholic)</li>
+      <li>Saint days also very important; most holidays are similar to Catholic but with different names/dates</li>
+    </ul>
+
+    <h4>Orthodox Doctrines &amp; Beliefs</h4>
+    <ul>
+      <li>Similar to Catholicism but with <strong>a lot less veneration of Mary</strong></li>
+      <li>Prayer beads — but <strong>not the Rosary</strong></li>
+      <li>Cosmology and eschatology similar to Catholic</li>
+      <li><strong>No purgatory</strong></li>
+      <li>Orthodox have <strong>not changed any aspect of their liturgy/belief since the 300s CE</strong>. They claim to practise true Christianity.</li>
+      <li>Their Old Testament has the most books (includes Apocrypha/Deuterocanonical books)</li>
+    </ul>
+
+    <h4>Orthodox Authority</h4>
+    <ul>
+      <li><strong>No Pope</strong> — regional Patriarchs lead each national church</li>
+      <li>Not as geographically centralized — no Vatican equivalent</li>
+      <li>Priests can marry unless they are celibate monks or patriarchs</li>
+      <li>Women cannot be priests</li>
+    </ul>
+
+    <h4>Orthodox Ethics</h4>
+    <ul>
+      <li>No abortion (less strict than Catholic); birth control sometimes allowed with priestly approval</li>
+      <li>No homosexual acts or gay marriage</li>
+      <li>Conversion: speak with a priest, take classes, attend services</li>
+    </ul>
+
+    <div class="ib-tip"><div class="tip-label">⚠ IB Key Differences: Catholic vs. Orthodox</div><p>Main distinctions: (1) Orthodox have NO Pope — regional Patriarchs; (2) Orthodox priests CAN marry; (3) Chrismation happens immediately after Baptism, not at age 13; (4) No purgatory; (5) Less Mary veneration; (6) Epiphany is MORE important than Christmas in many Orthodox communities; (7) Lent = fully vegan. These are the kinds of specific differences IB rewards in essays.</p></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 3 · COMPARISON CHARTS                             -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-charts" class="tab-panel">
+  <div class="chart-tabs">
+    <button class="chart-tab active" onclick="showChart('c1')">Catholic vs Orthodox vs Protestant</button>
+    <button class="chart-tab" onclick="showChart('c2')">7 Sacraments Compared</button>
+    <button class="chart-tab" onclick="showChart('c3')">Christianity vs Other Traditions</button>
+    <button class="chart-tab" onclick="showChart('c4')">Key Historical Events</button>
+    <button class="chart-tab" onclick="showChart('c5')">"Don't Confuse" Guide</button>
+  </div>
+
+  <!-- CHART 1: Denominations -->
+  <div id="chart-c1" class="chart-panel active">
+    <h3>Catholic vs Eastern Orthodox vs Protestant</h3>
+    <table class="comp-table">
+      <tr><th>Aspect</th><th>Roman Catholic</th><th>Eastern Orthodox</th><th>Protestant</th></tr>
+      <tr><td class="category" colspan="4">Authority &amp; Leadership</td></tr>
+      <tr><td><strong>Head</strong></td><td>Pope (Vatican)</td><td>Regional Patriarchs (no single head)</td><td>No central authority; varies by denomination</td></tr>
+      <tr><td><strong>Scripture authority</strong></td><td>Church interprets Scripture</td><td>Church + Tradition interpret</td><td class="highlight">Personal interpretation of Scripture (Sola Scriptura for many)</td></tr>
+      <tr><td><strong>Women priests?</strong></td><td>No</td><td>No</td><td>Many Protestant denominations: Yes</td></tr>
+      <tr><td><strong>Priest celibacy</strong></td><td>Yes (mandatory)</td><td>Priests can marry; monks/Patriarchs cannot</td><td>No requirement (pastors can marry)</td></tr>
+      <tr><td class="category" colspan="4">Sacraments</td></tr>
+      <tr><td><strong>Number of sacraments</strong></td><td>7 (all very important)</td><td>7 (equally important)</td><td>Usually 2 (Baptism and Communion only)</td></tr>
+      <tr><td><strong>Eucharist / Communion</strong></td><td class="highlight">Transubstantiation — literally becomes body/blood of Jesus</td><td>Real presence (similar to Catholic)</td><td>Memorial meal — symbolic only (for most)</td></tr>
+      <tr><td><strong>Baptism timing</strong></td><td>Infant (Original Sin)</td><td>Infant (Original Sin)</td><td>Varies: infant OR adult believer's baptism</td></tr>
+      <tr><td><strong>Confirmation</strong></td><td>Age 13–14</td><td class="highlight">Chrismation immediately after Baptism (as infant!)</td><td>Varies</td></tr>
+      <tr><td class="category" colspan="4">Beliefs</td></tr>
+      <tr><td><strong>Purgatory</strong></td><td>Yes — place between Heaven and Hell</td><td>Similar concept, different theology; technically No purgatory</td><td class="highlight">No — rejected at Reformation</td></tr>
+      <tr><td><strong>Mary (Virgin)</strong></td><td>Very high veneration; Immaculate Conception; Assumption</td><td>High veneration; less than Catholic</td><td>Respected but not venerated; no Immaculate Conception</td></tr>
+      <tr><td><strong>Saints</strong></td><td>Very important; prayed through; canonization process</td><td>Important; icons; prayed through</td><td>All believers are "saints"; no canonization</td></tr>
+      <tr><td><strong>Changed since 300s?</strong></td><td>Yes (various reforms)</td><td class="highlight">No — claim to practise unchanged Christianity</td><td>Yes — Reformation 1517 CE</td></tr>
+      <tr><td class="category" colspan="4">Ethics</td></tr>
+      <tr><td><strong>Birth control</strong></td><td>No (natural only)</td><td>Sometimes allowed with priestly approval</td><td>Generally allowed</td></tr>
+      <tr><td><strong>Divorce &amp; remarriage</strong></td><td>Annulment required from Vatican</td><td>Permitted (no annulment needed)</td><td>Generally permitted</td></tr>
+      <tr><td><strong>Homosexuality</strong></td><td>No acts; "hate sin, love sinner"</td><td>No acts or gay marriage</td><td>Varies widely by denomination</td></tr>
+      <tr><td><strong>Abortion</strong></td><td>Absolutely no</td><td>No (less strict than Catholic)</td><td>Varies widely</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 2: Sacraments -->
+  <div id="chart-c2" class="chart-panel">
+    <h3>The Seven Sacraments — Catholic vs Orthodox</h3>
+    <table class="comp-table">
+      <tr><th>#</th><th>Sacrament</th><th>Catholic</th><th>Eastern Orthodox</th></tr>
+      <tr><td><strong>1</strong></td><td><strong>Baptism</strong></td><td>Infant; cleanses Original Sin; MOST IMPORTANT — required for all others</td><td>Infant; cleanses Original Sin; done with full immersion (3 times)</td></tr>
+      <tr><td><strong>2</strong></td><td><strong>Confirmation / Chrismation</strong></td><td>Age 13–14; strengthens baptism; gift of Holy Spirit</td><td class="highlight">Immediately after or same time as Baptism — even infants receive it</td></tr>
+      <tr><td><strong>3</strong></td><td><strong>Eucharist / Communion</strong></td><td>First at ~age 7/8; transubstantiation; only for baptized Catholics</td><td>Starts VERY young (even infants in some traditions); real presence; must confess first</td></tr>
+      <tr><td><strong>4</strong></td><td><strong>Penance / Confession</strong></td><td>Required before First Communion; regularly encouraged; priest grants absolution</td><td>More optional; not a sin if you don't do it</td></tr>
+      <tr><td><strong>5</strong></td><td><strong>Marriage</strong></td><td>Male/female; must be in church; one partner can be non-Catholic; no divorce (annulment only)</td><td>Male/female; divorce permitted (no annulment needed)</td></tr>
+      <tr><td><strong>6</strong></td><td><strong>Holy Orders</strong></td><td>Nun/Sister/Priest; celibacy required; women cannot be priests</td><td>Priests can marry; monks/Patriarchs are celibate; women cannot be priests</td></tr>
+      <tr><td><strong>7</strong></td><td><strong>Anointing of the Sick</strong></td><td>Comfort to the dying; last confession; can be repeated</td><td>Anointing of the sick; available to all, not only dying</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 3: Cross-religion -->
+  <div id="chart-c3" class="chart-panel">
+    <h3>Christianity Compared with Other Traditions</h3>
+    <table class="comp-table">
+      <tr><th>Aspect</th><th>Christianity</th><th>Judaism</th><th>Islam</th><th>Sikhism</th></tr>
+      <tr><td><strong>God</strong></td><td>Trinitarian God — Father, Son (Jesus), Holy Spirit; monotheism</td><td>One God (Yahweh); no Trinity; no Son</td><td>One God (Allah); absolute monotheism; no Trinity, no Son</td><td>One formless God (Waheguru); Ik Onkar</td></tr>
+      <tr><td><strong>Jesus</strong></td><td class="highlight">Son of God; saviour; rose from dead; divine</td><td>Not the Messiah; perhaps a teacher</td><td>A prophet (Isa); not divine; not crucified (according to Qur'an)</td><td>Not mentioned in Sikh theology</td></tr>
+      <tr><td><strong>Sacred Text</strong></td><td>Bible (OT + NT); interpretation varies by denomination</td><td>TaNakh + Talmud</td><td>Qur'an + Hadith</td><td>Guru Granth Sahib</td></tr>
+      <tr><td><strong>Afterlife</strong></td><td>Heaven and Hell (clearly defined); Purgatory (Catholic only); Resurrection of the body</td><td>Olam ha-ba (vague); focus on THIS life</td><td>Jannah (Heaven) and Jahannam (Hell); very defined</td><td>Reincarnation until merger with Waheguru (Mukti)</td></tr>
+      <tr><td><strong>Salvation/Liberation</strong></td><td>Faith in Jesus; grace; sacraments</td><td>Living by Torah; Tikkun Olam; Teshuvah</td><td>Five Pillars; submission to Allah</td><td>Overcoming Haumai (ego); Naam Japna</td></tr>
+      <tr><td><strong>Original Sin</strong></td><td class="highlight">Yes — the Fall of Adam and Eve; requires a saviour</td><td>No — humans are born morally neutral; yetzer ha-ra/tov</td><td>No original sin; humans are born pure (fitra)</td><td>No original sin; Haumai (ego) is the problem</td></tr>
+      <tr><td><strong>Founder</strong></td><td>Jesus of Nazareth (disputed — Paul also crucial)</td><td>Abraham / Moses</td><td>Prophet Muhammad</td><td>Guru Nanak (1469–1539)</td></tr>
+      <tr><td><strong>Holy Day focus</strong></td><td>Easter (Resurrection) most important theologically</td><td>Shabbat (weekly) and Yom Kippur</td><td>Eid al-Fitr, Eid al-Adha, Friday Jumu'ah</td><td>Vaisakhi, Diwali (Sikh version), Gurpurabs</td></tr>
+      <tr><td><strong>Place of worship</strong></td><td>Church / Cathedral</td><td>Synagogue</td><td>Mosque</td><td>Gurdwara</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 4: Historical -->
+  <div id="chart-c4" class="chart-panel">
+    <h3>Key Historical Events in Christianity</h3>
+    <table class="comp-table">
+      <tr><th>Date</th><th>Event</th><th>Significance</th></tr>
+      <tr><td><strong>~50 CE</strong></td><td>Paul (Saul of Tarsus) spreads Christianity</td><td>Christianity moves beyond Jewish sect to universal religion</td></tr>
+      <tr><td><strong>100–200 CE</strong></td><td>Irenaeus defines 4 Gospels, establishes Roman Church, defeats Gnosticism</td><td>Creates the institutional Church we recognize today (before the Reformation)</td></tr>
+      <tr><td><strong>313 CE</strong></td><td>Edict of Milan (Constantine / St. Helena)</td><td>Christians protected; beginning of Christianity's rise to power</td></tr>
+      <tr><td><strong>325 CE</strong></td><td>1st Council of Nicaea</td><td>Defines nature of Christ; separates Easter from Passover; establishes orthodoxy</td></tr>
+      <tr><td><strong>380 CE</strong></td><td>Christianity = official Roman religion (Theodosius I)</td><td>Christianity becomes state religion; pagan practices outlawed</td></tr>
+      <tr><td><strong>451 CE</strong></td><td>Council of Chalcedon</td><td>Jesus is BOTH human AND divine — official doctrine</td></tr>
+      <tr><td class="highlight"><strong>1054 CE</strong></td><td>The Great Schism</td><td>Roman Catholic Church and Eastern Orthodox Church split — about political power (Pope vs. Patriarch) as much as doctrine</td></tr>
+      <tr><td><strong>1400–1600 CE</strong></td><td>Final canonization of the Holy Bible</td><td>OT and NT finalized across Christian traditions</td></tr>
+      <tr><td class="highlight"><strong>1517 CE</strong></td><td>Protestant Reformation (Martin Luther)</td><td>Permanently fragments Western Christianity; birth of Protestantism; 100+ years of new sects</td></tr>
+      <tr><td><strong>Post-1500</strong></td><td>Christianity spread globally (colonialism)</td><td>Spanish/Portuguese → Catholic Americas; British → Protestant colonies; becomes world's largest religion</td></tr>
+    </table>
+  </div>
+
+  <!-- CHART 5: Don't Confuse -->
+  <div id="chart-c5" class="chart-panel">
+    <h3>"Don't Confuse" — Common IB Mistakes in Christianity</h3>
+    <table class="comp-table">
+      <tr><th>Concept</th><th>What It IS</th><th>What It Is NOT / Common Mistake</th></tr>
+      <tr><td><strong>Easter vs. Christmas</strong></td><td>Easter (Resurrection) is theologically the MOST IMPORTANT Christian holiday — the core of faith</td><td>Christmas is culturally prominent but theologically secondary. Don't say Christmas is the most important holiday.</td></tr>
+      <tr><td><strong>Transubstantiation</strong></td><td>Catholic doctrine: bread and wine ACTUALLY BECOME the body and blood of Jesus Christ</td><td>NOT a symbolic act. Protestants view it as memorial only. Don't apply the Catholic view to all Christians.</td></tr>
+      <tr><td><strong>Purgatory</strong></td><td>A Catholic (and similar Orthodox) concept — a place of purification before Heaven</td><td>NOT universal Christian belief. Protestants explicitly reject it. Never say "all Christians believe in purgatory."</td></tr>
+      <tr><td><strong>Chrismation vs. Confirmation</strong></td><td>Both are the sacrament of the Holy Spirit, but Orthodox Chrismation happens immediately after Infant Baptism</td><td>Catholic Confirmation is done at age 13–14. These are NOT the same timing or practice.</td></tr>
+      <tr><td><strong>The Great Schism (1054)</strong></td><td>Split between Roman Catholic and Eastern Orthodox — really about political power (Pope vs. Patriarch)</td><td>NOT primarily about doctrine (it used doctrinal excuses — beard length, communion ingredients). The power struggle was the real driver.</td></tr>
+      <tr><td><strong>All Christians share...</strong></td><td>Death and Resurrection of Jesus; the Trinity</td><td>Baptism is NOT universal in exact form. Purgatory, 7 sacraments, the Pope's authority are NOT shared by all Christians.</td></tr>
+      <tr><td><strong>Logos</strong></td><td>The Word of God made flesh — Jesus Christ as divine Word/Reason incarnate (John 1:1)</td><td>Not just any "word" — it is a specific theological title for Jesus in John's Gospel. Often shown in red or blue in NT texts.</td></tr>
+      <tr><td><strong>Agape</strong></td><td>The unconditional divine love of God for humanity — self-sacrificing love</td><td>Not just "love" generally — specifically God's love shown through Jesus: his teachings, sacrifice, and acceptance of all people. Distinguish from Eros (romantic love) or Philia (friendship).</td></tr>
+      <tr><td><strong>Orthodox priests</strong></td><td>CAN marry (before ordination) — this is a key difference from Catholic priests</td><td>But monks and Patriarchs are celibate. "All Orthodox clergy are celibate" is wrong.</td></tr>
+      <tr><td><strong>Irenaeus</strong></td><td>2nd-century bishop who established the 4 Gospels, created the creed, and laid foundations of the Roman Church</td><td>NOT a figure of the Reformation. He predates the Catholic/Orthodox split by centuries. He is the architect of early institutional Christianity.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 4 · ESSAY OUTLINES                                -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-essays" class="tab-panel">
+  <p class="section-intro">Click an essay to expand the full outline. These cover the most likely IB Paper 2 extended essay themes for Christianity.</p>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">Discuss the role of the sacraments in Christian religious life, with reference to at least two Christian traditions. <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>The sacraments are the primary means through which Christians encounter God and participate in salvation — but their number, nature, and significance vary dramatically between Catholic, Orthodox, and Protestant traditions.</p>
+      <h4>Introduction Points</h4>
+      <ul>
+        <li>Define sacrament: Protestant = outward sign of a blessing; Catholic/Orthodox = actual presence of God</li>
+        <li>This definitional difference is the root of many theological disputes</li>
+        <li>All Christians agree on Baptism and some form of Eucharist — differences lie in how</li>
+      </ul>
+      <h4>Catholic Angle</h4>
+      <ul>
+        <li>7 sacraments — all very important; Baptism is most important (required for all others)</li>
+        <li>Transubstantiation: bread and wine literally become body and blood of Jesus</li>
+        <li>Sacraments as the actual presence of God — not symbols</li>
+        <li>Penance/Confession: sins forgiven through a priest (another mediated relationship with God)</li>
+        <li>Every major life stage has a sacrament: birth (Baptism) → first moral responsibility (First Communion/Penance) → adulthood (Confirmation) → vocation (Marriage/Holy Orders) → death (Anointing)</li>
+      </ul>
+      <h4>Eastern Orthodox Angle</h4>
+      <ul>
+        <li>Also 7 sacraments; real presence in Eucharist</li>
+        <li>KEY: Chrismation immediately after Baptism — infants receive the Holy Spirit from the start</li>
+        <li>Communion starts very young; must confess before; non-baptized leave before this part</li>
+        <li>Confession more optional; Marriage divorce permitted without annulment</li>
+      </ul>
+      <h4>Protestant Angle (contrast)</h4>
+      <ul>
+        <li>Usually 2 sacraments: Baptism and Communion</li>
+        <li>Eucharist as memorial, not transubstantiation</li>
+        <li>Martin Luther: sacraments must be commanded by Jesus AND have an outward element</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>Sacraments are the backbone of Catholic and Orthodox Christian life — they structure every phase of existence and make the divine physically present. For Protestants, they are meaningful acts of remembrance and declaration. The Reformation pivot on this question (especially the Eucharist) was the defining break of 1517. Understanding sacraments is essential to understanding Christian denominational diversity.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">To what extent was the Great Schism (1054 CE) a theological rather than a political division? <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>While the Schism used theological language (filioque, Easter dating, communion ingredients), its root cause was a struggle for supreme authority between the Pope of Rome and the Patriarch of Constantinople — a fundamentally political dispute.</p>
+      <h4>Theological Claims (surface level)</h4>
+      <ul>
+        <li>Filioque controversy: does the Holy Spirit proceed from the Father alone, or from Father AND Son?</li>
+        <li>Use of unleavened vs. leavened bread in communion</li>
+        <li>Date of Easter, kneeling on Sundays, beard-length of clergy</li>
+        <li>Both sides claim these are essential theological differences</li>
+      </ul>
+      <h4>Political Reality (deeper cause)</h4>
+      <ul>
+        <li>Pope vs. Caesaropapist: Who has ultimate authority — the Pope in Rome or the Emperor/Patriarch in Constantinople?</li>
+        <li>After fall of Western Rome (476 CE), the Pope filled the political vacuum in the West; the Eastern Patriarch operated under the Emperor's authority</li>
+        <li>Both sides mutually excommunicated each other — a political act as much as a spiritual one</li>
+        <li>Both immediately claimed to be the "true faith" and the "original" — classic power-legitimacy language</li>
+      </ul>
+      <h4>Both/And Conclusion</h4>
+      <p>The Schism was both. The theological disputes were real but would not alone have caused the split — power and geography made unity increasingly impossible. The political dynamic (Rome vs. Constantinople) gave the theological disputes their urgency. In IB terms: the Schism illustrates how religious institutions are always entangled with political power — a key theme in the study of world religions.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"The concept of Original Sin is the most important doctrine in Christianity." How far do you agree? <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>Original Sin is the problem; the Resurrection and salvation through Jesus Christ is the solution. Without Original Sin, the entire edifice of Christian soteriology (salvation theology) collapses — making it a strong candidate for "most important doctrine."</p>
+      <h4>Evidence FOR (Original Sin is foundational)</h4>
+      <ul>
+        <li>It explains WHY humanity needs a saviour — without the Fall, the Incarnation has no purpose</li>
+        <li>It explains the human condition: God created us good, but free will led to sin and separation from God</li>
+        <li>The entire sacramental system responds to it: Baptism (cleanse Original Sin) → Penance → Eucharist</li>
+        <li>It unites all Christian sects: all branches agree humanity is fallen and needs redemption</li>
+        <li>Irenaean theology vs. Augustinian theology: debate about Original Sin shaped Western Christianity</li>
+      </ul>
+      <h4>Evidence AGAINST (Resurrection may be more important)</h4>
+      <ul>
+        <li>The Resurrection is THE unifying factor of ALL Christian sects — even more universal than Original Sin</li>
+        <li>Jesus could theoretically have been sent to redeem humanity even without a literal Adam/Eve story</li>
+        <li>Paul writes: "If Christ is not raised, your faith is futile" (1 Cor 15:17) — the Resurrection is the explicit claim</li>
+        <li>Some liberal Protestant and Catholic theologians interpret Original Sin metaphorically — but still believe in the Resurrection literally</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>Original Sin and the Resurrection are inseparable — they form a problem/solution pair. Original Sin is arguably the most important <em>anthropological</em> doctrine (about humanity), while the Resurrection is the most important <em>Christological</em> doctrine (about Jesus). The statement is largely accurate but must be qualified: Original Sin matters because of what it necessitates — the salvific act of God in Jesus Christ.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">Compare the understanding of the human condition and salvation in Christianity and one other religion you have studied. <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>Christianity and Judaism share the same starting point (humans made in God's image) but diverge radically on Original Sin and salvation — revealing fundamentally different understandings of what is wrong with humanity and what fixes it.</p>
+      <h4>Christianity — Human Condition &amp; Salvation</h4>
+      <ul>
+        <li><strong>Problem:</strong> Original Sin — Adam and Eve's disobedience permanently damaged human nature; all humans are born in sin, separated from God</li>
+        <li><strong>Condition:</strong> Humans have free will but are fundamentally oriented toward sin (concupiscence); cannot save themselves</li>
+        <li><strong>Solution:</strong> God's grace through Jesus Christ — the Incarnation, death, and Resurrection of Jesus atones for all sin; salvation available through faith and sacraments</li>
+        <li><strong>Destination:</strong> Heaven (union with God) or Hell (separation from God)</li>
+      </ul>
+      <h4>Judaism — Human Condition &amp; Salvation</h4>
+      <ul>
+        <li><strong>Problem:</strong> No Original Sin — humans are born morally neutral. The constant struggle between yetzer ha-ra (evil inclination) and yetzer ha-tov (good inclination)</li>
+        <li><strong>Condition:</strong> Humans are fully capable of choosing good — free will is not fundamentally damaged</li>
+        <li><strong>Solution:</strong> Teshuvah (repentance) + observing 613 mitzvot + Tikkun Olam — no divine saviour needed</li>
+        <li><strong>Destination:</strong> Olam ha-ba (vague world to come); focus is on THIS life</li>
+      </ul>
+      <h4>Key Similarities</h4>
+      <ul>
+        <li>Both believe humans are made in God's image (Imago Dei / B'tzelem Elohim)</li>
+        <li>Both have a strong ethical framework</li>
+        <li>Both believe in some form of divine judgement</li>
+      </ul>
+      <h4>Key Differences</h4>
+      <ul>
+        <li>Christianity: humans are fundamentally broken and need a divine saviour. Judaism: humans are capable of choosing good without supernatural rescue.</li>
+        <li>Christianity: afterlife (Heaven/Hell) is very defined and central. Judaism: focus is this life; Olam ha-ba is vague.</li>
+        <li>Christianity: grace is unearned gift. Judaism: covenant obligations must be fulfilled — it is more reciprocal.</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>Both traditions begin with the same material — humans made in God's image — but construct radically different theologies of the human problem and its solution. Christianity requires divine intervention (Incarnation, sacrifice); Judaism requires human effort within a covenantal relationship. These differences reflect different understandings of God, humanity, and the nature of sin itself.</p>
+    </div>
+  </div>
+
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">Examine how Christianity has changed throughout its history, with reference to specific turning points. <span class="essay-marks">Paper 2</span></div>
+      <div class="essay-toggle">Expand ▼</div>
+    </div>
+    <div class="essay-body">
+      <h4>Key Argument</h4>
+      <p>Christianity has transformed itself multiple times through institutional power (Nicaea, Constantine), political schism (1054), and theological revolution (1517) — and yet its core (Resurrection, Trinity) has remained constant. Change has been institutional and liturgical more than doctrinal.</p>
+      <h4>Key Turning Points</h4>
+      <ul>
+        <li><strong>~50–200 CE:</strong> From Jewish sect to independent religion. Irenaeus creates the canonical texts and institutional Church. Gnosticism defeated. The Christianity we recognize emerges.</li>
+        <li><strong>313–380 CE:</strong> From persecuted minority to official Roman religion. Constantine (Edict of Milan) + Theodosius I transform Christianity from underground to empire. Pagan traditions absorbed (Christmas, Easter symbols). Power fundamentally changes the Church.</li>
+        <li><strong>325 CE — Council of Nicaea:</strong> Christianity defines what it officially believes (the Nicene Creed). Orthodoxy vs. heresy established. The Church becomes a doctrinal institution.</li>
+        <li><strong>1054 CE — Great Schism:</strong> East-West split. Two versions of "true Christianity" emerge. Political power drives theological difference. Orthodoxy claims to be unchanged since the 300s.</li>
+        <li><strong>1517 CE — Protestant Reformation:</strong> Martin Luther breaks the RCC's monopoly on Western Christianity. Personal interpretation of Scripture; rejection of the Pope; fewer sacraments; new theology of grace (Sola Gratia, Sola Fide). Christianity permanently fragments.</li>
+        <li><strong>Post-1500:</strong> Global spread through colonialism changes Christianity yet again — African, Latin American, Asian versions of Christianity develop their own expressions.</li>
+      </ul>
+      <h4>What Has NOT Changed</h4>
+      <ul>
+        <li>The Resurrection of Jesus — the one constant across all traditions</li>
+        <li>The Trinity — Father, Son, Holy Spirit</li>
+        <li>The authority of the Bible (however differently interpreted)</li>
+      </ul>
+      <h4>Conclusion</h4>
+      <p>Christianity has changed enormously in institution, practice, ethics, and theology — yet its doctrinal core has proven remarkably durable. The history of Christianity is the history of competing claims about what that core actually requires. Change and continuity coexist — a dynamic tension that makes Christianity the world's most internally diverse religion.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!--  TAB 5 · PRACTICE PAPERS                               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-papers" class="tab-panel">
+
+  <!-- PAPER 1 -->
+  <div class="paper-section">
+    <h3>📄 Paper 1 — Source Analysis (Christianity)</h3>
+    <p style="color:var(--text-light);font-size:0.93rem;margin-bottom:1rem;">Read all sources carefully. Answer all questions. Refer to the sources directly in your responses.</p>
+
+    <div class="source-box">
+      <div class="source-label">Source A — Primary Text (New Testament)</div>
+      <p>"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. For God did not send his Son into the world to condemn the world, but to save the world through him."</p>
+      <div class="source-attr">John 3:16–17 (New International Version) — New Testament, ~90 CE</div>
+    </div>
+
+    <div class="source-box">
+      <div class="source-label">Source B — Scholarly Commentary</div>
+      <p>"The Catholic understanding of the sacraments is inseparable from the Incarnation: if God truly took on human flesh in Jesus Christ, then physical matter can become a bearer of divine grace. The Eucharist is not a reminder of the Last Supper — it IS the Last Supper, made present again. This is why transubstantiation is not a peripheral doctrine but the logical extension of the Incarnation itself. To deny transubstantiation is, in the Catholic view, to deny that matter can be truly sacred — and this the Incarnation does not permit."</p>
+      <div class="source-attr">Professor David Brown, "God and Grace of Body," Oxford University Press, 2007</div>
+    </div>
+
+    <div class="question-block">
+      <p>1a. According to Source A, identify THREE things this passage reveals about the Christian understanding of God and salvation. <span style="color:var(--text-light);font-size:0.88rem;">[3 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">3 marks — 1 per valid point</span></div>
+      <div class="model-answer">
+        <h5>Model Answer:</h5>
+        <ul>
+          <li>God loves the world — salvation is motivated by divine love (Agape), not judgement or anger</li>
+          <li>God gave his "one and only Son" — implies the Incarnation; Jesus as the unique, divine Son of God</li>
+          <li>Salvation (eternal life) is available to "whoever believes" — faith as the means to salvation; universally available</li>
+          <li>God's purpose is to save, not to condemn — corrects the Marcionist view of a vengeful God; the NT God is loving</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <p>1b. Using Source B and your own knowledge, analyse how the doctrine of the Incarnation shapes Catholic sacramental practice. <span style="color:var(--text-light);font-size:0.88rem;">[5 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">5 marks — analysis required</span></div>
+      <div class="model-answer">
+        <h5>Model Answer:</h5>
+        <ul>
+          <li><strong>Source B's core argument:</strong> If God took on flesh (Incarnation), then physical matter can carry divine grace. This is the theological basis for ALL 7 sacraments — physical actions (water, bread, oil, hands) become vehicles of God's presence.</li>
+          <li><strong>Transubstantiation:</strong> Source B argues it is the "logical extension" of the Incarnation. If Jesus was truly God in flesh, then the bread and wine can truly become his body and blood — transubstantiation is not superstition but consistent theology.</li>
+          <li><strong>Own knowledge — Baptism:</strong> Water is a physical element that, in Catholic understanding, actually cleanses Original Sin — not symbolically. The physical IS the spiritual because of the Incarnation.</li>
+          <li><strong>Own knowledge — Anointing of the Sick:</strong> Oil physically applied to a dying person carries divine comfort and healing — again, matter + ritual = divine presence.</li>
+          <li><strong>Protestant contrast:</strong> Protestants who reject transubstantiation (Eucharist as memorial) do so partly because they see matter and spirit as more separate — a theological difference that traces to different understandings of the Incarnation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <p>1c. Using Sources A and B and your own knowledge, evaluate the view that Christianity is fundamentally a religion of love rather than law. <span style="color:var(--text-light);font-size:0.88rem;">[5 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">5 marks — evaluation required</span></div>
+      <div class="model-answer">
+        <h5>Model Answer:</h5>
+        <ul>
+          <li><strong>Evidence FOR (love):</strong> Source A — God's motivation is love (Agape); salvation is a free gift, not earned by obedience. Source B — grace (unearned favour) is the means of salvation. Jesus' teachings: "Love God... love your neighbour" (Matthew 22:37–39) — the Two Great Commandments replace detailed legal codes.</li>
+          <li><strong>Evidence FOR (love over law):</strong> Paul's letters: "For it is by grace you have been saved, through faith — not by works" (Ephesians 2:8). Christianity explicitly broke from Jewish law observance (613 mitzvot) — no Kashrut, no circumcision required.</li>
+          <li><strong>Evidence AGAINST (law still matters):</strong> The 10 Commandments remain binding. Catholic moral theology is highly detailed (no abortion, no birth control, marriage law, etc.). The Church itself has extensive canon law. Sacraments must be performed correctly — ritual law matters.</li>
+          <li><strong>Nuanced evaluation:</strong> Christianity emphasises love as the MOTIVATION and GOAL, but law as the STRUCTURE of practice. The Catholic Church has one of the most complex legal systems in the world (Canon Law). The Reformation brought more emphasis on faith/love over works/law — but even Protestant denominations have behavioural expectations.</li>
+          <li><strong>Conclusion:</strong> Christianity is fundamentally motivated by love (Agape — God's gift, the response expected from believers), but it is not law-free. The relationship between love and law in Christianity is tension-filled and varies by denomination.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="question-block">
+      <p>1d. Using Sources A and B and your own knowledge, discuss the significance of Jesus Christ in the Christian understanding of the human condition and salvation. <span style="color:var(--text-light);font-size:0.88rem;">[10 marks]</span></p>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Reveal Model Answer</button><span class="marks">10 marks — extended response</span></div>
+      <div class="model-answer">
+        <h5>Model Answer — Key Points to Include:</h5>
+        <ul>
+          <li><strong>The problem Jesus addresses — Original Sin:</strong> God created humans in God's image with free will. Adam and Eve's disobedience (the Fall) introduced sin and separated humanity from God. This is the "human condition" — beings made for union with God but now separated. Jesus is God's response to this crisis.</li>
+          <li><strong>Incarnation (Source B):</strong> "God gave his one and only Son" (Source A) — God takes on human flesh. This is not a workaround; it is the ultimate expression of divine commitment to humanity. Source B argues this makes matter capable of carrying grace — not just a theological idea but practically the basis of all sacraments.</li>
+          <li><strong>Atonement — the Cross:</strong> Jesus' death is the atoning act. He takes on the punishment for human sin; reconciliation between God and humanity is achieved. Redemption = bought back from the consequences of sin. This is universal: "whoever believes" (Source A) — no ethnic, cultural, or ritual prerequisite.</li>
+          <li><strong>Resurrection — the proof:</strong> The Resurrection is the evidence that death has been overcome; the promise of eternal life is credible. Paul: "If Christ is not raised, your faith is futile." The Resurrection is what unifies ALL Christian sects — Catholic, Orthodox, Protestant.</li>
+          <li><strong>The sacramental response (Source B):</strong> Because Jesus was God in flesh, the physical world can mediate the divine. Baptism cleanses Original Sin; the Eucharist makes Jesus present again; Confirmation gives the Holy Spirit. The Christian response to Jesus is not abstract belief but embodied, sacramental participation.</li>
+          <li><strong>Salvation — where we're going:</strong> Eternal life with God (Heaven). The human condition (separation from God by sin) is reversed by Jesus: union with God is restored. Hell remains a possibility for those who reject this offer — separation from God by choice.</li>
+          <li><strong>Denominational variation:</strong> Catholic: faith + sacraments + works of love. Protestant: faith alone (Sola Fide). Orthodox: theosis — gradual transformation into likeness of God. All agree Jesus is the means; they differ on the mechanism.</li>
+          <li><strong>Conclusion:</strong> Jesus Christ is not one element of Christianity — he IS Christianity. The human condition (sin, separation, mortality) is answered at every point by who Jesus is (God incarnate), what he did (atoned for sin through death), and what happened to him (rose from the dead). Remove Jesus and the entire framework collapses. Source A's "God so loved the world" is not a preamble — it is the entire theological programme in a sentence.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAPER 2 -->
+  <div class="paper-section">
+    <h3>✍ Paper 2 — Extended Essay Prompts (Christianity)</h3>
+    <p style="color:var(--text-light);font-size:0.93rem;margin-bottom:1rem;">Choose ONE question. Write a structured essay of approximately 800–1000 words. Use specific examples and religious terminology.</p>
+
+    <div class="essay-prompt">
+      <div class="ep-q">1. "The sacraments are the most important expression of Christian faith." To what extent do you agree?</div>
+      <div class="ep-hint">Hint: Agree — Catholic/Orthodox: 7 sacraments structure the entire Christian life; God is actually present in them (transubstantiation). Counter — Protestant: only 2 sacraments; faith (Sola Fide) matters more than ritual. Conclusion: the answer depends entirely on the denomination. Use specific sacraments as examples.</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">2. Compare the understanding of God in Christianity and one other religion you have studied.</div>
+      <div class="ep-hint">Hint: Christian God = Trinitarian (Father, Son, Holy Spirit) — a form of monotheism but with internal relationship. Compare to Jewish God (no Trinity, no Son; absolute unity) or Islamic God (Allah — no Trinity, Jesus only a prophet). Focus on: how the nature of God shapes worship, prayer, and ethical life in each tradition.</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">3. Examine the significance of the Great Schism (1054) and the Protestant Reformation (1517) for the development of Christianity as a world religion.</div>
+      <div class="ep-hint">Hint: Great Schism → Catholic + Orthodox split; claims of "true" Christianity multiply. Reformation → Protestantism emerges; personal Bible interpretation; colonial spread through multiple Protestant + Catholic missions. Connect to how internal diversity actually accelerated global spread — different versions for different cultures.</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">4. "Christianity's ethical teachings are more important than its ritual practices." Discuss.</div>
+      <div class="ep-hint">Hint: Ethical teachings — love God, love neighbour; 10 Commandments; Beatitudes; Agape. Catholic ethics: very specific (no abortion, no contraception, etc.). Protestant emphasis on personal ethics over ritual. Counter: Catholic/Orthodox — ritual (Mass, sacraments) IS the ethical life; you cannot separate them. Use specific examples from at least 2 traditions.</div>
+    </div>
+
+    <div class="essay-prompt">
+      <div class="ep-q">5. Discuss the role of the Virgin Mary in Catholic Christianity. Is her veneration consistent with Christian monotheism?</div>
+      <div class="ep-hint">Hint: Mary's roles — Theotokos (God-bearer), Immaculate Conception, Assumption into Heaven, intercessor. Catholics: pray THROUGH Mary, not TO her — she intercedes with Jesus. Protestant objection: prayer to/through Mary borders on idolatry; no scriptural basis for Immaculate Conception. Orthodox: less veneration than Catholic. Use the distinction between latria (worship — God only) and dulia/hyperdulia (veneration — saints/Mary).</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ JAVASCRIPT ══ -->
+<script>
+// ── TAB NAVIGATION
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ── FLASHCARDS
+const cards = [
+  { term: "Trinity", hint: "Core Doctrine", def: "The three-fold nature of God as Father, Son (Jesus Christ), and Holy Spirit — a Christian form of monotheism. One God in three persons.", note: "IB: The Trinity is what makes Christian monotheism distinctive — compare to Judaism and Islam, which reject the Trinity." },
+  { term: "Incarnation", hint: "Christology", def: "Jesus Christ as God in the flesh — God becoming fully human without ceasing to be God. The basis of the Sacraments and all Christian theology.", note: "Council of Chalcedon (451 CE): Jesus is BOTH human AND divine — fully both, not a mixture." },
+  { term: "Atonement", hint: "Salvation Theology", def: "Reconciliation between God and humanity through Jesus Christ's death on the cross — he 'atones for' (makes right) the separation caused by sin.", note: "Closely linked to Redemption. The Cross is the central event of Christian salvation history." },
+  { term: "Resurrection", hint: "Core Doctrine — Most Universal", def: "Jesus Christ's rise from the dead after the crucifixion, and the promise of resurrection for all believers. THE unifying doctrine of ALL Christian sects.", note: "Paul: 'If Christ is not raised, your faith is futile' (1 Cor 15:17). Without the Resurrection, Christianity collapses." },
+  { term: "Original Sin", hint: "Human Condition", def: "The doctrine that Adam and Eve's disobedience (the Fall) introduced sin into humanity and separated humans from God. All humans are born in this fallen state.", note: "IB: Judaism and Islam have NO concept of Original Sin. Christianity is unique in requiring a divine saviour to fix a pre-existing human flaw." },
+  { term: "Salvation", hint: "Soteriology", def: "All believers will be saved and live in God's presence through Jesus Christ — restored to the union with God that Original Sin broke.", note: "Catholic: faith + sacraments + works. Protestant: faith alone (Sola Fide). Orthodox: theosis — transformation into God's likeness." },
+  { term: "Grace", hint: "Gift Theology", def: "God's unearned love for humanity and the means to salvation through faith in Jesus Christ — a gift, not a reward for good behaviour.", note: "Protestant Reformation key theme: Sola Gratia (grace alone). Contrast with Jewish covenant — which requires human obligation in return." },
+  { term: "Agape", hint: "Divine Love", def: "The unconditional divine love of God (as Jesus Christ) for humanity — shown through his teachings, miracles, willingness to sacrifice himself, acceptance of everyone.", note: "Distinct from Eros (romantic love) and Philia (friendship love). The love that drives God to send Jesus (John 3:16)." },
+  { term: "Logos", hint: "Theology of the Word", def: "The Word of God incarnate in the flesh as Jesus Christ (John 1:1 — 'In the beginning was the Word'). Usually shown in red or blue in NT texts.", note: "Greek: logos = word/reason. The Gospel of John opens with this concept — Jesus is the divine Reason/Word made flesh." },
+  { term: "Transubstantiation", hint: "Catholic Eucharist", def: "The Catholic doctrine that bread and wine ACTUALLY BECOME the body and blood of Jesus Christ at the Eucharist — not symbolically, but literally.", note: "IB: Protestants view Eucharist as a memorial meal. This is one of the biggest Catholic/Protestant divides. Source B explanation: follows logically from the Incarnation." },
+  { term: "Sacrament", hint: "Ritual", def: "Protestant: outward sign of God's blessing. Catholic/Orthodox: actual presence of God/Jesus Christ. Catholic sacraments: 7. Protestant: usually 2 (Baptism and Communion).", note: "This definitional difference is the root of the Catholic-Protestant divide on worship." },
+  { term: "Purgatory", hint: "Catholic Eschatology Only", def: "A place between Heaven and Hell where the not-yet-perfect are purified before entering Heaven — Catholic belief ONLY. Protestants reject it entirely.", note: "IB TRAP: Never say 'all Christians believe in purgatory.' It is specifically Catholic (and similar in Orthodox but with different theology)." },
+  { term: "The Great Schism (1054)", hint: "History", def: "The split between the Roman Catholic Church (Pope in Rome) and Eastern Orthodox Church (Patriarch in Constantinople) — about political power as much as theology.", note: "Both sides mutually excommunicated each other. Both claim to be the 'true faith.' Real cause: Pope vs. Caesaropapist power struggle." },
+  { term: "Protestant Reformation (1517)", hint: "History", def: "Martin Luther's theological revolt against the Roman Catholic Church — birth of Protestantism. Key principles: Sola Scriptura, Sola Fide, Sola Gratia.", note: "Permanently fragmented Western Christianity. Within 100 years: dozens of Protestant denominations. Catholic Church lost its monopoly." },
+  { term: "Council of Nicaea (325 CE)", hint: "History", def: "First council of the Church, called by Emperor Constantine. Defined the nature of Christ; separated Easter from Passover; established the Nicene Creed and Christian orthodoxy.", note: "This is where 'heresy' becomes a defined category. The Church becomes doctrinal institution, not just a community." },
+  { term: "Irenaeus", hint: "Early Church Father (100–200 CE)", def: "2nd century bishop who wrote in favour of 4 Gospels, established a creed, created apostolic succession of teachers, founded origins of the Roman Church (Catholics), and defeated Gnosticism.", note: "Irenaeus is the architect of institutional Christianity — well before the Catholic/Orthodox split. He made Christianity recognizable." },
+  { term: "Chrismation", hint: "Orthodox Sacrament — Key Difference", def: "The Orthodox equivalent of Catholic Confirmation — giving of the Holy Spirit. KEY DIFFERENCE: done immediately after Baptism, even for infants (not at age 13–14 as in Catholicism).", note: "IB: This is one of the most testable Catholic vs Orthodox distinctions. Chrismation = immediately after Baptism in Orthodoxy." },
+  { term: "Edict of Milan (313 CE)", hint: "History", def: "Issued by Emperor Constantine — mandated kind treatment of Christians. Often cited as beginning of Christianity's rise to imperial power. Driven in part by St. Helena (Constantine's mother).", note: "Note: St. Helena is sometimes overlooked in history — your notes specifically call her out. Good IB detail." },
+  { term: "Sin", hint: "Ethics", def: "Act(s) of rebellion against the will of God/Jesus Christ. Original Sin = the inherited condition from the Fall. Personal sin = individual acts of disobedience.", note: "IB: Judaism does not have Original Sin — humans are born neutral and choose. Islam also has no original sin — humans are born pure (fitra)." },
+  { term: "Redemption", hint: "Salvation Theology", def: "Jesus Christ as redeemer through his death on the cross — humanity is 'bought back' (redeemed) from the consequences of sin.", note: "Etymology: Latin redimere = to buy back. The Crucifixion is the price paid. Closely linked to Atonement." },
+  { term: "Reconciliation / Penance", hint: "Catholic Sacrament 4", def: "Catholic Sacrament of Confession — obtaining pardon from God through a priest for sins. Required before receiving Communion. Allows restoration to full communion with the Church.", note: "IB: Orthodox Confession is more optional — not a sin if you don't do it. Protestant: confess directly to God, no priest needed." },
+  { term: "Gnosticism", hint: "Early Heresy (Defeated)", def: "Early religious movement believing only a few are saved, obsessed with 'anorexia' of the flesh — spirit is good, matter is evil. Defeated largely through Irenaeus' work.", note: "Gnosticism = 'knowledge' (gnosis). They believed secret knowledge saves you, not faith. Irenaeus wrote 'Against Heresies' to defeat it." },
+  { term: "Easter Sunday", hint: "Most Important Holy Day", def: "The celebration of Jesus' Resurrection from the dead. THE most theologically important Christian holiday — the Resurrection is the core of faith.", note: "IB: Easter is MORE important than Christmas theologically. Christmas is culturally dominant but without Easter, it has no meaning." }
+];
+
+let currentCard = 0;
+let cardOrder = cards.map((_, i) => i);
+
+function renderCard() {
+  const c = cards[cardOrder[currentCard]];
+  document.getElementById('cardHint').textContent = c.hint;
+  document.getElementById('cardTerm').textContent = c.term;
+  document.getElementById('cardDef').textContent = c.def;
+  document.getElementById('cardNote').textContent = c.note;
+  document.getElementById('mainCard').classList.remove('flipped');
+  document.getElementById('cardCounter').textContent = `Card ${currentCard + 1} of ${cards.length}`;
+  document.getElementById('progressFill').style.width = ((currentCard + 1) / cards.length * 100) + '%';
+}
+
+function flipCard() { document.getElementById('mainCard').classList.toggle('flipped'); }
+function nextCard() { currentCard = (currentCard + 1) % cardOrder.length; renderCard(); }
+function prevCard() { currentCard = (currentCard - 1 + cardOrder.length) % cardOrder.length; renderCard(); }
+function resetCards() { currentCard = 0; cardOrder = cards.map((_, i) => i); renderCard(); }
+function shuffleCards() {
+  for (let i = cardOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cardOrder[i], cardOrder[j]] = [cardOrder[j], cardOrder[i]];
+  }
+  currentCard = 0;
+  renderCard();
+}
+
+document.addEventListener('keydown', e => {
+  const active = document.getElementById('tab-flashcards');
+  if (!active.classList.contains('active')) return;
+  if (e.key === 'ArrowRight') nextCard();
+  else if (e.key === 'ArrowLeft') prevCard();
+  else if (e.key === ' ') { e.preventDefault(); flipCard(); }
+});
+
+renderCard();
+
+// ── NOTES
+function toggleNote(h) {
+  h.classList.toggle('open');
+  h.nextElementSibling.classList.toggle('open');
+}
+
+// ── CHARTS
+function showChart(id) {
+  document.querySelectorAll('.chart-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.chart-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('chart-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ── ESSAYS
+function toggleEssay(h) {
+  const body = h.nextElementSibling;
+  const toggle = h.querySelector('.essay-toggle');
+  body.classList.toggle('open');
+  toggle.textContent = body.classList.contains('open') ? 'Collapse ▲' : 'Expand ▼';
+}
+
+// ── ANSWERS
+function toggleAnswer(btn) {
+  const answer = btn.closest('.answer-toggle').nextElementSibling;
+  answer.classList.toggle('open');
+  btn.textContent = answer.classList.contains('open') ? 'Hide Answer' : 'Reveal Model Answer';
+}
+</script>
+</body>
+</html>

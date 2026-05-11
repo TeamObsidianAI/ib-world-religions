@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IB World Religions — Jainism Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1A5C5C;
+    --teal-dark: #0F3B3B;
+    --amber: #C97B22;
+    --gold: #D4A843;
+    --ivory: #F4F9F4;
+    --parchment: #E2F0E2;
+    --charcoal: #1C2B1C;
+    --muted: #4A6B4A;
+    --accent: #E8A830;
+    --white: #FAFFFE;
+    --shadow: rgba(28,43,28,0.16);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Crimson Text', Georgia, serif;
+    background: var(--ivory);
+    color: var(--charcoal);
+    min-height: 100vh;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: linear-gradient(135deg, var(--teal-dark) 0%, #0D4040 55%, #062828 100%);
+    color: var(--ivory);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      60deg,
+      transparent,
+      transparent 28px,
+      rgba(212,168,67,0.07) 28px,
+      rgba(212,168,67,0.07) 30px
+    );
+    pointer-events: none;
+  }
+  .header-symbol {
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.9;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.05em;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    color: #F0FAF0;
+  }
+  header h1 span { color: var(--gold); }
+  header p {
+    margin-top: 0.6rem;
+    font-style: italic;
+    color: rgba(240,250,240,0.72);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .gold-bar {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--amber), var(--gold), transparent);
+    margin-top: 1.5rem;
+    opacity: 0.7;
+  }
+
+  /* ===== SITE-WIDE NAV ===== */
+  .site-nav { background: #062828; padding: 0.5rem 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+  .site-nav a { color: rgba(212,168,67,0.85); text-decoration: none; font-family: 'Crimson Text', serif; font-size: 0.88rem; padding: 0.25rem 0.6rem; border-radius: 4px; transition: background 0.2s; }
+  .site-nav a:hover { background: rgba(255,255,255,0.12); }
+  .site-nav a.current { background: var(--accent); color: #062828; font-weight: 600; }
+  .site-nav .nav-label { color: rgba(212,168,67,0.55); font-size: 0.8rem; margin-right: 0.3rem; }
+
+  /* ===== NAV TABS ===== */
+  nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--parchment);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  nav button {
+    font-family: 'Crimson Text', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.9rem 1.5rem;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s;
+    border-bottom: 3px solid transparent;
+  }
+  nav button:hover { color: var(--amber); }
+  nav button.active {
+    color: var(--teal);
+    border-bottom: 3px solid var(--teal);
+  }
+  .home-link {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.88rem;
+    color: var(--muted);
+    padding: 0.9rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    margin-left: auto;
+  }
+  .home-link:hover { color: var(--teal); }
+
+  /* ===== MAIN ===== */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--teal);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .section-title span {
+    color: var(--amber);
+    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 400;
+    display: block;
+    font-family: 'Crimson Text', serif;
+    margin-top: 0.2rem;
+  }
+
+  /* ===== FLASHCARDS ===== */
+  .flashcard-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .flashcard-controls button {
+    font-family: 'Crimson Text', serif;
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+    border: 2px solid var(--teal);
+    background: transparent;
+    color: var(--teal);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+  }
+  .flashcard-controls button:hover, .flashcard-controls button.active {
+    background: var(--teal);
+    color: var(--ivory);
+  }
+  .flashcard-count {
+    color: var(--muted);
+    font-style: italic;
+    font-size: 1rem;
+    margin-left: auto;
+  }
+  .flashcard-arena {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .card-wrapper {
+    width: 100%;
+    max-width: 680px;
+    height: 260px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  .card-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+  }
+  .card-wrapper.flipped .card-inner { transform: rotateY(180deg); }
+  .card-face {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+  .card-front {
+    background: linear-gradient(135deg, var(--teal-dark), #082E2E);
+    color: var(--ivory);
+    box-shadow: 0 8px 32px rgba(15,59,59,0.4);
+  }
+  .card-front .card-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .card-front .card-term {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #F0FAF0;
+    line-height: 1.2;
+  }
+  .card-front .card-hint {
+    margin-top: 1rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(240,250,240,0.55);
+  }
+  .card-back {
+    background: var(--parchment);
+    color: var(--charcoal);
+    transform: rotateY(180deg);
+    box-shadow: 0 8px 32px var(--shadow);
+    border: 2px solid var(--gold);
+  }
+  .card-back .card-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.8rem;
+  }
+  .card-back .card-def {
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+  .card-back .card-note {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--teal);
+    border-top: 1px solid var(--gold);
+    padding-top: 0.6rem;
+    width: 100%;
+  }
+  .card-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .card-nav button {
+    font-size: 1.5rem;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--teal);
+    background: var(--white);
+    color: var(--teal);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-nav button:hover { background: var(--teal); color: var(--ivory); }
+  .card-nav .card-progress {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--muted);
+    min-width: 80px;
+    text-align: center;
+  }
+  .all-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .mini-card {
+    background: var(--white);
+    border: 1.5px solid var(--parchment);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    border-left: 4px solid var(--teal);
+    transition: box-shadow 0.2s;
+  }
+  .mini-card:hover { box-shadow: 0 4px 16px var(--shadow); }
+  .mini-card .term {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .mini-card .def { font-size: 0.95rem; color: var(--charcoal); line-height: 1.5; }
+  .mini-card .note { font-size: 0.82rem; font-style: italic; color: var(--amber); margin-top: 0.3rem; }
+
+  /* ===== NOTES ===== */
+  .note-block {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1.5px solid var(--parchment);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(28,43,28,0.06);
+  }
+  .note-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--parchment), var(--white));
+    border-bottom: 1px solid transparent;
+    transition: background 0.2s;
+    user-select: none;
+  }
+  .note-header:hover { background: linear-gradient(90deg, #C8E6C8, var(--parchment)); }
+  .note-header.open { border-bottom: 1px solid var(--parchment); }
+  .note-header-left { display: flex; align-items: center; gap: 0.8rem; }
+  .note-header-icon {
+    width: 34px; height: 34px;
+    background: var(--teal);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    color: var(--ivory);
+    flex-shrink: 0;
+  }
+  .note-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--teal);
+    font-weight: 700;
+  }
+  .note-chevron { font-size: 1rem; color: var(--muted); transition: transform 0.3s; }
+  .note-header.open .note-chevron { transform: rotate(180deg); }
+  .note-body { display: none; padding: 1.5rem; }
+  .note-body.open { display: block; }
+  .note-body p { margin-bottom: 0.8rem; font-size: 1rem; }
+  .note-body h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--amber);
+    margin: 1.2rem 0 0.5rem;
+    border-left: 3px solid var(--gold);
+    padding-left: 0.6rem;
+  }
+  .note-body ul { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+  .note-body ul li { margin-bottom: 0.4rem; font-size: 1rem; }
+  .highlight {
+    background: linear-gradient(90deg, rgba(212,168,67,0.15), transparent);
+    border-left: 3px solid var(--gold);
+    padding: 0.6rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 0.8rem 0;
+    font-style: italic;
+  }
+  .star-note {
+    background: rgba(26,92,92,0.07);
+    border-left: 3px solid var(--teal);
+    padding: 0.6rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 0.8rem 0;
+  }
+  .star-note::before { content: "★ "; color: var(--teal); font-size: 0.9rem; }
+  .tag {
+    display: inline-block;
+    background: var(--teal);
+    color: var(--ivory);
+    font-size: 0.75rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 3px;
+    margin-right: 0.3rem;
+    font-family: 'Crimson Text', serif;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+  }
+  .tag.amber { background: var(--amber); }
+  .tag.gold { background: var(--gold); color: var(--charcoal); }
+
+  /* ===== CHARTS ===== */
+  .chart-tabs {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1.8rem;
+    flex-wrap: wrap;
+  }
+  .chart-tab-btn {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    border: 2px solid var(--parchment);
+    background: var(--white);
+    border-radius: 20px;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .chart-tab-btn:hover { border-color: var(--amber); color: var(--amber); }
+  .chart-tab-btn.active { background: var(--teal); border-color: var(--teal); color: var(--ivory); }
+  .chart-panel { display: none; }
+  .chart-panel.active { display: block; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.97rem;
+    box-shadow: 0 2px 12px var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  thead th {
+    background: var(--teal);
+    color: var(--ivory);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.9rem 1.1rem;
+    text-align: left;
+  }
+  tbody tr:nth-child(even) { background: var(--parchment); }
+  tbody tr:nth-child(odd) { background: var(--white); }
+  tbody td {
+    padding: 0.75rem 1.1rem;
+    border-bottom: 1px solid rgba(226,240,226,0.8);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--teal);
+    font-family: 'Playfair Display', serif;
+  }
+  .chart-note {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-top: 0.8rem;
+    padding: 0.5rem 1rem;
+    border-left: 3px solid var(--gold);
+    background: var(--parchment);
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ===== ESSAYS ===== */
+  .essay-card {
+    background: var(--white);
+    border: 1.5px solid var(--parchment);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(28,43,28,0.06);
+  }
+  .essay-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    background: linear-gradient(90deg, rgba(26,92,92,0.06), var(--white));
+    border-bottom: 1px solid transparent;
+    user-select: none;
+    gap: 1rem;
+  }
+  .essay-header:hover { background: linear-gradient(90deg, rgba(26,92,92,0.11), var(--white)); }
+  .essay-header.open { border-bottom: 1px solid var(--parchment); }
+  .essay-q {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.4;
+    flex: 1;
+  }
+  .essay-q strong { color: var(--teal); font-style: normal; }
+  .essay-body { display: none; padding: 1.5rem; }
+  .essay-body.open { display: block; }
+  .outline-step { display: flex; gap: 1rem; margin-bottom: 1.2rem; align-items: flex-start; }
+  .step-num {
+    min-width: 36px; height: 36px;
+    background: var(--teal);
+    color: var(--ivory);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .step-content h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--amber);
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+  }
+  .step-content ul { padding-left: 1.3rem; }
+  .step-content ul li { margin-bottom: 0.3rem; font-size: 0.97rem; }
+  .key-terms-box {
+    background: var(--parchment);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    margin-top: 1rem;
+    font-size: 0.92rem;
+  }
+  .key-terms-box strong { color: var(--teal); }
+
+  /* ===== PAPERS ===== */
+  .paper-selector { display: flex; gap: 1rem; margin-bottom: 2rem; }
+  .paper-btn {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--teal);
+    background: transparent;
+    color: var(--teal);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .paper-btn:hover, .paper-btn.active { background: var(--teal); color: var(--ivory); }
+  .paper-section { display: none; }
+  .paper-section.active { display: block; }
+  .paper-info {
+    background: linear-gradient(135deg, var(--parchment), var(--ivory));
+    border: 1.5px solid var(--gold);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.97rem;
+  }
+  .paper-info h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--teal);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .paper-info ul { padding-left: 1.3rem; }
+  .paper-info ul li { margin-bottom: 0.3rem; }
+  .source-box {
+    background: var(--white);
+    border: 1.5px solid var(--parchment);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    position: relative;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+  .source-box::before {
+    content: 'SOURCE';
+    position: absolute;
+    top: -0.6rem; left: 1.2rem;
+    background: var(--amber);
+    color: var(--ivory);
+    font-size: 0.7rem;
+    font-family: 'Crimson Text', serif;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    padding: 0.1rem 0.6rem;
+    border-radius: 3px;
+  }
+  .question-block {
+    background: var(--white);
+    border-left: 4px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(28,43,28,0.05);
+  }
+  .q-header { display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 0.6rem; }
+  .q-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--teal);
+    white-space: nowrap;
+  }
+  .q-marks {
+    background: var(--gold);
+    color: var(--charcoal);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.1rem 0.5rem;
+    border-radius: 3px;
+    font-family: 'Crimson Text', serif;
+    white-space: nowrap;
+  }
+  .q-text { font-size: 1rem; color: var(--charcoal); line-height: 1.6; }
+  .answer-toggle { margin-top: 0.8rem; }
+  .answer-toggle button {
+    font-family: 'Crimson Text', serif;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border: 1.5px solid var(--parchment);
+    background: var(--parchment);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .answer-toggle button:hover { border-color: var(--amber); color: var(--amber); }
+  .model-answer {
+    display: none;
+    margin-top: 0.8rem;
+    background: rgba(212,168,67,0.08);
+    border: 1px solid rgba(212,168,67,0.3);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+  .model-answer.open { display: block; }
+  .model-answer strong { color: var(--teal); }
+
+  /* ===== COMPARE BANNER ===== */
+  .compare-banner {
+    background: linear-gradient(135deg, var(--teal-dark), #0D4040);
+    color: var(--ivory);
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .compare-banner span { font-size: 1.5rem; }
+  .compare-banner p { font-size: 0.97rem; color: rgba(240,250,240,0.85); line-height: 1.5; }
+  .compare-banner p strong { color: var(--gold); }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--parchment);
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.8rem; }
+    nav button { padding: 0.7rem 0.8rem; font-size: 0.9rem; }
+    main { padding: 1.5rem 1rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <span class="nav-label">IB World Religions:</span>
+  <a href="Sanatana_Dharma_Study_Guide.html">Sanatana Dharma</a>
+  <a href="Jainism_Study_Guide.html" class="current">Jainism</a>
+  <a href="Buddhism_Study_Guide.html">Buddhism</a>
+  <a href="Sikhism_Study_Guide.html">Sikhism</a>
+  <a href="Taoism_Study_Guide.html">Taoism</a>
+  <a href="Judaism_Study_Guide.html">Judaism</a>
+  <a href="Christianity_Study_Guide.html">Christianity</a>
+  <a href="Islam_Study_Guide.html">Islam</a>
+</nav>
+
+<header>
+  <div class="header-symbol">🕊</div>
+  <h1>IB World Religions<br><span>Jainism</span> Study Guide</h1>
+  <p>Comprehensive Exam Preparation · Paper 1 &amp; Paper 2</p>
+  <div class="gold-bar"></div>
+</header>
+
+<nav>
+  <button class="active" onclick="showTab('flashcards', this)"><span>🃏</span> Flashcards</button>
+  <button onclick="showTab('notes', this)"><span>📖</span> Summary Notes</button>
+  <button onclick="showTab('charts', this)"><span>📊</span> Comparison Charts</button>
+  <button onclick="showTab('essays', this)"><span>✍️</span> Essay Outlines</button>
+  <button onclick="showTab('papers', this)"><span>📝</span> Practice Papers</button>
+</nav>
+
+<main>
+
+<!-- ==================== FLASHCARDS ==================== -->
+<div id="flashcards" class="tab-content active">
+  <div class="section-title">Key Terms Flashcards
+    <span>Click a card to flip · Arrow keys or buttons to navigate · Space to flip</span>
+  </div>
+
+  <div class="flashcard-controls">
+    <button id="btnFlip" class="active" onclick="setMode('flip', this)">🃏 Flip Mode</button>
+    <button id="btnGrid" onclick="setMode('grid', this)">📋 All Terms</button>
+    <button onclick="shuffleCards()">🔀 Shuffle</button>
+    <span class="flashcard-count" id="cardCountDisplay">Card 1 of 17</span>
+  </div>
+
+  <div id="flipMode" class="flashcard-arena">
+    <div class="card-wrapper" id="mainCard" onclick="flipCard()">
+      <div class="card-inner" id="cardInner">
+        <div class="card-face card-front">
+          <div class="card-label">Term — Click to reveal definition</div>
+          <div class="card-term" id="frontTerm">Mahavira</div>
+          <div class="card-hint" id="frontHint">The founder of Jainism</div>
+        </div>
+        <div class="card-face card-back">
+          <div class="card-label">Definition</div>
+          <div class="card-def" id="backDef"></div>
+          <div class="card-note" id="backNote" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-nav">
+      <button onclick="prevCard()">←</button>
+      <div class="card-progress" id="cardProgress">1 / 17</div>
+      <button onclick="nextCard()">→</button>
+    </div>
+  </div>
+
+  <div id="gridMode" style="display:none">
+    <div class="all-cards-grid" id="allCardsGrid"></div>
+  </div>
+</div>
+
+<!-- ==================== SUMMARY NOTES ==================== -->
+<div id="notes" class="tab-content">
+  <div class="section-title">Summary Notes
+    <span>Click any section to expand</span>
+  </div>
+
+  <div class="compare-banner">
+    <span>⚡</span>
+    <p><strong>IB Exam Tip:</strong> Jainism is often compared to Sanatana Dharma in Paper 2. Key contrasts: Jainism rejects the Vedas, the caste system, and the need for god(s). Both share belief in karma, samsara, ahimsa, and moksha — but their definitions and paths differ significantly.</p>
+  </div>
+
+  <!-- Essential Facts -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">★</div>
+        <h3>Essential Test Facts</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <div class="star-note">Jainism is described as a <strong>"heresy" of Hinduism</strong> — it denied the validity of the Vedas as inspired scripture and rejected the caste system.</div>
+      <div class="star-note">Jainism does <strong>not believe in the need for god(s)</strong>. God(s) are liberated souls — perfect beings who have destroyed all karma. There is no creator, preserver, or destroyer god. Jainism is <strong>non-theistic</strong>.</div>
+      <div class="star-note">Prayer and worship are considered <strong>useless</strong> in Jainism — only YOU alone can help you attain Moksha. You should focus on how to be a Jina.</div>
+      <div class="star-note">The ultimate goal of Jains is to become a <strong>Jina</strong> — one who has conquered the forces of life (karma, ego, greed, deceit, anger).</div>
+      <div class="star-note">Jainism's cosmology: over very long periods of time, truth is discovered, fades, and is lost, and is found again. The universe has <strong>no beginning or ending</strong>.</div>
+    </div>
+  </div>
+
+  <!-- Origins & Context -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">🏛</div>
+        <h3>Origins &amp; Context</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <h4>Jainism as a "Heresy" of Sanatana Dharma</h4>
+      <ul>
+        <li>Rejected the Vedas as divinely inspired scripture</li>
+        <li>Rejected the religious implications of the caste system</li>
+        <li>Rejected the need for god(s)</li>
+        <li>Yet shares key concepts with Sanatana Dharma: karma, samsara, ahimsa, moksha — with very different definitions</li>
+      </ul>
+      <h4>Axial Age Context</h4>
+      <p>Mahavira (599–527 BCE) was a contemporary of Siddhartha (the Buddha), Confucius, Lao-tzu, Jeremiah, Ezekiel, and the Greek philosophers — all part of the "Axial Age," a remarkable period of simultaneous spiritual awakening worldwide.</p>
+    </div>
+  </div>
+
+  <!-- Life of Mahavira -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">👑</div>
+        <h3>The Life of Mahavira</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <ul>
+        <li><strong>Dates:</strong> 599–527 BCE, or died as late as 467 BCE</li>
+        <li><strong>Background:</strong> Kshatriyan prince — similar to the story of the historical Buddha (Siddhartha): wealthy background, gave it all up to become an extreme ascetic</li>
+        <li>Orthodox Jains believe Mahavira was the <strong>24th Tirthankara</strong> — the last in a long line of 24 founders. The 23 before him were also Tirthankaras.</li>
+        <li>A <strong>Tirthankara</strong> = "bridge builder" — one who forges a bridge between life and moksha</li>
+        <li>He taught that one way to achieve release is to practice <strong>ahimsa</strong></li>
+        <li>He avoided all attachment to people and things</li>
+        <li><strong>Purposely tortured himself</strong> and after 12 years attained <strong>kevala</strong> (pure consciousness)</li>
+        <li>Became known as the <strong>Jina</strong> — the conqueror — because he came to know his true self</li>
+        <li>Lived for another 30 years after achieving kevala</li>
+        <li>Preached in local dialects (<strong>Prakrit</strong>) rather than Sanskrit — this helped attract followers AND rejected Brahmin control of Sanskrit rituals and the caste system</li>
+        <li>Also rejected the Brahmin caste system and their control of religious authority</li>
+      </ul>
+      <div class="highlight">Mahavira's choice to preach in Prakrit (not Sanskrit) was both a religious and political act — it democratized access to spiritual teaching by bypassing the Brahmin monopoly on religious language.</div>
+    </div>
+  </div>
+
+  <!-- Human Condition -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">🔄</div>
+        <h3>The Human Condition</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <h4>1. What is the Human Condition?</h4>
+      <p>Jains believe humans are caught in <strong>samsara</strong> — the endless cycle of life, death, and rebirth — characterized by ignorance and suffering. The <strong>jiva</strong> (soul) is condemned to samsara and, as a result of collecting <strong>karma</strong> (material particles), is weighed down with <strong>ajiva</strong> (matter/flesh).</p>
+
+      <h4>2. Where Are We Going? (Eschatology)</h4>
+      <ul>
+        <li>To a favorable or unfavorable rebirth after death (based on karma)</li>
+        <li>To <strong>Moksha</strong> — liberation of the jiva from the ajiva</li>
+      </ul>
+
+      <h4>3. How Do We Get There?</h4>
+      <ul>
+        <li>Following the <strong>teachings of Mahavira</strong> and the <strong>Five Great Vows</strong>, including ahimsa</li>
+        <li>Practicing <strong>asceticism</strong></li>
+        <li>The purpose of giving up everything is to attain <strong>kevala</strong> — a pure, omniscient consciousness — which then leads to moksha</li>
+        <li>Practicing the <strong>12 Great Vows</strong> (for monks and nuns)</li>
+      </ul>
+
+      <h4>Key Jain Concepts of the Soul</h4>
+      <ul>
+        <li><strong>Jiva</strong> = the soul, the immortal essence — present in ALL living things, including insects, plants, bacteria, and viruses</li>
+        <li><strong>Ajiva</strong> = not the soul; represents matter like the body</li>
+        <li><strong>Karma</strong> in Jainism = actual physical particles attracted to the jiva by the jiva's actions (what we do, think, etc.). Karma is a MATERIAL pollution of the jiva — very different from Hindu karma.</li>
+        <li>The entire universe can be identified as either jiva or ajiva. Sentient beings are jiva encased in ajiva.</li>
+        <li>Souls can take on different physical forms — even rocks</li>
+        <li>Mahavira taught that karma is built up as a result of ANY activity — so the ideal life for a Jain might be to do as little as possible to escape karma</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Majority vs Minority -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">👥</div>
+        <h3>The Majority vs. The Minority (Monks)</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <h4>The Majority — Lay Jains</h4>
+      <ul>
+        <li>Non-ascetic; live in society</li>
+        <li>"Cannot afford" to leave their homes and accept the rigors of the ascetic life</li>
+        <li>Follow 3 of the 5 great vows (Ahimsa, no lying, no stealing)</li>
+        <li>Strict vegetarians / vegans</li>
+        <li>Work in commercial business (they're known as very trustworthy)</li>
+        <li>Often very wealthy</li>
+      </ul>
+      <h4>The Minority — Monks and Nuns</h4>
+      <ul>
+        <li>Become ascetic, celibate monks/nuns</li>
+        <li>About 6,000 monks/nuns in India total</li>
+        <li>Jains of <strong>any age</strong> can take "dhiksa" (monastic initiation)</li>
+        <li>Take <strong>all 12 great vows</strong></li>
+        <li>Since the way to release the jiva from the ajiva is through strict asceticism, the role of the monk/nun is necessary for attaining kevala and moksha</li>
+        <li><strong>Cremation</strong> to purify the soul</li>
+        <li><strong>Santhara</strong> (ritual suicide through fasting) is considered honorable — a final act of non-violence and detachment</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Five Anuvratas (Vows) -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">🙏</div>
+        <h3>The Five Anuvratas (Lesser Vows)</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <div class="highlight">The Anuvratas are the Lesser or Limited Vows — followed by the Majority (lay Jains). Monks follow the full/Great Vows (Mahavratas) which are stricter versions of the same five principles.</div>
+
+      <h4>1. Ahimsa — Non-Violence</h4>
+      <ul>
+        <li>Jains must do their best to avoid any intentional hurt to living things</li>
+        <li>In daily life, harm can be minimized by filtering water, not eating at night, etc.</li>
+        <li>Intentional hurt includes cases of <strong>avoidable negligence</strong></li>
+        <li>Jains must be vegetarians (at minimum)</li>
+        <li>Jains MAY use violence in self-defense or to protect someone from harm</li>
+        <li>If a Jain's work unavoidably causes harm (e.g. driving), they should minimize the harm, maintain complete detachment, and fast as penance</li>
+      </ul>
+
+      <h4>2. Satya — Truthfulness</h4>
+      <ul>
+        <li>Jains must always be truthful</li>
+        <li>Jains must always conduct business honestly</li>
+        <li>Dishonesty by NOT doing something is as bad as being actively dishonest</li>
+      </ul>
+
+      <h4>3. Asteya / Achaurya — Non-Stealing</h4>
+      <ul>
+        <li>Jains must not steal</li>
+        <li>Jains must not cheat</li>
+        <li>Jains must not avoid paying tax</li>
+      </ul>
+
+      <h4>4. Brahmacharya — Chastity</h4>
+      <ul>
+        <li>Jains must have sex only with the person they are married to</li>
+        <li>Jains must avoid sexual indulgence even with that person</li>
+        <li>Jains must give up sex, if possible, after the marriage has yielded a son</li>
+      </ul>
+
+      <h4>5. Aparigraha — Non-Possession</h4>
+      <ul>
+        <li>Jains must only possess what they need</li>
+        <li>Jains must live simply</li>
+        <li>Jains must not use surplus possessions to benefit others</li>
+        <li>Jains must not use too many resources</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Dietary Restrictions -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">🥗</div>
+        <h3>Dietary Restrictions (Ahimsa in Practice)</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <div class="star-note">All dietary restrictions flow from ahimsa — avoiding harm to living things. Every food restriction has a reason related to protecting jivas.</div>
+      <ul>
+        <li><strong>No root vegetables</strong> — digging up a root kills the plant (a living jiva)</li>
+        <li><strong>No eating after dark</strong> — lack of sunlight causes bacteria to flourish; also risk of accidentally eating insects</li>
+        <li><strong>No storing cooked food</strong> — bacteria grow in stored food</li>
+        <li><strong>Plants must be harvested in a way that does not hurt the plant</strong></li>
+        <li><strong>Dairy only if locally sourced</strong></li>
+        <li><strong>Honey is forbidden</strong> — harmful to bees</li>
+        <li><strong>Mushrooms and yeast are forbidden</strong> — may contain parasites and other organisms</li>
+        <li><strong>Onions, eggplants, and garlic are off limits</strong> — they produce lethargy, a putrid smell, and create sexual energy (counter to brahmacharya)</li>
+        <li>At minimum: strict vegetarians. Many are vegan.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Triple Gems -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">💎</div>
+        <h3>The Triple Gems of Jainism</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <p>Together, the Triple Gems provide the "bridge" for attaining liberation from the cycles of birth and death. <strong>They must all go together — one cannot exist without the other two.</strong></p>
+      <h4>1. Right Vision / Faith — Samyak Darshana</h4>
+      <p>Faith in the Tirthankaras; seeing the Truth clearly; distinguishing Jiva from Ajiva</p>
+
+      <h4>2. Right Knowledge — Samyak Jnana</h4>
+      <p>Complete understanding of Jain principles; deep comprehension of the self, the universe, and karma</p>
+
+      <h4>3. Right Conduct — Samyak Charitra</h4>
+      <p>Applies the other two gems to provide an ethical guideline — i.e., following the 5 great vows</p>
+
+      <div class="star-note">The Triple Gems are sometimes compared to the Buddhist Eightfold Path and the Hindu Trivarga. In Jainism, Right Conduct = the Anuvratas. All three gems must be present simultaneously for liberation to be possible.</div>
+    </div>
+  </div>
+
+  <!-- Sacred Texts -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">📜</div>
+        <h3>Sacred Texts — The Agamas</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <ul>
+        <li>The <strong>Agamas</strong> are Jain scripture / holy writings</li>
+        <li>Orthodox Jains believe the Agamas are actual sermons or teachings that Mahavira gave to his disciples</li>
+        <li>There is debate as to how many are genuine and authoritative</li>
+        <li>Not all have been translated</li>
+        <li>The Svetambara and Digambara sects disagree on which Agamas are authoritative</li>
+      </ul>
+      <div class="highlight">Unlike the Hindu Vedas (Shruti — divinely revealed), the Agamas are understood as the recorded teachings of a human being (Mahavira) — reflecting Jainism's rejection of divine authorship.</div>
+    </div>
+  </div>
+
+  <!-- Jain Sects -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">⚖️</div>
+        <h3>Jain Sects — Svetambara &amp; Digambara</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <p>By 80 BCE, Jains were divided over what was the true meaning of Jainism — they split into two main sects.</p>
+
+      <h4>Svetambara — "White Clad"</h4>
+      <ul>
+        <li>Based in <strong>northern India</strong></li>
+        <li>More <strong>liberal</strong> in their interpretations of Mahavira's teachings</li>
+        <li>White robes show they reject nudity as a requirement</li>
+        <li>Women ARE allowed into their religion, into monasteries, and they accept that <strong>women can find release / attain kevala/moksha</strong></li>
+        <li><strong>More popular</strong> of the two sects</li>
+        <li>Tirthankaras in temples are very <strong>elaborate and decorated</strong></li>
+      </ul>
+
+      <h4>Digambara — "Sky Clad"</h4>
+      <ul>
+        <li>Based mainly in <strong>southern India</strong></li>
+        <li>More <strong>conservative</strong></li>
+        <li>Total nudists are the most holy — to men (sky-clad monks practice full nudity)</li>
+        <li><strong>Women are seen as the greatest temptation</strong> and can NEVER achieve moksha</li>
+        <li>Tirthankaras in temples are <strong>unadorned and undecorated</strong></li>
+      </ul>
+      <div class="star-note">The key split between Svetambara and Digambara is primarily over: (1) the role of women, (2) the requirement of nudity, and (3) interpretation of Mahavira's teachings.</div>
+    </div>
+  </div>
+
+  <!-- Holy Days -->
+  <div class="note-block">
+    <div class="note-header" onclick="toggleNote(this)">
+      <div class="note-header-left">
+        <div class="note-header-icon">🎉</div>
+        <h3>Holy Days</h3>
+      </div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="note-body">
+      <h4>Paijusana (Paryushana)</h4>
+      <p>The main Jain holiday — Jains are encouraged to fast and live as monks during this period. A time of intense reflection, confession, and spiritual renewal.</p>
+
+      <h4>Diwali</h4>
+      <p>Jains celebrate Diwali as the liberation (moksha) of Mahavira — the day he achieved final release. Unlike the Hindu celebration (which honors Lakshmi and the return of Rama), Jain Diwali is specifically about Mahavira's liberation.</p>
+    </div>
+  </div>
+
+</div><!-- end notes -->
+
+<!-- ==================== COMPARISON CHARTS ==================== -->
+<div id="charts" class="tab-content">
+  <div class="section-title">Comparison Charts
+    <span>Select a chart to view</span>
+  </div>
+
+  <div class="chart-tabs">
+    <button class="chart-tab-btn active" onclick="showChart('sects', this)">Svetambara vs Digambara</button>
+    <button class="chart-tab-btn" onclick="showChart('jivajiva', this)">Jiva vs Ajiva</button>
+    <button class="chart-tab-btn" onclick="showChart('majority', this)">Majority vs Minority</button>
+    <button class="chart-tab-btn" onclick="showChart('vows', this)">Five Anuvratas</button>
+    <button class="chart-tab-btn" onclick="showChart('gems', this)">Triple Gems</button>
+    <button class="chart-tab-btn" onclick="showChart('vshind', this)">Jainism vs Sanatana Dharma</button>
+  </div>
+
+  <!-- Sects -->
+  <div id="chart-sects" class="chart-panel active">
+    <table>
+      <thead><tr><th>Feature</th><th>Svetambara ("White Clad")</th><th>Digambara ("Sky Clad")</th></tr></thead>
+      <tbody>
+        <tr><td>Geography</td><td>Northern India (more popular)</td><td>Southern India</td></tr>
+        <tr><td>Dress</td><td>White robes — nudity NOT required</td><td>Total nudity for most holy men — robes symbolize continued attachment</td></tr>
+        <tr><td>Women</td><td>Women accepted into monasteries; women CAN attain kevala/moksha</td><td>Women are the greatest temptation; women CANNOT attain moksha in a female body</td></tr>
+        <tr><td>Temples</td><td>Tirthankaras depicted with elaborate decoration</td><td>Tirthankaras are unadorned and undecorated</td></tr>
+        <tr><td>Interpretation</td><td>More liberal in interpreting Mahavira's teachings</td><td>More conservative; stricter interpretation</td></tr>
+        <tr><td>Mahavira's clothes</td><td>Believe Mahavira wore clothes</td><td>Believe Mahavira was naked — nudity is essential to moksha</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">The split occurred by 80 BCE over disagreements about the true meaning of Jainism — particularly the role of women and the necessity of nudity for moksha.</div>
+  </div>
+
+  <!-- Jiva vs Ajiva -->
+  <div id="chart-jivajiva" class="chart-panel">
+    <table>
+      <thead><tr><th>Feature</th><th>Jiva (Soul)</th><th>Ajiva (Non-Soul / Matter)</th></tr></thead>
+      <tbody>
+        <tr><td>Nature</td><td>Immortal, conscious, spiritual essence</td><td>Inert matter; unconscious; the physical world</td></tr>
+        <tr><td>Present in</td><td>ALL living things — humans, animals, insects, plants, bacteria, viruses, even rocks</td><td>Everything that is not conscious soul — the body, physical objects</td></tr>
+        <tr><td>Relationship to Karma</td><td>Karma (particles) attach to the jiva, weighing it down and binding it to samsara</td><td>Ajiva is the material through which karma attaches to the jiva</td></tr>
+        <tr><td>Goal</td><td>To be liberated (kevala/moksha) — pure, luminous, and free</td><td>To be separated from the jiva entirely at moksha</td></tr>
+        <tr><td>IB Importance</td><td>The reason ALL living things must not be harmed — they all have a jiva</td><td>The reason why total asceticism and detachment from material things is necessary</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">The jiva/ajiva distinction is the foundation of ALL Jain ethics. Because all living things have a jiva, harming any living thing (even accidentally) generates bad karma.</div>
+  </div>
+
+  <!-- Majority vs Minority -->
+  <div id="chart-majority" class="chart-panel">
+    <table>
+      <thead><tr><th>Feature</th><th>The Majority (Lay Jains)</th><th>The Minority (Monks/Nuns)</th></tr></thead>
+      <tbody>
+        <tr><td>Lifestyle</td><td>Non-ascetic; live in society with families</td><td>Ascetic, celibate; renounce family and worldly life</td></tr>
+        <tr><td>Vows taken</td><td>3 of the 5 Anuvratas (ahimsa, truthfulness, non-stealing)</td><td>All 12 Great Vows (Mahavratas — stricter version of all 5)</td></tr>
+        <tr><td>Diet</td><td>Strict vegetarians; many vegan; avoid the banned foods</td><td>Extreme dietary restrictions; some may fast unto death (Santhara)</td></tr>
+        <tr><td>Occupation</td><td>Commercial business — trustworthy, often very wealthy</td><td>Wandering ascetics; no fixed home; depend on charity</td></tr>
+        <tr><td>Goal</td><td>Accumulate positive karma; favorable rebirth</td><td>Eliminate ALL karma; attain kevala and moksha in this life</td></tr>
+        <tr><td>Number</td><td>The vast majority of ~4–5 million Jains worldwide</td><td>About 6,000 monks/nuns in India</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">Jains of any age can take "dhiksa" (monastic initiation). The wealth of the Jain lay community often supports the monk/nun community — a symbiotic relationship.</div>
+  </div>
+
+  <!-- Five Anuvratas -->
+  <div id="chart-vows" class="chart-panel">
+    <table>
+      <thead><tr><th>Vow</th><th>Sanskrit Name</th><th>Core Meaning</th><th>Key Application</th></tr></thead>
+      <tbody>
+        <tr><td>Non-Violence</td><td>Ahimsa</td><td>Avoid intentional harm to any living jiva</td><td>Vegetarianism, filtering water, not eating at night, avoiding occupations that harm others</td></tr>
+        <tr><td>Truthfulness</td><td>Satya</td><td>Always speak and act honestly</td><td>Honest business, honest speech — dishonesty by omission is as bad as active dishonesty</td></tr>
+        <tr><td>Non-Stealing</td><td>Asteya / Achaurya</td><td>Do not take what is not yours</td><td>No theft, no cheating, no tax avoidance</td></tr>
+        <tr><td>Chastity</td><td>Brahmacharya</td><td>Control sexual desire</td><td>Sex only within marriage; ideally give up sex after producing a son; monks = celibacy</td></tr>
+        <tr><td>Non-Possession</td><td>Aparigraha</td><td>Limit material possessions</td><td>Own only what you need; no hoarding of surplus; live simply</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">The Majority (lay Jains) follow 3 vows primarily. The Minority (monks/nuns) follow all 5 in their stricter Great Vow (Mahavrata) form. All five flow from the central principle of ahimsa.</div>
+  </div>
+
+  <!-- Triple Gems -->
+  <div id="chart-gems" class="chart-panel">
+    <table>
+      <thead><tr><th>Gem</th><th>Sanskrit Name</th><th>Meaning</th><th>In Practice</th></tr></thead>
+      <tbody>
+        <tr><td>Right Vision / Faith</td><td>Samyak Darshana</td><td>Faith in the Tirthankaras; seeing the Truth clearly; distinguishing Jiva from Ajiva</td><td>Accepting Jain cosmology; trusting Mahavira's teaching; seeing through the illusion of the material world</td></tr>
+        <tr><td>Right Knowledge</td><td>Samyak Jnana</td><td>Complete understanding of Jain principles; deep comprehension of the self, universe, and karma</td><td>Studying the Agamas; understanding jiva/ajiva; understanding how karma binds the soul</td></tr>
+        <tr><td>Right Conduct</td><td>Samyak Charitra</td><td>Applying the other two gems as an ethical guideline — following the 5 great vows</td><td>Living by the Anuvratas (lay) or Mahavratas (monks); practicing ahimsa in all actions</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">The Triple Gems must all exist simultaneously — none can exist without the other two. Together they provide the "bridge" (tirtha) for liberation. They are sometimes compared to the Buddhist "Three Jewels" (Buddha, Dharma, Sangha).</div>
+  </div>
+
+  <!-- Jainism vs Sanatana Dharma -->
+  <div id="chart-vshind" class="chart-panel">
+    <table>
+      <thead><tr><th>Concept</th><th>Sanatana Dharma (Hinduism)</th><th>Jainism</th></tr></thead>
+      <tbody>
+        <tr><td>God(s)</td><td>Henotheistic — one Brahman expressed through many deities. Devotion (Bhakti) is a key path to moksha.</td><td>Non-theistic — God(s) are liberated souls who have destroyed all karma. No creator, preserver, or destroyer god. Prayer is useless.</td></tr>
+        <tr><td>Sacred Texts</td><td>Vedas (Shruti — divinely revealed); Upanishads, BG, Law of Manu (Smriti)</td><td>Agamas — Mahavira's recorded sermons. Jainism rejects the Vedas entirely.</td></tr>
+        <tr><td>Karma</td><td>A moral law — actions generate karmic consequences in future lives. Karma is a cosmic force.</td><td>Karma is a MATERIAL substance — actual particles that attach to the jiva and weigh it down physically/spiritually.</td></tr>
+        <tr><td>Soul</td><td>Atman — individual soul, ultimately identical to Brahman (universal soul)</td><td>Jiva — individual soul, completely independent; does NOT merge with any universal soul at moksha. Jivas are eternal and infinite.</td></tr>
+        <tr><td>Moksha</td><td>Union/identity with Brahman — dissolution of individual self</td><td>Complete liberation of the jiva — the soul rises to the top of the universe in a state of pure, omniscient consciousness (kevala). Jiva remains individual.</td></tr>
+        <tr><td>Caste</td><td>Divinely ordered (Hymn to Purusha); based on karma; upheld by Law of Manu</td><td>Rejected entirely — Mahavira preached in Prakrit, not Sanskrit, to deliberately bypass Brahmin authority</td></tr>
+        <tr><td>Ahimsa</td><td>Important ethical principle; introduced through Upanishads; marks shift from sacrifice</td><td>The SUPREME principle — governs every aspect of life, diet, occupation, and thought. More extreme than Hindu ahimsa.</td></tr>
+        <tr><td>Paths to Liberation</td><td>Three Margas: Bhakti (devotion), Jnana (knowledge), Karma (ethical action) — all valid</td><td>The Triple Gems: Right Faith + Right Knowledge + Right Conduct. Asceticism is essential. All three must occur simultaneously.</td></tr>
+        <tr><td>Women</td><td>Per Law of Manu: restricted, 3 ashramas, traditionally cannot attain moksha. But Bhakti is open to all.</td><td>Divided: Svetambara allow women full religious life; Digambara say women cannot attain moksha in a female body.</td></tr>
+      </tbody>
+    </table>
+    <div class="chart-note">This comparison chart is ESSENTIAL for IB Paper 2 questions that ask you to compare two religions. The most common Jainism-Hinduism comparison themes are: karma, the soul, moksha, ahimsa, and the role of god(s).</div>
+  </div>
+
+</div><!-- end charts -->
+
+<!-- ==================== ESSAY OUTLINES ==================== -->
+<div id="essays" class="tab-content">
+  <div class="section-title">Paper 2 Essay Outlines
+    <span>Click any question to expand the full outline</span>
+  </div>
+
+  <!-- Essay 1 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"<strong>Examine the role of ahimsa</strong> in Jainism, with reference to both belief and practice."</div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="outline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Introduction</h4>
+          <ul>
+            <li>Define ahimsa: non-violence to all living things</li>
+            <li>Contextualise: ahimsa is the supreme principle of Jainism, flowing directly from the belief that ALL living things contain a jiva (soul)</li>
+            <li>Thesis: ahimsa is not merely an ethical rule but the foundational expression of Jain cosmology and soteriology (path to liberation)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Theological Basis for Ahimsa</h4>
+          <ul>
+            <li>All living things — including insects, plants, bacteria, and viruses — contain a <strong>jiva</strong> (soul)</li>
+            <li>Harming any jiva generates bad karma (actual physical particles) that attach to the soul and deepen its bondage in samsara</li>
+            <li>Therefore, ahimsa is not just compassion — it is the primary way to avoid accumulating karma</li>
+            <li>Mahavira's teaching: the ideal life might be to do as little as possible to avoid generating karma</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Ahimsa in Daily Practice (Majority / Lay Jains)</h4>
+          <ul>
+            <li>Strict vegetarianism / veganism</li>
+            <li>Extensive dietary restrictions: no root vegetables (kills plant), no eating after dark (bacteria/insects), no honey, no garlic/onions/eggplant, no mushrooms/yeast</li>
+            <li>Filtering water before drinking</li>
+            <li>Sweeping the path before walking (to avoid stepping on insects)</li>
+            <li>Avoiding occupations that cause harm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Ahimsa in Monastic Practice (Minority / Monks)</h4>
+          <ul>
+            <li>The 1st and most important of the 5 Great Vows (Mahavratas)</li>
+            <li>Even more extreme restrictions than lay Jains</li>
+            <li>Santhara (ritual fasting unto death) is the ultimate act of ahimsa — dying without harming anyone</li>
+            <li>Jain monks sweep the ground before them and filter water</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Ahimsa &amp; the Triple Gems</h4>
+          <ul>
+            <li>Ahimsa is the foundation of Right Conduct (Samyak Charitra) — the 3rd Triple Gem</li>
+            <li>Without Right Conduct (ahimsa), the other two gems (faith and knowledge) cannot produce liberation</li>
+            <li>Ahimsa links belief (jiva cosmology) to practice (the vows) — it is the bridge between Jain theology and Jain ethics</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>Conclusion</h4>
+          <ul>
+            <li>Ahimsa is the supreme ethical principle of Jainism and flows directly from core Jain cosmology (jiva in all things)</li>
+            <li>It governs diet, occupation, speech, thought, and even the manner of death</li>
+            <li>Without ahimsa, liberation (moksha) is impossible</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-terms-box"><strong>Key Terms:</strong> ahimsa, jiva, ajiva, karma, samsara, moksha, kevala, Anuvratas, Mahavratas, Triple Gems, Samyak Charitra, Santhara, Mahavira, Tirthankaras</div>
+    </div>
+  </div>
+
+  <!-- Essay 2 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"<strong>To what extent is Jainism best understood as a reaction to Sanatana Dharma</strong> rather than an independent religion?"</div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="outline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Introduction</h4>
+          <ul>
+            <li>Jainism has been called a "heresy" of Hinduism — it explicitly rejected key Hindu institutions</li>
+            <li>Yet it shares fundamental concepts: karma, samsara, moksha, ahimsa, asceticism</li>
+            <li>Thesis: Jainism is best understood as both a reaction to Sanatana Dharma AND an independent tradition with genuinely distinct theology</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Jainism AS a Reaction (Rejection of Sanatana Dharma)</h4>
+          <ul>
+            <li>Rejected the Vedas as divinely inspired — preached in Prakrit not Sanskrit, bypassing Brahmin authority</li>
+            <li>Rejected the caste system entirely</li>
+            <li>Rejected the need for god(s) — non-theistic; prayer is useless</li>
+            <li>Rejected Vedic animal sacrifice — extreme ahimsa as the counter-principle</li>
+            <li>Mahavira deliberately preached to all castes — a democratic spiritual democratization</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Jainism's INDEPENDENT Theology</h4>
+          <ul>
+            <li>Karma as material particles (not a moral force) — a distinctly Jain doctrine</li>
+            <li>Jiva does NOT merge with Brahman at moksha — remains individual and conscious (vs. Hindu Atman=Brahman)</li>
+            <li>Non-theistic cosmology: universe has no beginning or end, no creator god</li>
+            <li>The role of the Tirthankara is unique — 24 bridge-builders, not avatars of a deity</li>
+            <li>Triple Gems as the path — no Bhakti (devotion to god) route to liberation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Shared Concepts (Challenge to the "Reaction" Thesis)</h4>
+          <ul>
+            <li>Both use the terms karma, samsara, moksha, ahimsa — but with different meanings</li>
+            <li>Both emerged from the same cultural milieu (Indian subcontinent, Axial Age)</li>
+            <li>This may reflect shared cultural origins rather than conscious borrowing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Conclusion</h4>
+          <ul>
+            <li>Jainism is partially a reaction — its explicit rejections of Vedic authority, caste, and theism are clear responses to Sanatana Dharma</li>
+            <li>But its unique cosmology (jiva/ajiva, material karma, non-theism, independent soul at moksha) constitutes a genuinely independent theological system</li>
+            <li>It is better described as emerging in dialogue with — not merely against — Sanatana Dharma</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-terms-box"><strong>Key Terms:</strong> Jiva, Ajiva, karma, samsara, moksha, Tirthankaras, Mahavira, Agamas, ahimsa, Vedas, caste, Brahmin, Prakrit, Sanskrit, Triple Gems, henotheism, non-theism</div>
+    </div>
+  </div>
+
+  <!-- Essay 3 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"<strong>The Five Anuvratas are the most important element</strong> of Jain practice." How far do you agree?</div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="outline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Introduction</h4>
+          <ul>
+            <li>The Five Anuvratas (Lesser Vows) are the ethical code for lay Jains: ahimsa, satya, asteya, brahmacharya, aparigraha</li>
+            <li>Thesis: the Anuvratas are central to Jain practice, but must be understood alongside the Triple Gems — Right Conduct cannot exist without Right Faith and Right Knowledge</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Case FOR (Anuvratas as most important)</h4>
+          <ul>
+            <li>They are the practical application of all Jain belief — turning cosmology into daily life</li>
+            <li>Ahimsa (1st vow) is the supreme principle governing diet, occupation, speech, and thought</li>
+            <li>The Anuvratas govern the most visible, externally observable aspects of Jain identity</li>
+            <li>Even the Majority (lay Jains) who cannot follow the monastic path follow 3 of these vows</li>
+            <li>All 5 directly address the accumulation of karma — the fundamental problem in Jainism</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Case AGAINST / Qualifications</h4>
+          <ul>
+            <li>Per the Triple Gems, Right Conduct (Anuvratas) cannot function without Right Faith and Right Knowledge — they are only one of three essential elements</li>
+            <li>For the Minority (monks), the Mahavratas (stricter vows) + full asceticism are more important than the Anuvratas</li>
+            <li>Asceticism broadly, not just the 5 vows, is essential for liberation</li>
+            <li>The Agamas (scriptures) provide the foundational knowledge that makes the vows meaningful — without right knowledge, vows are empty</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Conclusion</h4>
+          <ul>
+            <li>The Anuvratas are the most practically important element for lay Jains — the daily expression of Jain faith</li>
+            <li>But theologically, they are the third of three interdependent Triple Gems — inseparable from Right Faith and Right Knowledge</li>
+            <li>"Most important" depends on your perspective: for practical daily life, yes; for liberation itself, no single element is sufficient alone</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-terms-box"><strong>Key Terms:</strong> Anuvratas, Mahavratas, ahimsa, satya, asteya, brahmacharya, aparigraha, Triple Gems, Samyak Charitra, Samyak Darshana, Samyak Jnana, karma, jiva, moksha, kevala, asceticism</div>
+    </div>
+  </div>
+
+  <!-- Essay 4 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"<strong>Examine the role of the Tirthankaras</strong> in Jain belief and practice."</div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="outline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Introduction</h4>
+          <ul>
+            <li>Define Tirthankara: "bridge builder" — a rare individual who has conquered samsara and leads others to liberation</li>
+            <li>24 Tirthankaras in the current cosmic cycle; Mahavira is the 24th and last</li>
+            <li>Thesis: Tirthankaras are venerated teachers and models of liberation — not gods — reflecting Jainism's non-theistic character</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Who are the Tirthankaras?</h4>
+          <ul>
+            <li>24 spiritual teachers across the current cosmic cycle — not gods, but liberated human beings</li>
+            <li>Mahavira (24th) is the most recent and most significant — a Kshatriyan prince who gave up wealth and became an extreme ascetic</li>
+            <li>Contemporary of the Buddha, Confucius, Lao-tzu — part of the Axial Age</li>
+            <li>After 12 years of self-torture, achieved kevala (pure consciousness)</li>
+            <li>Became the Jina — "the conqueror" of karma, ego, greed, deceit, and anger</li>
+            <li>Preached for 30 more years in Prakrit, attracting all castes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Role in Jain Theology</h4>
+          <ul>
+            <li>First Triple Gem: Right Faith (Samyak Darshana) = faith in the Tirthankaras</li>
+            <li>They are the source of Right Knowledge — the Agamas are their recorded teachings</li>
+            <li>They are models of liberation, not intercessors — Jains cannot pray to them for help (since they are beyond the world)</li>
+            <li>Venerated, not worshipped — their lives inspire others to pursue the same path</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Tirthankaras in Practice — Sect Differences</h4>
+          <ul>
+            <li>Svetambara: Tirthankaras depicted elaborately and decorated in temples</li>
+            <li>Digambara: Tirthankaras depicted unadorned and naked — emphasizing detachment from all material things</li>
+            <li>Paijusana and Diwali both reflect reverence for Mahavira's spiritual achievements</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Conclusion</h4>
+          <ul>
+            <li>Tirthankaras are central to Jainism as models, teachers, and the source of Jain scripture (Agamas)</li>
+            <li>Their veneration is distinct from worship — reflecting Jainism's non-theistic character</li>
+            <li>The goal of every Jain is ultimately to become a Jina themselves</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-terms-box"><strong>Key Terms:</strong> Tirthankara, Mahavira, Jina, kevala, moksha, Agamas, Triple Gems, Samyak Darshana, Svetambara, Digambara, non-theistic, asceticism, Axial Age, Prakrit</div>
+    </div>
+  </div>
+
+  <!-- Essay 5 -->
+  <div class="essay-card">
+    <div class="essay-header" onclick="toggleEssay(this)">
+      <div class="essay-q">"<strong>Discuss the concept of karma in Jainism</strong>, comparing it to the concept of karma in Sanatana Dharma."</div>
+      <span class="note-chevron">▼</span>
+    </div>
+    <div class="essay-body">
+      <div class="outline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Introduction</h4>
+          <ul>
+            <li>Both religions use the term "karma" but understand it in fundamentally different ways</li>
+            <li>Thesis: while both see karma as what binds the soul to samsara, Jainism understands karma as physical matter, whereas Sanatana Dharma understands it as a cosmic moral force</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Karma in Jainism</h4>
+          <ul>
+            <li>Karma = actual material particles attracted to the jiva by the jiva's actions, thoughts, and speech</li>
+            <li>Karma is a physical pollution of the soul — it literally weighs the jiva down with ajiva (matter)</li>
+            <li>ANY activity generates karma — even involuntary actions</li>
+            <li>Karma is generated by: actions, thoughts, speech, and encouraging others to act harmfully</li>
+            <li>Removing karma requires asceticism, ahimsa, and the 5 vows — NOT devotion to a god</li>
+            <li>Santhara (fasting unto death) is the ultimate removal of karma</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Karma in Sanatana Dharma</h4>
+          <ul>
+            <li>Karma = the law of action — a cosmic moral force; every action and thought has a consequence</li>
+            <li>Four types: Sanchita, Prarabdha, Kriyamana, Agami</li>
+            <li>Bad karma corrupts the universe, not just the individual</li>
+            <li>Karma determines varna (caste) — a social dimension absent in Jainism</li>
+            <li>Karma can be addressed through Bhakti (devotion to god) — a path unavailable in non-theistic Jainism</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Key Differences</h4>
+          <ul>
+            <li>Jain karma is material/physical; Hindu karma is a cosmic moral law</li>
+            <li>Jain karma is generated by ANY activity; Hindu karma is generated by ethically significant choices</li>
+            <li>Jain karma removal = pure asceticism; Hindu karma removal = multiple paths including devotion</li>
+            <li>Jain karma has no social implications (no caste); Hindu karma determines one's birth into a caste</li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Conclusion</h4>
+          <ul>
+            <li>The shared term "karma" masks profound conceptual differences between the two traditions</li>
+            <li>Both agree karma is the fundamental problem binding souls to samsara</li>
+            <li>They disagree on its nature (material vs. moral), its scope (all activity vs. ethical choice), and its solution (asceticism alone vs. multiple paths)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-terms-box"><strong>Key Terms:</strong> karma, jiva, ajiva, samsara, moksha, kevala, ahimsa, Anuvratas, asceticism, Santhara, Atman, Brahman, varna, Bhakti, Sanchita karma, Prarabdha karma, Three Yogas/Margas</div>
+    </div>
+  </div>
+
+</div><!-- end essays -->
+
+<!-- ==================== PRACTICE PAPERS ==================== -->
+<div id="papers" class="tab-content">
+  <div class="section-title">Practice Papers
+    <span>IB-style Paper 1 and Paper 2 questions with model answers</span>
+  </div>
+
+  <div class="paper-selector">
+    <button class="paper-btn active" onclick="showPaper('p1', this)">📄 Paper 1</button>
+    <button class="paper-btn" onclick="showPaper('p2', this)">📝 Paper 2</button>
+  </div>
+
+  <!-- PAPER 1 -->
+  <div id="paper-p1" class="paper-section active">
+    <div class="paper-info">
+      <h3>Paper 1 — Source-Based Analysis (Jainism)</h3>
+      <ul>
+        <li>Read the source carefully before answering</li>
+        <li>Always use correct religious terminology (Jiva, Ajiva, Anuvratas, etc.)</li>
+        <li>Show that you understand the specific Jain meaning of shared terms (karma ≠ Hindu karma)</li>
+      </ul>
+    </div>
+
+    <div class="source-box">
+      <p>"The young monk walked carefully along the dusty road, his eyes fixed on the ground before him. In his right hand he carried a small broom of peacock feathers, which he used to gently sweep the path ahead — not to keep himself clean, but so that he would not accidentally step on any creature that might be resting in the road. He ate only before noon, filtering his water through a cloth to avoid swallowing any microscopic organisms. He owned nothing but his robe and his broom. He had not spoken to his family in three years."</p>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Q1(a)</span>
+        <span class="q-marks">[2 marks]</span>
+      </div>
+      <div class="q-text">Identify TWO practices described in the source and explain the principle that underlies them both.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show model answer</button></div>
+      <div class="model-answer">The two practices are: (1) sweeping the path with a feather broom to avoid harming insects, and (2) filtering water to avoid swallowing microscopic organisms. Both practices are expressions of <strong>ahimsa</strong> — non-violence — the supreme ethical principle of Jainism. These practices reflect the Jain belief that ALL living things — even the smallest organisms — contain a <strong>jiva</strong> (soul), and therefore must not be harmed. Any harm, even accidental, generates <strong>karma</strong> (material particles) that attach to the monk's own jiva and deepen his bondage in samsara.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Q1(b)</span>
+        <span class="q-marks">[4 marks]</span>
+      </div>
+      <div class="q-text">Using the source and your own knowledge, explain what the source reveals about the Jain understanding of karma.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show model answer</button></div>
+      <div class="model-answer">The source reveals the distinctly Jain understanding of karma as a <strong>material substance</strong> — actual physical particles attracted to the jiva (soul) by the jiva's actions, thoughts, and speech. This is fundamentally different from the Hindu concept of karma as a cosmic moral law.<br><br>The monk's extreme precautions (sweeping the road, filtering water, eating only before noon, owning nothing) all reflect Mahavira's teaching that karma is generated by <strong>ANY form of activity</strong> — even involuntary or accidental harm. Since karma particles physically "weigh down" the soul (jiva) with matter (ajiva), the path to liberation requires minimizing all activity that generates karma.<br><br>The monk's <strong>non-possession</strong> (owning only a robe and broom) reflects the 5th Anuvrata — Aparigraha — since even possessing objects creates attachment and karma. His estrangement from family reflects the monastic requirement of detachment from all worldly bonds, which is the path of <strong>the Minority</strong> — strict ascetics who follow all 12 Great Vows (Mahavratas) in pursuit of kevala and moksha.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Q1(c)</span>
+        <span class="q-marks">[6 marks]</span>
+      </div>
+      <div class="q-text">Using the source and your own knowledge, analyze how the concepts of jiva and ajiva shape the beliefs and practices of Jainism.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show model answer</button></div>
+      <div class="model-answer">The jiva/ajiva distinction is the foundational cosmological claim of Jainism and the source of all Jain ethical and religious practice.<br><br><strong>1. Cosmological significance:</strong> The entire universe can be divided into jiva (soul — all sentient, conscious living things) and ajiva (non-soul — inert matter, the body). Sentient beings are jiva encased in ajiva. Souls can take on different physical forms — even rocks contain a jiva. This makes the universe a vast web of conscious souls, all worthy of protection.<br><br><strong>2. Basis for Ahimsa:</strong> Because ALL living things — insects, plants, bacteria, and viruses — have a jiva, harming any living thing is an act of violence against a soul. This is why the monk in the source sweeps the road and filters his water: these are expressions of ahimsa, flowing directly from the jiva/ajiva cosmology.<br><br><strong>3. Karma as jiva pollution:</strong> Karma in Jainism is understood as material particles (ajiva) that become attracted to the jiva through the actions of body, speech, and mind. The karma particles literally weigh the jiva down — pulling it further into the material world of samsara. The goal is to purify the jiva by removing all ajiva (karma) from it.<br><br><strong>4. Moksha as separation:</strong> Liberation (moksha) in Jainism means the complete separation of the jiva from all ajiva — the soul rises to the top of the universe in a state of pure, omniscient consciousness (kevala). Unlike Hindu moksha (where Atman merges with Brahman), the liberated Jain jiva remains individual and distinct.<br><br>In conclusion, jiva and ajiva shape every aspect of Jainism — from its cosmology, to its supreme ethical principle (ahimsa), to its understanding of karma and liberation. The entire goal of Jain life is the liberation of the jiva from ajiva.</div>
+    </div>
+
+    <hr style="border:none;border-top:1.5px solid var(--parchment);margin:2.5rem 0;">
+
+    <div class="source-box">
+      <p>"After years of debate, the community of Jains split into two groups. One group argued that the great teacher had always worn simple white robes, and that women, too, could achieve the highest state of spiritual liberation. The other group insisted that the teacher had gone about naked, possessing nothing — not even clothing — and that this was the only true path. They also maintained that a woman, because of her very nature, could never fully conquer all worldly attachments."</p>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Q2(a)</span>
+        <span class="q-marks">[2 marks]</span>
+      </div>
+      <div class="q-text">Identify the two groups described in the source and give the Sanskrit name for each.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show model answer</button></div>
+      <div class="model-answer">The two groups are: (1) <strong>Svetambara</strong> ("white-clad") — the group that believes the teacher (Mahavira) wore white robes and that women can attain liberation (moksha/kevala); and (2) <strong>Digambara</strong> ("sky-clad") — the group that insists Mahavira was naked and that total nudity (for men) is essential to liberation, and that women cannot attain moksha in a female body. The split occurred by approximately <strong>80 BCE</strong>.</div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Q2(b)</span>
+        <span class="q-marks">[4 marks]</span>
+      </div>
+      <div class="q-text">Using the source and your knowledge, explain the significance of nudity in Jain practice and why it is controversial.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show model answer</button></div>
+      <div class="model-answer">For Digambara Jains, nudity (being "sky-clad") is the ultimate expression of <strong>Aparigraha</strong> (non-possession) — the 5th Anuvrata. Even clothing constitutes a form of material attachment (ajiva) that binds the jiva to the world. To possess nothing — not even clothes — is seen as the fullest realization of detachment and therefore essential to attaining <strong>kevala</strong> (pure consciousness) and eventually <strong>moksha</strong>.<br><br>The controversy arises from the Svetambara position that this interpretation is incorrect: they believe Mahavira wore white robes, and that nudity is therefore not required for liberation. Their white robes signify a rejection of nudity while maintaining simplicity and detachment.<br><br>The second major controversy is the role of women: Digambaras argue that women can never be fully naked in public (due to social norms) and therefore can never fully renounce all possessions — meaning they cannot attain moksha in a female body. Women are also seen as the greatest <strong>temptation</strong> to men seeking liberation. Svetambaras reject this, accepting women as monks/nuns who can attain liberation. This has significant implications for gender equality within Jainism.</div>
+    </div>
+  </div>
+
+  <!-- PAPER 2 -->
+  <div id="paper-p2" class="paper-section">
+    <div class="paper-info">
+      <h3>Paper 2 — Extended Essay Questions (Jainism)</h3>
+      <ul>
+        <li>Essays should be approximately 800–1,000 words in the actual exam</li>
+        <li>Must include: knowledge, understanding, analysis, evaluation, and correct terminology</li>
+        <li>Compare with Sanatana Dharma where the question allows — examiners value cross-tradition analysis</li>
+      </ul>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Question 1</span>
+        <span class="q-marks">[30 marks]</span>
+      </div>
+      <div class="q-text">"In Jainism, liberation is impossible without asceticism." To what extent do you agree?</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show key points to address</button></div>
+      <div class="model-answer">
+        <strong>Agree — asceticism IS essential:</strong><br>
+        • Mahavira's example: 12 years of self-torture → kevala → moksha. He modeled that the only path to liberation is complete physical renunciation<br>
+        • Jain karma is generated by ANY activity — the less one does, the less karma one generates; ascetic inactivity is literally the only way to stop accumulating karma<br>
+        • The Minority (monks/nuns) — only they have the full possibility of attaining kevala in this life; the Majority (lay Jains) can only accumulate good karma for a better rebirth<br>
+        • Santhara (fasting unto death) = the ultimate ascetic act, the ultimate liberation from karma<br>
+        • The Triple Gems require Right Conduct (Samyak Charitra) — the 12 Mahavratas — only fully achievable by monks<br><br>
+        <strong>Disagree / Nuances:</strong><br>
+        • The Majority (lay Jains) follow 3 Anuvratas and contribute to liberation over many lifetimes — Jainism does not require everyone to be a monk immediately<br>
+        • The Triple Gems require Right Faith AND Right Knowledge alongside Right Conduct — asceticism alone (without understanding) is insufficient<br>
+        • Svetambara Jains accept that women can attain moksha — complicating the stricter ascetic model of Digambaras<br>
+        • Jainism has a cosmological cycle — truth is found again and again — suggesting gradual progress over cosmic time, not necessarily immediate ascetic renunciation<br><br>
+        <strong>Conclusion:</strong> Asceticism is the most direct and highest path in Jainism, but the tradition accommodates gradual progress for lay followers. The goal remains liberation; asceticism is the most efficient — but not the only — means of getting there.
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Question 2</span>
+        <span class="q-marks">[30 marks]</span>
+      </div>
+      <div class="q-text">"Jainism and Sanatana Dharma share the same ultimate goal but disagree on how to reach it." Evaluate this claim.</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show key points to address</button></div>
+      <div class="model-answer">
+        <strong>Same goal (agree):</strong><br>
+        • Both seek moksha — liberation from samsara (the cycle of rebirth)<br>
+        • Both see karma and ignorance as the fundamental problem<br>
+        • Both see the soul as ultimately pure and capable of liberation<br>
+        • Both traditions value ahimsa and asceticism<br><br>
+        <strong>Different goals (challenge):</strong><br>
+        • Hindu moksha = union/identity of Atman with Brahman (dissolution of individual self)<br>
+        • Jain moksha = the jiva rises to the top of the universe as a pure, individual, omniscient consciousness (Jiva remains individual — does NOT merge)<br>
+        • Hindu goal includes Bhakti (devotion to a personal god) as a path — Jainism rejects this entirely (non-theistic)<br>
+        • Jain liberation (kevala) while alive is possible; Hindu moksha traditionally ends rebirth at death<br><br>
+        <strong>Different paths:</strong><br>
+        • Sanatana Dharma: Three Margas (Bhakti, Jnana, Karma) — flexible, one path can suffice<br>
+        • Jainism: Triple Gems must ALL be present simultaneously — no single path is sufficient; asceticism is central<br>
+        • Sanatana Dharma allows devotion to god; Jainism considers prayer useless<br>
+        • Sanatana Dharma preserves caste as spiritually meaningful; Jainism rejects caste entirely<br><br>
+        <strong>Conclusion:</strong> The claim is partially correct — both seek escape from samsara — but the nature of liberation (individual vs. merged soul) and the paths are genuinely different. The apparent similarity conceals deep theological divergence.
+      </div>
+    </div>
+
+    <div class="question-block">
+      <div class="q-header">
+        <span class="q-num">Question 3</span>
+        <span class="q-marks">[30 marks]</span>
+      </div>
+      <div class="q-text">"The concept of the Jina is the most important concept in Jainism." How far do you agree?</div>
+      <div class="answer-toggle"><button onclick="toggleAnswer(this)">Show key points to address</button></div>
+      <div class="model-answer">
+        <strong>Agree — The Jina is central:</strong><br>
+        • "Jainism" = the religion of the Jinas. The word Jain derives from Jina — a conqueror of karma<br>
+        • The Jina is the GOAL of every Jain — not to worship a Jina, but to become one<br>
+        • The Tirthankaras (including Mahavira) are Jinas who serve as perfect models of liberation<br>
+        • First Triple Gem (Right Faith) = faith in the Tirthankaras — the Jinas are the foundation of Jain belief<br>
+        • Jainism's non-theism means there is no God to worship — the Jinas are the closest equivalent to divine figures<br><br>
+        <strong>Other important concepts:</strong><br>
+        • <strong>Jiva/Ajiva</strong>: the foundational cosmological distinction — without this, nothing else in Jainism makes sense<br>
+        • <strong>Karma</strong> (as material substance): the specific Jain understanding drives all Jain ethics and practice<br>
+        • <strong>Ahimsa</strong>: the supreme ethical principle, flowing from jiva cosmology — arguably more operationally central than the Jina concept<br>
+        • <strong>Triple Gems</strong>: the threefold path to liberation — without these, even understanding the Jina is insufficient<br><br>
+        <strong>Conclusion:</strong> The concept of the Jina is central to Jainism's identity, goals, and name. But cosmologically, jiva/ajiva and karma may be more foundational — the Jina is the DESTINATION, but the jiva/ajiva/karma framework explains WHY that destination is necessary and how to reach it.
+      </div>
+    </div>
+
+  </div><!-- end paper 2 -->
+</div><!-- end papers -->
+
+</main>
+
+<footer>
+  <p>IB World Religions Study Guide · Jainism · Based on class notes 2025</p>
+  <p style="margin-top:0.3rem;">Key reminder: Karma in Jainism = <em>physical particles</em>. Prayer is useless. Only YOU can attain moksha. ★</p>
+</footer>
+
+<script>
+// ===== TABS =====
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ===== FLASHCARD DATA =====
+const cards = [
+  { term: "Mahavira", hint: "The 24th Tirthankara", def: "The 24th Tirthankara, considered by some to be the founder of Jainism. Conquered samsara and leads others to liberation. Kshatriyan prince (599–527 BCE) who gave up wealth, practiced extreme asceticism for 12 years, attained kevala, and became the Jina.", note: "Contemporary of the Buddha, Confucius, and Lao-tzu — all part of the Axial Age." },
+  { term: "Tirthankara", hint: "24 bridge builders", def: "\"Bridge builder\" — a rare individual who has conquered samsara and leads others to liberation. There are 24 in the current cosmic cycle; Mahavira is the 24th and last.", note: "The 23 figures before Mahavira are also Tirthankaras." },
+  { term: "Ascetic", hint: "Self-discipline through abstaining", def: "The practice of severe self-discipline through abstaining from all indulgence. In Jainism, asceticism is the primary means of eliminating karma from the jiva.", note: "" },
+  { term: "Moksha / Kevala", hint: "Liberation — two stages", def: "Moksha = liberation after death; the jiva rises to the top of the universe, free from all ajiva. Kevala = liberation while still alive — a state of pure, omniscient consciousness. Kevala precedes moksha.", note: "Unlike Hindu moksha (Atman merges with Brahman), the Jain jiva remains individual at moksha." },
+  { term: "Ahimsa", hint: "The supreme principle", def: "Non-violence to all living things. The supreme ethical principle of Jainism — governing diet, occupation, speech, and thought. Flows from the belief that ALL living things (even bacteria, insects, plants) contain a jiva.", note: "More extreme in Jainism than in Sanatana Dharma — governs every aspect of life." },
+  { term: "Jiva", hint: "The immortal soul", def: "The soul — the immortal, conscious essence present in ALL living things, including insects, plants, bacteria, and even rocks. In sentient beings, the jiva is encased in ajiva (matter).", note: "Jiva in Jainism does NOT merge with any universal soul — it remains individual even at moksha." },
+  { term: "Ajiva", hint: "Not the soul", def: "Non-soul — inert matter; represents everything that is not conscious. Includes the physical body, material objects, and karma particles. The ajiva encases and weighs down the jiva.", note: "" },
+  { term: "Samsara", hint: "The endless cycle", def: "Rebirth and re-death — the endless cycle of life, death, and rebirth. The jiva is caught in samsara because it is weighed down by karma (ajiva). Characterized by ignorance and suffering.", note: "" },
+  { term: "Karma (Jain)", hint: "Physical particles — NOT a moral force", def: "In Jainism, karma = actual material particles attracted to the jiva by the jiva's actions, thoughts, and speech. Karma physically pollutes and weighs down the soul. Generated by ANY activity.", note: "★ Key IB distinction: Jain karma is MATERIAL. Hindu karma is a cosmic moral force. Very different!" },
+  { term: "The Majority", hint: "Lay Jains in society", def: "Non-ascetic lay Jains who live in society. Cannot afford to leave their homes for the rigors of monastic life. Follow 3 of the 5 Anuvratas (ahimsa, truthfulness, non-stealing). Strict vegetarians; often work in commerce and are known as very trustworthy. Often wealthy.", note: "" },
+  { term: "The Minority", hint: "Monks and nuns", def: "Strict ascetic monks and nuns who take all 12 great vows (Mahavratas). About 6,000 in India. Any Jain of any age can take \"dhiksa\" (monastic initiation). Only they have a full chance of attaining kevala and moksha in this lifetime.", note: "Cremation purifies the soul. Santhara (ritual fasting unto death) is considered honorable." },
+  { term: "Agamas", hint: "Jain scripture", def: "Jain scripture / holy writings — the recorded sermons and teachings of Mahavira. Orthodox Jains believe they are the actual words of Mahavira. Debate exists about which are genuine and authoritative. Not all have been translated.", note: "Unlike Hindu Vedas (divinely revealed/Shruti), Agamas are the recorded teachings of a human being." },
+  { term: "Svetambara", hint: "White-clad — northern, liberal", def: "\"White-clad\" Jain sect — based in northern India. More liberal in interpreting Mahavira's teachings. Their white robes reflect a rejection of mandatory nudity. Women are accepted in monasteries and CAN attain kevala/moksha. More popular of the two sects. Tirthankaras in temples are elaborate and decorated.", note: "" },
+  { term: "Digambara", hint: "Sky-clad — southern, conservative", def: "\"Sky-clad\" Jain sect — based in southern India. More conservative. Total nudity for monks is required (sky = no clothes). Women are the greatest temptation to men and CANNOT attain moksha in a female body. Tirthankaras in temples are unadorned and undecorated.", note: "Split from Svetambara by 80 BCE over the meaning of Mahavira's teachings." },
+  { term: "Paijusana", hint: "The main Jain holiday", def: "The main Jain holiday — Jains are encouraged to fast and live as monks during this period. A time of intense spiritual reflection, confession, and renewal.", note: "" },
+  { term: "Diwali (Jain)", hint: "Liberation of Mahavira", def: "Jains celebrate Diwali as the day Mahavira achieved final liberation (moksha) — very different from the Hindu celebration of Diwali (which honors Lakshmi and Lord Rama's return).", note: "★ Note for IB: Jain Diwali and Hindu Diwali share a name but mark completely different events." },
+  { term: "Jina", hint: "The conqueror — the goal", def: "\"Conqueror\" — one who has conquered the forces of life: karma, ego, greed, deceit, and anger. The goal of every Jain is to become a Jina. Mahavira became known as the Jina after attaining kevala. The word 'Jain' derives from 'Jina'.", note: "★ The goal of Jainism is not to worship a Jina — it is to BECOME a Jina yourself." }
+];
+
+let currentCard = 0;
+let cardOrder = cards.map((_, i) => i);
+
+function renderCard() {
+  const idx = cardOrder[currentCard];
+  const card = cards[idx];
+  document.getElementById('frontTerm').textContent = card.term;
+  document.getElementById('frontHint').textContent = card.hint;
+  document.getElementById('backDef').textContent = card.def;
+  const noteEl = document.getElementById('backNote');
+  if (card.note) {
+    noteEl.textContent = card.note;
+    noteEl.style.display = 'block';
+  } else {
+    noteEl.style.display = 'none';
+  }
+  document.getElementById('cardProgress').textContent = `${currentCard + 1} / ${cardOrder.length}`;
+  document.getElementById('cardCountDisplay').textContent = `Card ${currentCard + 1} of ${cardOrder.length}`;
+  document.getElementById('mainCard').classList.remove('flipped');
+}
+
+function flipCard() { document.getElementById('mainCard').classList.toggle('flipped'); }
+function nextCard() { currentCard = (currentCard + 1) % cardOrder.length; renderCard(); }
+function prevCard() { currentCard = (currentCard - 1 + cardOrder.length) % cardOrder.length; renderCard(); }
+function shuffleCards() {
+  for (let i = cardOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cardOrder[i], cardOrder[j]] = [cardOrder[j], cardOrder[i]];
+  }
+  currentCard = 0;
+  renderCard();
+}
+
+function buildGrid() {
+  const grid = document.getElementById('allCardsGrid');
+  grid.innerHTML = '';
+  cards.forEach(card => {
+    const el = document.createElement('div');
+    el.className = 'mini-card';
+    el.innerHTML = `<div class="term">${card.term}</div><div class="def">${card.def}</div>${card.note ? `<div class="note">${card.note}</div>` : ''}`;
+    grid.appendChild(el);
+  });
+}
+
+function setMode(mode, btn) {
+  document.querySelectorAll('.flashcard-controls button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (mode === 'flip') {
+    document.getElementById('flipMode').style.display = 'flex';
+    document.getElementById('gridMode').style.display = 'none';
+    document.getElementById('cardCountDisplay').style.display = 'inline';
+  } else {
+    document.getElementById('flipMode').style.display = 'none';
+    document.getElementById('gridMode').style.display = 'block';
+    document.getElementById('cardCountDisplay').style.display = 'none';
+    buildGrid();
+  }
+}
+
+document.addEventListener('keydown', e => {
+  const tab = document.getElementById('flashcards');
+  if (!tab.classList.contains('active')) return;
+  if (document.getElementById('flipMode').style.display === 'none') return;
+  if (e.key === 'ArrowRight') nextCard();
+  if (e.key === 'ArrowLeft') prevCard();
+  if (e.key === ' ') { e.preventDefault(); flipCard(); }
+});
+
+// ===== NOTES =====
+function toggleNote(header) {
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+
+// ===== ESSAYS =====
+function toggleEssay(header) {
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+
+// ===== CHARTS =====
+function showChart(id, btn) {
+  document.querySelectorAll('.chart-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.chart-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('chart-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===== PAPERS =====
+function showPaper(id, btn) {
+  document.querySelectorAll('.paper-section').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.paper-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('paper-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===== MODEL ANSWERS =====
+function toggleAnswer(btn) {
+  const answer = btn.closest('.answer-toggle').nextElementSibling;
+  answer.classList.toggle('open');
+  btn.textContent = answer.classList.contains('open') ? 'Hide answer' : 'Show model answer';
+}
+
+// Init
+renderCard();
+</script>
+</body>
+</html>

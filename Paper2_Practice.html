@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IB World Religions — Paper 2 Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --dark: #0f0f0f;
+    --surface: #161616;
+    --card: #1c1c1c;
+    --border: rgba(201,168,76,0.15);
+    --text: #e0d8c8;
+    --muted: #7a7060;
+    --green: #4caf7d;
+    --amber: #e8a030;
+    --red: #e05050;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Crimson Text',Georgia,serif; background:var(--dark); color:var(--text); font-size:17px; line-height:1.7; min-height:100vh; }
+
+  .site-nav { background:#0a0a0a; padding:0.5rem 1rem; display:flex; flex-wrap:wrap; gap:0.4rem; align-items:center; border-bottom:1px solid var(--border); }
+  .site-nav a { color:rgba(201,168,76,0.7); text-decoration:none; font-size:0.82rem; padding:0.2rem 0.55rem; border-radius:4px; transition:background 0.2s; }
+  .site-nav a:hover { background:rgba(255,255,255,0.08); }
+  .site-nav a.current { background:var(--gold); color:#111; font-weight:600; }
+
+  .page-header { background:linear-gradient(135deg,#0a0a0a,#141414); border-bottom:1px solid var(--border); padding:2rem 2rem 1.5rem; text-align:center; }
+  .page-header h1 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:900; color:#fff; }
+  .page-header h1 span { color:var(--gold); }
+  .page-header p { color:var(--muted); font-style:italic; margin-top:0.3rem; font-size:0.93rem; }
+
+  .layout { display:grid; grid-template-columns:270px 1fr; min-height:calc(100vh - 110px); max-width:1300px; margin:0 auto; }
+
+  .sidebar { background:var(--surface); border-right:1px solid var(--border); overflow-y:auto; position:sticky; top:0; height:calc(100vh - 110px); }
+  .religion-btn { width:100%; text-align:left; background:none; border:none; border-bottom:1px solid var(--border); padding:0.9rem 1.2rem; color:var(--text); font-family:'Crimson Text',serif; font-size:1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:background 0.15s; }
+  .religion-btn:hover, .religion-btn.open { background:rgba(201,168,76,0.06); }
+  .religion-btn .rel-name { font-weight:600; }
+  .religion-btn .chevron { color:var(--muted); font-size:0.8rem; transition:transform 0.2s; }
+  .religion-btn.open .chevron { transform:rotate(90deg); }
+  .q-list { display:none; background:#111; border-bottom:1px solid var(--border); }
+  .q-list.open { display:block; }
+  .q-item { display:block; width:100%; text-align:left; background:none; border:none; border-bottom:1px solid rgba(201,168,76,0.06); padding:0.6rem 1.4rem; color:var(--muted); font-family:'Crimson Text',serif; font-size:0.88rem; cursor:pointer; transition:all 0.15s; line-height:1.4; }
+  .q-item:hover { background:rgba(201,168,76,0.08); color:var(--text); }
+  .q-item.active { background:rgba(201,168,76,0.12); color:var(--gold); border-left:3px solid var(--gold); }
+
+  .main-panel { padding:2rem 2.5rem; max-width:860px; }
+  .welcome { text-align:center; padding:4rem 2rem; }
+  .welcome h2 { font-family:'Playfair Display',serif; color:var(--gold); font-size:1.6rem; margin-bottom:1rem; }
+  .welcome p { color:var(--muted); max-width:500px; margin:0 auto; }
+
+  .q-header { margin-bottom:1.5rem; }
+  .q-label { font-size:0.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.4rem; }
+  .q-text { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:#fff; line-height:1.5; background:rgba(201,168,76,0.06); border-left:3px solid var(--gold); padding:1rem 1.2rem; border-radius:0 6px 6px 0; }
+
+  textarea { width:100%; height:320px; background:#111; border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'Crimson Text',serif; font-size:16px; line-height:1.7; padding:1rem; resize:vertical; outline:none; transition:border-color 0.2s; margin-top:0.5rem; }
+  textarea:focus { border-color:rgba(201,168,76,0.4); }
+  .wc-bar { display:flex; justify-content:space-between; margin-top:0.4rem; }
+  .wc-display { font-size:0.82rem; color:var(--muted); }
+  .wc-display span { color:var(--gold); font-weight:600; }
+  .wc-target { font-size:0.78rem; color:var(--muted); font-style:italic; }
+
+  .btn-row { display:flex; gap:0.8rem; margin-top:1.2rem; }
+  .btn { padding:0.65rem 1.4rem; border-radius:6px; border:none; font-family:'Crimson Text',serif; font-size:1rem; cursor:pointer; font-weight:600; transition:all 0.2s; }
+  .btn-gold { background:var(--gold); color:#111; }
+  .btn-gold:hover { background:var(--gold-light); }
+  .btn-outline { background:none; border:1px solid var(--border); color:var(--muted); }
+  .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+
+  .feedback { margin-top:1.5rem; background:var(--card); border:1px solid var(--border); border-radius:8px; overflow:hidden; display:none; }
+  .feedback.show { display:block; }
+  .score-banner { padding:1.2rem 1.5rem; display:flex; align-items:center; gap:1.5rem; border-bottom:1px solid var(--border); }
+  .score-circle { width:72px; height:72px; border-radius:50%; border:3px solid var(--gold); display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; }
+  .score-circle .num { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:900; color:var(--gold); line-height:1; }
+  .score-circle .den { font-size:0.75rem; color:var(--muted); }
+  .score-info h3 { font-family:'Playfair Display',serif; font-size:1.1rem; color:#fff; }
+  .grade-badge { display:inline-block; padding:0.15rem 0.6rem; border-radius:4px; font-size:0.85rem; font-weight:600; margin-top:0.2rem; }
+  .grade-7 { background:rgba(76,175,125,0.2); color:#4caf7d; }
+  .grade-6 { background:rgba(100,200,100,0.15); color:#7ec87e; }
+  .grade-5 { background:rgba(201,168,76,0.15); color:#c9a84c; }
+  .grade-4 { background:rgba(232,160,48,0.15); color:#e8a030; }
+  .grade-3 { background:rgba(224,80,80,0.15); color:#e05050; }
+  .grade-low { background:rgba(120,80,80,0.15); color:#a06060; }
+
+  .kw-section { padding:1rem 1.5rem; }
+  .kw-title { font-size:0.78rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--muted); margin-bottom:0.6rem; }
+  .kw-tags { display:flex; flex-wrap:wrap; gap:0.35rem; margin-bottom:0.8rem; }
+  .kw-tag { font-size:0.78rem; padding:0.15rem 0.5rem; border-radius:3px; }
+  .kw-hit { background:rgba(76,175,125,0.18); color:#4caf7d; border:1px solid rgba(76,175,125,0.3); }
+  .kw-miss { background:rgba(224,80,80,0.1); color:#a06060; border:1px solid rgba(224,80,80,0.2); text-decoration:line-through; }
+
+  .model-section { border-top:1px solid var(--border); }
+  .model-toggle { width:100%; background:none; border:none; padding:0.9rem 1.5rem; color:var(--muted); font-family:'Crimson Text',serif; font-size:0.9rem; cursor:pointer; text-align:left; display:flex; justify-content:space-between; }
+  .model-toggle:hover { color:var(--gold); }
+  .model-points { display:none; padding:0 1.5rem 1.2rem; }
+  .model-points.show { display:block; }
+  .model-points ul { padding-left:1.2rem; }
+  .model-points li { margin-bottom:0.5rem; font-size:0.93rem; color:var(--text); }
+  .model-points li::marker { color:var(--gold); }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html">&#x1F3E0; Home</a>
+  <a href="Sanatana_Dharma_Study_Guide.html">Sanatana Dharma</a>
+  <a href="Jainism_Study_Guide.html">Jainism</a>
+  <a href="Buddhism_Study_Guide.html">Buddhism</a>
+  <a href="Sikhism_Study_Guide.html">Sikhism</a>
+  <a href="Taoism_Study_Guide.html">Taoism</a>
+  <a href="Judaism_Study_Guide.html">Judaism</a>
+  <a href="Christianity_Study_Guide.html">Christianity</a>
+  <a href="Islam_Study_Guide.html">Islam</a>
+  <a href="Paper1_Practice.html">Paper 1 Practice</a>
+  <a href="Paper2_Practice.html" class="current">Paper 2 Practice</a>
+</nav>
+
+<div class="page-header">
+  <h1>Paper 2 <span>Practice</span></h1>
+  <p>Actual IB World Religions essay prompts -- write freely, then score your response</p>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <main class="main-panel" id="mainPanel">
+    <div class="welcome">
+      <h2>Select a Question</h2>
+      <p>Choose a religion from the sidebar, then pick a prompt to begin your essay. Aim for 600+ words and cover key terms for the best score.</p>
+    </div>
+  </main>
+</div>
+
+<script>
+const RELIGIONS = [
+  {
+    id: 'hinduism',
+    name: 'Hinduism',
+    base: ['dharma','karma','atman','brahman','moksha','samsara','vedas','puja','ahimsa','yoga','maya','ritual','scripture','liberation','devotion'],
+    questions: [
+      {
+        text: 'To what extent does varnashramadharma determine the ritual life of a Hindu?',
+        kw: ['varnashramadharma','varna','ashrama','brahmin','kshatriya','vaishya','shudra','samskara','brahmacharya','grihastha','vanaprastha','sannyasa','twice-born','upanayana','jati','duty','caste'],
+        pts: ['Define varnashramadharma: intersection of the four varnas (social classes) and four ashramas (life stages)','Four varnas: Brahmin (priests/teachers), Kshatriya (warriors), Vaishya (merchants), Shudra (servants) -- each has prescribed ritual duties','Four ashramas: brahmacharya (student), grihastha (householder), vanaprastha (forest dweller), sannyasa (renunciant)','Samskara rites such as upanayana (sacred thread) are restricted to twice-born varnas -- varna shapes ritual access','Counter-argument: bhakti movements (Mirabai, Ramanuja) argue direct access to God regardless of caste','Contemporary India: caste discrimination is illegal; many Hindus observe ashrama ideals while disregarding varna in practice','Evaluate: varnashramadharma was once the cornerstone of ritual life, but reform and devotion have significantly reduced its determining role']
+      },
+      {
+        text: 'Assess the significance of non-violence (ahimsa) to understanding Hinduism.',
+        kw: ['ahimsa','non-violence','himsa','gandhi','vegetarianism','karma','reverence for life','satya','cow','tapas','compassion','dharma','yoga','spiritual merit','harm'],
+        pts: ['Ahimsa means non-harm -- avoidance of physical, mental, and verbal violence toward all living beings','Rooted in belief that all beings have a divine spark (atman); harming another is harming Brahman','Karma: violent acts generate negative karma, prolonging samsara and delaying moksha','Practical expressions: vegetarianism, cow protection, non-violent conflict resolution','Gandhi elevated ahimsa into a political principle (satyagraha), showing its reach beyond ritual into politics','Tension: Bhagavad Gita depicts Krishna urging Arjuna (a Kshatriya) to fight -- dharmic violence can be justified','Assess: ahimsa is central but contextual -- it is one dharmic value weighed against others (duty, justice, protection)']
+      },
+      {
+        text: 'Examine the relationship between God (Brahman) and the self (atman) in Hindu thought.',
+        kw: ['brahman','atman','advaita','non-dualism','shankara','ramanuja','vishishtadvaita','dvaita','madhva','monism','maya','illusion','moksha','consciousness','identity','individual soul','universal soul'],
+        pts: ['Brahman: the ultimate, infinite, unchanging reality underlying all existence','Atman: the individual self or soul -- understood differently across schools','Advaita Vedanta (Shankara): atman IS Brahman -- their separation is maya (illusion). Moksha = realising this identity','Vishishtadvaita (Ramanuja): atman is real and distinct but inseparably part of Brahman, like a body and its soul','Dvaita (Madhva): atman and Brahman are eternally distinct -- devotion (bhakti) bridges the gap','Each school produces different spiritual paths: jnana (knowledge) for Advaita, bhakti for Ramanuja and Madhva','Evaluate: the Brahman-atman relationship is the central metaphysical question of Hinduism with no single answer']
+      },
+      {
+        text: 'Evaluate the importance of pilgrimage as an aspect of the devotional life of Hindus.',
+        kw: ['pilgrimage','tirtha','tirthayatra','varanasi','ganges','kumbh mela','vrindavan','char dham','darshan','purification','sacred site','merit','temple','holy river','devotion'],
+        pts: ['Tirtha means "crossing place" -- pilgrimage sites are thresholds between the human and divine','Key sites: Varanasi (dying there grants moksha), Kumbh Mela (largest religious gathering on earth), Char Dham circuit','Purposes: accumulating merit (punya), seeking darshan (sight of deity), purification, fulfilling vows','Bathing in sacred rivers such as the Ganges washes away sins -- pilgrimage combines physical and spiritual journey','Counterpoint: bhakti tradition holds that God is omnipresent -- pilgrimage may be unnecessary for the spiritually advanced','Social dimension: pilgrimage unites Hindus across regional, linguistic, and caste divides','Evaluate: pilgrimage is deeply important as embodied devotion, though its necessity relative to inner devotion is debated']
+      },
+      {
+        text: 'Discuss how the concept of samsara (cycle of life, death and rebirth) is central to Hindu beliefs.',
+        kw: ['samsara','rebirth','reincarnation','cycle','birth','death','karma','moksha','liberation','dharma','atman','transmigration','jiva','wheel of life','bondage','attachment'],
+        pts: ['Samsara: the endless cycle of birth, death, and rebirth driven by karma and desire','The atman transmigrates through different bodies -- human, animal, divine -- based on accumulated karma','Samsara is characterised by suffering because no worldly pleasure is permanent','The ultimate goal of Hindu life is moksha -- liberation from samsara','Samsara underpins Hindu ethics: every action has karmic consequences that shape future lives','Connection to the four aims of life (purusharthas): dharma, artha, kama support good rebirth; moksha ends the cycle','Evaluate: samsara is arguably the most central Hindu belief, giving meaning to dharma, karma, and the entire spiritual project']
+      }
+    ]
+  },
+  {
+    id: 'buddhism',
+    name: 'Buddhism',
+    base: ['dharma','karma','nirvana','samsara','buddha','sangha','meditation','impermanence','suffering','enlightenment','monks','precepts','rebirth','liberation','mindfulness'],
+    questions: [
+      {
+        text: 'Discuss the relationship between the three Buddhist concepts of anicca, dukkha, and anatta.',
+        kw: ['anicca','dukkha','anatta','impermanence','suffering','no-self','three marks','tilakkhana','five aggregates','skandhas','attachment','clinging','nirvana','vipassana','insight','conditioned'],
+        pts: ['The three marks of existence (tilakkhana) describe the fundamental nature of conditioned phenomena','Anicca (impermanence): all phenomena are in constant flux -- no experience or object is permanent','Dukkha (suffering/unsatisfactoriness): because things are impermanent, clinging to them causes suffering','Anatta (no-self): the "self" is a collection of five aggregates (skandhas): form, feeling, perception, mental formations, consciousness','The three are interdependent: because all is impermanent (anicca) and lacking inherent self (anatta), clinging produces suffering (dukkha)','Insight into the three marks via vipassana meditation is the path to liberation (nirvana)','Evaluate: understanding the three marks together -- not in isolation -- is the heart of Buddhist liberation']
+      },
+      {
+        text: 'Assess the importance of the Three Jewels to lay Buddhists.',
+        kw: ['three jewels','triple gem','buddha','dharma','sangha','refuge','lay buddhists','upasaka','puja','merit','devotion','community','teaching','five precepts','support'],
+        pts: ['The Three Jewels: Buddha (the teacher), Dharma (the teaching), Sangha (the community) -- "taking refuge" defines a Buddhist','For lay Buddhists (upasakas), the Triple Gem structures daily devotion: puja at shrines, reciting the refuges, Five Precepts','The Sangha provides moral support, merit-making opportunities (offering food to monks), and access to teachings','The Dharma gives lay Buddhists practical ethical guidance through the Five Precepts and the Eightfold Path','The Buddha serves as inspiration and object of veneration -- merit is gained through offerings to Buddha images and relics','In Theravada, monks carry the Sangha ideal; lay practice focuses on merit rather than enlightenment in this life','Evaluate: the Three Jewels are central to lay Buddhist identity -- perhaps more so than for monastics who live within the Sangha directly']
+      },
+      {
+        text: 'To what extent are the Four Noble Truths the most important statement of Buddhist belief?',
+        kw: ['four noble truths','dukkha','samudaya','nirodha','magga','suffering','craving','cessation','eightfold path','dharma','liberation','tanha','deer park','foundation'],
+        pts: ['The Four Noble Truths: (1) dukkha exists; (2) its cause is tanha (craving); (3) cessation is possible; (4) the path leads to cessation','This was the Buddha\'s first teaching at Deer Park -- structuring his entire soteriological project','The medical analogy: diagnosis (dukkha), cause (tanha), prognosis (nirodha), treatment (the Path)','Counter-argument: Three Marks of Existence or Dependent Origination could each be considered equally fundamental','Mahayana critique: the bodhisattva ideal and Madhyamaka philosophy extend Buddhist thought significantly beyond the Four Noble Truths','Nevertheless, all Buddhist traditions accept the Four Noble Truths -- they are the common ground of all schools','Evaluate: the Four Noble Truths are arguably most important because they define the problem and the solution that all schools address']
+      },
+      {
+        text: 'Examine the relevance of the Five Precepts for the contemporary world.',
+        kw: ['five precepts','not killing','not stealing','sexual misconduct','false speech','intoxicants','sila','ethics','contemporary','modern','ecology','social justice','mindfulness','ahimsa','intention'],
+        pts: ['The Five Precepts: not to kill, steal, engage in sexual misconduct, speak falsely, or take intoxicants','First precept (ahimsa): relevant to animal rights, ecological ethics, war, and capital punishment debates','Third precept: addresses consent, exploitation, and gender-based violence in contemporary contexts','Fifth precept: addiction and substance abuse -- highly relevant to modern mental health and productivity','Thich Nhat Hanh updated the precepts as "mindfulness trainings" addressing consumerism and online speech','Limitation: formulated for agrarian society; applying them to industrial food production or digital communication requires creative interpretation','Evaluate: the Five Precepts remain adaptable -- their focus on intention (cetana) makes them applicable to contemporary moral dilemmas']
+      },
+      {
+        text: 'To what extent is meditation an essential part of the spiritual experience of all Buddhists?',
+        kw: ['meditation','samadhi','vipassana','samatha','jhana','mindfulness','monks','lay','zen','tibetan','devotion','essential','enlightenment','nirvana','eightfold path','nembutsu','pure land'],
+        pts: ['Meditation (bhavana) is the eighth element of the Noble Eightfold Path (right concentration) and central to early Buddhism','Two main types: samatha (calm abiding -- concentration); vipassana (insight into the three marks)','For monastics, meditation is their primary vocation and the direct route to nirvana','For lay Buddhists in Theravada, daily practice focuses more on merit-making (dana, sila) than meditation','Zen Buddhism (Chan): meditation (zazen) is the supreme practice -- everything else is secondary','Pure Land Buddhism: meditation is replaced by nembutsu (reciting Amida Buddha\'s name) as the path to salvation','Evaluate: meditation is essential to the monastic ideal and Zen, but not universally practised -- lay traditions often prioritise devotion and ethics']
+      }
+    ]
+  },
+  {
+    id: 'sikhism',
+    name: 'Sikhism',
+    base: ['waheguru','guru granth sahib','gurdwara','langar','seva','khalsa','guru nanak','shabad','naam','kirtan','equality','community','scripture','divine','devotion'],
+    questions: [
+      {
+        text: 'Examine the link between Sikh ritual life and Khalsa membership.',
+        kw: ['khalsa','five ks','kesh','kangha','kara','kachera','kirpan','amrit','initiation','baptism','ritual','sikh identity','guru gobind singh','discipline','rahit maryada','amrit sanchar','nitnem'],
+        pts: ['The Khalsa was established by Guru Gobind Singh in 1699 -- initiated through Amrit Sanchar (baptism with sweetened water)','The Five Ks (panj kakars): Kesh (uncut hair), Kangha (comb), Kara (steel bracelet), Kachera (cotton shorts), Kirpan (sword)','Each K carries spiritual meaning -- Kesh signals commitment to God\'s will; Kirpan represents defending justice','The Rahit Maryada governs how Khalsa members perform daily rituals: nitnem (daily prayers), Gurdwara attendance, langar','Non-Khalsa Sikhs still participate in core ritual life (kirtan, Ardas, Guru Granth Sahib readings)','Gender: the Khalsa is open to women -- Kaur (princess) is the female name taken at initiation','Evaluate: Khalsa membership deepens ritual discipline significantly, but Sikh ritual life is not exclusively dependent on it']
+      },
+      {
+        text: '"The Guru Granth Sahib is the only source of authority for Sikhs." Discuss.',
+        kw: ['guru granth sahib','authority','dasam granth','akal takht','sikh rehat maryada','eternal guru','guru gobind singh','living guru','gurbani','gurmukhi','divine word','tradition','rahit','scripture'],
+        pts: ['Guru Gobind Singh declared the Guru Granth Sahib the eternal, living Guru -- no human Guru would follow','The Guru Granth Sahib contains hymns from Sikh Gurus, Muslim Sufis, and Hindu bhakts -- its authority is universal','Support: the Guru Granth Sahib is treated with full Guru status -- enshrined, given its own room, read daily (Akhand Path)','Complication 1: the Dasam Granth (attributed to Guru Gobind Singh) carries significant authority in some communities','Complication 2: the Akal Takht issues hukamnamas (edicts) that carry institutional authority alongside scripture','Complication 3: the Sikh Rehat Maryada (code of conduct) is a human document of authority shaping practice','Evaluate: the Guru Granth Sahib is the supreme spiritual authority, but the statement is an overstatement']
+      },
+      {
+        text: 'To what extent is Sikhism a religion based on equality?',
+        kw: ['equality','caste','gender','langar','community','guru nanak','race','religion','khalsa','seva','brotherhood','sisterhood','discrimination','waheguru','anand karaj','women','dalit'],
+        pts: ['Guru Nanak explicitly rejected caste: "There is no Hindu, there is no Muslim" -- all are equal before Waheguru','Langar (community kitchen): all people -- regardless of caste, gender, or religion -- eat together as equals','The Khalsa abolished caste titles: all men take Singh (lion), all women take Kaur (princess)','Gender equality: women can read from the Guru Granth Sahib and lead prayers in principle','Limitations in practice: caste discrimination persists in some Sikh communities (endogamous marriage within jat groups)','Women\'s equal leadership is contested: the head of the Akal Takht has historically always been male','Evaluate: Sikhism\'s theology is radically egalitarian, but like all traditions, lived practice has not always matched its ideals']
+      },
+      {
+        text: 'Assess the degree to which kirat karni and vand de chakna form the foundation of Sikh ethics.',
+        kw: ['kirat karni','vand de chakna','naam japna','honest labor','sharing','community','langar','seva','ethics','foundation','guru nanak','householder','practical','three pillars','grihastha'],
+        pts: ['Guru Nanak\'s three pillars: Naam Japna (meditating on God\'s name), Kirat Karni (honest labour), Vand de Chakna (sharing)','Kirat Karni: Sikhs are expected to earn an honest living -- rejecting asceticism and begging, which Guru Nanak criticised','Vand de Chakna: sharing one\'s earnings with the community -- the practical basis of langar and seva','This framework makes the householder (grihastha) stage the ideal Sikh life, unlike Hindu renunciant traditions','The three pillars are interconnected: spiritual practice (Naam) without ethical action (Kirat, Vand) is incomplete','Ethical implications: honest work, communal responsibility, and generosity form a complete social ethic for daily life','Evaluate: this triad is the practical foundation of Sikh ethics -- grounding spirituality in work and society distinctively']
+      },
+      {
+        text: 'Assess Sikh eschatology.',
+        kw: ['eschatology','death','afterlife','rebirth','karma','mukti','liberation','waheguru','hukam','naam','grace','samsara','jiwan mukti','cycle','haumai','ego','divine will'],
+        pts: ['Sikhism does not teach a physical heaven or hell as final destinations in the Abrahamic sense','Karma and samsara: the soul (jiva) transmigrates through various life forms based on accumulated karma','Mukti (liberation): release from the cycle of rebirth -- the ultimate goal, achieved through Naam simran and God\'s grace (nadar)','Jiwan mukti: liberation is possible in this life -- through the Guru\'s grace and constant devotion','The soul that achieves mukti merges with Waheguru (the True One) -- individual identity dissolves into divine unity','Hukam (divine will): all births, deaths, and rebirths are within God\'s order -- acceptance of hukam is itself spiritual practice','Evaluate: Sikh eschatology is a synthesis of Indic rebirth concepts and monotheistic grace -- divine will mediates the karmic process']
+      }
+    ]
+  },
+  {
+    id: 'judaism',
+    name: 'Judaism',
+    base: ['torah','mitzvot','covenant','g-d','halakha','synagogue','shabbat','prayer','rabbis','community','teshuvah','commandments','scripture','jewish','israel'],
+    questions: [
+      {
+        text: 'To what extent is Shabbat (Sabbath) more important than any other festival?',
+        kw: ['shabbat','sabbath','festivals','yom kippur','passover','rosh hashanah','rest','mitzvot','torah','creation','covenant','exodus','kiddush','havdalah','candles','weekly','commandment'],
+        pts: ['Shabbat is the only festival commanded in the Ten Commandments (Exodus 20:8-11): "Remember the Sabbath and keep it holy"','It is observed weekly -- unlike annual festivals -- meaning its cumulative spiritual impact is far greater','Shabbat commemorates both creation (God rested on the 7th day) and the Exodus (Deuteronomy 5)','The Talmud compares Shabbat to all other commandments combined in importance','Counter: Yom Kippur is called the "Sabbath of Sabbaths" in Leviticus 23:32 -- its gravity (fasting, collective repentance) arguably surpasses Shabbat','Passover (Pesach) is the festival of national identity -- the Exodus narrative is foundational to Jewish theology and ethics','Evaluate: Shabbat\'s weekly recurrence, dual symbolism, and explicit scriptural mandate make it arguably most important']
+      },
+      {
+        text: 'Evaluate the view that the Written Torah must be more important than the Oral Torah.',
+        kw: ['written torah','oral torah','mishnah','talmud','gemara','rabbi','sinai','revelation','moses','rabbinical','commentary','authority','halakha','divine','tradition','interpretation'],
+        pts: ['Written Torah (Torah she-bichtav): the five books of Moses -- traditionally given directly by God to Moses at Sinai','Oral Torah (Torah she-be\'al peh): the rabbinic interpretive tradition, codified in the Mishnah and Talmud','Orthodox position: both were given at Sinai simultaneously -- the Oral Torah is equally divine','The Oral Torah is practically essential: the Written Torah requires interpretation (e.g. "an eye for an eye" = financial compensation)','Counter-argument: the Written Torah is the direct word of God; the Oral Torah is human elaboration','Reform Judaism: neither is unconditionally binding -- authority lies in reason and conscience','Evaluate: the Oral Torah arguably carries equal weight in practice, since it determines how the Written Torah is applied']
+      },
+      {
+        text: 'Examine Jewish teachings about the nature of G-d.',
+        kw: ['g-d','monotheism','shema','omnipotent','omniscient','omnipresent','creator','covenant','transcendent','immanent','incorporeal','maimonides','thirteen principles','ein sof','kabbalah','divine','unity'],
+        pts: ['The Shema (Deuteronomy 6:4): "Hear O Israel, the Lord is our God, the Lord is One" -- strict monotheism is the cornerstone','God is creator ex nihilo -- the world owes its existence entirely to divine act','Maimonides\'s Thirteen Principles: God is incorporeal, eternal, without form, the only proper object of prayer','Transcendence: God is wholly other, beyond human comprehension -- Moses only sees God\'s "back" (Exodus 33)','Immanence: God is also present in history -- the burning bush, Sinai revelation, divine providence in Jewish history','Kabbalistic tradition: Ein Sof (the Infinite) emanates through the Sefirot -- God has mystical internal structure','Evaluate: Jewish teaching on God is robustly monotheistic but internally diverse -- philosophical vs mystical approaches differ significantly']
+      },
+      {
+        text: '"Judaism is a religion of the home rather than the synagogue." To what extent do you agree?',
+        kw: ['home','synagogue','shabbat','prayer','family','passover','seder','mezuzah','kashrut','shul','torah','community','worship','domestic','kiddush','challah','havdalah','private','public'],
+        pts: ['Home-centred practices: Shabbat candles, Kiddush, Havdalah, Passover Seder, kashrut (dietary laws), mezuzah, daily blessings','These require no rabbi or synagogue -- they sanctify domestic space as holy','The Passover Seder is the most widely observed Jewish ritual and is entirely home-based -- a theological act of family storytelling','Traditional Judaism requires prayer three times daily -- this can be done at home or synagogue','Synagogue functions: communal Torah reading (requires minyan of 10), lifecycle ceremonies, communal prayer','For many diaspora Jews, the synagogue anchors communal identity -- especially where home practice has declined','Evaluate: historically and theologically Judaism is deeply domestic, but the synagogue provides communal continuity -- both are essential']
+      },
+      {
+        text: 'Discuss the Jewish concept of sin.',
+        kw: ['sin','chet','aveirah','teshuvah','repentance','atonement','yom kippur','mitzvot','torah','transgression','forgiveness','g-d','covenant','confession','yetzer ha-ra','yetzer ha-tov','moral'],
+        pts: ['Chet (sin): literally "missing the mark" -- straying from God\'s commandments, not an inherent human condition','Unlike Christian original sin, Judaism does not teach that humans are born sinful -- each has yetzer ha-tov and yetzer ha-ra','Aveirah: transgression against God (ritual) or humans (ethical failures) -- both categories matter','Teshuvah (repentance): includes acknowledgment, remorse, verbal confession, and resolve not to repeat the sin','For sins against other people, God\'s forgiveness is insufficient -- one must first make amends with the person wronged','Yom Kippur provides collective atonement -- the community fasts and confesses together using the Al Chet communal confession','Evaluate: Jewish sin is practical and relational rather than ontological -- it centres on covenantal obligation and communal restoration']
+      }
+    ]
+  },
+  {
+    id: 'christianity',
+    name: 'Christianity',
+    base: ['jesus','christ','bible','scripture','salvation','church','prayer','faith','holy spirit','sacraments','resurrection','grace','trinity','gospel','tradition'],
+    questions: [
+      {
+        text: 'Examine the Christian belief that Christ is Redeemer.',
+        kw: ['redeemer','redemption','atonement','salvation','jesus christ','crucifixion','resurrection','sin','forgiveness','grace','paul','nicene creed','substitutionary','incarnation','ransom','anselm','abelard','penal substitution'],
+        pts: ['Redemption: Christ\'s death "buys back" humanity from sin and death -- rooted in Old Testament imagery of the kinsman-redeemer','Substitutionary atonement (Anselm): Christ satisfies the infinite debt of human sin owed to God','Penal substitution (Calvin): Christ takes the legal punishment sinners deserve -- "the wages of sin is death" (Romans 6:23)','Moral influence theory (Abelard): Christ\'s death is primarily an example of self-giving love that transforms the believer','The Nicene Creed affirms Christ "died for our sins according to the scriptures" -- without specifying the mechanism','Eastern Orthodox: theosis -- Christ redeems by sharing divine life with humanity; the Incarnation is central, not just the cross','Evaluate: the "Redeemer" title is universal in Christianity, but the mechanism of redemption is one of its most debated doctrines']
+      },
+      {
+        text: 'To what extent does Christianity teach pacifism?',
+        kw: ['pacifism','just war','augustine','aquinas','sermon on the mount','love enemies','quakers','conscientious objector','violence','war','peace','nonviolence','capital punishment','military','crusades','niebuhr'],
+        pts: ['New Testament pacifist texts: "Turn the other cheek" (Matthew 5:39), "Love your enemies" (Matthew 5:44)','The early church was largely pacifist -- many Christians refused military service before Constantine (312 CE)','Just War Theory (Augustine, Aquinas): war can be morally justified if criteria are met -- just cause, right intention, proportionality, last resort','The Crusades represent an extreme where the church actively promoted war -- challenging any simple claim that Christianity is pacifist','Quakers (Religious Society of Friends): absolute pacifism as a theological commitment','Reinhold Niebuhr (Christian Realism): pacifism is irresponsible in a world of real evil -- Christians must sometimes use force','Evaluate: Christianity does not uniformly teach pacifism -- it contains both pacifist impulses and just war traditions']
+      },
+      {
+        text: '"Infant baptism is meaningless; people should get baptized when they become adults." Discuss.',
+        kw: ['infant baptism','adult baptism','paedobaptism','believer\'s baptism','original sin','covenant','methodist','baptist','catholic','anglican','sacrament','grace','faith','credobaptism','regeneration','symbol'],
+        pts: ['Infant baptism (paedobaptism): practiced by Catholic, Anglican, Lutheran, and Methodist traditions -- removes original sin and incorporates the child into the covenant community','Catholic theology: baptism is necessary for salvation -- delay risks the child dying in original sin','Covenant argument: infant baptism parallels Old Testament circumcision -- God\'s covenant includes children of believers','Believer\'s baptism (credobaptism): Baptist, Pentecostal, and Anabaptist traditions -- baptism is a public declaration of personal faith, which infants cannot make','Symbolic vs sacramental: some traditions see baptism as conveying grace (favours infant); others as symbolising inward change (requires adult faith)','In practice: many adult baptism churches hold dedication ceremonies for infants -- acknowledging the communal aspect','Evaluate: the debate is about the nature of baptism itself -- neither position is "meaningless" given its own theological framework']
+      },
+      {
+        text: 'Discuss the importance of the sacraments in different denominations.',
+        kw: ['sacraments','eucharist','baptism','confirmation','marriage','ordination','penance','unction','catholic','protestant','anglican','orthodox','seven sacraments','two sacraments','ordinances','transubstantiation','means of grace'],
+        pts: ['Catholic and Orthodox: seven sacraments (baptism, confirmation, Eucharist, penance, marriage, holy orders, anointing of the sick) -- each conveys grace ex opere operato','Protestant Reformation: Luther and Calvin reduced sacraments to two -- baptism and the Lord\'s Supper -- on grounds of dominical institution','Eucharist: the most theologically contested -- Catholic (transubstantiation), Lutheran (consubstantiation), Reformed (spiritual presence), Zwinglian (memorial only)','Baptist and Pentecostal: often use "ordinances" rather than sacraments -- emphasising human obedience over divine conveyance of grace','Anglican "middle way": 39 Articles affirm baptism and Eucharist as "sacraments of the Gospel" while noting others are not sacraments "of the same sort"','Sacraments as community markers: how churches practice sacraments shapes identity and determines who can participate (open vs closed communion)','Evaluate: the sacraments are deeply important across all denominations, but their number, mechanism, and efficacy are Christianity\'s most divisive theological points']
+      },
+      {
+        text: 'Examine how personal revelation, through experience of God, has led some people to convert to Christianity.',
+        kw: ['conversion','revelation','personal experience','paul','damascus','augustine','cs lewis','testimony','holy spirit','faith','born again','evangelical','mysticism','charismatic','grace','transformation'],
+        pts: ['Paul on the Damascus Road (Acts 9): blinding light, voice of Christ -- a paradigmatic conversion through direct divine encounter','Augustine\'s Confessions: conversion as the resolution of an inner spiritual crisis -- "Our heart is restless until it rests in thee"','CS Lewis: rational journey from atheism through theism to Christianity -- intellectual encounter with divine Reason (Logos)','The evangelical tradition: "born again" experience (John 3:3) -- the Holy Spirit convicts of sin and grants faith','Charismatic Christianity: gifts of the Spirit (tongues, prophecy, healing) as experiential evidence of divine presence, prompting conversion','Mystical tradition: Julian of Norwich, Teresa of Avila -- sustained visions deepening existing faith rather than prompting initial conversion','Evaluate: personal revelation has been a powerful conversion mechanism throughout Christian history -- the Holy Spirit\'s role is affirmed but psychologically complex']
+      }
+    ]
+  },
+  {
+    id: 'islam',
+    name: 'Islam',
+    base: ['allah','quran','prophet muhammad','hadith','sunnah','sharia','ummah','five pillars','salat','zakat','hajj','sawm','shahada','islamic law','faith'],
+    questions: [
+      {
+        text: 'Examine the importance of hajj in the life of a Muslim.',
+        kw: ['hajj','mecca','five pillars','kaaba','arafat','mina','tawaf','ihram','abraham','unity','umma','equality','spiritual','purification','obligation','wuquf','forgiveness','farewell sermon'],
+        pts: ['Hajj is the fifth pillar of Islam -- obligatory for every Muslim who is physically and financially able at least once in their lifetime','The rituals re-enact the actions of Ibrahim (Abraham), Hajar, and Ishmael -- connecting the pilgrim to the roots of monotheism','Tawaf: seven circumambulations of the Kaaba -- the house of God -- expressing unity of all Muslims around one centre','Wuquf at Arafat: the spiritual climax -- pilgrims stand in prayer seeking forgiveness; Muhammad delivered his Farewell Sermon here','Ihram: the white garment obliterates all markers of wealth and status -- equality before God is made viscerally real','Transformative impact: many Muslims report hajj as the most profound spiritual experience of their lives -- sins are forgiven','Evaluate: hajj is simultaneously personal transformation, communal expression of umma, and enacted theology of monotheism']
+      },
+      {
+        text: 'Compare and contrast the bases for the authority of the Qur\'an and the Hadiths.',
+        kw: ['quran','hadith','authority','sunnah','prophet muhammad','revelation','scripture','sharia','sunni','shia','isnad','chain of transmission','primary source','secondary','fiqh','wahy','compilation'],
+        pts: ['Quran: the direct Word of Allah (wahy -- divine inspiration) revealed to Muhammad over 23 years through the angel Jibril','The Quran is Allah\'s speech -- it is therefore perfect, uncreated (in Sunni theology), and absolutely authoritative','Hadith: reports of the Prophet\'s sayings and actions, compiled 150-250 years after his death; authenticated by chains of transmission (isnad)','Hadith are human records -- subject to fabrication and error; reliability is graded (sahih/sound, hasan/good, da\'if/weak)','Without Hadith, the Quran is difficult to apply -- they provide the model (Sunnah) for prayer postures, dietary details, social conduct','Quranist movement: a minority argue only the Quran has authority -- mainstream Islam rejects this','Evaluate: the Quran\'s authority is absolute and sui generis; Hadith authority is derivative -- but Islamic law cannot function without both']
+      },
+      {
+        text: 'Discuss how rituals are an expression of the umma (worldwide community of Muslims).',
+        kw: ['umma','rituals','salat','hajj','ramadan','community','brotherhood','unity','worldwide','friday prayer','adhan','muslim identity','solidarity','common practice','qibla','eid','zakat'],
+        pts: ['Umma: the worldwide community of all Muslim believers, transcending nation, ethnicity, and language','Salat (daily prayer): all Muslims pray five times daily facing Mecca (qibla) -- a daily act of global synchrony','Adhan (call to prayer): heard across the Muslim world -- a daily reminder of shared identity','Hajj: over 2 million pilgrims gather -- the umma made physically visible; Malcolm X famously transformed by witnessing racial unity at Mecca','Ramadan: the entire umma fasts simultaneously -- iftar and Eid al-Fitr create shared experience across all time zones','Zakat: wealth shared from rich to poor across the umma -- economic solidarity as ritual practice','Evaluate: Islamic rituals are uniquely designed to create and reinforce umma consciousness -- their global uniformity is a deliberate theological statement']
+      },
+      {
+        text: 'To what extent might Muslim teachings about divorce be seen as unfair to women?',
+        kw: ['divorce','talaq','khul','women','sharia','quran','hadith','gender','equality','unfair','triple talaq','iddah','mahr','reform','modern','islamic law','rights','maintenance','custody'],
+        pts: ['Classical talaq: a husband may pronounce divorce unilaterally three times, while a wife must apply to a court for khul\' -- an apparent asymmetry','Triple talaq (instant divorce): controversial practice condemned by many scholars; banned in several countries (India 2019) as abusive','The Quran mandates iddah (waiting period of three menstrual cycles) -- provides opportunity for reconciliation and establishes paternity','Mahr (dowry): a woman\'s right to keep her mahr upon divorce provides financial protection','Khul\': a wife can initiate divorce by returning her mahr -- compromise or financial burden on women depending on interpretation','Reform perspectives: many scholars and countries (Morocco, Tunisia) have reformed family law to give women equal divorce rights','Evaluate: classical Islamic divorce law reflects 7th-century social context and contains asymmetries -- but the Quran\'s intent supports contemporary reform']
+      },
+      {
+        text: '"The Qur\'an is only the Qur\'an if it is written in Arabic." Discuss.',
+        kw: ['quran','arabic','translation','original language','revelation','linguistic','tafsir','interpretation','inimitability','ijaz','classical arabic','universal','community','scholarly','recitation','tilawa'],
+        pts: ['Core argument: the Quran is the verbatim Word of Allah in Arabic -- its literary and spiritual power (ijaz -- inimitability) inheres in the Arabic itself','Translations are therefore tafsir (interpretations) not Qur\'an -- they carry the meaning but not the divine speech itself','Liturgical practice: Salat must be performed in Arabic -- even by non-Arabic speakers -- preserving unity and authentic recitation (tilawa)','Historical benefit: insistence on Arabic created a unified Islamic scholarly culture and preserved textual integrity across 14 centuries','Counter: the Quran emphasises its message is for all humanity (universal mission) -- strict Arabic-only access creates barriers for most of 1.8 billion Muslims','Progressive argument: Muhammad Abduh and others argued translations serve the spirit of the Quran\'s universal mission','Evaluate: theologically the Arabic Quran is irreplaceable; practically translations are indispensable -- the statement is true of liturgy but not of access to meaning']
+      }
+    ]
+  },
+  {
+    id: 'openkarmic',
+    name: 'Open -- Karmic Faiths',
+    base: ['hinduism','buddhism','sikhism','karma','dharma','liberation','ritual','community','scripture','self','meditation','equality','suffering','rebirth','deity'],
+    questions: [
+      {
+        text: 'With reference to either Hinduism or Buddhism or Sikhism, discuss the extent to which religious experience can be affected by being male or female.',
+        kw: ['religious experience','gender','male','female','hinduism','buddhism','sikhism','pilgrimage','meditation','worship','ordination','access','discrimination','equality','ritual','bhikkhuni','goddess','women'],
+        pts: ['Identify your chosen religion and define what counts as "religious experience" within it (mystical, liturgical, ethical, etc.)','Hinduism: female deities (Devi, Durga, Lakshmi) suggest women have unique relational access to the divine; yet temple priesthood is traditionally male','Buddhism: the Buddha initially hesitated to ordain women; Theravada bhikkhuni (nuns) ordination lapsed and has only recently been restored; Mahayana is more open','Sikhism: theoretically equal -- women read from the Guru Granth Sahib; in practice, historical leadership (Akal Takht) has been exclusively male','Lived experience: gender shapes access to pilgrimage sites (e.g. Sabarimala temple restricted women of menstruating age), monastic ordination, and leadership roles','Use specific examples: Mirabai (Hindu female mystic), Mata Sahib Kaur (co-founder of the Khalsa), women\'s ordination movements in Buddhism','Evaluate: gender shapes religious experience significantly in practice, even in traditions that affirm equality in principle']
+      },
+      {
+        text: 'With reference to one religion, either Hinduism or Buddhism or Sikhism, examine the role of ritual using at least two examples.',
+        kw: ['ritual','hinduism','buddhism','sikhism','puja','meditation','prayer','ceremony','festival','pilgrimage','significance','community','practice','identity','devotion','samskara','amrit','kirtan'],
+        pts: ['Define ritual: a symbolic, repeated action that enacts or reinforces religious meaning','Choose your religion and introduce two distinct ritual examples with specificity','Hinduism example 1 -- Puja: daily worship at home shrine or temple; offering of light (arati), food (prasad), water to the deity','Hinduism example 2 -- Samskara (e.g. Vivah/wedding): marks life transitions through Vedic mantras and fire ceremony (agni)','Buddhism example -- Puja: offering flowers, incense, candles to Buddha image; merit-making; expression of devotion and aspiration','Sikhism example -- Amrit Sanchar: Khalsa initiation; drinking amrit (sanctified water); public commitment to community and Five Ks','Evaluate: rituals serve multiple functions -- soteriological, communal, and ethical -- and are indispensable to lived religion']
+      },
+      {
+        text: 'With reference to one religion, either Hinduism or Buddhism or Sikhism, discuss the importance of overcoming clinging to the "self."',
+        kw: ['self','clinging','attachment','ego','anatta','no-self','atman','maya','ahankara','liberation','moksha','nirvana','mukti','detachment','meditation','dharma','karma','wisdom','tanha','haumai'],
+        pts: ['Buddhism: anatta (no-self) -- the belief in a permanent self is the root illusion that generates tanha (craving) and dukkha','The five aggregates (skandhas) constitute what we call "self" -- none is permanent or independently existent','Overcoming clinging through vipassana meditation -- insight into impermanence dissolves attachment to self, leading to nirvana','Hinduism (Advaita Vedanta): clinging to individuality is maya (illusion) -- atman is not distinct from Brahman','The Bhagavad Gita: "Act without attachment to the fruits of action" -- overcoming ego-driven desire is the path to moksha','Sikhism: haumai (ego/self-centredness) is the primary spiritual obstacle -- Guru Nanak identifies it as the source of separation from Waheguru','Evaluate: overcoming the self is the central soteriological principle in all three Karmic traditions, expressed through different metaphysical frameworks']
+      },
+      {
+        text: 'With reference to one religion, either Hinduism or Buddhism or Sikhism, discuss how the principal sacred texts were composed and how they are used today.',
+        kw: ['sacred texts','composed','oral tradition','written','vedas','pali canon','guru granth sahib','authority','transmission','compilation','contemporary','use','worship','study','revelation','shruti','smriti','tipitaka'],
+        pts: ['Hinduism: Vedas are shruti (heard/revealed) -- received by ancient rishis in deep meditation; transmitted orally for centuries before being written','The Upanishads, Bhagavad Gita, and Puranas are smriti (remembered) -- composed by human authors with secondary authority','Today: Vedic mantras are recited at rituals; the Bhagavad Gita is the most widely read text across all Hindu traditions','Buddhism: the Pali Canon (Tipitaka) preserves the Buddha\'s teachings transmitted orally until the First Council (c.480 BCE); written down in Sri Lanka c.29 BCE','Today: Pali Canon is the liturgical and educational backbone of Theravada; Mahayana sutras (Heart Sutra, Lotus Sutra) are recited in East Asian traditions','Sikhism: Guru Granth Sahib compiled by Guru Arjan (1604), finalized by Guru Gobind Singh (1708); unique in being declared the eternal living Guru','Today: installed in every Gurdwara, read daily, recited at ceremonies -- its role as a community leader is unparalleled']
+      }
+    ]
+  },
+  {
+    id: 'openabrahamic',
+    name: 'Open -- Abrahamic Faiths',
+    base: ['judaism','christianity','islam','god','scripture','prayer','community','law','ethics','revelation','faith','tradition','salvation','covenant','afterlife'],
+    questions: [
+      {
+        text: 'With reference to religious teachings on abortion, justify one specific position in either Judaism or Christianity or Islam.',
+        kw: ['abortion','judaism','christianity','islam','jewish law','christian teaching','islamic teaching','sanctity of life','pikuach nefesh','catholic','reform','sunni','fetus','mother','tradition','personhood','ensoulment'],
+        pts: ['Identify your specific tradition (e.g. Reform Judaism, Catholic Christianity, Sunni Islam) -- specificity is essential','Judaism: most traditions permit abortion when the mother\'s life or health is seriously threatened (pikuach nefesh)','Reform Judaism: generally permissive -- the woman\'s autonomy and wellbeing are weighty factors; the fetus is not yet a full nefesh (person)','Catholic Christianity: abortion is gravely wrong from conception -- the fetus has full human dignity; no exceptions (Evangelium Vitae, 1995)','Protestant diversity: varies from near-total prohibition (evangelical) to cautious permission in cases of rape or maternal health','Islam: ensoulment at 40 or 120 days (depending on school) -- most schools permit early abortion for serious reasons; strict prohibition after ensoulment','Evaluate: your chosen position rests on specific theological foundations (when personhood begins, how to weigh competing goods) -- engage the strongest objection']
+      },
+      {
+        text: 'With reference to one religion, either Judaism or Christianity or Islam, discuss beliefs about eschatology.',
+        kw: ['eschatology','afterlife','resurrection','heaven','hell','paradise','olam ha-ba','second coming','judgment','messiah','soul','death','jewish','christian','islamic','eternal','purgatory','world to come','day of judgment'],
+        pts: ['Judaism: Olam Ha-Ba (the World to Come) -- belief in bodily resurrection at the end of days; the Messiah will usher in an era of peace; Gehenna for temporary purification','Jewish eschatology is primarily this-worldly and collective -- history moves toward a redeemed world, not souls escaping to a spiritual realm','Christianity: Second Coming of Christ (Parousia), Last Judgment, resurrection of the body, eternal life in heaven or hell','Catholic addition: Purgatory -- a state of purification for those who die in God\'s grace but require further cleansing','Islam: Yawm al-Qiyama (Day of Resurrection/Judgment) -- every soul is held accountable; Paradise (Jannah) and Hell (Jahannam) are vivid in Quranic description','Barzakh: the intermediate state between death and resurrection in Islamic theology -- the soul remains conscious','Evaluate: all three traditions affirm accountability, resurrection, and divine judgment -- but differ on community, afterlife states, and the mechanisms of divine mercy']
+      },
+      {
+        text: '"Any intentional killing of another human being is murder." To what extent is this statement applicable to either Judaism or Christianity or Islam?',
+        kw: ['killing','murder','judaism','christianity','islam','just war','capital punishment','self-defense','commandment','quran','torah','new testament','sanctity of life','halakha','jihad','crusade','pikuach nefesh'],
+        pts: ['The statement assumes a blanket prohibition -- but all three traditions make carefully reasoned exceptions','Judaism: "Do not murder" (lo tirtzach -- Exodus 20:13) -- the commandment prohibits unlawful killing; the Talmud permits killing in self-defence','Just war in Judaism: Milchemet mitzvah (obligatory war) was permitted in biblical contexts (Deuteronomy 20)','Christianity: Jesus radicalises the command ("do not be angry with your brother") but the church developed just war theory (Augustine, Aquinas)','Catholic Church changed position on capital punishment (CCC 2018) -- now states it is "inadmissible"','Islam: the Quran prohibits killing the innocent (5:32) -- but permits capital punishment (qisas), just war, and self-defence','Evaluate: the statement is an oversimplification; all three traditions distinguish murder from justified killing -- the question is where the line is drawn and by what authority']
+      },
+      {
+        text: 'With reference to one religion, either Judaism or Christianity or Islam, assess the origins and authority of its sacred texts.',
+        kw: ['sacred texts','origins','authority','torah','bible','quran','revelation','inspiration','composition','oral tradition','canon','scripture','divine','human','interpretation','inerrancy','sinai','gospel'],
+        pts: ['Judaism: Torah revealed to Moses at Sinai -- direct divine speech; Oral Torah co-revealed; the Hebrew Bible includes prophetic (Nevi\'im) and wisdom literature (Ketuvim)','Authority rests on the chain of transmission (mesorah) from Moses through the rabbis -- Talmud is the authoritative interpretation','Christianity: the Bible is "inspired" (2 Timothy 3:16) -- but what inspiration means is disputed: inerrancy (fundamentalist), infallibility (evangelical), authoritative witness (liberal)','The canon was not settled until the 4th century (Council of Carthage 397) -- a human process guided, Christians believe, by the Holy Spirit','Islam: the Quran is the literal, verbatim Word of Allah -- revealed over 23 years, compiled under Caliph Uthman c.650 CE','The Quran\'s inimitability (ijaz) is itself proof of divine origin -- no human could produce comparable literary and spiritual quality','Evaluate: all three attribute divine origin to their primary texts, but inspiration, human composition, and canonisation differ significantly']
+      },
+      {
+        text: 'With reference to one religion, either Judaism or Christianity or Islam, discuss the importance of group religious experience.',
+        kw: ['group','religious experience','community','synagogue','church','mosque','collective','sinai','pentecost','revelation','prayer','worship','testimony','communal','congregation','minyan','jumu\'ah','umma'],
+        pts: ['Define group religious experience: shared encounter with the divine experienced collectively rather than by a lone individual','Judaism: the Sinai revelation is paradigmatic -- the entire Israelite nation received Torah together; this collective experience is the foundation of Jewish identity','Minyan (quorum of 10) is required for communal prayers -- Kaddish, Torah reading -- showing that Jewish worship is structurally communal','Christianity: Pentecost (Acts 2) -- the Holy Spirit descended on 120 disciples gathered in prayer; tongues of fire as a shared charismatic experience','Church as Body of Christ: communal worship (Eucharist, liturgy) is itself an experience of Christ\'s presence among the gathered community','Islam: Friday Jumu\'ah prayer is obligatory and communal; Hajj provides the most dramatic group religious experience of any tradition','Evaluate: group religious experience is constitutive in all three traditions -- each sees communal encounter as potentially more authoritative than individual experience']
+      }
+    ]
+  }
+];
+
+function scoreAnswer(text, question, religion) {
+  const t = text.toLowerCase();
+  const words = t.split(/\s+/).filter(w => w.length > 2).length;
+  let wc = 0;
+  if (words >= 600) wc = 3;
+  else if (words >= 400) wc = 2;
+  else if (words >= 250) wc = 1.5;
+  else if (words >= 150) wc = 1;
+  const baseHits = religion.base.filter(k => t.includes(k.toLowerCase()));
+  const baseScore = Math.min(4, (baseHits.length / religion.base.length) * 7);
+  const qHits = question.kw.filter(k => t.includes(k.toLowerCase()));
+  const qMiss = question.kw.filter(k => !t.includes(k.toLowerCase()));
+  const qScore = Math.min(13, (qHits.length / question.kw.length) * 18);
+  const total = Math.min(20, Math.round(wc + baseScore + qScore));
+  return { total, words, baseHits, qHits, qMiss };
+}
+
+function gradeInfo(score) {
+  if (score >= 18) return { label:'Grade 7', cls:'grade-7', msg:'Outstanding -- publishable quality' };
+  if (score >= 15) return { label:'Grade 6', cls:'grade-6', msg:'Very good -- strong analysis' };
+  if (score >= 12) return { label:'Grade 5', cls:'grade-5', msg:'Good -- solid but needs more depth' };
+  if (score >= 9)  return { label:'Grade 4', cls:'grade-4', msg:'Satisfactory -- key ideas present' };
+  if (score >= 6)  return { label:'Grade 3', cls:'grade-3', msg:'Developing -- needs more coverage' };
+  if (score >= 3)  return { label:'Grade 2', cls:'grade-low', msg:'Limited -- significant gaps' };
+  return { label:'Grade 1', cls:'grade-low', msg:'Minimal response' };
+}
+
+let currentR = null, currentQ = null;
+const answers = {};
+
+function buildSidebar() {
+  document.getElementById('sidebar').innerHTML = RELIGIONS.map((rel, ri) => `
+    <button class="religion-btn" onclick="toggleRel(${ri})" id="rbtn-${ri}">
+      <span class="rel-name">${rel.name}</span>
+      <span class="chevron">&#9658;</span>
+    </button>
+    <div class="q-list" id="qlist-${ri}">
+      ${rel.questions.map((q, qi) => `
+        <button class="q-item" onclick="loadQ(${ri},${qi})" id="qitem-${ri}-${qi}">
+          ${qi+1}. ${q.text.length > 85 ? q.text.slice(0,83)+'...' : q.text}
+        </button>`).join('')}
+    </div>`).join('');
+}
+
+function toggleRel(ri) {
+  const btn = document.getElementById('rbtn-'+ri);
+  const list = document.getElementById('qlist-'+ri);
+  const isOpen = list.classList.contains('open');
+  document.querySelectorAll('.q-list').forEach(l => l.classList.remove('open'));
+  document.querySelectorAll('.religion-btn').forEach(b => b.classList.remove('open'));
+  if (!isOpen) { list.classList.add('open'); btn.classList.add('open'); }
+}
+
+function loadQ(ri, qi) {
+  if (currentR !== null && currentQ !== null) {
+    const ta = document.getElementById('essay');
+    if (ta) answers[currentR+'-'+currentQ] = ta.value;
+  }
+  currentR = ri; currentQ = qi;
+  document.querySelectorAll('.q-item').forEach(b => b.classList.remove('active'));
+  document.getElementById('qitem-'+ri+'-'+qi).classList.add('active');
+  const rel = RELIGIONS[ri];
+  const q = rel.questions[qi];
+  const saved = answers[ri+'-'+qi] || '';
+  document.getElementById('mainPanel').innerHTML = `
+    <div class="q-header">
+      <div class="q-label">${rel.name} &middot; Question ${qi+1} of ${rel.questions.length}</div>
+      <div class="q-text">${q.text}</div>
+    </div>
+    <div>
+      <label style="font-size:0.82rem;color:var(--muted)">Your essay response:</label>
+      <textarea id="essay" placeholder="Begin writing your essay here..." oninput="updateWC()">${saved}</textarea>
+      <div class="wc-bar">
+        <div class="wc-display">Words: <span id="wcNum">0</span></div>
+        <div class="wc-target">Aim for 600+ words</div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-gold" onclick="doScore()">Score My Answer</button>
+      <button class="btn btn-outline" onclick="document.getElementById('essay').value='';document.getElementById('feedback').classList.remove('show');updateWC()">Clear</button>
+    </div>
+    <div class="feedback" id="feedback">
+      <div class="score-banner" id="scoreBanner"></div>
+      <div class="kw-section" id="kwSection"></div>
+      <div class="model-section">
+        <button class="model-toggle" onclick="var e=document.getElementById('mpts');e.classList.toggle('show');this.querySelector('span').textContent=e.classList.contains('show')?'&#9650;':'&#9660;'">
+          Model Answer Points <span>&#9660;</span>
+        </button>
+        <div class="model-points" id="mpts">
+          <ul>${q.pts.map(p=>`<li>${p}</li>`).join('')}</ul>
+        </div>
+      </div>
+    </div>`;
+  updateWC();
+}
+
+function updateWC() {
+  const ta = document.getElementById('essay');
+  const el = document.getElementById('wcNum');
+  if (!ta || !el) return;
+  el.textContent = ta.value.trim().split(/\s+/).filter(w=>w.length>0).length;
+}
+
+function doScore() {
+  const text = document.getElementById('essay').value.trim();
+  if (text.length < 20) { alert('Please write a response first.'); return; }
+  const rel = RELIGIONS[currentR];
+  const q = rel.questions[currentQ];
+  const r = scoreAnswer(text, q, rel);
+  const g = gradeInfo(r.total);
+  document.getElementById('scoreBanner').innerHTML = `
+    <div class="score-circle"><div class="num">${r.total}</div><div class="den">/ 20</div></div>
+    <div class="score-info">
+      <h3>${g.msg}</h3>
+      <span class="grade-badge ${g.cls}">${g.label}</span>
+      <div style="margin-top:0.4rem;font-size:0.85rem;color:var(--muted)">${r.words} words written</div>
+    </div>`;
+  const hitTags = r.qHits.map(k=>`<span class="kw-tag kw-hit">&#10003; ${k}</span>`).join('');
+  const missTags = r.qMiss.slice(0,12).map(k=>`<span class="kw-tag kw-miss">${k}</span>`).join('');
+  document.getElementById('kwSection').innerHTML = `
+    <div class="kw-title">Key terms covered (${r.qHits.length}/${q.kw.length})</div>
+    <div class="kw-tags">${hitTags||'<span style="color:var(--muted);font-size:0.85rem">None detected yet</span>'}</div>
+    ${missTags?`<div class="kw-title" style="margin-top:0.5rem">Terms to include next time</div><div class="kw-tags">${missTags}</div>`:''}`;
+  document.getElementById('feedback').classList.add('show');
+  document.getElementById('feedback').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+buildSidebar();
+</script>
+</body>
+</html>
